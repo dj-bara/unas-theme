@@ -1,0 +1,632 @@
+<div id='page_order_mods_content' class='[UnasDesign - IfStart{hide_disabled_mods}]hide_disabled_mods [UnasDesign - IfEnd{hide_disabled_mods}]page_content'>
+
+    [UnasDesign - IfStart{text_top_disp}]
+    <div class='page_txt'>[UnasDesign - Normal{text_top}]</div>
+    <div class='page_hr'><hr></div>
+    [UnasDesign - IfEnd{text_top_disp}]
+
+    [UnasDesign - Normal{orderflow}]
+
+    [UnasDesign - Normal{form_start}]
+        <input type="hidden" name="mods_send" value="ok">
+        <input type="hidden" name="fiz_spec" value="[UnasDesign - Normal{payment_spec}]">
+        <input type="hidden" name="fiz_id" id="fiz_id" value="">
+        <input type="hidden" name="szall_spec" value="[UnasDesign - Normal{shipping_spec}]">
+        <input type="hidden" name="szall_id" id="szall_id" value="">
+
+        [UnasDesign - IfStart{master_disp}]<!-- this is the master (1st) payment/shipping method -->
+            <section class="order-mods-section order-mods-section--master mb-5" id="page_order_mods_[UnasDesign - Normal{master_type}]">
+                <div class="order-mods__main-title title--theme-1 h4">[UnasDesign - Normal{master_title}]</div>
+
+                <div class="order-mods">
+                [UnasDesign - LoopStart{master_item}]
+
+                    <div class="order-mods__item p-3 p-md-4 border-bottom js-order-mods-item" id="[UnasDesign - Loop{master_item} - Normal{outer_id}]">
+                        <div class="d-flex align-items-center">
+                            <div class="col-fix-1 order-mods__radio-col">
+                                <div class="order-mods__radio-wrap fs-0">
+                                    [UnasDesign - Loop{master_item} - Normal{radio}]
+                                    <label class="order-mods__label align-top" for="[UnasDesign - IfStart{master_type_shipping}]szall_id[UnasDesign - IfEnd{master_type_shipping}][UnasDesign - IfStart{master_type_payment}]fiz_id[UnasDesign - IfEnd{master_type_payment}]_[UnasDesign - Loop{master_item} - Normal{mod_id}]"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <header class="order-mods__haeder">
+                                    [UnasDesign - IfStart{master_type_payment}]<!-- if the master type is payment -->
+                                        <label class="order-mods__label d-flex" for="fiz_id_[UnasDesign - Loop{master_item} - Normal{mod_id}]">
+                                            <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{master_item} - Normal{mod_name}]</div>
+                                        </label>
+                                    [UnasDesign - IfEnd{master_type_payment}]
+
+                                    [UnasDesign - IfStart{master_type_shipping}]<!-- if the master type is shipping -->
+                                        <label class="order-mods__label" for="szall_id_[UnasDesign - Loop{master_item} - Normal{mod_id}]">
+                                            <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{master_item} - Normal{mod_name}]</div>
+                                        </label>
+                                        <div class="order-mods__shipping-cost-wrap d-flex text-muted font-weight-700">
+                                            <div class="order-mods__shipping-cost-text mr-2 d-none">[UnasDesign - Text{name:cart_postcost;page:shop_order}]:</div>
+                                            <div class="order-mods__shipping-cost">[UnasDesign - Loop{master_item} - Normal{shipping_cost}]</div>
+                                        </div>
+                                    [UnasDesign - IfEnd{master_type_shipping}]
+                                </header>
+
+
+                                [UnasDesign - Loop{master_item} - IfStart{mod_det_disp|link_disp|logo_disp|delivery_point_disp|use_recurring_checkbox|use_oneclick_checkbox|use_oneclick_pass|change_default_addresses_enabled}]
+                                <div class="order-mods__details js-order-mods-details text-muted">
+                                    [UnasDesign - Loop{master_item} - IfStart{mod_det_disp}]
+                                        <div class='order-mods__description my-4'>[UnasDesign - Loop{master_item} - Normal{mod_det}]</div>
+                                    [UnasDesign - Loop{master_item} - IfEnd{mod_det_disp}]
+
+                                    [UnasDesign - Loop{master_item} - IfStart{link_disp}]
+                                        <a class="order-mods__link my-4" href="[UnasDesign - Loop{master_item} - Normal{link_href}]" title="[UnasDesign - Loop{master_item} - Normal{link_alt}]"
+                                           target="[UnasDesign - Loop{master_item} - Normal{link_target}]">[UnasDesign - Loop{master_item} - Normal{link_text}]
+                                        </a>
+                                    [UnasDesign - Loop{master_item} - IfEnd{link_disp}]
+
+                                    [UnasDesign - Loop{master_item} - IfStart{use_recurring_checkbox}]
+                                        <div class="mt-4">
+                                            <input name="use_recurring_[UnasDesign - Loop{master_item} - Normal{id}]" id="use_recurring_[UnasDesign - Loop{master_item} - Normal{id}]" type="checkbox" value="1" [UnasDesign - Loop{master_item} - IfStart{use_recurring_checked}]checked=checked[UnasDesign - Loop{master_item} - IfEnd{use_recurring_checked}] />
+                                            <label for="use_recurring_[UnasDesign - Loop{master_item} - Normal{id}]" class="font-weight-bold text-body">[UnasDesign - Text{name:use_recurring_checkbox;page:shop_order;}]</label>
+                                        </div>
+                                    [UnasDesign - Loop{master_item} - IfEnd{use_recurring_checkbox}]
+
+                                    [UnasDesign - Loop{master_item} - IfStart{use_oneclick_checkbox}]
+                                        <div class="mt-4">
+                                            <input name="use_oneclick_[UnasDesign - Loop{master_item} - Normal{id}]" id="use_oneclick_[UnasDesign - Loop{master_item} - Normal{id}]" type="checkbox" value="1" [UnasDesign - Loop{master_item} - IfStart{use_oneclick_checked}]checked=checked[UnasDesign - Loop{master_item} - IfEnd{use_oneclick_checked}] />
+                                            <label for="use_oneclick_[UnasDesign - Loop{master_item} - Normal{id}]" class="font-weight-bold text-body">[UnasDesign - Text{name:use_oneclick_checkbox;page:shop_order;}]</label>
+                                        </div>
+                                    [UnasDesign - Loop{master_item} - IfEnd{use_oneclick_checkbox}]
+                                    [UnasDesign - Loop{master_item} - IfStart{!use_oneclick_checkbox}]
+                                        [UnasDesign - Loop{master_item} - IfStart{use_oneclick_pass}]
+                                            <div class="customer-block mt-4 js-oneclick-pass-wrap">
+                                                <div class="new-customer-title text-body">[UnasDesign - Text{name:oneclick_pass;page:shop_order;}]</div>
+                                                <div class="new-customer-value">
+                                                    <span class="page_newcust_input">
+                                                        <span class="text_input">
+                                                            <input onkeyup="oneclick_pass_change($(this));" name="oneclick_pass_[UnasDesign - Loop{master_item} - Normal{id}]" id="oneclick_pass_[UnasDesign - Loop{master_item} - Normal{id}]" type="password" class="text_normal[UnasDesign - Loop{master_item} - IfStart{oneclick_pass_required}] is-required[UnasDesign - Loop{master_item} - IfEnd{oneclick_pass_required}]" value="[UnasDesign - Loop{master_item} - Normal{oneclick_pass_value}]" maxlength="100" />
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        [UnasDesign - Loop{master_item} - IfEnd{use_oneclick_pass}]
+                                    [UnasDesign - Loop{master_item} - IfEnd{!use_oneclick_checkbox}]
+
+                                    [UnasDesign - Loop{master_item} - IfStart{logo_disp}]
+                                        [UnasDesign - Loop{master_item} - IfStart{logo_link_disp}]
+                                            <a href="[UnasDesign - Loop{master_item} - Normal{logo_link_href}]"
+                                               title="[UnasDesign - Loop{master_item} - Normal{logo_alt}]"
+                                               target="[UnasDesign - Loop{master_item} - Normal{logo_link_target}]">
+                                        [UnasDesign - Loop{master_item} - IfEnd{logo_link_disp}]
+                                                <img class="order-mods__logo my-4" src="[UnasDesign - Loop{master_item} - Normal{logo_img}]" alt="[UnasDesign - Loop{master_item} - Normal{logo_alt}]" title="[UnasDesign - Loop{master_item} - Normal{logo_alt}]" border="0">
+                                        [UnasDesign - Loop{master_item} - IfStart{logo_link_disp}]
+                                            </a>
+                                        [UnasDesign - Loop{master_item} - IfEnd{logo_link_disp}]
+                                    [UnasDesign - Loop{master_item} - IfEnd{logo_disp}]
+
+                                    [UnasDesign - Loop{master_item} - IfStart{delivery_point_disp}]
+                                    <div class="order-mods__delivery-point my-4 page_order_mods_deliverypoint">
+                                        [UnasDesign - Loop{master_item} - Normal{delivery_point_script}]
+
+                                        <div class="order-mods__delivery-options">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <div class="order-mods__delivery-point-selects pr-md-5">
+                                                        <div class="order-mods__delivery-point-select-text mb-2">
+                                                            [UnasDesign - Loop{master_item} - Normal{delivery_point_text_selected}]
+                                                        </div>
+
+                                                        [UnasDesign - Loop{master_item} - IfStart{delivery_point_type_multi}]
+                                                            <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{master_item} - Normal{delivery_point_multi_1}][UnasDesign - Normal{design_select_after}]</div>
+                                                            <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{master_item} - Normal{delivery_point_multi_2}][UnasDesign - Normal{design_select_after}]</div>
+                                                            <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{master_item} - Normal{delivery_point_multi_3}][UnasDesign - Normal{design_select_after}]</div>
+                                                            <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{master_item} - Normal{delivery_point_multi_4}][UnasDesign - Normal{design_select_after}]</div>
+                                                            <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{master_item} - Normal{delivery_point_multi_5}][UnasDesign - Normal{design_select_after}]</div>
+                                                        [UnasDesign - Loop{master_item} - IfEnd{delivery_point_type_multi}]
+
+                                                        [UnasDesign - Loop{master_item} - IfStart{!delivery_point_type_multi}]
+                                                            <div class="text_select delivery_point_outer">
+                                                                [UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{master_item} - Normal{delivery_point_single}][UnasDesign - Normal{design_select_after}]
+                                                            </div>
+                                                        [UnasDesign - Loop{master_item} - IfEnd{!delivery_point_type_multi}]
+                                                    </div>
+                                                </div>
+                                                [UnasDesign - Loop{master_item} - IfStart{delivery_point_map_disp}]
+                                                <div class="col-sm">
+                                                    <div class="order-mods__delivery-map pl-md-5">
+                                                        <div><label>[UnasDesign - Text{deliverypoint_map}]:</label></div>
+                                                        [UnasDesign - Loop{master_item} - Normal{delivery_point_map}]
+                                                    </div>
+                                                </div>
+                                                [UnasDesign - Loop{master_item} - IfEnd{delivery_point_map_disp}]
+                                            </div>
+                                        </div>
+                                        <div class="page_order_mods_deliverypoint_info_outer" [UnasDesign - Loop{master_item} - IfStart{delivery_point_info_disp}]style='display:block;'[UnasDesign - Loop{master_item} - IfEnd{delivery_point_info_disp}]>
+                                            <div class="page_order_mods_deliverypoint_info">[UnasDesign - Loop{master_item} - Normal{delivery_point_info}]</div>
+                                        </div>
+                                    </div>
+                                    [UnasDesign - Loop{master_item} - IfEnd{delivery_point_disp}]
+                                    [UnasDesign - Loop{master_item} - IfStart{!delivery_point_disp}]
+                                        [UnasDesign - Loop{master_item} - IfStart{change_default_addresses_enabled}]
+                                        <div class="mt-4">
+                                            <div class="new-customer-title">[UnasDesign - Normal{master_address_title}]</div>
+                                            <select id="[UnasDesign - Normal{master_type}]_address_[UnasDesign - Loop{master_item} - Normal{id}]" class="form-control js-address-select" data-type="[UnasDesign - Normal{master_type}]" data-id="[UnasDesign - Loop{master_item} - Normal{id}]">
+                                                <option value="[UnasDesign - Normal{default_master_address_id}]" selected="selected">[UnasDesign - Normal{default_master_address}]</option>
+                                            </select>
+                                            <button type="button" class="add-new-address-btn btn--text btn--no-text-transform font-s color--primary font-weight-bold" onclick="redirectToAddNewAddress([UnasDesign - Loop{master_item} - Normal{id}],'[UnasDesign - Normal{master_type}]');">[UnasDesign - Text{page:shop_newcust;name:new_address;}]</button>
+                                        </div>
+                                        [UnasDesign - Loop{master_item} - IfEnd{change_default_addresses_enabled}]
+                                    [UnasDesign - Loop{master_item} - IfEnd{!delivery_point_disp}]
+                                </div>
+                                [UnasDesign - Loop{master_item} - IfEnd{mod_det_disp|link_disp|logo_disp|delivery_point_disp|use_recurring_checkbox|use_oneclick_checkbox|use_oneclick_pass|change_default_addresses_enabled}]
+                            </div>
+                        </div>
+                    </div>
+                [UnasDesign - LoopEnd{master_item}]
+                </div>
+            </section>
+        [UnasDesign - IfEnd{master_disp}]
+
+        [UnasDesign - IfStart{!master_disp}]<!-- there is no available master method -->
+            <section class="order-mods-section order-mods-section--has-not-master mb-5" id="page_order_mods_[UnasDesign - Normal{master_type}]">
+                <div class="order-mods__main-title title--theme-1 h4">
+                    [UnasDesign - Normal{master_title}]
+                    <span class="icon--exclamation text-warning"></span>
+                </div>
+
+                <!-- [master_disp_no_custom_disp] with ! (denial): custom text is not given by admin user in Content / Editable contents menu (Order page, if no selectable...) -->
+                <div class="order-mods__text-no-master-method-outer [UnasDesign - IfStart{master_disp_no_custom_disp}]is-custom[UnasDesign - IfEnd{master_disp_no_custom_disp}]">
+                    <span class="order-mods__text-no-master-method ">[UnasDesign - Normal{master_disp_no}]</span>
+                </div>
+
+            </section>
+        [UnasDesign - IfEnd{!master_disp}]
+
+        [UnasDesign - IfStart{slave_disp}]<!-- this is the slave (2nd) payment/shipping method -->
+            <section class="order-mods-section order-mods-section--slave mb-5" id="page_order_mods_[UnasDesign - Normal{slave_type}]">
+                <div class="order-mods__main-title title--theme-1 h4">[UnasDesign - Normal{slave_title}]</div>
+
+                <div class="order-mods">
+                    [UnasDesign - LoopStart{slave_item}]
+
+                    <div class="order-mods__item p-3 p-md-4 border-bottom js-order-mods-item" id="[UnasDesign - Loop{slave_item} - Normal{outer_id}]">
+                        <div class="d-flex align-items-center">
+                            <div class="col-fix-1 order-mods__radio-col">
+                                <div class="order-mods__radio-wrap fs-0">
+                                    [UnasDesign - Loop{slave_item} - Normal{radio}]
+                                    <label class="order-mods__label align-top" for="[UnasDesign - IfStart{slave_type_shipping}]szall_id[UnasDesign - IfEnd{slave_type_shipping}][UnasDesign - IfStart{slave_type_payment}]fiz_id[UnasDesign - IfEnd{slave_type_payment}]_[UnasDesign - Loop{slave_item} - Normal{mod_id}]"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <header class="order-mods__haeder">
+                                    [UnasDesign - IfStart{slave_type_payment}]<!-- if the slave type is payment -->
+                                    <label class="order-mods__label d-flex" for="fiz_id_[UnasDesign - Loop{slave_item} - Normal{mod_id}]">
+                                        <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{slave_item} - Normal{mod_name}]</div>
+                                    </label>
+                                    [UnasDesign - IfEnd{slave_type_payment}]
+
+                                    [UnasDesign - IfStart{slave_type_shipping}]<!-- if the slave type is shipping -->
+                                    <label class="order-mods__label" for="szall_id_[UnasDesign - Loop{slave_item} - Normal{mod_id}]">
+                                        <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{slave_item} - Normal{mod_name}]</div>
+                                    </label>
+                                    <div class="order-mods__shipping-cost-wrap d-flex text-muted round-bracket-around">
+                                        <div class="order-mods__shipping-cost-text">[UnasDesign - Text{stat_order_ar}]:&nbsp;</div>
+                                        <div class="order-mods__shipping-cost">[UnasDesign - Loop{slave_item} - Normal{shipping_cost}]</div>
+                                    </div>
+                                    [UnasDesign - IfEnd{slave_type_shipping}]
+                                </header>
+
+
+                                [UnasDesign - Loop{slave_item} - IfStart{mod_det_disp|link_disp|logo_disp|delivery_point_disp|use_recurring_checkbox|use_oneclick_checkbox|use_oneclick_pass|change_default_addresses_enabled}]
+                                <div class="order-mods__details js-order-mods-details text-muted">
+                                    [UnasDesign - Loop{slave_item} - IfStart{mod_det_disp}]
+                                    <div class='order-mods__description my-4'>[UnasDesign - Loop{slave_item} - Normal{mod_det}]</div>
+                                    [UnasDesign - Loop{slave_item} - IfEnd{mod_det_disp}]
+
+                                    [UnasDesign - Loop{slave_item} - IfStart{link_disp}]
+                                    <a class="order-mods__link my-4" href="[UnasDesign - Loop{slave_item} - Normal{link_href}]" title="[UnasDesign - Loop{slave_item} - Normal{link_alt}]"
+                                       target="[UnasDesign - Loop{slave_item} - Normal{link_target}]">[UnasDesign - Loop{slave_item} - Normal{link_text}]
+                                    </a>
+                                    [UnasDesign - Loop{slave_item} - IfEnd{link_disp}]
+
+                                    [UnasDesign - Loop{slave_item} - IfStart{use_recurring_checkbox}]
+                                        <div class="mt-4">
+                                            <input name="use_recurring_[UnasDesign - Loop{slave_item} - Normal{id}]" id="use_recurring_[UnasDesign - Loop{slave_item} - Normal{id}]" type="checkbox" value="1" [UnasDesign - Loop{slave_item} - IfStart{use_recurring_checked}]checked=checked[UnasDesign - Loop{slave_item} - IfEnd{use_recurring_checked}] />
+                                            <label for="use_recurring_[UnasDesign - Loop{slave_item} - Normal{id}]" class="font-weight-bold text-body">[UnasDesign - Text{name:use_recurring_checkbox;page:shop_order;}]</label>
+                                        </div>
+                                    [UnasDesign - Loop{slave_item} - IfEnd{use_recurring_checkbox}]
+
+                                    [UnasDesign - Loop{slave_item} - IfStart{use_oneclick_checkbox}]
+                                        <div class="mt-4">
+                                            <input name="use_oneclick_[UnasDesign - Loop{slave_item} - Normal{id}]" id="use_oneclick_[UnasDesign - Loop{slave_item} - Normal{id}]" type="checkbox" value="1" [UnasDesign - Loop{slave_item} - IfStart{use_oneclick_checked}]checked=checked[UnasDesign - Loop{slave_item} - IfEnd{use_oneclick_checked}] />
+                                            <label for="use_oneclick_[UnasDesign - Loop{slave_item} - Normal{id}]" class="font-weight-bold text-body">[UnasDesign - Text{name:use_oneclick_checkbox;page:shop_order;}]</label>
+                                        </div>
+                                    [UnasDesign - Loop{slave_item} - IfEnd{use_oneclick_checkbox}]
+                                    [UnasDesign - Loop{slave_item} - IfStart{!use_oneclick_checkbox}]
+                                        [UnasDesign - Loop{slave_item} - IfStart{use_oneclick_pass}]
+                                            <div class="customer-block mt-4 js-oneclick-pass-wrap">
+                                                <div class="new-customer-title text-body">[UnasDesign - Text{name:oneclick_pass;page:shop_order;}]</div>
+                                                <div class="new-customer-value">
+                                                    <span class="page_newcust_input">
+                                                        <span class="text_input">
+                                                            <input onkeyup="oneclick_pass_change($(this));" name="oneclick_pass_[UnasDesign - Loop{slave_item} - Normal{id}]" id="oneclick_pass_[UnasDesign - Loop{slave_item} - Normal{id}]" type="password" class="text_normal[UnasDesign - Loop{slave_item} - IfStart{oneclick_pass_required}] is-required[UnasDesign - Loop{slave_item} - IfEnd{oneclick_pass_required}]" value="[UnasDesign - Loop{slave_item} - Normal{oneclick_pass_value}]" maxlength="100" />
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        [UnasDesign - Loop{slave_item} - IfEnd{use_oneclick_pass}]
+                                    [UnasDesign - Loop{slave_item} - IfEnd{!use_oneclick_checkbox}]
+
+                                    [UnasDesign - Loop{slave_item} - IfStart{logo_disp}]
+
+                                    [UnasDesign - Loop{slave_item} - IfStart{logo_link_disp}]
+                                    <a href="[UnasDesign - Loop{slave_item} - Normal{logo_link_href}]"
+                                       title="[UnasDesign - Loop{slave_item} - Normal{logo_alt}]"
+                                       target="[UnasDesign - Loop{slave_item} - Normal{logo_link_target}]">
+                                    [UnasDesign - Loop{slave_item} - IfEnd{logo_link_disp}]
+                                        <img class="order-mods__logo my-4" src="[UnasDesign - Loop{slave_item} - Normal{logo_img}]" alt="[UnasDesign - Loop{slave_item} - Normal{logo_alt}]" title="[UnasDesign - Loop{slave_item} - Normal{logo_alt}]" border="0">
+                                    [UnasDesign - Loop{slave_item} - IfStart{logo_link_disp}]
+                                    </a>
+                                    [UnasDesign - Loop{slave_item} - IfEnd{logo_link_disp}]
+
+                                    [UnasDesign - Loop{slave_item} - IfEnd{logo_disp}]
+
+                                    [UnasDesign - Loop{slave_item} - IfStart{delivery_point_disp}]
+                                    <div class="order-mods__delivery-point my-4 page_order_mods_deliverypoint">
+                                        [UnasDesign - Loop{slave_item} - Normal{delivery_point_script}]
+
+                                        <div class="order-mods__delivery-options">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <div class="order-mods__delivery-point-selects pr-md-5">
+                                                        <div class="order-mods__delivery-point-select-text mb-2">
+                                                            [UnasDesign - Loop{slave_item} - Normal{delivery_point_text_selected}]
+                                                        </div>
+
+                                                        [UnasDesign - Loop{slave_item} - IfStart{delivery_point_type_multi}]
+                                                        <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{slave_item} - Normal{delivery_point_multi_1}][UnasDesign - Normal{design_select_after}]</div>
+                                                        <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{slave_item} - Normal{delivery_point_multi_2}][UnasDesign - Normal{design_select_after}]</div>
+                                                        <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{slave_item} - Normal{delivery_point_multi_3}][UnasDesign - Normal{design_select_after}]</div>
+                                                        <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{slave_item} - Normal{delivery_point_multi_4}][UnasDesign - Normal{design_select_after}]</div>
+                                                        <div class="text_select">[UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{slave_item} - Normal{delivery_point_multi_5}][UnasDesign - Normal{design_select_after}]</div>
+                                                        [UnasDesign - Loop{slave_item} - IfEnd{delivery_point_type_multi}]
+
+                                                        [UnasDesign - Loop{slave_item} - IfStart{!delivery_point_type_multi}]
+                                                        <div class="text_select delivery_point_outer">
+                                                            [UnasDesign - Normal{design_select_befor}][UnasDesign - Loop{slave_item} - Normal{delivery_point_single}][UnasDesign - Normal{design_select_after}]
+                                                        </div>
+                                                        [UnasDesign - Loop{slave_item} - IfEnd{!delivery_point_type_multi}]
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm">
+                                                    [UnasDesign - Loop{slave_item} - IfStart{delivery_point_map_disp}]
+                                                    <div class="order-mods__delivery-map pl-md-5">
+                                                        <div><label>[UnasDesign - Text{deliverypoint_map}]:</label></div>
+                                                        [UnasDesign - Loop{slave_item} - Normal{delivery_point_map}]
+                                                    </div>
+                                                    [UnasDesign - Loop{slave_item} - IfEnd{delivery_point_map_disp}]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="page_order_mods_deliverypoint_info_outer" [UnasDesign - Loop{slave_item} - IfStart{delivery_point_info_disp}]style='display:block;'[UnasDesign - Loop{slave_item} - IfEnd{delivery_point_info_disp}]>
+                                        <div class="page_order_mods_deliverypoint_info">[UnasDesign - Loop{slave_item} - Normal{delivery_point_info}]</div>
+                                    </div>
+                                </div>
+                                [UnasDesign - Loop{slave_item} - IfEnd{delivery_point_disp}]
+                                [UnasDesign - Loop{slave_item} - IfStart{!delivery_point_disp}]
+                                    [UnasDesign - Loop{slave_item} - IfStart{change_default_addresses_enabled}]
+                                        <div class="mt-4">
+                                            <div class="new-customer-title">[UnasDesign - Normal{slave_address_title}]</div>
+                                            <select id="[UnasDesign - Normal{slave_type}]_address_[UnasDesign - Loop{slave_item} - Normal{id}]" class="form-control js-address-select" data-type="[UnasDesign - Normal{slave_type}]" data-id="[UnasDesign - Loop{slave_item} - Normal{id}]">
+                                                <option value="[UnasDesign - Normal{default_slave_address_id}]" selected="selected">[UnasDesign - Normal{default_slave_address}]</option>
+                                            </select>
+                                            <button type="button" class="add-new-address-btn btn--text btn--no-text-transform font-s color--primary font-weight-bold" onclick="redirectToAddNewAddress([UnasDesign - Loop{slave_item} - Normal{id}],'[UnasDesign - Normal{slave_type}]');">[UnasDesign - Text{page:shop_newcust;name:new_address;}]</button>
+                                        </div>
+                                    [UnasDesign - Loop{slave_item} - IfEnd{change_default_addresses_enabled}]
+                                [UnasDesign - Loop{slave_item} - IfEnd{!delivery_point_disp}]
+                            </div>
+                            [UnasDesign - Loop{slave_item} - IfEnd{mod_det_disp|link_disp|logo_disp|delivery_point_disp|use_recurring_checkbox|use_oneclick_checkbox|use_oneclick_pass|change_default_addresses_enabled}]
+                        </div>
+                    </div>
+                </div>
+                [UnasDesign - LoopEnd{slave_item}]
+                </div>
+            </section>
+        [UnasDesign - IfEnd{slave_disp}]
+
+        [UnasDesign - IfStart{!slave_disp}]<!-- there is no available slave method -->
+            <section class="order-mods-section order-mods-section--has-not-slave mb-5" id="page_order_mods_[UnasDesign - Normal{slave_type}]">
+                <div class="order-mods__main-title title--theme-1 h4">
+                    [UnasDesign - Normal{slave_title}]
+                    <span class="icon--exclamation text-warning"></span>
+                </div>
+                <!-- [slave_disp_no_custom_disp] with ! (denial): custom text is not given by admin user in Content / Editable contents menu (Order page, if no selectable...) -->
+                <div class="order-mods__text-no-slave-method-outer [UnasDesign - IfStart{slave_disp_no_custom_disp}]is-custom[UnasDesign - IfEnd{slave_disp_no_custom_disp}]">
+                    <span class="order-mods__text-no-slave-method ">[UnasDesign - Normal{slave_disp_no}]</span>
+                </div>
+            </section>
+        [UnasDesign - IfEnd{!slave_disp}]
+
+
+        [UnasDesign - Normal{mod_script}]
+
+        [UnasDesign - LoopStart{plus_mods}]
+            [UnasDesign - Loop{plus_mods} - IfStart{table_disp}]
+            <div class="order-mods__param py-4 px-2 px-md-4 [UnasDesign - Loop{plus_mods} - IfStart{error}]has-fault[UnasDesign - Loop{plus_mods} - IfEnd{error}]" id="page_order_mods_[UnasDesign - Loop{plus_mods} - Normal{id}]">
+                <div class="row align-items-center">
+                    [UnasDesign - Loop{plus_mods} - IfStart{title_disp}]
+                    <div class="col-md-4">
+                        <div class="order-mods__param-title mb-2 mb-md-0 line-height-12">
+                            [UnasDesign - Loop{plus_mods} - Normal{title}]
+                        </div>
+                    </div>
+                    [UnasDesign - Loop{plus_mods} - IfEnd{title_disp}]
+
+                    [UnasDesign - Loop{plus_mods} - IfStart{input_disp}]
+                    <div class="col-md-8">
+                        [UnasDesign - Loop{plus_mods} - Normal{input}]
+                    </div>
+                    [UnasDesign - Loop{plus_mods} - IfEnd{input_disp}]
+                </div>
+            </div>
+            [UnasDesign - Loop{plus_mods} - IfEnd{table_disp}]
+
+            [UnasDesign - Loop{plus_mods} - IfStart{content_disp}]
+                [UnasDesign - Loop{plus_mods} - Normal{content}]
+            [UnasDesign - Loop{plus_mods} - IfEnd{content_disp}]
+        [UnasDesign - LoopEnd{plus_mods}]
+
+
+        [UnasDesign - IfStart{order_params_disp|coupon_disp|point_account_disp}]
+        <section class="order-mods-section order-mods__params-section mb-5">
+            <div class="order-mods__params-title order-mods__main-title title--theme-1 h4">
+                [UnasDesign - Text{order_other}]
+            </div>
+
+            [UnasDesign - IfStart{order_params_disp}]
+            <section class="order-mods-section order-mods__params-section border-bottom">
+                <div class="order-mods__params">
+                    [UnasDesign - LoopStart{order_param}]
+                        <div class="order-mods__param border-bottom py-4 px-2 px-md-4 js-order-methods-order-param param-type-[UnasDesign - Loop{order_param} - IfStart{radio_disp}][UnasDesign - Loop{order_param} - Normal{radio_appearance}][UnasDesign - Loop{order_param} - IfEnd{radio_disp}][UnasDesign - Loop{order_param} - IfStart{!radio_disp}][UnasDesign - Loop{order_param} - Normal{type}][UnasDesign - Loop{order_param} - IfEnd{!radio_disp}][UnasDesign - Loop{order_param} - IfStart{first_checked_on_empty}] js-first-checked[UnasDesign - Loop{order_param} - IfEnd{first_checked_on_empty}][UnasDesign - Loop{order_param} - IfStart{is_radio_plus_service}] js-param-radio-plus-service[UnasDesign - Loop{order_param} - IfEnd{is_radio_plus_service}][UnasDesign - Loop{order_param} - IfStart{error}] has-fault[UnasDesign - Loop{order_param} - IfEnd{error}]" id="page_order_mods_param_[UnasDesign - Loop{order_param} - Normal{param_id}]" data-enabled-shipping-methods="[UnasDesign - Loop{order_param} - Normal{enabled_shipping_methods}]" data-enabled-payment-methods="[UnasDesign - Loop{order_param} - Normal{enabled_payment_methods}]">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="order-mods__param-title mb-2 mb-md-0 line-height-12 position-relative">
+                                        [UnasDesign - Loop{order_param} - Normal{title}]
+                                        [UnasDesign - Loop{order_param} - IfStart{desc_disp}]
+                                        <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{order_param} - Normal{desc}]</span></span>
+                                        [UnasDesign - Loop{order_param} - IfEnd{desc_disp}]
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    [UnasDesign - Loop{order_param} - IfStart{radio_disp}]
+                                        <div class="order-mods__param-value px-3 pt-3 p-md-0 order-mods__param--radios">
+                                            [UnasDesign - Loop{order_param} - IfStart{radio_appearance_select}]
+                                                <div class="order-mods__param--select mb-2">
+                                                    <select name="order_param_[UnasDesign - Loop{order_param} - Normal{id}]" id="[UnasDesign - Loop{order_param} - Normal{id}]" onchange="order_mods_params_check(this,true);" data-id="[UnasDesign - Loop{order_param} - Normal{id}]">
+                                                        [UnasDesign - Loop{order_param} - IfStart{first_checked_on_empty&!required}]<option selected [UnasDesign - Loop{order_param} - IfStart{required}] disabled[UnasDesign - Loop{order_param} - IfEnd{required}] value="">[UnasDesign - Text{name:please_select;page:common;}]</option>[UnasDesign - Loop{order_param} - IfEnd{first_checked_on_empty&!required}]
+                                                        [UnasDesign - Loop{order_param} - IfStart{!first_checked_on_empty}]<option selected [UnasDesign - Loop{order_param} - IfStart{required}] disabled[UnasDesign - Loop{order_param} - IfEnd{required}] value="">[UnasDesign - Text{name:please_select;page:common;}]</option>[UnasDesign - Loop{order_param} - IfEnd{!first_checked_on_empty}]
+                                                        [UnasDesign - Loop{order_param} - LoopStart{radio_loop}]
+                                                        <option [UnasDesign - Loop{order_param} - Loop{radio_loop} - IfStart{plus_service_has_price}]class="js-radio-plus-service-has-price" data-price="[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{price}]" data-discount="[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{discount}]"[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfEnd{plus_service_has_price}] value="[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{value}]" [UnasDesign - Loop{order_param} - Loop{radio_loop} - IfStart{selected}]selected="selected"[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfEnd{selected}]>[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{text}][UnasDesign - Loop{order_param} - Loop{radio_loop} - IfStart{plus_service_has_price}]&nbsp;([UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{price}])[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfEnd{plus_service_has_price}]</option>
+                                                        [UnasDesign - Loop{order_param} - LoopEnd{radio_loop}]
+                                                    </select>
+                                                </div>
+                                            [UnasDesign - Loop{order_param} - IfEnd{radio_appearance_select}]
+                                            [UnasDesign - Loop{order_param} - IfStart{!radio_appearance_select}]
+                                                [UnasDesign - Loop{order_param} - LoopStart{radio_loop}]
+                                                    <div class="order-mods__param--radio mb-2">
+                                                        <input data-id="[UnasDesign - Loop{order_param} - Normal{id}]" class="[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfStart{plus_service_has_price}] js-radio-plus-service-has-price[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfEnd{plus_service_has_price}]" id="order_param_[UnasDesign - Loop{order_param} - Normal{param_id}]_[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{value}]" name="order_param_[UnasDesign - Loop{order_param} - Normal{param_id}]" type="radio" value="[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{value}]" [UnasDesign - Loop{order_param} - Loop{radio_loop} - IfStart{checked}]checked="checked"[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfEnd{checked}]  onchange="order_mods_params_check(this,true);" data-price="[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{price}]">
+                                                        <label for="order_param_[UnasDesign - Loop{order_param} - Normal{param_id}]_[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{value}]">[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{text}][UnasDesign - Loop{order_param} - Loop{radio_loop} - IfStart{plus_service_has_price}] <span class="font-weight-bold" id="price">[UnasDesign - Loop{order_param} - Loop{radio_loop} - Normal{price}]</span>[UnasDesign - Loop{order_param} - Loop{radio_loop} - IfEnd{plus_service_has_price}]</label>
+                                                    </div>
+                                                [UnasDesign - Loop{order_param} - LoopEnd{radio_loop}]
+                                            [UnasDesign - Loop{order_param} - IfEnd{!radio_appearance_select}]
+                                        </div>
+                                    [UnasDesign - Loop{order_param} - IfEnd{radio_disp}]
+
+                                    [UnasDesign - Loop{order_param} - IfStart{input_disp}]
+                                        <div class="order-mods__param-value order-mods__param--input">[UnasDesign - Loop{order_param} - Normal{input}]</div>
+                                    [UnasDesign - Loop{order_param} - IfEnd{input_disp}]
+
+                                    [UnasDesign - Loop{order_param} - IfStart{date_disp|date_time_disp}]
+                                    <div class="order-mods__param-value order-mods__param--[UnasDesign - Loop{order_param} - Normal{input_type}]">
+                                        <input
+                                                class="js-date-picker"
+                                                data-id="[UnasDesign - Loop{order_param} - Normal{id}]"
+
+                                                data-holiday-disabled="[UnasDesign - Loop{order_param} - Normal{holidays_disabled}]"
+                                                data-weekend-disabled="[UnasDesign - Loop{order_param} - Normal{weekend_disabled}]"
+
+                                                type="[UnasDesign - Loop{order_param} - Normal{input_type}]"
+                                                name="[UnasDesign - Loop{order_param} - Normal{input_name}]"
+                                                value="[UnasDesign - Loop{order_param} - Normal{input_value}]"
+                                                [UnasDesign - Loop{order_param} - IfStart{min_disp}] min="[UnasDesign - Loop{order_param} - Normal{min}]" [UnasDesign - Loop{order_param} - IfEnd{min_disp}]
+                                                [UnasDesign - Loop{order_param} - IfStart{max_disp}] max="[UnasDesign - Loop{order_param} - Normal{max}]" [UnasDesign - Loop{order_param} - IfEnd{max_disp}]>
+                                    </div>
+                                    [UnasDesign - Loop{order_param} - IfEnd{date_disp|date_time_disp}]
+
+                                    [UnasDesign - Loop{order_param} - IfStart{file_disp}]
+                                        <div class="order-mods__param-value px-3 pt-3 p-md-0 order-mods__param--file">[UnasDesign - Loop{order_param} - Normal{file}]</div>
+                                    [UnasDesign - Loop{order_param} - IfEnd{file_disp}]
+
+                                    [UnasDesign - Loop{order_param} - IfStart{fault_disp}]
+                                        <div class="order-mods__param-fault-text fault-text-global">[UnasDesign - Loop{order_param} - Normal{fault_text}]</div>
+                                    [UnasDesign - Loop{order_param} - IfEnd{fault_disp}]
+                                </div>
+                            </div>
+                        </div>
+                    [UnasDesign - LoopEnd{order_param}]
+
+                    [UnasDesign - IfStart{weekend_disabled|holidays_disabled}]
+                    <script>
+                        function isHoliday(date) {
+                            let day = date.getDate();
+
+                            if (day < 10) {
+                                day = "0" + day;
+                            }
+
+                            let month = date.getMonth() + 1;
+
+                            if (month < 10) {
+                                month = "0" + month;
+                            }
+
+                            let dateString = [date.getFullYear(), month, day].join(".");
+
+                            let holidays = [UnasDesign - Normal{holidays}];
+
+                            return jQuery.inArray(dateString, holidays) > -1
+                        }
+
+                        $(document).ready(function () {
+                            if ($(".js-date-picker").length > 0) {
+                                $(document).on("change", ".js-date-picker", function () {
+                                    let $this = $(this);
+                                    let date = new Date($this.val());
+
+                                    let weekendDisabled = $this.data("weekend-disabled");
+
+                                    if (typeof weekendDisabled === "undefined") {
+                                        weekendDisabled = false;
+                                    } else if (parseInt(weekendDisabled) === 1) {
+                                        weekendDisabled = true;
+                                    } else {
+                                        weekendDisabled = false;
+                                    }
+
+                                    let holidayDisabled = $this.data("holiday-disabled");
+
+                                    if (typeof holidayDisabled === "undefined") {
+                                        holidayDisabled = false;
+                                    } else if (parseInt(holidayDisabled) === 1) {
+                                        holidayDisabled = true;
+                                    } else {
+                                        holidayDisabled = false;
+                                    }
+
+                                    let dayOfTheWeek = date.getDay();
+                                    let isWeekend = (dayOfTheWeek === 6 || dayOfTheWeek === 0);
+
+                                    let weekendError = weekendDisabled && isWeekend;
+                                    let holidayError = holidayDisabled && isHoliday(date);
+
+                                    if (weekendError || holidayError) {
+                                        let errorText = '[UnasDesign - Text{name:error_order_param_weekend;page:shop_order}]';
+
+                                        if (holidayError) {
+                                            errorText = '[UnasDesign - Text{name:error_order_param_holiday;page:shop_order}]';
+                                        }
+
+                                        const newInput = $this.clone();
+                                        $this.replaceWith(newInput);
+
+                                        overlay_load('order_parameter__weekend_error overlay_warning', errorText, '');
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                    [UnasDesign - IfEnd{weekend_disabled|holidays_disabled}]
+                </div>
+            </section>
+            [UnasDesign - IfEnd{order_params_disp}]
+
+            [UnasDesign - IfStart{coupon_disp}]
+            <section class="order-mods-section order-mods__coupon border-bottom py-4 px-2 px-md-4" id="page_order_mods_coupon">
+
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <label class="order-mods__coupon-label text-center mb-2 mb-md-0" for="coupon_id">[UnasDesign - Text{coupon_id}]</label>
+                    </div>
+                    <div class="col-md-8 d-flex">
+                        <input class="order-mods__coupon-input coupon-input [UnasDesign - IfStart{coupon_error}]has-fault[UnasDesign - IfEnd{coupon_error}]" type="text" id="coupon_id" name="coupon_id" value="[UnasDesign - Normal{coupon_value}]" maxlength="20">
+                        <button class="order-mods__coupon-del-btn btn--text ml-3 icon--b-close" type="button" onclick="delCoupon();">[UnasDesign - Text{name:dodel;page:common}]</button>
+                    </div>
+                </div>
+                <script>
+                    $('.coupon-input:not([value=""])').prop('readonly', true);
+
+                    function delCoupon() {
+                        $('#coupon_id').attr('value','').removeAttr('readonly').removeClass('has-fault');
+                    }
+                </script>
+            </section>
+            [UnasDesign - IfEnd{coupon_disp}]
+
+            [UnasDesign - IfStart{point_account_disp}]
+            <section class="order-mods-section order-mods__point-account border-bottom py-4 px-2 px-md-4" id="page_order_mods_virtual">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="order-mods__point-title mb-2 mb-md-0">
+                            <div class="order-mods__virtual-text d-inline-block">[UnasDesign - Text{virtual_title_yes}]</div>
+                            <div class="order-mods__virtual-point d-inline-block font-weight-700">[UnasDesign - Normal{point_account_value}]</div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="order-mods__point-value px-3 pt-3">
+                            <input name="use_virtual" id="use_virtual_1" type="radio" value="1" [UnasDesign - IfStart{point_account_1_checked}]checked="checked"[UnasDesign - IfEnd{point_account_1_checked}]>
+                            <label class="order-mods__virtual-label ml-3 ml-md-0 mb-2" for="use_virtual_1">[UnasDesign - Text{virtual_yes}]</label>
+                            <input name="use_virtual" id="use_virtual_2" type="radio" value="2" [UnasDesign - IfStart{point_account_2_checked}]checked="checked"[UnasDesign - IfEnd{point_account_2_checked}]>
+                            <label class="order-mods__virtual-label ml-3 ml-md-0 mb-2" for="use_virtual_2">[UnasDesign - Text{virtual_no}]</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            [UnasDesign - IfEnd{point_account_disp}]
+
+        </section>
+        [UnasDesign - IfEnd{order_params_disp|coupon_disp|point_account_disp}]
+
+        [UnasDesign - IfStart{terms_disp}]
+            [UnasDesign - IfStart{terms_check_disp}]
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="page_order_mods_table" id="page_order_terms_check">
+                	<tr>
+                    	<td><span class="text_input_checkbox">[UnasDesign - Normal{terms_check}]</span></td>
+                        <td>[UnasDesign - Normal{terms_text}]</td>
+                    </tr>
+                </table>
+            [UnasDesign - IfEnd{terms_check_disp}]
+            [UnasDesign - IfStart{!terms_check_disp}]
+                <div class="terms_no_checkbox">[UnasDesign - Normal{terms_text}]</div>
+            [UnasDesign - IfEnd{!terms_check_disp}]
+        [UnasDesign - IfEnd{terms_disp}]
+
+        <nav class='order-mods__nav-buttons order-mods__nav-buttons-bottom d-flex justify-content-between mb-5'>
+            <button class="order-mods__prev-btn" name="button_prev" id="button_prev" type="button">[UnasDesign - Normal{button_back}]</button>
+            <button class="order-mods__next-btn btn--wide btn--primary icon--a-right" name="button_next" id="button_next" type="button">[UnasDesign - Normal{button_next}]</button>
+        </nav>
+    [UnasDesign - Normal{form_end}]
+
+
+    [UnasDesign - IfStart{text_bottom_disp}]
+    <div class='page_hr'><hr></div>
+    <div class='page_txt' id="page_txt_reg_bottom">[UnasDesign - Normal{text_bottom}]</div>
+    [UnasDesign - IfEnd{text_bottom_disp}]
+
+    <script>
+        $(document).on('changeShippingMethod changePaymentMethod', function() {
+            if (orderflow_no_mode_selected==1) {
+                if ($(".js-order-mods-item.order-mods--active.js-order-mods--disabled").length>0) {
+                    $(".js-order-mods-item.order-mods--active.js-order-mods--disabled").removeClass("order-mods--active");
+                }
+            }
+        });
+        $(document).ready(function() {
+            // Add active class on page load to selected item
+            var checkedRadio = $(".js-order-mods-item input[type=radio]:checked");
+            checkedRadio.closest(".js-order-mods-item").addClass("order-mods--active").find('.js-order-mods-details').slideDown();
+
+            function removeActiveClassFromOrderMods(section) {
+                var $orderModsSection = section.closest('.order-mods-section');
+                $(".js-order-mods-item", $orderModsSection).each(function() {
+                    var $this = $(this);
+                    if ($this.hasClass('order-mods--active')) {
+                        $this.removeClass('order-mods--active').find('.js-order-mods-details').slideUp();
+                    }
+                })
+            }
+
+            $('.js-order-mods-item input[type=radio]').on('change', function() {
+                var $this = $(this);
+                removeActiveClassFromOrderMods($this);
+                $this.closest(".js-order-mods-item").addClass("order-mods--active").find('.js-order-mods-details').slideDown();
+            });
+        });
+    </script>
+</div>

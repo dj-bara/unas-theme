@@ -1,0 +1,127 @@
+[UnasDesign - IfStart{button_close_disp}]
+<div class="overlay_close">
+    <a href='javascript:overlay_close("overlay_[UnasDesign - Normal{id}]");'><img src="main_pic/space.gif" width="32" height="32" alt="close"></a>
+</div>
+[UnasDesign - IfEnd{button_close_disp}]
+
+<div class="overlay_title [UnasDesign - IfStart{button_close_disp}]has-btn-close[UnasDesign - IfEnd{button_close_disp}]">[UnasDesign - Normal{title}]</div>
+
+[UnasDesign - IfStart{text_disp}]
+    <div class="overlay_text">[UnasDesign - Normal{text}]</div>
+[UnasDesign - IfEnd{text_disp}]
+
+[UnasDesign - IfStart{texts_disp}]
+    <div class="overlay_text">
+        [UnasDesign - LoopStart{texts}]
+            <div>
+                [UnasDesign - Loop{texts} - IfStart{title_disp}][UnasDesign - Loop{texts} - Normal{title}]:[UnasDesign - Loop{texts} - IfStart{title_disp}]
+                <span class="text_color_fault">[UnasDesign - Loop{texts} - Normal{value}]</span>
+            </div>
+        [UnasDesign - LoopEnd{texts}]
+    </div>
+[UnasDesign - IfEnd{texts_disp}]
+
+[UnasDesign - IfStart{key_remind}]
+    [UnasDesign - Normal{form_start}]
+        <div class="overlay_text">
+            <div class="overlay_login_input"><label>[UnasDesign - Normal{login_name}]:</label> <input name="shop_user_login" type="text"></div>
+        </div>
+    [UnasDesign - Normal{form_end}]
+[UnasDesign - IfEnd{key_remind}]
+
+[UnasDesign - IfStart{key_newsletter}]
+    [UnasDesign - Normal{form_start}]
+    <div class="overlay_text">
+        [UnasDesign - IfStart{name_disp}]<div class="overlay_login_input"><label>[UnasDesign - Text{name:newsletter_name;page:box_shop}]:</label> <input name="news_name"[UnasDesign - IfStart{placeholder_disp}] placeholder="[UnasDesign - Text{name:newsletter_name;page:box_shop}]"[UnasDesign - IfEnd{placeholder_disp}] type="text"  maxlength="200" class="text_small"></div>[UnasDesign - IfEnd{name_disp}]
+        <div class="overlay_login_input"><label>[UnasDesign - Text{name:login_email;page:box_shop}]:</label> <input name="news_emai"[UnasDesign - IfStart{placeholder_disp}] placeholder="[UnasDesign - Text{name:login_email;page:box_shop}]"[UnasDesign - IfEnd{placeholder_disp}] type="text"  maxlength="200" class="text_small"></div>
+        [UnasDesign - IfStart{addr_disp}]<div class="overlay_login_input"><label>[UnasDesign - Text{name:newsletter_addr;page:box_shop}]:</label> <input name="news_addr"[UnasDesign - IfStart{placeholder_disp}] placeholder="[UnasDesign - Text{name:newsletter_addr;page:box_shop}]"[UnasDesign - IfEnd{placeholder_disp}] type="text"  maxlength="200" class="text_small"></div>[UnasDesign - IfEnd{addr_disp}]
+        <div class='overlay_login_input overlay_privacy_policy'><span class="text_input text_input_checkbox"><input name="news_privacy_policy" id="news_privacy_policy_popup" type="checkbox" value="1"></span> <label for="news_privacy_policy_popup"><span class="text_small">[UnasDesign - Text{name:accept_privacy_policy;page:box_shop}]</span></label></div>
+    </div>
+    [UnasDesign - Normal{form_end}]
+[UnasDesign - IfEnd{key_newsletter}]
+
+[UnasDesign - IfStart{key_penalty}]
+    <div class="overlay_text">
+        <div id="page_penalty_money"><span class="text_bigger"><strong>[UnasDesign - Text{name:penalty_money;page:penalty}]:</strong> [UnasDesign - Normal{amount}]</span></div>
+        <div id="page_penalty_wait"><span class="text_bigger">[UnasDesign - Normal{wait}]</span></div>
+    </div>
+[UnasDesign - IfEnd{key_penalty}]
+
+[UnasDesign - IfStart{key_product_subscription}]
+    <div id="overlay_product_subscription_subscribe" class="subscribe_text mt-3 container-xs" style="display: none;">
+        <form class="subscribe_without_login" onsubmit="return false">
+            [UnasDesign - IfStart{name_disp}]
+            <div class="overlay_row mb-2">
+                <input class="overlay_input" id="subscribe_name" type="text" name="name" placeholder="[UnasDesign - Text{name:newsletter_name;page:design}]">
+            </div>
+            [UnasDesign - IfEnd{name_disp}]
+            <div class="overlay_row mb-2">
+                <input class="overlay_input" id="subscribe_email" type="email" name="email" placeholder="[UnasDesign - Text{name:login_email;page:box_shop}]">
+            </div>
+            [UnasDesign - IfStart{addr_disp}]
+            <div class="overlay_row mb-2">
+                <input class='overlay_input' id="subscribe_address" type="text" name="address" placeholder="[UnasDesign - Text{name:newsletter_addr;page:design}]">
+            </div>
+            [UnasDesign - IfEnd{addr_disp}]
+        </form>
+    </div>
+    <div id="overlay_product_subscription_agree" class="subscribe_text container-xs" style="display: none;">
+        <div class="overlay_privacy_policy mt-3">
+            <input name="privacy_policy" id="product_subscribe_privacy_policy" type="checkbox" value="1">
+            <label for="product_subscribe_privacy_policy" class="text-left font-xs">[UnasDesign - Text{name:accept_privacy_policy;page:box_shop}]</label>
+        </div>
+        <div class="subscribe_validation_error text-danger line-height-12 font-s font-weight-700 my-3 icon--b-exclamation-2" style="display: none;"></div>
+        <button class="overlay_subscribe_button btn--primary" type="submit"></button>
+    </div>
+    <div id="overlay_product_subscribe_no_login" class="subscribe_text container-xs" style="display: none;">
+        [UnasDesign - IfStart{name_disp}]
+        <div class="overlay_row mb-2">
+            <input class="overlay_input" type="text" id="subscribe_no_login_name" name="name" placeholder="[UnasDesign - Text{name:newsletter_name;page:design}]">
+        </div>
+        [UnasDesign - IfEnd{name_disp}]
+
+        <div class="overlay_row mb-2">
+            <input class="overlay_input" type="text" id="subscribe_no_login_email" name="email" placeholder="[UnasDesign - Text{name:login_email;page:design}]">
+        </div>
+
+        [UnasDesign - IfStart{addr_disp}]
+        <div class="overlay_row">
+            <input class='overlay_input' type="text" id="subscribe_no_login_address" name="address" placeholder="[UnasDesign - Text{name:newsletter_addr;page:design}]">
+        </div>
+        [UnasDesign - IfEnd{addr_disp}]
+
+        <div class="overlay_privacy_policy mt-3">
+            <input name="privacy_policy_2" id="product_subscribe_no_login_privacy_policy" type="checkbox" value="1">
+            <label for="product_subscribe_no_login_privacy_policy" class="text-left font-xs">[UnasDesign - Text{name:accept_privacy_policy;page:box_shop}]</label>
+        </div>
+        <div class="subscribe_validation_error text-danger line-height-12 font-s font-weight-700 my-3 icon--b-exclamation-2" style="display: none;">
+            <div id="privacy">[UnasDesign - Text{name:not_accept_privacy_policy;page:design}]</div>
+            <div id="email">[UnasDesign - Text{name:text_fault_email1;page:shop_news}]</div>
+            <div id="not_valid_email">[UnasDesign - Text{name:text_fault_email2;page:shop_news}]</div>
+        </div>
+        <button class="overlay_subscribe_button btn--primary" type="submit">[UnasDesign - Text{name:newsletter_up;page:design}]</button>
+        <input type="hidden" class='overlay_title_hidden_stock_modify' value="[UnasDesign - Text{name:overlay_title_stock_modify;page:shop_artdet}]">
+        <input type="hidden" class='overlay_title_hidden_price_modify' value="[UnasDesign - Text{name:overlay_title_price_modify;page:shop_artdet}]">
+    </div>
+
+    [UnasDesign - IfStart{recaptcha_content_disp}]
+        [UnasDesign - Normal{recaptcha_content}]
+        [UnasDesign - Normal{recaptcha_script}]
+    [UnasDesign - IfEnd{recaptcha_content_disp}]
+[UnasDesign - IfEnd{key_product_subscription}]
+
+[UnasDesign - IfStart{key_save_filter}]
+    <input type='text' name='filter_name' maxlength="150" class='overlay_input mt-3 filter_name' id='filter_name' placeholder="[UnasDesign - Normal{placeholder_filter_name}]">
+    <div class="errors d-none" id="filter_save_errors">
+        <div class="error error_empty_input d-none">[UnasDesign - Text{name:filter_name_required;page:box}]</div>
+        <div class="error error_filter_exists d-none">[UnasDesign - Text{name:filter_exists;page:box}]</div>
+        <div class="error error_name_exists d-none">[UnasDesign - Text{name:filter_name_exists;page:box}]</div>
+    </div>
+    <input type="hidden" name="filter_page_id" id="filter_page_id">
+[UnasDesign - IfEnd{key_save_filter}]
+
+<div class="overlay-buttons row no-gutters justify-content-center flex-row-reverse [UnasDesign - IfStart{key_explicit}] overlay-btns--explicit[UnasDesign - IfEnd{key_explicit}]">
+    [UnasDesign - LoopStart{buttons}]
+        <button type="button" [UnasDesign - Loop{buttons} - IfStart{button_id_disp}] id="[UnasDesign - Loop{buttons} - Normal{button_id}]" [UnasDesign - Loop{buttons} - IfEnd{button_id_disp}] class="close overlay-button overlay_button_[UnasDesign - Loop{buttons} - Normal{num}] [UnasDesign - Loop{buttons} - Normal{class}] mx-2" onclick="[UnasDesign - Loop{buttons} - Normal{onclick}]"><span>[UnasDesign - Loop{buttons} - Normal{text}]</span></button>
+    [UnasDesign - LoopEnd{buttons}]
+</div>

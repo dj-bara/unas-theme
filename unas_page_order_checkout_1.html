@@ -1,0 +1,358 @@
+<div id='page_order_checkout_content' class='page_content'>
+
+    [UnasDesign - Normal{orderflow}]
+
+    [UnasDesign - Normal{script}]
+
+    [UnasDesign - IfStart{postreg_disp}]
+    [UnasDesign - IfStart{form_disp}]
+    <div class="order-send__postreg container-xs">
+        <div class='page_headtext'>[UnasDesign - Text{post_reg_title}]</div>
+
+        [UnasDesign - Normal{form_start}]
+        <div id="div_out_passwd">
+            <div class="new-customer__password customer-block mb-3 page_design_fault_out [UnasDesign - IfStart{form_data_reg_passwd_fault_disp}]has-fault[UnasDesign - IfEnd{form_data_reg_passwd_fault_disp}]">
+                <div class="new-customer-title">[UnasDesign - Text{name:passwd;page:newcust}]</div>
+                <div class="new-customer-value">[UnasDesign - Normal{form_data_reg_passwd}]</div>
+            </div>
+        </div>
+
+        <div id="div_out_passwd_again">
+            <div class="new-customer__password customer-block mb-3 page_design_fault_out [UnasDesign - IfStart{form_data_reg_passwd_fault_disp}]has-fault[UnasDesign - IfEnd{form_data_reg_passwd_fault_disp}]">
+                <div class="new-customer-title">[UnasDesign - Text{name:passwd_again;page:newcust}]</div>
+                <div class="new-customer-value">[UnasDesign - Normal{form_data_reg_passwd_again}]</div>
+            </div>
+        </div>
+
+        [UnasDesign - IfStart{customer_groups_disp}]
+        <div id="div_out_customer_groups">
+            <div class="new-customer__customer-group customer-block mb-3 page_design_fault_out [UnasDesign - IfStart{form_data_reg_customer_group_fault_disp}]page_design_fault[UnasDesign - IfEnd{form_data_reg_customer_group_fault_disp}]">
+                <div class="new-customer-title">[UnasDesign - Text{page:shop_newcust;name:customer_group;}]</div>
+                <div class="new-customer-value">
+                    <select name="customer_group" id="customer_group">
+                        <option value="0" [UnasDesign - IfStart{!customer_groups_selected}]selected[UnasDesign - IfEnd{!customer_groups_selected}]>[UnasDesign - Text{page:shop_newcust;name:no_group;}]</option>
+                        [UnasDesign - LoopStart{customer_groups}]
+                        <option value="[UnasDesign - Loop{customer_groups} - Normal{id}]" [UnasDesign - Loop{customer_groups} - IfStart{selected}]selected[UnasDesign - Loop{customer_groups} - IfEnd{selected}]>
+                            [UnasDesign - Loop{customer_groups} - Normal{name}]
+                        </option>
+                        [UnasDesign - LoopEnd{customer_groups}]
+                    </select>
+                </div>
+                <div class="page_design_fault_text new-cust-fault-text fault-text-global"><strong class="font-weight-normal">[UnasDesign - IfStart{form_data_reg_customer_group_fault_disp}][UnasDesign - Text{page:shop_newcust;name:fault_customer_group_required;}][UnasDesign - IfEnd{form_data_reg_customer_group_fault_disp}]</strong></div>
+            </div>
+        </div>
+        [UnasDesign - IfEnd{customer_groups_disp}]
+
+        <div class="new-cust__buttons text-center">
+            <div class="new-cust__form-btn-wrap btn-wrap--primary" id="div_out_post_registration_send">
+                <button type="submit" class="icon--b-edit btn btn--primary mb-2" id="button_mod">[UnasDesign - Text{name:reg;page:newcust}]</button>
+            </div>
+        </div>
+        [UnasDesign - Normal{form_end}]
+    </div>
+
+    [UnasDesign - IfEnd{form_disp}]
+
+    [UnasDesign - IfStart{!form_disp}]
+    <div id='page_reg_ok_content' class='page_content text-center'>
+        <div class='page_headtext'>[UnasDesign - Normal{text_title}]</div>
+    </div>
+    [UnasDesign - IfEnd{!form_disp}]
+
+    [UnasDesign - IfEnd{postreg_disp}]
+
+    [UnasDesign - IfStart{action_finish}]
+        <div class='page_titletext payment_finish'>[UnasDesign - Normal{title_finish}]</div>
+        [UnasDesign - IfStart{title_finish_sub_disp}]<br><div class='page_titletext_info'>[UnasDesign - Normal{title_finish_sub}]</div>[UnasDesign - IfEnd{title_finish_sub_disp}]
+
+        <div class="order-checkout__transaction-datas payment_finish">
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_sum}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{sum}]</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_trans_id}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{trans_id}]</div>
+            </div>
+            [UnasDesign - IfStart{authcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_authcode}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{authcode}]</div>
+            </div>
+            [UnasDesign - IfEnd{authcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_time}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{time}]</div>
+            </div>
+            [UnasDesign - IfStart{faultcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_faultcode}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{faultcode}]</div>
+            </div>
+            [UnasDesign - IfEnd{faultcode_disp}]
+        </div>
+    [UnasDesign - IfEnd{action_finish}]
+
+    [UnasDesign - IfStart{action_pending}]
+        <div class='page_titletext payment_pending'>[UnasDesign - Normal{title_pending}]</div>
+        [UnasDesign - IfStart{title_pending_sub_disp}]<br><div class='page_titletext_info'>[UnasDesign - Normal{title_pending_sub}]</div>[UnasDesign - IfEnd{title_pending_sub_disp}]
+
+        [UnasDesign - IfStart{spec_disp}]
+        	[UnasDesign - Normal{spec_text}]
+            [UnasDesign - Normal{spec_text_sub}]
+            [UnasDesign - Normal{spec}]
+        [UnasDesign - IfEnd{spec_disp}]
+
+        <div class="order-checkout__transaction-datas payment_pending mt-3">
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_sum}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{sum}]</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_trans_id}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{trans_id}]</div>
+            </div>
+            [UnasDesign - IfStart{authcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_authcode}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{authcode}]</div>
+            </div>
+            [UnasDesign - IfEnd{authcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_time}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{time}]</div>
+            </div>
+            [UnasDesign - IfStart{faultcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_faultcode}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{faultcode}]</div>
+            </div>
+            [UnasDesign - IfEnd{faultcode_disp}]
+        </div>
+
+        [UnasDesign - IfStart{refresh_disp}]<div class='page_text_common text-muted'>[UnasDesign - Normal{refresh_text}]</div>[UnasDesign - IfEnd{refresh_disp}]
+
+        [UnasDesign - IfStart{continue_disp}]
+	        <div class='page_headbutton'>
+                [UnasDesign - IfStart{popup_pay}]
+                <button class="checkout__btn-pay popup-pay-btn btn btn--primary icon--a-right" type="button" id="button_pay" name="next" onClick="popup_payment_start()">
+                    [UnasDesign - IfStart{payment_method_credit_disp}]
+                    [UnasDesign - Text{page:shop_order;name:credit_button}]
+                    [UnasDesign - IfEnd{payment_method_credit_disp}]
+                    [UnasDesign - IfStart{payment_method_bnpl_disp}]
+                    [UnasDesign - Text{page:shop_order;name:bnpl_button}]
+                    [UnasDesign - IfEnd{payment_method_bnpl_disp}]
+                    [UnasDesign - IfStart{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                    [UnasDesign - Text{page:shop_order;name:paypal_button2}]
+                    [UnasDesign - IfEnd{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                </button>
+                [UnasDesign - IfEnd{popup_pay}]
+
+                [UnasDesign - IfStart{!popup_pay}]
+                <button class="checkout__btn-pay default-pay-btn btn btn--primary icon--a-right" type="button" id="button_pay" name="next" onClick="location.href='[UnasDesign - Normal{start_url}]'">
+                    [UnasDesign - IfStart{payment_method_credit_disp}]
+                    [UnasDesign - Text{page:shop_order;name:credit_button}]
+                    [UnasDesign - IfEnd{payment_method_credit_disp}]
+                    [UnasDesign - IfStart{payment_method_bnpl_disp}]
+                    [UnasDesign - Text{page:shop_order;name:bnpl_button}]
+                    [UnasDesign - IfEnd{payment_method_bnpl_disp}]
+                    [UnasDesign - IfStart{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                    [UnasDesign - Text{page:shop_order;name:paypal_button2}]
+                    [UnasDesign - IfEnd{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                </button>
+                [UnasDesign - IfEnd{!popup_pay}]
+            </div>
+        [UnasDesign - IfEnd{continue_disp}]
+
+        [UnasDesign - Normal{pending_script}]
+    [UnasDesign - IfEnd{action_pending}]
+
+    [UnasDesign - IfStart{action_change}]
+        <div class='page_titletext payment_change'>[UnasDesign - Normal{title_fault}]</div>
+        [UnasDesign - IfStart{title_fault_sub_disp}]<br><div class='page_titletext_info'>[UnasDesign - Normal{title_fault_sub}]</div>[UnasDesign - IfEnd{title_fault_sub_disp}]
+
+        <div class="order-checkout__transaction-datas payment_change">
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_sum}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{sum}]</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_trans_id}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{trans_id}]</div>
+            </div>
+            [UnasDesign - IfStart{authcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_authcode}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{authcode}]</div>
+            </div>
+            [UnasDesign - IfEnd{authcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_time}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{time}]</div>
+            </div>
+            [UnasDesign - IfStart{faultcode_disp}]
+            <div class="row mb-2">
+                <div class="col-sm-6 col-lg-4 transaction-title">[UnasDesign - Normal{title_faultcode}]</div>
+                <div class="col-sm-6 col-lg-8 transaction-data">[UnasDesign - Normal{faultcode}]</div>
+            </div>
+            [UnasDesign - IfEnd{faultcode_disp}]
+        </div>
+
+        <div class='page_text_warning mt-3'>[UnasDesign - Normal{title_change}]</div>
+        <div class="line-separator"></div>
+
+        <div class="row">
+            [UnasDesign - IfStart{change_disp}]
+            <div class="col-lg">
+                <div class='checkout_changepayment_box h-100'>
+                    [UnasDesign - Normal{change_form_start}]
+                    <div class="order-checkout__change-payment order-mods-section">
+                        <div class="change-payment__main-title title--theme-1 mt-0 h4">[UnasDesign - Normal{change_form_title}]</div>
+                        <div class="order-mods">
+                            [UnasDesign - LoopStart{change_loop}]
+                            <div class="order-mods__item p-3 p-md-4 border-bottom js-order-mods-item">
+                                <div class="d-flex align-items-center">
+                                    <div class="col-fix-1 order-mods__radio-col">
+                                        <div class="order-mods__radio-wrap fs-0">
+                                            <input id="order-mods__radio-[UnasDesign - Loop{change_loop} - Normal{num}]" name="fiz" type="radio" value="[UnasDesign - Loop{change_loop} - Normal{radio_value}]" [UnasDesign - Loop{change_loop} - IfStart{checked}] checked="checked" [UnasDesign - Loop{change_loop} - IfEnd{checked}]>
+                                            <label class="order-mods__label align-top" for="order-mods__radio-[UnasDesign - Loop{change_loop} - Normal{num}]"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <header class="order-mods__haeder">
+                                            <label class="order-mods__label d-flex" for="order-mods__radio-[UnasDesign - Loop{change_loop} - Normal{num}]">
+                                                <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{change_loop} - Normal{mod_name}]</div>
+                                            </label>
+                                        </header>
+                                        <div class="order-mods__details js-order-mods-details text-muted">
+                                            [UnasDesign - Loop{change_loop} - IfStart{mod_det_disp}]
+                                            <div class='order-mods__description my-4'>[UnasDesign - Loop{change_loop} - Normal{mod_det}]</div>
+                                            [UnasDesign - Loop{change_loop} - IfEnd{mod_det_disp}]
+
+                                            [UnasDesign - Loop{change_loop} - IfStart{link_disp}]
+                                            <a class="order-mods__link my-4" href="[UnasDesign - Loop{change_loop} - Normal{link_href}]" title="[UnasDesign - Loop{master_item} - Normal{link_alt}]"
+                                               target="[UnasDesign - Loop{change_loop} - Normal{link_target}]">[UnasDesign - Loop{change_loop} - Normal{link_text}]
+                                            </a>
+                                            [UnasDesign - Loop{change_loop} - IfEnd{link_disp}]
+
+                                            [UnasDesign - Loop{change_loop} - IfStart{logo_disp}]
+                                                [UnasDesign - Loop{change_loop} - IfStart{logo_link_disp}]
+                                                <a href="[UnasDesign - Loop{change_loop} - Normal{logo_link_href}]"
+                                                   title="[UnasDesign - Loop{change_loop} - Normal{logo_alt}]"
+                                                   target="[UnasDesign - Loop{change_loop} - Normal{logo_link_target}]">
+                                                    [UnasDesign - Loop{change_loop} - IfEnd{logo_link_disp}]
+                                                    <img class="order-mods__logo my-4" src="[UnasDesign - Loop{change_loop} - Normal{logo_img}]" alt="[UnasDesign - Loop{change_loop} - Normal{logo_alt}]" title="[UnasDesign - Loop{change_loop} - Normal{logo_alt}]" border="0">
+                                                    [UnasDesign - Loop{change_loop} - IfStart{logo_link_disp}]
+                                                </a>
+                                                [UnasDesign - Loop{change_loop} - IfEnd{logo_link_disp}]
+                                            [UnasDesign - Loop{change_loop} - IfEnd{logo_disp}]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            [UnasDesign - LoopEnd{change_loop}]
+                        </div>
+
+                        <div class='page_headbutton'>
+                            <button class="order-checkout__change-payment-btn btn btn--primary icon--a-refresh" type="submit">[UnasDesign - Text{page:shop_order;name:paypal_button3}]</button>
+                        </div>
+                    </div>
+                    [UnasDesign - Normal{change_form_end}]
+                </div>
+            </div>
+            [UnasDesign - IfEnd{change_disp}]
+
+            [UnasDesign - IfStart{!restart_disable}]
+            <div class="col-lg [UnasDesign - IfStart{!change_disp}]only[UnasDesign - IfEnd{!change_disp}]">
+                <div class='checkout_repay_box h-100'>
+                    <div class="change-payment__main-title title--theme-1 mt-0 h4">[UnasDesign - Text{pay_again}]</div>
+                    <div class="change-payment__payment-method-name mb-4">[UnasDesign - Normal{payment_method_name}]</div>
+                    <div class='checkout_logos'>
+                        [UnasDesign - IfStart{payment_method_logo_link_disp}]
+                        <a href="[UnasDesign - Normal{payment_method_logo_link_href}]" title="[UnasDesign - Normal{payment_method_logo_alt}]" target="[UnasDesign - Normal{payment_method_logo_link_target}]">
+                            [UnasDesign - IfEnd{payment_method_logo_link_disp}]
+                            <img src="[UnasDesign - Normal{payment_method_logo}]" alt="[UnasDesign - Normal{payment_method_logo_alt}]" border="0" title="[UnasDesign - Normal{payment_method_logo_alt}]">
+                            [UnasDesign - IfStart{payment_method_logo_link_disp}]</a>[UnasDesign - IfEnd{payment_method_logo_link_disp}]
+                    </div>
+
+                    [UnasDesign - IfStart{payment_method_details_disp}]
+                        <div class='change-payment__description'>[UnasDesign - Normal{payment_method_details}]</div>
+                    [UnasDesign - IfEnd{payment_method_details_disp}]
+
+                    [UnasDesign - IfStart{payment_method_use_oneclick_checkbox}]
+                        <input name="use_recuse_oneclick" id="use_oneclick" type="checkbox" value="1" />
+                        <label for="use_oneclick" class="font-weight-bold text-body">[UnasDesign - Text{name:use_oneclick_checkbox;page:shop_order;}]</label>
+                    [UnasDesign - IfEnd{payment_method_use_oneclick_checkbox}]
+
+                    [UnasDesign - IfStart{!payment_method_use_oneclick_checkbox}]
+                        [UnasDesign - IfStart{payment_method_use_oneclick_pass}]
+                            <div class="oneclick_pass_wrap js-oneclick-pass-wrap mt-4">
+                                <div class="new-customer-title text-body">[UnasDesign - Text{name:oneclick_pass;page:shop_order;}]</div>
+                                <div class="new-customer-value">
+                                    <span class="page_newcust_input">
+                                        <span class="text_input">
+                                            <input onkeyup="oneclick_pass_change($(this));" name="oneclick_pass" id="oneclick_pass" type="password" class="text_normal[UnasDesign - IfStart{payment_method_oneclick_pass_required}] is-required[UnasDesign - IfEnd{payment_method_oneclick_pass_required}]" maxlength="100" />
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        [UnasDesign - IfEnd{payment_method_use_oneclick_pass}]
+                    [UnasDesign - IfEnd{!payment_method_use_oneclick_checkbox}]
+
+                    <div class='page_headbutton'>
+                        <button class="checkout__btn-pay btn btn--primary icon--a-right" type="button" id="button_pay" name="next" onClick='[UnasDesign - Normal{pay_button_onclick_value}]'>
+                            [UnasDesign - IfStart{payment_method_credit_disp}]
+                            [UnasDesign - Text{page:shop_order;name:credit_button}]
+                            [UnasDesign - IfEnd{payment_method_credit_disp}]
+                            [UnasDesign - IfStart{payment_method_bnpl_disp}]
+                            [UnasDesign - Text{page:shop_order;name:bnpl_button}]
+                            [UnasDesign - IfEnd{payment_method_bnpl_disp}]
+                            [UnasDesign - IfStart{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                            [UnasDesign - Text{page:shop_order;name:paypal_button2}]
+                            [UnasDesign - IfEnd{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                        </button>
+                    </div>
+                </div>
+            </div>
+            [UnasDesign - IfEnd{!restart_disable}]
+        </div>
+        
+    [UnasDesign - IfEnd{action_change}]
+
+    [UnasDesign - IfStart{text_bottom_disp}]
+        <div class="line-separator"></div>
+        <div class='page_txt' id="page_txt_checkout_bottom">[UnasDesign - Normal{text_bottom}]</div>
+    [UnasDesign - IfEnd{text_bottom_disp}]
+
+    [UnasDesign - IfStart{loveallhelpall_disp}]
+    <div id='page_order_send_loveallhelpall' class='page_headbutton'>
+        [[UnasDesign - FormItem{;;;;
+        [UnasDesign - Normal{loveallhelpall}]
+        ;;0;;}]]
+    </div>
+    [UnasDesign - IfEnd{loveallhelpall_disp}]
+
+    <script>
+        $(document).ready(function() {
+            // Add active class on page load to selected item
+            var checkedRadio = $(".js-order-mods-item input[type=radio]:checked");
+            checkedRadio.closest(".js-order-mods-item").addClass("order-mods--active").find('.js-order-mods-details').slideDown();
+
+            function removeActiveClassFromOrderMods(section) {
+                var $orderModsSection = section.closest('.order-mods-section');
+                $(".js-order-mods-item", $orderModsSection).each(function() {
+                    var $this = $(this);
+                    if ($this.hasClass('order-mods--active')) {
+                        $this.removeClass('order-mods--active').find('.js-order-mods-details').slideUp();
+                    }
+                })
+            }
+
+            $('.js-order-mods-item input[type=radio]').on('change', function() {
+                var $this = $(this);
+                removeActiveClassFromOrderMods($this);
+                $this.closest(".js-order-mods-item").addClass("order-mods--active").find('.js-order-mods-details').slideDown();
+            });
+        });
+    </script>
+</div>

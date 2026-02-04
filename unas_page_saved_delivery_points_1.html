@@ -1,0 +1,103 @@
+<div id="page_saved_delivery_points_content" class="page_content">
+	<!-- TABS -->
+	[UnasDesign - IfStart{tab_disp}]
+	<div id="page_tabs_outer" class="page_tabs page_tabs_v2 usn">
+		[UnasDesign - IfStart{tab_orders_disp}]
+		<div id="tab_orders" rel="orders" class="page_tab icon--b-cart" onclick="location.href='[UnasDesign - Normal{tab_orders_link}]'">[UnasDesign - Normal{tab_orders_title}]</div>
+		[UnasDesign - IfEnd{tab_orders_disp}]
+		[UnasDesign - IfStart{tab_discount_disp}]
+		<div id="tab_discount" rel="discount" class="page_tab icon--b-percent" onclick="location.href='[UnasDesign - Normal{tab_discount_link}]'">[UnasDesign - Normal{tab_discount_title}]</div>
+		[UnasDesign - IfEnd{tab_discount_disp}]
+		[UnasDesign - IfStart{tab_favourites_disp}]
+		<div id="tab_favourites" rel="favourites" class="page_tab icon--b-favo" onclick="location.href='[UnasDesign - Normal{tab_favourites_link}]'">[UnasDesign - Normal{tab_favourites_title}]</div>
+		[UnasDesign - IfEnd{tab_favourites_disp}]
+		[UnasDesign - IfStart{tab_saved_filters_disp}]
+		<div id="tab_saved_filters" rel="saved_filters" class="page_tab icon--b-save" onclick="location.href='[UnasDesign - Normal{tab_saved_filters_link}]'">[UnasDesign - Normal{tab_saved_filters_title}]</div>
+		[UnasDesign - IfEnd{tab_saved_filters_disp}]
+		[UnasDesign - IfStart{tab_saved_cards_disp}]
+		<div id="tab_saved_cards" rel="saved_cards" class="page_tab icon--b-credit-card">[UnasDesign - Normal{tab_saved_cards_title}]</div>
+		[UnasDesign - IfEnd{tab_saved_cards_disp}]
+		<div id="tab_saved_delivery_points" rel="saved_delivery_points" class="page_tab page_tab_active icon--b-map-location-dot">[UnasDesign - Normal{tab_saved_delivery_points_title}]</div>
+		[UnasDesign - IfStart{tab_customer_addresses_disp}]
+		<div id="tab_customer_addresses" rel="customer_addresses" class="page_tab icon--b-location-dot" onclick="location.href='[UnasDesign - Normal{tab_customer_addresses_link}]'">[UnasDesign - Normal{tab_customer_addresses_title}]</div>
+		[UnasDesign - IfEnd{tab_customer_addresses_disp}]
+		[UnasDesign - IfStart{tab_reg_disp}]
+		<div id="tab_reg" rel="reg" class="page_tab icon--b-edit" onclick="location.href='[UnasDesign - Normal{tab_reg_link}]'">[UnasDesign - Normal{tab_reg_title}]</div>
+		[UnasDesign - IfEnd{tab_reg_disp}]
+		<div class="page_tab icon--b-sign-out" id="tab_logout" rel="logout" onclick="location.href='[unas_shop_url]/shop_logout.php'">[UnasDesign - Text{name:login_logout;page:design;}]</div>
+	</div>
+
+	<div id="page_tabs2_outer" class="page_tabs2 clearfix usn">
+		[UnasDesign - IfStart{tab_orders_disp}]
+		<div id="tab2_orders" rel="orders" class="page_tab2 icon--b-cart" onclick="location.href='[UnasDesign - Normal{tab_orders_link}]'">[UnasDesign - Normal{tab_orders_title}]</div>
+		[UnasDesign - IfEnd{tab_orders_disp}]
+		[UnasDesign - IfStart{tab_discount_disp}]
+		<div id="tab2_discount" rel="discount" class="page_tab2 icon--b-percent" onclick="location.href='[UnasDesign - Normal{tab_discount_link}]'">[UnasDesign - Normal{tab_discount_title}]</div>
+		[UnasDesign - IfEnd{tab_discount_disp}]
+		[UnasDesign - IfStart{tab_favourites_disp}]
+		<div id="tab2_favourites" rel="favourites" class="page_tab2 icon--b-favo" onclick="location.href='[UnasDesign - Normal{tab_favourites_link}]'">[UnasDesign - Normal{tab_favourites_title}]</div>
+		[UnasDesign - IfEnd{tab_favourites_disp}]
+		[UnasDesign - IfStart{tab_saved_filters_disp}]
+		<div id="tab2_saved_filters" rel="saved_filters" class="page_tab2 icon--b-save" onclick="location.href='[UnasDesign - Normal{tab_saved_filters_link}]'">[UnasDesign - Normal{tab_saved_filters_title}]</div>
+		[UnasDesign - IfEnd{tab_saved_filters_disp}]
+		[UnasDesign - IfStart{tab_saved_cards_disp}]
+		<div id="tab2_saved_cards" rel="saved_cards" class="page_tab2 icon--b-credit-card" onclick="location.href='[UnasDesign - Normal{tab_saved_cards_link}]'">[UnasDesign - Normal{tab_saved_cards_title}]</div>
+		[UnasDesign - IfEnd{tab_saved_cards_disp}]
+		<div id="tab2_saved_delivery_points" rel="saved_delivery_points" class="page_tab2 page_tab2_active icon--b-map-location-dot">[UnasDesign - Normal{tab_saved_delivery_points_title}]</div>
+		[UnasDesign - IfEnd{tab_disp}]
+
+		[UnasDesign - IfStart{!tab_disp}]
+		<div class="container">
+			[UnasDesign - IfEnd{!tab_disp}]
+
+			<div id="tab_saved_delivery_points_content" class="page_tab_content" style="display: block;">
+				[UnasDesign - IfStart{shipping_method_with_delivery_points_exists}]
+					<div class="saved-delivery-points__container my-5">
+						<div class="saved-delivery-points__container-inner">
+							<div class="row mb-5">
+								[UnasDesign - LoopStart{shipping_method_with_delivery_points}]
+									<div id="saved-delivery-point__card-[UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{id}]" class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 mb-sm-5 saved-delivery-point__card js-saved-delivery-point-card">
+										<div class="saved-delivery-point__card-inner position-relative overflow-hidden">
+											<div class="saved-delivery-point__method-name font-xl font-weight-bold mb-4 pr-5">[UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{name}]</div>
+
+											[UnasDesign - Loop{shipping_method_with_delivery_points} - IfStart{point_selected}]
+												<div class="saved-delivery-point__mod-name-and-zip mb-4 font-weight-bold font-l">[UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{selected_point_name}]</div>
+												<div class="saved-delivery-point__mod-city">[UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{selected_point_zip_code}] [UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{selected_point_city}]</div>
+												<div class="saved-delivery-point__mod-street mb-3 font-s">[UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{selected_point_street}]</div>
+											[UnasDesign - Loop{shipping_method_with_delivery_points} - IfEnd{point_selected}]
+											[UnasDesign - Loop{shipping_method_with_delivery_points} - IfStart{!point_selected}]
+												<div class="saved-delivery-point__mod-name font-s mt-auto">
+													[UnasDesign - Text{name:no_point_selected_in_this_method;page:shop_ordercust;}]
+												</div>
+											[UnasDesign - Loop{shipping_method_with_delivery_points} - IfEnd{!point_selected}]
+
+											<div class="saved-delivery-point__buttons">
+												<a class="saved-delivery-point__modify-btn btn btn-square icon--edit" type="button" href="[UnasDesign - Loop{shipping_method_with_delivery_points} - Normal{details_url}]" title="[UnasDesign - Text{name:domod;page:common;}]" aria-label="[UnasDesign - Text{name:domod;page:common;}]"></a>
+											</div>
+										</div>
+									</div>
+								[UnasDesign - LoopEnd{shipping_method_with_delivery_points}]
+							</div>
+						</div>
+					</div>
+				[UnasDesign - IfEnd{shipping_method_with_delivery_points_exists}]
+				[UnasDesign - IfStart{!shipping_method_with_delivery_points_exists}]
+					<div class="mb-3 text-center" role="alert">[UnasDesign - Text{name:no_saved_delivery_points;page:shop_ordercust;}]</div>
+				[UnasDesign - IfEnd{!shipping_method_with_delivery_points_exists}]
+			</div>
+
+			[UnasDesign - IfStart{!tab_disp}]
+		</div>
+		[UnasDesign - IfEnd{!tab_disp}]
+
+		[UnasDesign - IfStart{tab_disp}]
+		[UnasDesign - IfStart{tab_customer_addresses_disp}]
+		<div id="tab2_customer_addresses" rel="customer_addresses" class="page_tab2 icon--b-location-dot" onclick="location.href='[UnasDesign - Normal{tab_customer_addresses_link}]'">[UnasDesign - Normal{tab_customer_addresses_title}]</div>
+		[UnasDesign - IfEnd{tab_customer_addresses_disp}]
+		[UnasDesign - IfStart{tab_reg_disp}]
+		<div id="tab2_reg" rel="reg" class="page_tab2 icon--b-edit" onclick="location.href='[UnasDesign - Normal{tab_reg_link}]'">[UnasDesign - Normal{tab_reg_title}]</div>
+		[UnasDesign - IfEnd{tab_reg_disp}]
+		<div class="page_tab2 icon--b-sign-out" id="tab2_logout" rel="logout" onclick="location.href='[unas_shop_url]/shop_logout.php'">[UnasDesign - Text{name:login_logout;page:design;}]</div>
+	</div>
+	[UnasDesign - IfEnd{tab_disp}]
+</div>

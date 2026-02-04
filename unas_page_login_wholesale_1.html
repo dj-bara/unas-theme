@@ -1,0 +1,31 @@
+<div class='page_content wholesale-login p-3' id='page_login_wholesale_content'>
+    [UnasDesign - IfStart{text_top_disp}]
+        <div class='page_txt'>[UnasDesign - Normal{text_top}]</div>
+        <div class="line-separator"></div>
+    [UnasDesign - IfEnd{text_top_disp}]
+
+    <div id='page_login_wholesale'>
+        [UnasDesign - Normal{form_login_start}]
+
+            <div class="page_login_input mb-3">
+                <label>[UnasDesign - Normal{login_name_title}]:</label>
+                [UnasDesign - Normal{login_name}]
+            </div>
+            <div class="page_login_input mb-3">
+                <label>[UnasDesign - Normal{login_pass_title}]:</label>
+                [UnasDesign - Normal{login_pass}]
+            </div>
+            <button type="button" class="wholesale-login__remind-btn btn--text btn--block icon--b-unlock mb-4 text-muted" onclick="overlay_login_remind();">[UnasDesign - Text{name:login_remind;page:box_shop}]</button>
+            <button class="wholesale-login__login-btn btn--primary btn--block mb-4" type="submit">[UnasDesign - Text{name:login_login;page:box_shop}]</button>
+            [UnasDesign - IfStart{wholesale_reg}]
+             <button class="wholesale-login__reg-btn btn--primary btn--block" type="button" onclick="location.href='[UnasDesign - Normal{reg_url}]'">[UnasDesign - Text{name:menu_reg;page:box_shop}]</button>
+            [UnasDesign - IfEnd{wholesale_reg}]
+
+        [UnasDesign - Normal{form_login_end}]
+    </div>
+
+    [UnasDesign - IfStart{text_bottom_disp}]
+        <div class="line-separator"></div>
+        <div class='page_txt'>[UnasDesign - Normal{text_bottom}]</div>
+    [UnasDesign - IfEnd{text_bottom_disp}]
+</div>

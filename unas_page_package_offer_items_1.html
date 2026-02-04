@@ -1,0 +1,71 @@
+{{ backvar(list_pic_maxwidth,360) }}
+{{ backvar(list_pic_maxheight,360) }}
+{{ backvar(list_pic_size2_maxwidth,180) }}
+{{ backvar(list_pic_size2_maxheight,180) }}
+
+{{ start_script }}
+<div class="package-offer-items row gutters-5 p-0 w-100">
+    {% for product in products %}
+        <div class='col-6 col-sm-4 col-md-3 mb-3 artlist__product-col artlist-col--1 position-relative artlist-package-offer-item {% if product.art_item_other %} js-has-variant has-unselected-variant{% endif %} js-package-offer-item js-package-offer-item-{{ package_offer_id }}' data-sku="{{ product.sku }}">
+            <article class='artlist__product h-100 {{ product.art_item_class }}' id='page_artlist_{{ product.art_item_id }}'>
+                <div class="artlist__inner h-100 position-relative">
+                    <div class="package-offer-item-icon{% if loop.last %} package-offer-item-icon-equals{% endif %} position-absolute icon--{% if not loop.last %}plus{% else %}equals{% endif %} d-inline-flex align-items-center justify-content-center font-m"></div>
+
+                    <div class="artlist__inner-abs d-flex flex-column">
+                        <div class="product-statuses">
+                            <div class="package-offer-item__quantity product-status product-status--new js-package-offer-qty{% if package_offer_items[loop.index0].quantity < 2 %} d-none{% endif %}" data-qty="{{ package_offer_items[loop.index0].quantity }}">{{ package_offer_items[loop.index0].quantity }}X</div>
+                        </div>
+                        <div class='artlist__img-wrapper'>
+                            <a class="artlist__img-link product_link_normal" {% if product.art_item_sku_disp %}data-sku="{{ product.sku }}"{% endif %} href="{{ product.art_item_url }}">
+                                <picture>
+                                    {% if product.img_exists %}
+                                        <source data-srcset="{{ product.img_thumbnail_url }} 1x{% if product.img_thumbnail_retina_exists %},{{ product.img_thumbnail_retina_url }} {{ product.img_thumbnail_retina_size }}{% endif %}"
+                                            data-srcset-orig="{{ product.img_thumbnail_url }} 1x{% if product.img_thumbnail_retina_exists %},{{ product.img_thumbnail_retina_url }} {{ product.img_thumbnail_retina_size }}{% endif %}"
+                                            srcset="[unas_shop_url]/main_pic/space.gif" media="(max-width: 412px)"
+                                        >
+                                    {% endif %}
+
+                                    <img width="{{ backvar.list_pic_maxwidth }}" height="{{ backvar.list_pic_maxheight }}"
+                                         class="artlist__img js-main-img img-abs lazyload" id="main_image_{{ product.art_item_id }}"
+                                         src="[unas_shop_url]/main_pic/space.gif" data-src="{{ product.img_url }}"
+                                         data-srcset="{{ product.img_url }} 1x{% if product.img_retina_exists %},{{ product.img_retina_url }} {{ product.img_retina_size }}{% endif %}"
+                                         data-srcset-orig="{{ product.img_url }} 1x{% if product.img_retina_exists %},{{ product.img_retina_url }} {{ product.img_retina_size }}{% endif %}"
+                                         alt="{{ product.pic_alt_text }}" title="{{ product.pic_alt_text }}"
+                                    >
+                                </picture>
+                            </a>
+                        </div>
+
+                        <div class="artlist__datas pt-4 flex-grow-lg-1 mt-auto">
+                            {{ product.art_item_other_temp }}
+
+                            <div class='artlist__name-wrap text-center mb-2 p-2'>
+                                <a class="artlist__name line-clamp--3-12 product_link_normal" {% if product.art_item_sku_disp %}data-sku="{{ product.sku }}"{% endif %} href="{{ product.art_item_url }}">{{ product.art_item_name_only }}</a>
+                            </div>
+                        </div>
+
+                        {% if product.art_item_other %}
+                            <div class="product-variants-overlay">
+                                <button class="variants-overlay__close-btn js-package-offer-item-variants-close-btn js-variants-close-btn btn--square icon--close icon--lg mb-2" type="button" title="{{ text.button_close }}" onclick="closeVariantsOverlay(this);"></button>
+
+                                {% for variant_index in 1..3 %}
+                                    {% if attribute(product, "variant_" ~ variant_index ~ "_disp") %}
+                                        {{ attribute(product, "variant_" ~ variant_index ~ "_hidden") }}
+
+                                        <div class="variant-select-wrap js-variant-wrap select-wrap mb-2">
+                                            <select class="page_artlist_other_select" name="{{ attribute(product, "variant_" ~ variant_index ~ "_select_name") }}" id="{{ attribute(product, "variant_" ~ variant_index ~ "_select_id") }}">
+                                                {% for option in attribute(product, "variant_" ~ variant_index ~ "_options") %}
+                                                    <option class="product-variant__option" value="{{ option.value }}"{% if option.disabled %} disabled="disabled"{% endif %}{% if option.selected %} selected="selected"{% endif %}{% if option.price_raw != "" %} data-price-gross="{{ option.price_raw }}" data-price-net="{{ option.price_net_raw }}"{% endif %}>{{ option.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </article><!--product-->
+        </div>
+    {% endfor %}
+</div>

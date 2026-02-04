@@ -1,0 +1,115 @@
+<div class='forum-topic page_content' id='page_forum_topic_content'>
+    [UnasDesign - IfStart{back_disp}]
+    <div class="forum-topic__btn-back-wrap mb-3">
+        <button class="forum-topic__btn-back btn btn--alt icon--b-back" type="button" onclick="location.href='[UnasDesign - Normal{back_link}]'" title="[UnasDesign - Normal{back_title}]">[UnasDesign - Normal{back_title}]</button>
+    </div>
+    [UnasDesign - IfEnd{back_disp}]
+
+    <div class="forum-topic__title bg-8 p-3 text-center font-l text-uppercase ls-normal">[UnasDesign - Normal{topic_title}]</div>
+
+    [UnasDesign - IfStart{!item_disp}]
+    <div class='page_artforum_element mb-5'>
+    	<div class='page_artforum_element_message'>
+        	<div class='page_artforum_element_no p-3'>
+        		[UnasDesign - Normal{topic_noitem}]
+            </div>
+        </div>
+    </div>
+    [UnasDesign - IfEnd{!item_disp}]
+
+    [UnasDesign - IfStart{item_disp}]
+        [UnasDesign - IfStart{page_disp}]
+        <nav class="forum-topic-paging d-flex align-items-center justify-content-center my-4 py-3 border-top" aria-label="pagination">
+            [UnasDesign - Normal{paging_content}]
+        </nav>
+        [UnasDesign - IfEnd{page_disp}]
+
+        <section class='forum-topic__posts mb-5'>
+            [UnasDesign - LoopStart{item_loop}]
+            <article class='forum-topic__post'>
+                <header class='forum-topic__post-header p-3 font-weight-700 border-bottom border-primary'>
+                    <div class="row align-items-baseline">
+                        <div class="col-sm-8">
+                            <div class='forum-topic__post-name-and-email d-flex flex-wrap align-items-baseline'>
+                                <div class='forum-topic__num-wrap font-l shape-square-sm bg--primary mr-3 mr-3'>
+                                    <span class='forum-topic__num'>[UnasDesign - Loop{item_loop} - Normal{num}]</span>
+                                </div>
+                                <div class='forum-topic__post-name mr-2'>
+                                    [UnasDesign - Loop{item_loop} - Normal{name}]
+                                </div>
+                             </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class='forum-topic__post-date-and-time d-flex align-items-baseline justify-content-end font-s text-muted'>
+                                <div class="forum-topic__post-date">[UnasDesign - Loop{item_loop} - Normal{date}]&nbsp;-&nbsp;</div>
+                                <div class="forum-topic__post-time">[UnasDesign - Loop{item_loop} - Normal{time}]</div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class='page_artforum_element_message p-3'>
+                    [UnasDesign - Loop{item_loop} - Normal{message}]
+                </div>
+            </article>
+            [UnasDesign - LoopEnd{item_loop}]
+        </section>
+    [UnasDesign - IfEnd{item_disp}]
+
+    [UnasDesign - IfStart{newitem_disp}]
+        [UnasDesign - Normal{newitem_form_start}]
+
+        <div class='forum-new-note bg-8 p-4'>
+            <div class="forum-new-note__inner container-md">
+                <div class="forum-new-note__title title--theme-1">[UnasDesign - Normal{newitem_title}]</div>
+
+                <div class="row">
+                    <div class='col-md-6 page_design_fault_out'>
+                        <div class="page_forum_newnote_name forum-new-note-block mb-3">
+                            <div class='forum-new-note-title'>[UnasDesign - Normal{newitem_name_title}]</div>
+                            <div class='forum-new-note-value'>[UnasDesign - Normal{newitem_name_input}]</div>
+                        </div>
+                    </div>
+
+                    [UnasDesign - IfStart{newitem_email_disp}]
+                    <div class='col-md-6 page_design_fault_out'>
+                        <div class='page_forum_newnote_email forum-new-note-block mb-3 [UnasDesign - IfStart{newitem_email_fault_disp}]has-fault[UnasDesign - IfEnd{newitem_email_fault_disp}]'>
+                            <div class='forum-new-note-title'>[UnasDesign - Normal{newitem_email_title}]</div>
+                            <div class='forum-new-note-value'>[UnasDesign - Normal{newitem_email_input}]</div>
+                            [UnasDesign - IfStart{newitem_email_fault_disp}]
+                            <div class="fault-text-global">[UnasDesign - Normal{newitem_email_fault_text}]</div>
+                            [UnasDesign - IfEnd{newitem_email_fault_disp}]
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{newitem_email_disp}]
+
+                    <div class='col-12 page_design_fault_out'>
+                        <div class='page_forum_newnote_message forum-new-note-block mb-3 [UnasDesign - IfStart{newitem_message_fault_disp}]has-fault[UnasDesign - IfEnd{newitem_message_fault_disp}]'>
+                            <div class='forum-new-note-title'>[UnasDesign - Normal{newitem_message_title}]</div>
+                            <div class='forum-new-note-value'>[UnasDesign - Normal{newitem_message_textarea}]</div>
+                            [UnasDesign - IfStart{newitem_message_fault_disp}]
+                            <div class="fault-text-global">[UnasDesign - Normal{newitem_message_fault_text}]</div>
+                            [UnasDesign - IfEnd{newitem_message_fault_disp}]
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class='page_forum_newnote_privacy_policy mb-4 text-center [UnasDesign - IfStart{newitem_privacy_policy_fault_disp}]has-fault[UnasDesign - IfEnd{newitem_privacy_policy_fault_disp}]'>
+                    [UnasDesign - Normal{newitem_privacy_policy_input}]
+                    <label class="text-muted font-s" for="newitem_privacy_policy">[UnasDesign - Normal{newitem_privacy_policy_title}]</label>
+                    [UnasDesign - IfStart{newitem_privacy_policy_fault_disp}]
+                        <div class="fault-text-global">[UnasDesign - Normal{newitem_privacy_policy_fault_text}]</div>
+                    [UnasDesign - IfEnd{newitem_privacy_policy_fault_disp}]
+                </div>
+
+                [UnasDesign - Normal{newitem_script}]
+                <div class='page_forum_newnote_button my-3 btn-wrap--primary text-center'>
+                    [UnasDesign - Normal{newitem_button}]
+                </div>
+            </div>
+        </div>
+
+        [UnasDesign - Normal{newitem_form_end}]
+    [UnasDesign - IfEnd{newitem_disp}]
+</div>

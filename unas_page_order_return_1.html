@@ -1,0 +1,377 @@
+[UnasDesign - DesignVar{name:cart_colspan;value:5}]
+[UnasDesign - DesignVar{name:pic_maxwidth;value:70}]
+[UnasDesign - DesignVar{name:pic_maxheight;value:70}]
+
+[UnasDesign - IfStart{text_top_disp}] [UnasDesign - Normal{text_top}] [UnasDesign - IfEnd{text_top_disp}]
+
+<div id='page_order_return_content' class='page_content'>
+    <div class="container">
+        [UnasDesign - Normal{form_start}]
+        <input type="hidden" value="[UnasDesign - Normal{type_input_normal}]" name="type_input" id="type_input">
+
+        <div class="col-lg-10 m-auto">
+            <div class="order-control__cart border-bottom pt-4 mb-4">
+                <div class="contact-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_product}]</div>
+                <div class="order-control__cart-header py-3 font-s font-weight-700 d-none d-md-block text-center bg-8">
+                    <div class="row no-gutters">
+                        <div class="col">
+                            <div class="order-control__cart-header-name">[UnasDesign - Text{name:cart_nev;page:shop_cart}]</div>
+                        </div>
+                        <div class="col-2 text-center">
+                            <div class="order-control__cart-header-price">[UnasDesign - Text{name:cart_price;page:order}]</div>
+                        </div>
+                        <div class="col-2">
+                            <div class="order-control__cart-header-qty">[UnasDesign - Text{name:cart_menny;page:shop_cart}]</div>
+                        </div>
+                        <div class="col-2">
+                            <div class="order-control__cart-header-sum text-right pr-3">[UnasDesign - Text{name:cart_sum;page:order}]</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-products">
+                    [UnasDesign - LoopStart{products}]
+                    <div class="order-return__item-row border-top py-4 [UnasDesign - Loop{products} - IfStart{error_disp}] has_fault [UnasDesign - Loop{products} - IfEnd{error_disp}]">
+                        <div class="row no-gutters align-items-center position-relative">
+                            <div class="col control-product__name-variant-param pr-md-3 order-sm-2 mb-2 my-md-2">
+                                <div class="control-product__name line-clamp--3-12 font-s font-lg-m font-weight-700">
+                                    [UnasDesign - Loop{products} - Normal{name}]
+                                </div>
+                                [UnasDesign - Loop{products} - IfStart{variant_1_disp|variant_2_disp|variant_3_disp}]
+                                <div class='control-product__variants text-muted line-height-12 font-xs font-md-s mt-2'>
+                                    [UnasDesign - Loop{products} - IfStart{variant_1_disp}]
+                                    <div class='control-product__variant control-product__variant-1 d-block'>
+                                        <span class="control-product__variant-value" data-title="[UnasDesign - Loop{products} - Normal{variant_1_title}]">[UnasDesign - Loop{products} - Normal{variant_1_value}]</span>
+                                    </div>
+                                    [UnasDesign - Loop{products} - IfEnd{variant_1_disp}]
+                                    [UnasDesign - Loop{products} - IfStart{variant_2_disp}]
+                                    <div class='control-product__variant control-product__variant-2 d-block'>
+                                        <span class="control-product__variant-value" data-title="[UnasDesign - Loop{products} - Normal{variant_2_title}]">[UnasDesign - Loop{products} - Normal{variant_2_value}]</span>
+                                    </div>
+                                    [UnasDesign - Loop{products} - IfEnd{variant_2_disp}]
+                                    [UnasDesign - Loop{products} - IfStart{variant_3_disp}]
+                                    <div class='control-product__variant control-product__variant-3 d-block'>
+                                        <span class="control-product__variant-value" data-title="[UnasDesign - Loop{products} - Normal{variant_3_title}]">[UnasDesign - Loop{products} - Normal{variant_3_value}]</span>
+                                    </div>
+                                    [UnasDesign - Loop{products} - IfEnd{variant_3_disp}]
+                                </div>
+                                [UnasDesign - Loop{products} - IfEnd{variant_1_disp|variant_2_disp|variant_3_disp}]
+
+                                [UnasDesign - Loop{products} - IfStart{params_disp}]
+                                <div class="control-product__params text-muted line-height-12 font-xs font-md-s mt-2">
+                                    [UnasDesign - Loop{products} - LoopStart{params}]
+                                    <div class='control-product__param control-product__param-[UnasDesign - Loop{products} - Loop{params} - Normal{id}]'>
+                                        <span class="control-product__param-name">[UnasDesign - Loop{products} - Loop{params} - Normal{name}]:</span>
+                                        <span class="control-product__param-value mr-2">
+                                            [UnasDesign - Loop{products} - Loop{params} - IfStart{type_color_text_disp|type_color_disp}]
+                                             <span class="d-inline-flex align-items-center align-middle">
+                                                <span class="param_type_color mr-2" style="background-color:[UnasDesign - Loop{products} - Loop{params} - Normal{color_code}];"></span>
+                                                [UnasDesign - Loop{products} - Loop{params} - IfStart{type_color_text_disp}]
+                                                [UnasDesign - Loop{products} - Loop{params} - Normal{color_text}]
+                                                [UnasDesign - Loop{products} - Loop{params} - IfEnd{type_color_text_disp}]
+                                            </span>
+                                            [UnasDesign - Loop{products} - Loop{params} - IfEnd{type_color_text_disp|type_color_disp}]
+                                            [UnasDesign - Loop{products} - Loop{params} - IfStart{!type_color_text_disp&!type_color_disp}]
+                                            [UnasDesign - Loop{products} - Loop{params} - Normal{value}]
+                                            [UnasDesign - Loop{products} - Loop{params} - IfEnd{!type_color_text_disp&!type_color_disp}]
+                                        </span>
+                                    </div>
+                                    [UnasDesign - Loop{products} - LoopEnd{params}]
+                                </div>
+                                [UnasDesign - Loop{products} - IfEnd{params_disp}]
+
+                                <div class="order_return__return_cause">
+                                    [UnasDesign - IfStart{type_input}]
+                                    <!-- szabadon beírható a visszaküldés oka -->
+                                        [UnasDesign - Loop{products} - IfStart{input_return_cause_disp}]
+                                            <input value="[UnasDesign - Loop{products} - Normal{input_return_cause_value}]"
+                                                   class="js_return_cause_input mt-3" type="text"
+                                                   placeholder="[UnasDesign - Loop{products} - Normal{placeholder_return_cause}]"
+                                                   id="return_item_[UnasDesign - Loop{products} - Normal{input_return_cause_id}]"
+                                                   name="[UnasDesign - Loop{products} - Normal{input_return_cause_name}]"
+                                                   readonly>
+                                        [UnasDesign - Loop{products} - IfEnd{input_return_cause_disp}]
+                                    [UnasDesign - IfEnd{type_input}]
+
+                                    [UnasDesign - IfStart{!type_input}]
+                                    <!-- selectből választható ki a visszaküldés oka -->
+                                    [UnasDesign - Loop{products} - IfStart{input_return_cause_disp}]
+                                    <select disabled="disabled" class="js_return_cause_input mt-3"
+                                            name="[UnasDesign - Loop{products} - Normal{input_return_cause_name}]"
+                                            id="return_item_[UnasDesign - Loop{products} - Normal{input_return_cause_id}]">
+                                        [UnasDesign - Loop{products} - LoopStart{select_return_cause}]
+                                        <option value="[UnasDesign - Loop{products} - Loop{select_return_cause} - Normal{select_return_cause_value}]" [UnasDesign - Loop{products} - Loop{select_return_cause} - IfStart{select_return_cause_selected}] selected="selected" [UnasDesign - Loop{products} - Loop{select_return_cause} - IfEnd{select_return_cause_selected}]>
+                                            [UnasDesign - Loop{products} - Loop{select_return_cause} - Normal{select_return_cause_name}]
+                                        </option>
+                                        [UnasDesign - Loop{products} - LoopEnd{select_return_cause}]
+                                    </select>
+                                    [UnasDesign - Loop{products} - IfEnd{input_return_cause_disp}]
+
+                                    [UnasDesign - Loop{products} - IfStart{!input_return_cause_disp}]
+                                    <input type="hidden" name="[UnasDesign - Loop{products} - Normal{input_return_cause_name}]" value="">
+                                    [UnasDesign - Loop{products} - IfEnd{!input_return_cause_disp}]
+                                    [UnasDesign - IfEnd{!type_input}]
+                                </div>
+                            </div>
+
+                            <div class="break-row d-md-none"></div> <!-- break -->
+
+                            <div class="col-fix-1 control-product__pic-col pr-3 order-md-0 text-center order-return__checkbox d-flex">
+                                <div class="order-return__radio-wrap fs-0 align-self-center">
+                                    <input type="checkbox" id="return_item_checkbox_[UnasDesign - Loop{products} - Normal{product_num}]" class="return_item" name="[UnasDesign - Loop{products} - Normal{return_item_input_name}]" value="[UnasDesign - Normal{order_key}]¤[UnasDesign - Loop{products} - Normal{product_num}]¤[UnasDesign - Loop{products} - Normal{qty}]" data-sku="[UnasDesign - Loop{products} - Normal{data-sku}]" [UnasDesign - Loop{products} - IfStart{return_item_input_checked}] checked [UnasDesign - Loop{products} - IfEnd{return_item_input_checked}]>
+                                    <label class="order-return__label align-top" for="return_item_checkbox_[UnasDesign - Loop{products} - Normal{product_num}]"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-auto control-product__pic-col pr-3 order-md-1">
+                                [UnasDesign - Loop{products} - IfStart{pic_disp}]
+                                <div class="control-product__pic-outer">
+                                    <img class="control-product__pic" src="[UnasDesign - Loop{products} - Normal{img_url}]"[UnasDesign - Loop{products} - IfStart{img_retina_exists}] srcset="[UnasDesign - Loop{products} - Normal{img_retina_url}] [UnasDesign - Loop{products} - Normal{img_retina_size}]"[UnasDesign - Loop{products} - IfEnd{img_retina_exists}] alt="[UnasDesign - Loop{products} - Normal{img_alt}]" title="[UnasDesign - Loop{products} - Normal{img_alt}]">
+                                </div>
+                                [UnasDesign - Loop{products} - IfEnd{pic_disp}]
+
+                                [UnasDesign - Loop{products} - IfStart{special_item}]
+                                [UnasDesign - Loop{products} - IfStart{type_service_plus}]
+                                <div class="control-plus-item__plus-service d-flex">
+                                    <div class="col-plus-item-icon bg-5 d-flex justify-content-center align-items-center">
+                                        <div class="control-plus-item__plus-service-icon icon--cart"></div>
+                                    </div>
+                                    <div class="col px-3">
+                                        <div class="control-plus-item__plus-service-text font-weight-700">[UnasDesign - Text{name:service_plus;page:shop_artdet;}]</div>
+                                        <div class="control-plus-item__plus-service-name-and-qty-wrap mt-1 font-s">
+                                            <span class="control-plus-item__plus-service-name text-muted">[UnasDesign - Loop{products} - Normal{name}]</span>
+                                            <span class="control-plus-item__qty-and-unit d-none">
+                                            <span class="control-plus-item__qty">[UnasDesign - Loop{products} - Normal{qty}]</span>
+                                            <span class="control-plus-item__unit">[UnasDesign - Loop{products} - Normal{unit}]</span>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                [UnasDesign - Loop{products} - IfEnd{type_service_plus}]
+
+                                [UnasDesign - Loop{products} - IfStart{!type_service_plus}]
+                                <div class="control-plus-item__plus-discount d-flex">
+                                    <div class="col-plus-item-icon bg-5 d-flex justify-content-center align-items-center">
+                                        <div class="control-plus-item__discount-icon icon--percent"></div>
+                                    </div>
+                                    <div class="col px-3">
+                                        [UnasDesign - Loop{products} - IfStart{variant1_disp}]
+                                        <div class="control-plus-item__name font-weight-700">[UnasDesign - Loop{products} - Normal{name}]</div>
+                                        <div class='control-plus-item__discount text-muted font-s mt-1'>
+                                            [UnasDesign - Loop{products} - IfStart{type_gift}]
+                                            <span class="control-plus-item__discount-type pr-1">[UnasDesign - Loop{products} - Normal{variant_1_title}]:</span>
+                                            <span class="control-plus-item__discount-for-sku">[UnasDesign - Loop{products} - Normal{variant_1_value}]</span>
+                                            [UnasDesign - Loop{products} - IfEnd{type_gift}]
+
+                                            [UnasDesign - Loop{products} - IfStart{!type_gift}]
+                                            <span class="control-plus-item__discount-value">
+                                            <span class="plus-item-coupon-text pr-1">[UnasDesign - Loop{products} - Normal{variant_1_title}]:</span>
+                                            <span class="plus-item-coupon-value">[UnasDesign - Loop{products} - Normal{variant_1_value}]</span>
+                                        </span>
+                                            [UnasDesign - Loop{products} - IfEnd{!type_gift}]
+                                        </div>
+                                        <div class="control-plus-item__qty-and-unit d-none">
+                                            <span class="control-plus-item__qty">[UnasDesign - Loop{products} - Normal{qty}]</span>
+                                            <span class="control-plus-item__unit">[UnasDesign - Loop{products} - Normal{unit}]</span>
+                                        </div>
+                                        [UnasDesign - Loop{products} - IfEnd{variant1_disp}]
+                                    </div>
+                                </div>
+                                [UnasDesign - Loop{products} - IfEnd{!type_service_plus}]
+                                [UnasDesign - Loop{products} - IfEnd{special_item}]
+                            </div>
+
+                            <div class="col-md-2 control-product__prices-col d-none d-md-block order-sm-3 text-sm-right text-md-center px-md-2 fs-0">
+                                <div class="control-product__prices d-sm-inline-block text-right line-height-12 ml-auto">
+                                    [UnasDesign - IfStart{orderflow_show_price_net}]
+                                    <div class="control-product__price-net">
+                                        <span class="control-price-label">[UnasDesign - Text{page:common;name:netto;}]:</span>
+                                        <span class="net-price--current d-inline-block pl-2 font-s font-md-m">[UnasDesign - Loop{products} - Normal{price_net}]</span>
+                                    </div>
+                                    [UnasDesign - IfEnd{orderflow_show_price_net}]
+                                    <div class="control-product__price-gross">
+                                        <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                        <div class="gross-price--current d-inline-block pl-2 font-s font-md-m">[UnasDesign - Loop{products} - Normal{price_gross}]</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-4 control-product__sum-prices-col order-sm-4 row no-gutters align-items-center">
+                                <div class="col-md-6 control-product__qty-wrap font-s font-md-m text-right text-md-center mb-2 mb-md-0">
+                                    <div class="control-product__qty-label font-weight-700 d-none">[UnasDesign - Text{page:cart;name:cart_menny;}]:</div>
+                                    <div class="control-product__qty">[UnasDesign - Loop{products} - Normal{qty}]<span class="control-product__unit">&nbsp;[UnasDesign - Loop{products} - Normal{unit}]</span></div>
+                                </div>
+                                <div class="col-md-6 control-product__sum-prices-inner line-height-12 font-s font-sm-m text-right">
+                                    <div class="control-product__sum-price-label d-none font-weight-700">[UnasDesign - Text{name:cart_sum;page:order}]:</div>
+                                    <div class="control-product__sum-price-gross pl-2 pl-xs-0">
+                                        <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                        <span class="d-inline-block price-sum-gross pl-2 font-s font-md-m">[UnasDesign - Loop{products} - Normal{price_sum}]</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    [UnasDesign - LoopEnd{products}]
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                [UnasDesign - IfStart{shipping_method_disp}]
+                <div class="col-md-12 order-mods-section">
+                    <div class="order-return__shipping-method-title title--theme-1 h4">
+                        [UnasDesign - Normal{title_shipping}]
+                    </div>
+
+                    [UnasDesign - LoopStart{shipping_methods}]
+                    <div class="order-mods__item js-order-mods-item p-3 p-md-4 border-bottom">
+                        <div class="d-flex align-items-center">
+                            <div class="col-fix-1 order-mods__radio-col">
+                                <div class="order-mods__radio-wrap fs-0">
+                                    <input type="radio" id="szall_id_[UnasDesign - Loop{shipping_methods} - Normal{id}]" name="[UnasDesign - Loop{shipping_methods} - Normal{input_name}]" value='[UnasDesign - Loop{shipping_methods} - Normal{input_value}]' [UnasDesign - Loop{shipping_methods} - IfStart{radio_checked}] checked [UnasDesign - Loop{shipping_methods} - IfEnd{radio_checked}]>
+                                    <label class="order-mods__label align-top" for="szall_id_[UnasDesign - Loop{shipping_methods} - Normal{id}]"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <header class="order-mods__haeder">
+                                    <label class="order-mods__label" for="szall_id_[UnasDesign - Loop{shipping_methods} - Normal{id}]">
+                                        <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{shipping_methods} - Normal{name}]</div>
+                                    </label>
+                                    [UnasDesign - Loop{shipping_methods} - IfStart{text_disp}]
+                                    <div class='order-mods__description my-4 text-muted'>[UnasDesign - Loop{shipping_methods} - Normal{text}]</div>
+                                    [UnasDesign - Loop{shipping_methods} - IfEnd{text_disp}]
+                                </header>
+                            </div>
+                        </div>
+                    </div>
+                    [UnasDesign - LoopEnd{shipping_methods}]
+                </div>
+                [UnasDesign - IfEnd{shipping_method_disp}]
+
+                [UnasDesign - IfStart{payment_method_disp}]
+                <div class="col-md-12 order-mods-section">
+                    <div class="order-return__payment-method-title title--theme-1 h4">
+                        [UnasDesign - Normal{title_payment}]
+                    </div>
+
+                    [UnasDesign - LoopStart{payment_methods}]
+                    <div class="order-mods__item js-order-mods-item p-3 p-md-4 border-bottom">
+                        <div class="d-flex align-items-center">
+                            <div class="col-fix-1 order-mods__radio-col">
+                                <div class="order-mods__radio-wrap fs-0">
+                                    <input class="payment_radio" id="fiz_id_[UnasDesign - Loop{payment_methods} - Normal{id}]" data-type="[UnasDesign - Loop{payment_methods} - Normal{input_hidden_value}]" type="radio" name="[UnasDesign - Loop{payment_methods} - Normal{input_name}]" value='[UnasDesign - Loop{payment_methods} - Normal{input_value}]¤[UnasDesign - Loop{payment_methods} - Normal{input_hidden_value}]' [UnasDesign - Loop{payment_methods} - IfStart{radio_checked}] checked [UnasDesign - Loop{payment_methods} - IfEnd{radio_checked}]>
+                                    <label class="order-mods__label align-top" for="fiz_id_[UnasDesign - Loop{payment_methods} - Normal{id}]"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <header class="order-mods__haeder">
+                                    <label class="order-mods__label" for="fiz_id_[UnasDesign - Loop{payment_methods} - Normal{id}]">
+                                        <div class="order-mods__name font-l font-weight-700">[UnasDesign - Loop{payment_methods} - Normal{name}]</div>
+                                    </label>
+                                    [UnasDesign - Loop{payment_methods} - IfStart{text_disp}]
+                                    <div class='order-mods__description my-4 text-muted'>[UnasDesign - Loop{payment_methods} - Normal{text}]</div>
+                                    [UnasDesign - Loop{payment_methods} - IfEnd{text_disp}]
+                                </header>
+                            </div>
+                        </div>
+                    </div>
+                    [UnasDesign - LoopEnd{payment_methods}]
+                </div>
+                [UnasDesign - IfEnd{payment_method_disp}]
+            </div>
+
+            [UnasDesign - IfStart{customer_parameters_disp}]
+            <div class="mb-3" id="bank_account_data">
+                <div class="order-return__customer-parameters-title title--theme-1 h4">
+                    [UnasDesign - Normal{customer_parameters_title}]
+                </div>
+
+                [UnasDesign - LoopStart{customer_parameters}]
+                [UnasDesign - Loop{customer_parameters} - IfStart{cust_param_disp}]
+                <div class="order-return__customer-parameter mb-3 [UnasDesign - Loop{customer_parameters} - IfStart{input_required_error}] has-fault [UnasDesign - Loop{customer_parameters} - IfEnd{input_required_error}]" data-payment-type="[UnasDesign - Loop{customer_parameters} - Normal{payment_type}]">
+                    [UnasDesign - Loop{customer_parameters} - Normal{name}]
+
+                    [UnasDesign - Loop{customer_parameters} - IfStart{!radio_type}]
+                    <input type="text" name="[UnasDesign - Loop{customer_parameters} - Normal{input_name}]" value="[UnasDesign - Loop{customer_parameters} - Normal{input_value}]">
+                    [UnasDesign - Loop{customer_parameters} - IfEnd{!radio_type}]
+
+                    [UnasDesign - Loop{customer_parameters} - IfStart{radio_type}]
+                        <input type="hidden" name="cust_param[]" id="cust_param_hidden_[UnasDesign - Loop{customer_parameters} - Normal{id}]" value="">
+                        [UnasDesign - Loop{customer_parameters} - LoopStart{radio_loop}]
+                            <div class="cust_param_radio_wrap_[UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - Normal{value}] mb-2">
+                                <input id="cust_param_radio_[UnasDesign - Loop{customer_parameters} - Normal{id}]_[UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - Normal{radio_num}]" name="cust_param_radio_[UnasDesign - Loop{customer_parameters} - Normal{id}]" type="radio" value="[UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - Normal{text}]" [UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - IfStart{checked}]checked=checked[UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - IfEnd{checked}]>
+                                <label for="cust_param_radio_[UnasDesign - Loop{customer_parameters} - Normal{id}]_[UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - Normal{radio_num}]">[UnasDesign - Loop{customer_parameters} - Loop{radio_loop} - Normal{text}]</label>
+                            </div>
+
+                        [UnasDesign - Loop{customer_parameters} - LoopEnd{radio_loop}]
+                    [UnasDesign - Loop{customer_parameters} - IfEnd{radio_type}]
+
+                    <input type="hidden" name="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_name}]" value="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_value}]">
+                    <input type="hidden" name="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_name_orig}]" value="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_value_orig}]">
+                    <input type="hidden" name="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_id_name}]" value="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_id_value}]">
+                    <input type="hidden" name="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_required_name}]" value="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_required_value}]">
+                    <input type="hidden" name="[UnasDesign - Loop{customer_parameters} - Normal{hidden_input_payment_type}]" value="[UnasDesign - Loop{customer_parameters} - Normal{payment_type}]">
+                </div>
+                [UnasDesign - Loop{customer_parameters} - IfEnd{cust_param_disp}]
+                [UnasDesign - LoopEnd{customer_parameters}]
+            </div>
+            [UnasDesign - IfEnd{customer_parameters_disp}]
+
+            <div class="mb-3" id="return-order__comment">
+                <div class="order-return__products-title title--theme-1 h4">[UnasDesign - Normal{title_comment}]</div>
+                <textarea name="[UnasDesign - Normal{input_comment_name}]" id="[UnasDesign - Normal{input_comment_name}]" cols="30" rows="10">[UnasDesign - Normal{input_comment_value}]</textarea>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row">
+                <button id="order_return_send" class="btn--primary icon--b-return mb-3 mb-sm-0" type="button" onclick="$('#return_order').submit();">[UnasDesign - Normal{button_text}]</button>
+                <button id="button_back" class="btn--alt mx-auto ml-sm-4 mr-sm-0" onclick="location.href='[UnasDesign - Normal{back_url}]'; return false;">[UnasDesign - Normal{back_url_text}]</button>
+            </div>
+        [UnasDesign - Normal{form_end}]
+    </div>
+</div>
+[UnasDesign - IfStart{text_bottom_disp}] [UnasDesign - Normal{text_bottom}] [UnasDesign - IfEnd{text_bottom_disp}]
+
+<script>
+    $(document).ready(function () {
+        var returnViewHandler = new returnOrderViewHandler({
+            returnItem:"[id^='return_item_checkbox_']",
+            rowItem: ".order-return__item-row",
+            typeInput: parseInt($("#type_input").val()),
+            inputItem: ".js_return_cause_input",
+            errorClass: "has_fault",
+            customerParamRowClass:".order-return__customer-parameter",
+            customerParamWrapper:"#bank_account_data",
+            paymentRadioClass:".payment_radio",
+            paymentTypeAttr:"data-payment-type",
+            visibleClass:"js_visible_mod",
+            notVisibleClass:"js_not_visible_mod",
+            returnSendButton:"#order_return_send",
+            customerParameterRadio: "[id^=cust_param_radio_]",
+            convertClickedIndex:false
+        });
+
+        returnViewHandler.returnItemClick();
+        returnViewHandler.filterMods($(".payment_radio:checked").attr("data-type"));
+        returnViewHandler.paymentRadioClick();
+        returnViewHandler.isAnyChecked(1);
+        returnViewHandler.customerParameterRadioClick();
+
+        // Add active class on page load to selected item
+        var checkedRadio = $(".js-order-mods-item input[type=radio]:checked");
+        checkedRadio.closest(".js-order-mods-item").addClass("order-mods--active").find('.js-order-mods-details').slideDown();
+
+        function removeActiveClassFromOrderMods(section) {
+            var $orderModsSection = section.closest('.order-mods-section');
+            $(".js-order-mods-item", $orderModsSection).each(function() {
+                var $this = $(this);
+                if ($this.hasClass('order-mods--active')) {
+                    $this.removeClass('order-mods--active').find('.js-order-mods-details').slideUp();
+                }
+            })
+        }
+
+        $('.js-order-mods-item input[type=radio]').on('change', function() {
+            var $this = $(this);
+            removeActiveClassFromOrderMods($this);
+            $this.closest(".js-order-mods-item").addClass("order-mods--active").find('.js-order-mods-details').slideDown();
+        });
+    });
+</script>

@@ -1,0 +1,539 @@
+[UnasDesign - IfStart{subver_1}]
+    [UnasDesign - IfStart{!async_load}]
+    [UnasDesign - IfStart{gallery_exists|blog_details_disp}]
+    <link rel="stylesheet" type="text/css" href="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/css/default-skin.min.css">
+    <link rel="stylesheet" type="text/css" href="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/css/photoswipe.min.css">
+    <link rel="stylesheet" type="text/css" href="[unas_shop_url]/!common_packages/jquery/plugins/flickity/v3/flickity.min.css">
+    <script src="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/photoswipe.min.js" type="text/javascript" defer></script>
+    <script src="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/photoswipe-ui-default.min.js" type="text/javascript" defer></script>
+    <script src="[unas_shop_url]/!common_packages/jquery/plugins/flickity/v3/flickity.pkgd.min.js" defer></script>
+    <script>
+        var initPhotoSwipeFromDOMGallery = function(datas) {
+            var $pswp = $(".pswp")[0];
+            var $psDatas = $(datas);
+
+            $psDatas.each( function() {
+                var $pics     = $(this),
+                    getItems = function() {
+                        var items = [];
+                        $pics.find("a").each(function() {
+                            var $this = $(this);
+                            var $href   = $this.attr("href"),
+                                $size   = $this.data("size").split("x"),
+                                $width  = $size[0],
+                                $height = $size[1],
+                                $title = $this.data("caption")
+
+                            var item = {
+                                src : $href,
+                                w   : $width,
+                                h   : $height,
+                                title: $title
+                            };
+
+                            items.push(item);
+                        });
+                        return items;
+                    };
+
+                var items = getItems();
+
+                $(".gallery__img-link", $pics).on('click', function(event) {
+                    event.preventDefault();
+
+                    var $index = $(this).index();
+                    var options = {
+                        index: $index,
+                        history: false,
+                        bgOpacity: 0.8,
+                        preventHide: true,
+                        shareEl: false,
+                        showHideOpacity: true,
+                        getDoubleTapZoom: function(isMouseClick, item) {
+                            if(isMouseClick) {
+                                return 1;
+                            } else {
+                                return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+                            }
+                        },
+                        addCaptionHTMLFn: function(item, captionEl, isFake) {
+                            if(!item.title) {
+                                captionEl.children[0].innerText = "";
+                                return false;
+                            }
+                            captionEl.children[0].innerHTML = item.title;
+                            return true;
+                        }
+                    };
+
+                    var photoSwipe = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                    photoSwipe.init();
+                });
+
+            });
+
+        };
+    </script>
+    <div class="pswp pswp--gallery" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close"></button>
+                    <button class="pswp__button pswp__button--fs"></button>
+                    <button class="pswp__button pswp__button--zoom"></button>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left"></button>
+                <button class="pswp__button pswp__button--arrow--right"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    [UnasDesign - IfEnd{gallery_exists|blog_details_disp}]
+    [UnasDesign - IfEnd{!async_load}]
+[UnasDesign - IfEnd{subver_1}]
+
+[UnasDesign - IfStart{!async_load}]
+[UnasDesign - IfStart{scroll_disp}]
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var target_offset = $("#[UnasDesign - Normal{scroll_to}]").offset();
+            var target_top = target_offset.top-50;
+            $('html, body').animate({scrollTop:target_top}, 500);
+        });
+    </script>
+[UnasDesign - IfEnd{scroll_disp}]
+[UnasDesign - IfEnd{!async_load}]
+
+[UnasDesign - IfStart{!async_load}]<div class='page_content'>[UnasDesign - IfEnd{!async_load}]
+    [UnasDesign - IfStart{!async_load}]
+    [UnasDesign - IfStart{tags_disp}]
+    <div class="js-tags">
+        [UnasDesign - LoopStart{tags}]
+        <div class="js-filter-by-tag tags__col mr-2 px-3 py-1" data-filter="js-filterable-[UnasDesign - Loop{tags} - Normal{id}]">
+            [UnasDesign - Loop{tags} - Normal{name}]
+        </div>
+        [UnasDesign - LoopEnd{tags}]
+
+        <div class="js-clear-tag-filter tags__col mr-2 px-3 py-1" data-filter="clear-all">
+            [UnasDesign - Text{name:filter_delete_all;page:box}]
+        </div>
+    </div>
+    <script>
+        var tagFilter = new filterByTag({type:"content"});
+
+        tagFilter.filterInitAJAX();
+        tagFilter.clearFilterInit();
+    </script>
+    <div class="line-separator mt-3"></div>
+    [UnasDesign - IfEnd{tags_disp}]
+    [UnasDesign - IfEnd{!async_load}]
+
+    [UnasDesign - IfStart{!async_load}]<div class="js-filterable-elements-wrapper">[UnasDesign - IfEnd{!async_load}]
+    [UnasDesign - LoopStart{content}]
+        [UnasDesign - Loop{content} - IfStart{disp}]
+            <div id='page_content_[UnasDesign - Loop{content} - Normal{id}]' class='page_content page_content_item mb-5[UnasDesign - Loop{content} - IfStart{type_blog}] page_content--blog[UnasDesign - Loop{content} - IfEnd{type_blog}]'>
+                [UnasDesign - Loop{content} - IfStart{type_normal}]
+                    <div class='page_txt type_normal'>[UnasDesign - Loop{content} - Normal{content}]</div>
+                [UnasDesign - Loop{content} - IfEnd{type_normal}]
+
+                [UnasDesign - Loop{content} - IfStart{type_blog}]
+                    <div class='page_page_blog'>
+                        <div class="row no-gutters w-100 align-items-center">
+                            <div class="blog-title col-sm-8 col-lg-9 col-xl-10 pr-md-4 my-3 my-sm-4">
+                                [UnasDesign - Loop{content} - IfStart{detail_link_disp}]
+                                <div class='page_page_blog_title font-l font-md-xl font-weight-700 text-center text-sm-left'><a href='[UnasDesign - Loop{content} - Normal{detail_url}]'>[UnasDesign - Loop{content} - IfStart{detail_disp}]<h1>[UnasDesign - Loop{content} - IfEnd{detail_disp}][UnasDesign - Loop{content} - Normal{title}][UnasDesign - Loop{content} - IfStart{detail_disp}]</h1>[UnasDesign - Loop{content} - IfEnd{detail_disp}]</a></div>
+                                [UnasDesign - Loop{content} - IfEnd{detail_link_disp}]
+
+                                [UnasDesign - Loop{content} - IfStart{!detail_link_disp}]
+                                <div class='page_page_blog_title font-l font-md-xl font-weight-700 text-center text-sm-left'>[UnasDesign - Loop{content} - IfStart{detail_disp}]<h1>[UnasDesign - Loop{content} - IfEnd{detail_disp}][UnasDesign - Loop{content} - Normal{title}][UnasDesign - Loop{content} - IfStart{detail_disp}]</h1>[UnasDesign - Loop{content} - IfEnd{detail_disp}]</div>
+                                [UnasDesign - Loop{content} - IfStart{social_media_disp}]
+                                <div class="social_icons d-flex align-items-center justify-content-center justify-content-sm-start">
+                                    [UnasDesign - Loop{content} - IfStart{social_share_disp}]
+                                    [UnasDesign - Loop{content} - LoopStart{social_shares}]
+                                    <div class="social_icon icon_[UnasDesign - Loop{content} - Loop{social_shares} - Normal{name}]" onclick='[UnasDesign - Loop{content} - Loop{social_shares} - Normal{onclick_value}]' title="[UnasDesign - Loop{content} - Loop{social_shares} - Normal{name}]"></div>
+                                    [UnasDesign - Loop{content} - LoopEnd{social_shares}]
+                                    [UnasDesign - Loop{content} - IfEnd{social_share_disp}]
+                                    [UnasDesign - Loop{content} - IfStart{social_like_disp}][UnasDesign - Loop{content} - Normal{facebook_like_content}][UnasDesign - Loop{content} - IfEnd{social_like_disp}]
+                                </div>
+                                [UnasDesign - Loop{content} - IfEnd{social_media_disp}]
+                                [UnasDesign - Loop{content} - IfEnd{!detail_link_disp}]
+                            </div>
+
+                            <div class="blog-author col-sm-4 mb-3 my-sm-4 col-lg-3 col-xl-2 text-center text-sm-right">
+                                <div class="d-inline-flex align-items-center">
+
+                                    [UnasDesign - Loop{content} - IfStart{author_pic_disp}]
+                                    <div class='blog_author_pic col-auto px-0 mr-4'>
+                                        <div class='blog_author_pic_wrap'>
+                                            <img src='[UnasDesign - Loop{content} - Normal{author_pic_url}]' alt='[UnasDesign - Loop{content} - Normal{author}]'>
+                                        </div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - IfEnd{author_pic_disp}]
+
+                                    <div class="">
+                                        [UnasDesign - Loop{content} - IfStart{author_disp}]
+                                        <div class='blog_author_name font-weight-700 text-left font-m line-height-12 mb-2'>[UnasDesign - Loop{content} - Normal{author}]</div>
+                                        [UnasDesign - Loop{content} - IfEnd{author_disp}]
+
+                                        [UnasDesign - Loop{content} - IfStart{date_disp}]
+                                        <div class='page_page_blog_date-and-time font-xs text-muted text-left'>
+                                            <span class="blog-date">[UnasDesign - Loop{content} - Normal{date}]</span>
+                                            <span class="blog-time">[UnasDesign - Loop{content} - Normal{time}]</span>
+                                        </div>
+                                        [UnasDesign - Loop{content} - IfEnd{date_disp}]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    [UnasDesign - Loop{content} - IfStart{!detail_disp}]
+                        <div class='page_page_blog_intro clearfix'>
+                            [UnasDesign - Loop{content} - IfStart{intro_pic_url_disp}]
+                        	<div class='blog_intro_pic mr-4 mb-4 float-xs-left text-center'><img src='[UnasDesign - Loop{content} - Normal{intro_pic_url}]' alt='[UnasDesign - Loop{content} - Normal{title}]'></div>
+                            [UnasDesign - Loop{content} - IfEnd{intro_pic_url_disp}]
+                        	<div class='blog_intro_txt font-s font-sm-m line-height-14 text-justify'>
+                            	[UnasDesign - Loop{content} - Normal{intro}]
+                            	[UnasDesign - Loop{content} - IfStart{detail_link_disp}]
+                                    <div class='page_page_blog_next text-right'><a class="page_page_blog_next_btn btn btn--alt btn--small icon--a-right" href="[UnasDesign - Loop{content} - Normal{detail_url}]">[UnasDesign - Normal{detail_text}]</a></div>
+                                [UnasDesign - Loop{content} - IfEnd{detail_link_disp}]
+                            </div>
+                        </div>
+                    [UnasDesign - Loop{content} - IfEnd{!detail_disp}]
+
+                    [UnasDesign - Loop{content} - IfStart{detail_disp}]
+                    	<div class='page_page_blog_details clearfix'>
+                            [UnasDesign - Loop{content} - IfStart{intro_pic_url_disp}]
+                            <div class='blog_intro_pic mr-md-4 mb-4 float-md-left text-center'><img src='[UnasDesign - Loop{content} - Normal{intro_pic_url}]' alt='[UnasDesign - Loop{content} - Normal{title}]'></div>
+                            [UnasDesign - Loop{content} - IfEnd{intro_pic_url_disp}]
+                        	<div class='blog_intro_txt'>[UnasDesign - Loop{content} - Normal{intro}]</div>
+                            <div class='page_page_blog_message'>[UnasDesign - Loop{content} - Normal{detail}]</div>
+                        </div>
+                        [UnasDesign - Loop{content} - IfStart{blog_included_content_disp}]
+                        <div class="page_page_blog_included_content">
+                            [UnasDesign - Loop{content} - Normal{blog_included_content}]
+                        </div>
+                        [UnasDesign - Loop{content} - IfEnd{blog_included_content_disp}]
+                        <div class='page_page_blog_back mt-3'><a class="page_page_blog_back_btn btn btn--alt btn--small icon--b-chevron-left" href="[UnasDesign - Loop{content} - Normal{back_url}]">[UnasDesign - Normal{back_text}]</a></div>
+                    [UnasDesign - Loop{content} - IfEnd{detail_disp}]
+                [UnasDesign - Loop{content} - IfEnd{type_blog}]
+
+                [UnasDesign - Loop{content} - IfStart{type_gallery}]
+
+                    [UnasDesign - IfStart{!subver_1}]
+                        [UnasDesign - Loop{content} - IfStart{type_gallery_1}]
+                        <div class='page_page_gallery page_page_gallery_1 page_page_pic_main'>
+                            <div class="slider-for">
+                                [UnasDesign - Loop{content} - LoopStart{pic}]
+                                    <div>
+                                        <img src="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]" alt="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]">
+                                        [UnasDesign - Loop{content} - Loop{pic} - IfStart{text_disp}]
+                                        <div class='page_page_pic_text'>[UnasDesign - Loop{content} - Loop{pic} - Normal{text}]</div>
+                                        [UnasDesign - Loop{content} - Loop{pic} - IfEnd{text_disp}]
+                                    </div>
+                                [UnasDesign - Loop{content} - LoopEnd{pic}]
+                            </div>
+                            <div class="slider-nav slick-arrow--middle slick-arrow--white slick-arrow--small slick-indent">
+                                [UnasDesign - Loop{content} - LoopStart{pic}]<div><img src="" data-lazy="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]" alt="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]" [UnasDesign - Loop{content} - Loop{pic} - Normal{size_small}]></div>[UnasDesign - Loop{content} - LoopEnd{pic}]
+                            </div>
+                            <script type="text/javascript">
+                                $('#page_content_[UnasDesign - Loop{content} - Normal{id}] .slider-for').slick({
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    arrows: false,
+                                    fade: true,
+                                    asNavFor: '#page_content_[UnasDesign - Loop{content} - Normal{id}] .slider-nav',
+                                    lazyLoad: 'ondemand'
+                                });
+                                $('#page_content_[UnasDesign - Loop{content} - Normal{id}] .slider-nav').slick({
+                                    slidesToShow: 10,
+                                    slidesToScroll: 10, // works only when centerMode:false
+                                    asNavFor: '#page_content_[UnasDesign - Loop{content} - Normal{id}] .slider-for',
+                                    centerPadding: '0px',
+                                    arrows: true,
+                                    dots: false,
+                                    centerMode: false,
+                                    focusOnSelect: true,
+                                    lazyLoad: 'ondemand',
+                                    responsive: [
+                                        {
+                                          breakpoint: 1024,
+                                          settings: {
+                                            slidesToShow: 6,
+                                            slidesToScroll: 6
+                                          }
+                                        },
+                                        {
+                                            breakpoint: 640,
+                                            settings: {
+                                                slidesToShow: 4,
+                                                slidesToScroll: 4
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 480,
+                                            settings: {
+                                                slidesToShow: 3,
+                                                slidesToScroll: 3
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 400,
+                                            settings: {
+                                                slidesToShow: 2,
+                                                slidesToScroll: 2
+                                            }
+                                        }
+                                      ]
+                                });
+                            </script>
+                        </div>
+                        [UnasDesign - Loop{content} - IfEnd{type_gallery_1}]
+
+                        [UnasDesign - Loop{content} - IfStart{type_gallery_2}]
+                        <div class='page_page_gallery page_page_gallery_2'>
+                            <div class="row gutters-5">
+                            [UnasDesign - Loop{content} - LoopStart{pic}]
+                                <div class='col-4 col-xs-3 col-sm-2 col-lg-1 page_page_pic_element mb-3'>
+                                    <div class="gallery-element__inner p-2 border h-100">
+                                        <div class='page_page_pic_img d-flex align-items-center justify-content-center'>
+                                            <a href="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]" rel="shadowbox[galery_[UnasDesign - Loop{content} - Normal{id}]];options={counterType:'skip',continuous:false,animSequence:'sync',handleOversize:'resize'}" id="page_page_pic_[UnasDesign - Loop{content} - Normal{id}]_'.$full_art.'" title="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]" target="_blank"><img src="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]" alt="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]" [UnasDesign - Loop{content} - Loop{pic} - Normal{size_small}]></a>
+                                        </div>
+                                        [UnasDesign - Loop{content} - Loop{pic} - IfStart{text_disp}]
+                                        <div class='page_page_pic_text d-flex align-items-center justify-content-center'>
+                                            <div class="gallery-text__inner line-clamp--3-12">
+                                                [UnasDesign - Loop{content} - Loop{pic} - Normal{text}]
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{content} - Loop{pic} - IfEnd{text_disp}]
+                                    </div>
+                                </div>
+                            [UnasDesign - Loop{content} - LoopEnd{pic}]
+                            </div>
+                        </div>
+                        [UnasDesign - Loop{content} - IfEnd{type_gallery_2}]
+                    [UnasDesign - IfEnd{!subver_1}]
+
+                    [UnasDesign - IfStart{subver_1}]
+                        [UnasDesign - Loop{content} - IfStart{type_gallery_1}]
+                        <div class="gallery gallery--type-1">
+                            <div class="gallery__carousel" id="gallery--[UnasDesign - Loop{content} - Normal{id}]">
+                                [UnasDesign - Loop{content} - LoopStart{pic}]
+                                <a class="gallery__img-link" href="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]"
+                                   data-size="[UnasDesign - Loop{content} - Loop{pic} - Normal{width}]x[UnasDesign - Loop{content} - Loop{pic} - Normal{height}]"
+                                   title="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]" target="_blank"
+                                   [UnasDesign - Loop{content} - Loop{pic} - IfStart{text_disp}]
+                                   data-caption="[UnasDesign - Loop{content} - Loop{pic} - Normal{text}]"
+                                   [UnasDesign - Loop{content} - Loop{pic} - IfEnd{text_disp}]>
+                                    <img class="gallery__img" width="[UnasDesign - Loop{content} - Loop{pic} - Normal{width}]" height="[UnasDesign - Loop{content} - Loop{pic} - Normal{height}]"
+                                         loading="lazy" src="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]"
+                                         [UnasDesign - Loop{content} - Loop{pic} - IfStart{text_disp}]alt="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]"[UnasDesign - Loop{content} - Loop{pic} - IfEnd{text_disp}]
+                                         style="height:[UnasDesign - Loop{content} - Loop{pic} - Normal{height}]px;"
+                                   >
+                                </a>
+                                [UnasDesign - Loop{content} - LoopEnd{pic}]
+                            </div>
+                            <script type="text/javascript">
+                                $(document).ready(function() {
+                                    var $flkty_[UnasDesign - Loop{content} - Normal{id}]_options = {
+                                        cellAlign: "left",
+                                        groupCells: true,
+                                        contain: true,
+                                        pageDots: false,
+                                        lazyLoad: false,
+                                        autoPlay: 5000
+                                    }
+                                    if ( matchMedia('screen and (min-width: 1200px)').matches ) {
+                                        $flkty_[UnasDesign - Loop{content} - Normal{id}]_options.draggable = false;
+                                    }
+                                    $('#gallery--[UnasDesign - Loop{content} - Normal{id}]').flickity($flkty_[UnasDesign - Loop{content} - Normal{id}]_options);
+                                });
+                            </script>
+                        </div>
+                        [UnasDesign - Loop{content} - IfEnd{type_gallery_1}]
+
+                        [UnasDesign - Loop{content} - IfStart{type_gallery_2}]
+                        <div class="gallery gallery--type-2">
+                            <div class="d-flex flex-wrap justify-content-center justify-content-sm-start align-items-center gallery__container" id="gallery--[UnasDesign - Loop{content} - Normal{id}]">
+                                [UnasDesign - Loop{content} - LoopStart{pic}]
+                                <a class="gallery__img-link" href="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]"
+                                   data-size="[UnasDesign - Loop{content} - Loop{pic} - Normal{width}]x[UnasDesign - Loop{content} - Loop{pic} - Normal{height}]"
+                                   title="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]" target="_blank"
+                                   [UnasDesign - Loop{content} - Loop{pic} - IfStart{text_disp}]
+                                   data-caption="[UnasDesign - Loop{content} - Loop{pic} - Normal{text}]"
+                                   [UnasDesign - Loop{content} - Loop{pic} - IfEnd{text_disp}]>
+                                    <img class="gallery__img" width="[UnasDesign - Loop{content} - Loop{pic} - Normal{width}]" height="[UnasDesign - Loop{content} - Loop{pic} - Normal{height}]"
+                                         loading="lazy" src="[UnasDesign - Loop{content} - Loop{pic} - Normal{url}]"
+                                         [UnasDesign - Loop{content} - Loop{pic} - IfStart{text_disp}]alt="[UnasDesign - Loop{content} - Loop{pic} - Normal{text_alt}]"[UnasDesign - Loop{content} - Loop{pic} - IfEnd{text_disp}]
+                                         style="height:[UnasDesign - Loop{content} - Loop{pic} - Normal{height}]px;"
+                                   >
+                                </a>
+                                [UnasDesign - Loop{content} - LoopEnd{pic}]
+                            </div>
+                        </div>
+                        [UnasDesign - Loop{content} - IfEnd{type_gallery_2}]
+
+                        <script>
+                            $(document).ready(function() {
+                                initPhotoSwipeFromDOMGallery("#gallery--[UnasDesign - Loop{content} - Normal{id}]");
+                            });
+                        </script>
+                    [UnasDesign - IfEnd{subver_1}]
+                [UnasDesign - Loop{content} - IfEnd{type_gallery}]
+
+                [UnasDesign - Loop{content} - IfStart{type_form}]
+                    [UnasDesign - Loop{content} - IfStart{form_disp}]
+                        <div class="page_txt page_content_with_form_type container-md">
+                            [UnasDesign - Loop{content} - Normal{form_start}]
+                                [UnasDesign - Loop{content} - LoopStart{form_loop}]
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_text}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_text}]
+
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_email}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_email}]
+
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_textarea}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value textarea">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_textarea}]
+
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_radio}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value px-3 radio">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_radio}]
+
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_checkbox}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value px-3 checkbox">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_checkbox}]
+
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_select}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_select}]
+
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{type_file}]
+                                    <div class="page-form-item mb-3 [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{fault_disp}]has-fault[UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{fault_disp}]">
+                                    	<div class="page-form-item-title position-relative">
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - Normal{label}]
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfStart{desc_disp}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{content} - Loop{form_loop} - Normal{desc}]</span></span>
+                                            [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{desc_disp}]
+                                        </div>
+                                        <div class="page-form-item-value file">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{content}]</div>
+                                        <div class="page-form-fault-text fault-text-global">[UnasDesign - Loop{content} - Loop{form_loop} - Normal{fault_text}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{content} - Loop{form_loop} - IfEnd{type_file}]
+                                [UnasDesign - Loop{content} - LoopEnd{form_loop}]
+
+                                [UnasDesign - Loop{content} - Normal{captcha_script}]
+                                <div class="page_headbutton btn-wrap--primary">[UnasDesign - Loop{content} - Normal{submit_button}]</div>
+
+                            [UnasDesign - Loop{content} - Normal{form_end}]
+                        </div>
+                    [UnasDesign - Loop{content} - IfEnd{form_disp}]
+                [UnasDesign - Loop{content} - IfEnd{type_form}]
+
+                [UnasDesign - Loop{content} - IfStart{type_product}]
+                    <div class='page_txt type_product'>[UnasDesign - Loop{content} - Normal{content}]</div>
+                [UnasDesign - Loop{content} - IfEnd{type_product}]
+            </div>
+        [UnasDesign - Loop{content} - IfEnd{disp}]
+
+        [UnasDesign - Loop{content} - IfStart{comment_disp}]
+            <div id='page_content_[UnasDesign - Loop{content} - Normal{id}]_comment' class='page_content_comment mt-5'>
+                [UnasDesign - Loop{content} - Normal{comment}]
+            </div>
+        [UnasDesign - Loop{content} - IfEnd{comment_disp}]
+    [UnasDesign - LoopEnd{content}]
+
+    [UnasDesign - IfStart{!async_load}]
+    [UnasDesign - IfStart{subpage_list_disp}]
+    [UnasDesign - IfStart{no_content}]<div class='page_page_nocontent_outer'>[UnasDesign - IfEnd{no_content}]
+        [UnasDesign - LoopStart{subpage_list}]
+        <div class='page_page_subpage'>
+            <a href='[UnasDesign - Loop{subpage_list} - Normal{link}]' target="[UnasDesign - Loop{subpage_list} - Normal{target}]">[UnasDesign - Loop{subpage_list} - Normal{title}]</a>
+        </div>
+        [UnasDesign - LoopEnd{subpage_list}]
+        [UnasDesign - IfStart{no_content}]</div>[UnasDesign - IfEnd{no_content}]
+    [UnasDesign - IfEnd{subpage_list_disp}]
+    [UnasDesign - IfEnd{!async_load}]
+
+    [UnasDesign - IfStart{page_disp}]
+    <nav class="news-paging d-flex align-items-center justify-content-center my-4 py-3 border-top" aria-label="pagination">
+        [UnasDesign - Normal{paging_content}]
+    </nav>
+    [UnasDesign - IfEnd{page_disp}]
+    [UnasDesign - IfStart{!async_load}]</div>[UnasDesign - IfEnd{!async_load}]
+[UnasDesign - IfStart{!async_load}]</div>[UnasDesign - IfEnd{!async_load}]

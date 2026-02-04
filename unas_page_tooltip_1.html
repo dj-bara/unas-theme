@@ -1,0 +1,524 @@
+[UnasDesign - DesignVar{name:pic_enlarge_force;value:1}]
+[UnasDesign - DesignVar{name:det_pic_maxwidth;value:258}]
+[UnasDesign - DesignVar{name:det_pic_maxheight;value:258}]
+[UnasDesign - DesignVar{name:alt_pic_maxwidth;value:258}]
+[UnasDesign - DesignVar{name:alt_pic_maxheight;value:258}]
+[UnasDesign - DesignVar{name:alt_pic_size2_maxwidth;value:50}]
+[UnasDesign - DesignVar{name:alt_pic_size2_maxheight;value:50}]
+[UnasDesign - DesignVar{name:det_pic_size2_maxwidth;value:50}]
+[UnasDesign - DesignVar{name:det_pic_size2_maxheight;value:50}]
+
+<div id='page_tooltip' class='product-tooltip'>
+    [UnasDesign - Normal{start_script}]
+    [UnasDesign - Normal{start_form}]
+
+	[UnasDesign - IfStart{art_yes}]
+    
+    	<div class='product-tooltip__inner row no-gutters'>
+            <div class='product-tooltip__name col-12 title--theme-1 underline--fw'><h2 class="line-clamp--3-12 pr-5 mb-1">[UnasDesign - Normal{name}]</h2></div>
+            <div class='product-tooltip__pic-wrap col-md-6 pr-md-4'>
+                <div class="product-tooltip__pic-inner position-relative">
+                    <div class="artdet__properties position-relative">
+                        [UnasDesign - IfStart{sale_disp}]
+                        <div class="product-tooltip__sale product-status product-status--sale">-[UnasDesign - Normal{price_save}]</div>
+                        [UnasDesign - IfEnd{sale_disp}]
+
+                        [UnasDesign - IfStart{art_item_new_disp}]
+                        <div class="product-tooltip__new product-status product-status--new">[UnasDesign - Text{name:new_stat;page:common}]</div>
+                        [UnasDesign - IfEnd{art_item_new_disp}]
+
+                        [UnasDesign - IfStart{stock_disp}]
+                        <div class="product-tooltip__stock product-status product-status--stock [UnasDesign - IfStart{!stock_text_only}]stock-number[UnasDesign - IfEnd{!stock_text_only}] [UnasDesign - IfStart{stock_available}]stock-available[UnasDesign - IfEnd{stock_available}]">
+
+                            [UnasDesign - IfStart{stock_available}]
+                            <div class="artdet__stock-text product-stock-text text-color--on-stock">
+                                <div class="artdet__stock-title product-stock-title icon--b-on-stock">[UnasDesign - Text{name:in_stock;page:common}][UnasDesign - IfStart{!stock_text_only}]<div class="d-inline-block icon--a-chevron-down"></div>[UnasDesign - IfEnd{!stock_text_only}]</div>
+                                <div class="artdet__stock-dropdown product-stock-dropdown">
+                                    <div class="artdet__stock-label product-stock-label">[UnasDesign - Text{name:stock_title;page:common}]:</div>
+                                    <div class="artdet__stock-content p-1">[UnasDesign - Normal{stock}]</div>
+                                </div>
+                            </div>
+                            [UnasDesign - IfEnd{stock_available}]
+
+                            [UnasDesign - IfStart{!stock_available}]
+                                [UnasDesign - IfStart{!no_stock_but_buyable_disp}]
+                                    <div class="artdet__stock-text product-stock-text text-color--out-of-stock">
+                                        <div class="artdet__stock-title product-stock-title icon--b-out-of-stock">[UnasDesign - Text{name:out_of_stock;page:common}]</div>
+                                    </div>
+                                [UnasDesign - IfEnd{!no_stock_but_buyable_disp}]
+
+                                [UnasDesign - IfStart{no_stock_but_buyable_disp}]
+                                    <div class="artdet__stock-text product-stock-text text-color--to-order">
+                                        <div class="artdet__stock-title product-stock-title icon--b-exclamation-2">[UnasDesign - Text{name:available_on_backorder;page:common}]</div>
+                                    </div>
+                                [UnasDesign - IfEnd{no_stock_but_buyable_disp}]
+                            [UnasDesign - IfEnd{!stock_available}]
+
+                            [UnasDesign - IfStart{!stock_available}]
+                            [UnasDesign - IfStart{artpack_tab_disp}]
+                            [UnasDesign - IfStart{min_quant_disp}]
+                            <div class="property__min-quant">
+                                [UnasDesign - Text{art_minorder}]:[UnasDesign - Normal{min_quant}]
+                            </div>
+                            [UnasDesign - IfEnd{min_quant_disp}]
+                            [UnasDesign - IfEnd{artpack_tab_disp}]
+                            [UnasDesign - IfEnd{!stock_available}]
+                        </div>
+                        [UnasDesign - IfEnd{stock_disp}]
+                    </div>
+
+                    <div class='product-tooltip__img-inner position-relative'>
+                        <div class='product-tooltip__img-wrapper'>
+                            [UnasDesign - IfStart{!alt_pic}]
+                            <figure class="product-tooltip__img-main-wrap">
+                                <img class="product-tooltip__img-main lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Normal{pic_raw}]" [UnasDesign - IfStart{img_retina_exists}] data-srcset="[UnasDesign - Normal{img_retina_url}] [UnasDesign - Normal{img_retina_size}]"[UnasDesign - IfEnd{img_retina_exists}] alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_title_text}]" id="main_image_tooltip">
+                            </figure>
+                            [UnasDesign - IfEnd{!alt_pic}]
+
+                            [UnasDesign - IfStart{alt_pic}]
+                            <div class="product-tooltip__img--alts js-slick--alts slick-center">
+                                <figure class="product-tooltip__img-main-wrap">
+                                    <img class="product-tooltip__img-main lazyload" src="[UnasDesign - Normal{pic_raw}]"[UnasDesign - IfStart{img_retina_exists}] data-srcset="[UnasDesign - Normal{img_retina_url}] [UnasDesign - Normal{img_retina_size}]"[UnasDesign - IfEnd{img_retina_exists}] alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_title_text}]" id="main_image_tooltip">
+                                </figure>
+                                [UnasDesign - LoopStart{alt_images}]
+                                [UnasDesign - Loop{alt_images} - IfStart{disp}]
+                                <figure class="product-tooltip__img-wrap--alt">
+                                    <img class="product-tooltip__img--alt lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{alt_images} - Normal{url}]" [UnasDesign - Loop{alt_images} - IfStart{retina_exists}] data-srcset="[UnasDesign - Loop{alt_images} - Normal{retina_url}] [UnasDesign - Loop{alt_images} - Normal{retina_size}]"[UnasDesign - Loop{alt_images} - IfEnd{retina_exists}] alt="[UnasDesign - Loop{alt_images} - Normal{alt_pic_alt_text}]" title="[UnasDesign - Loop{alt_images} - Normal{alt_pic_title_text}]">
+                                </figure>
+                                [UnasDesign - Loop{alt_images} - IfEnd{disp}]
+                                [UnasDesign - LoopEnd{alt_images}]
+                            </div>
+
+                            <div class="product-tooltip__img--thumbs-wrap slick-indent-md slick-center slick-arrow--middle slick-arrow--small slick-gap--10 mt-3">
+                                <div class="product-tooltip__img--thumbs js-slick--thumbs clearfix">
+                                    <div class="product-tooltip__img-wrap--thumb">
+                                        <img class="product-tooltip__img-main--thumb lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Normal{pic_size2_raw}]" [UnasDesign - IfStart{img_thumbnail_retina_exists}] data-srcset="[UnasDesign - Normal{img_thumbnail_retina_url}] [UnasDesign - Normal{img_thumbnail_retina_size}]"[UnasDesign - IfEnd{img_thumbnail_retina_exists}] alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_title_text}]">
+                                    </div>
+                                    [UnasDesign - LoopStart{alt_images}]
+                                    [UnasDesign - Loop{alt_images} - IfStart{disp}]
+                                    <div class="product-tooltip__img-wrap--thumb">
+                                        <img class="product-tooltip__img--thumb lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{alt_images} - Normal{small_url}]" [UnasDesign - Loop{alt_images} - IfStart{thumbnail_retina_exists}] data-srcset="[UnasDesign - Loop{alt_images} - Normal{thumbnail_retina_url}] [UnasDesign - Loop{alt_images} - Normal{thumbnail_retina_size}]"[UnasDesign - Loop{alt_images} - IfEnd{thumbnail_retina_exists}] alt="[UnasDesign - Loop{alt_images} - Normal{alt_pic_alt_text}]" title="[UnasDesign - Loop{alt_images} - Normal{alt_pic_title_text}]">
+                                    </div>
+                                    [UnasDesign - Loop{alt_images} - IfEnd{disp}]
+                                    [UnasDesign - LoopEnd{alt_images}]
+                                </div>
+                            </div>
+
+                            <script>
+                                var $slickContainerAlts = '.js-slick--alts';
+                                var $slickContainerThumbs = '.js-slick--thumbs';
+
+                                $(document).ready(function() {
+                                    // Main/Product image slider for product page
+                                    $($slickContainerAlts).slick({
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        swipe: false,
+                                        infinite: false,
+                                        draggable: false,
+                                        arrows: false,
+                                        fade:true,
+                                        speed: 300,
+                                        lazyLoad: 'ondemand',
+                                        asNavFor: $slickContainerThumbs,
+                                        prevArrow: '<div class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="sr-text">Previous</span></div>',
+                                        nextArrow: '<div class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-text">Next</span></div>'
+                                    });
+                                    // Thumbnail/alternates slider for product page
+                                    $($slickContainerThumbs).slick({
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1,
+                                        infinite: false,
+                                        centerPadding: '0px',
+                                        asNavFor: $slickContainerAlts,
+                                        speed: 300,
+                                        focusOnSelect: true,
+                                        touchThreshold: 100,
+                                        useTransform: true,
+                                        waitForAnimate: false,
+                                        lazyLoad: 'progressive',
+                                        mobileFirst: true,
+                                        prevArrow: '<div class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="sr-text">Previous</span></div>',
+                                        nextArrow: '<div class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-text">Next</span></div>',
+                                        responsive: [
+                                            {
+                                                breakpoint: 940,
+                                                settings: {
+                                                    slidesToShow: 5
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 767,
+                                                settings: {
+                                                    slidesToShow: 4
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 640,
+                                                settings: {
+                                                    slidesToShow: 8
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 580,
+                                                settings: {
+                                                    slidesToShow: 7
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 520,
+                                                settings: {
+                                                    slidesToShow: 6
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 460,
+                                                settings: {
+                                                    slidesToShow: 5
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 400,
+                                                settings: {
+                                                    slidesToShow: 4
+                                                }
+                                            }
+                                        ]
+                                    });
+
+                                })
+
+                            </script>
+                            [UnasDesign - IfEnd{alt_pic}]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='tooltip__datas col-md-6 pl-md-4 pt-4 pt-md-0'>
+            	 <div class='page_tooltip_content_inner_right_info'>
+                    [UnasDesign - IfStart{product_param_spec_disp}]
+                         <div class="tooltip__spec-params artdet__spec-params mb-3 font-s">
+                             [UnasDesign - LoopStart{product_param_spec}]
+                             <div class="tooltip__spec-param py-2 artdet__spec-param product_param_type_[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_type}]" id="page_artdet_product_param_spec_[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_id}]" >
+                                 <div class="row gutters-10 align-items-center">
+                                     <div class="col-5 text-right">
+                                         <div class="tooltip__spec-param-title artdet__spec-param-title d-inline-block align-middle position-relative">
+                                             [UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_title_orig}]
+                                             [UnasDesign - Loop{product_param_spec} - IfStart{product_param_spec_desc_if}]
+                                                <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_desc}]</span></span>
+                                             [UnasDesign - Loop{product_param_spec} - IfEnd{product_param_spec_desc_if}]
+                                         </div>
+                                     </div>
+                                     <div class="col-7 text-left">
+                                         <div class="tooltip__spec-param-value">[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_value}]</div>
+                                     </div>
+                                 </div>
+                             </div>
+                             [UnasDesign - LoopEnd{product_param_spec}]
+                         </div>
+                        [UnasDesign - IfEnd{product_param_spec_disp}]
+
+                    [UnasDesign - Normal{artdet_form_start}]
+
+                     [UnasDesign - IfStart{other_disp}]
+                     <div class='tooltip__variants mb-4 font-s font-sm-m'>
+                         <div class='product-variants-inner'>
+                             [UnasDesign - IfStart{other_1_disp}]
+                             <div class='product-variant product-variant--1 d-flex'>
+                                 <div class="col-6 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                     <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_1_label}]</div>
+                                 </div>
+                                 <div class="col-6 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                     <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_1_select}]</div>
+                                 </div>
+                             </div>
+                             [UnasDesign - IfEnd{other_1_disp}]
+                             [UnasDesign - IfStart{other_2_disp}] 
+                             <div class='product-variant product-variant--2 d-flex'>
+                                 <div class="col-6 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                     <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_2_label}]</div>
+                                 </div>
+                                 <div class="col-6 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                     <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_2_select}]</div>
+                                 </div>
+                             </div>
+                             [UnasDesign - IfEnd{other_2_disp}]
+                             [UnasDesign - IfStart{other_3_disp}]
+                             <div class='product-variant product-variant--3 d-flex'>
+                                 <div class="col-6 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                     <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_3_label}]</div>
+                                 </div>
+                                 <div class="col-6 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                     <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_3_select}]</div>
+                                 </div>
+                             </div>
+                             [UnasDesign - IfEnd{other_3_disp}]
+                         </div>
+                     </div>
+                     [UnasDesign - IfEnd{other_disp}]
+
+                     [UnasDesign - Normal{other_temp}]
+
+                    [UnasDesign - IfStart{price_disp}]
+                    <div class="product-tooltip__price with-rrp text-center mb-4">
+                        [UnasDesign - IfStart{price_net_disp}]
+                        <div class="product-tooltip__price-base position-relative [UnasDesign - IfStart{price_akcio_disp}]product-tooltip__price-base-has-discount[UnasDesign - IfEnd{price_akcio_disp}] [UnasDesign - IfStart{price_akcio_no_disp}]product-tooltip__price-base-discount-prices-disabled[UnasDesign - IfEnd{price_akcio_no_disp}]">
+                            [UnasDesign - IfStart{price_normal_text_disp}]
+                                [UnasDesign - Normal{price_normal_text}]
+                            [UnasDesign - IfEnd{price_normal_text_disp}]
+                            [UnasDesign - Normal{price_net}][UnasDesign - IfStart{price_normal_info_text_disp}]&nbsp;<span class="page_artdet_param_desc param_desc_popup param_desc_popup_ver4" data-tippy="[UnasDesign - Normal{price_normal_info_text}]"><span><p>[UnasDesign - Normal{price_normal_info_text}]</p></span></span>[UnasDesign - IfEnd{price_normal_info_text_disp}]
+                        </div>
+                        [UnasDesign - IfEnd{price_net_disp}]
+
+                        [UnasDesign - IfStart{price_akcio_disp}]
+                        <div class="product-tooltip__price-discount">
+                            [UnasDesign - IfStart{price_discounted_text_disp}]
+                                [UnasDesign - Normal{price_discounted_text}]
+                            [UnasDesign - IfEnd{price_discounted_text_disp}]
+                            [UnasDesign - Normal{price_akcio}]
+                        </div>
+                        [UnasDesign - IfEnd{price_akcio_disp}]
+
+                        [UnasDesign - IfStart{price_akcio_text_disp}]
+                        <div class="product-tooltip__price-discount-period mb-2">
+                            <span class="product-tooltip__price-discount-period-start">[UnasDesign - Normal{price_akcio_text_start}]</span>&nbsp;&nbsp;
+                            <span class="product-tooltip__price-discount-period-end">[UnasDesign - Normal{price_akcio_text_end}]</span>
+                        </div>
+                        [UnasDesign - IfEnd{price_akcio_text_disp}]
+
+                        [UnasDesign - IfStart{price_unit_disp}]
+                        <div class="product-tooltip__price-unit mb-2">[UnasDesign - Text{art_price_unit}]: [UnasDesign - Normal{price_unit}]</div>
+                        [UnasDesign - IfEnd{price_unit_disp}]
+
+                        [UnasDesign - IfStart{point_highlighted_disp}]
+                        <div class="product-tooltip__virtual-point-highlighted mb-2">[UnasDesign - Text{art_virt_pont}]: [UnasDesign - Normal{point}]</div>
+                        [UnasDesign - IfEnd{point_highlighted_disp}]
+
+                        [UnasDesign - IfStart{price_disp_no}]
+                        <button class='line-height-12 product-tooltip__price-login-btn price-need-login btn btn--text font-s' type='button' onclick='overlay_login()'>
+                            [UnasDesign - Text{name:needlogin_price;page:common}]
+                        </button>
+                        [UnasDesign - IfEnd{price_disp_no}]
+                    </div>
+                    [UnasDesign - IfEnd{price_disp}]
+
+                     [UnasDesign - IfStart{is_subscribable}]
+                     <div id="artdet__subscription-period" class="subscription-period js-subscription-block font-s font-sm-m mb-4">
+                         <div class="subscription-periods">
+                             <div class="subscription-periods__title">
+                                 [UnasDesign - Text{name:select_subscription_period;page:shop_artdet;}]:
+                             </div>
+                             <div class="d-flex flex-wrap align-items-center">
+                                 [UnasDesign - IfStart{one_time_purchasable}]
+                                 <label class="subscription-period__item is-active" for="subscription_0">
+                                     <span class="subscription-period__item-text">[UnasDesign - Text{name:one_time_purchase;page:shop_artdet;}]</span>
+                                 </label>
+                                 <input class="d-none" name="tooltip_subscription_period" checked="checked" id="subscription_0" value="0" type="radio" />
+                                 [UnasDesign - IfEnd{one_time_purchasable}]
+                                 [UnasDesign - LoopStart{subscription_periods}]
+                                 <label class="subscription-period__item[UnasDesign - Loop{subscription_periods} - IfStart{checked}] is-active[UnasDesign - Loop{subscription_periods} - IfEnd{checked}]" for="subscription_[UnasDesign - Loop{subscription_periods} - Normal{length}]">
+                                     <span class="subscription-period__item-text">[UnasDesign - Loop{subscription_periods} - Normal{length}]&nbsp;[UnasDesign - Text{name:date_day;page:common;}]</span>
+                                 </label>
+                                 <input class="d-none" name="tooltip_subscription_period" id="subscription_[UnasDesign - Loop{subscription_periods} - Normal{length}]" value="[UnasDesign - Loop{subscription_periods} - Normal{length}]" type="radio"[UnasDesign - Loop{subscription_periods} - IfStart{checked}] checked="checked"[UnasDesign - Loop{subscription_periods} - IfEnd{checked}] />
+                                 [UnasDesign - LoopEnd{subscription_periods}]
+                             </div>
+                         </div>
+                     </div>
+                     <script>
+                         $(document).on('click','.subscription-period__item',function(){
+                             let block = $(this).closest('.js-subscription-block');
+                             $('.subscription-period__item', block).removeClass('is-active');
+                             $(this).addClass('is-active');
+                         });
+                     </script>
+                     [UnasDesign - IfEnd{is_subscribable}]
+
+                    [UnasDesign - IfStart{price_disp_no|cart_disp}]
+                        [UnasDesign - IfStart{cart_disp}]
+                        <div class="product-tooltip__cart mb-3">
+                            <div class="product-tooltip__cart-inner row no-gutters align-items-center justify-content-center bg--secondary">
+                                [UnasDesign - IfStart{cart_yes_disp}]
+                                <div class="page_qty_input_outer col-auto m-2">
+                                    <div class="product-tooltip__cart-btn-input-wrap d-flex justify-content-center">
+                                        <button type='button' class='qtyminus qtyminus_common qty_disable icon--minus btn--square-sm btn--primary'></button>
+                                        <div class="product-tooltip__cart-input-wrap page_qty_input_wrap d-flex justify-content-center">
+                                            <input name="db" id="[UnasDesign - Normal{cart_input_id}]" type="number" step="[UnasDesign - Normal{cart_input_data_step}]" value="[UnasDesign - Normal{cart_input_value}]" maxlength="7" class="artdet__cart-input page_qty_input" data-min="[UnasDesign - Normal{cart_input_data_min}]" data-max="[UnasDesign - Normal{cart_input_data_max}]" data-step="[UnasDesign - Normal{cart_input_data_step}]">
+
+                                            [UnasDesign - IfStart{cart_unit_disp}]
+                                                <div class='product-tooltip__cart-unit text-center usn'>[UnasDesign - Normal{cart_unit}]</div>
+                                            [UnasDesign - IfEnd{cart_unit_disp}]
+                                        </div>
+                                        <button type='button' class='qtyplus qtyplus_common icon--plus btn--square-sm btn--primary'></button>
+                                    </div>
+                                </div>
+                                <div class='product-tooltip__cart-btn-wrap col d-flex justify-content-center my-3 mx-2 usn'><a class="product-tooltip__cart-btn btn btn--text icon--b-cart" href="[UnasDesign - Normal{cart_link}]">[UnasDesign - Text{name:tocart;page:common}]</a></div>
+                                [UnasDesign - IfEnd{cart_yes_disp}]
+                            </div>
+                        </div>
+                        [UnasDesign - IfEnd{cart_disp}]
+                    [UnasDesign - IfEnd{price_disp_no|cart_disp}]
+
+                    [UnasDesign - IfStart{inquire_disp}]
+                         <div id="product-tooltip__inquire" class='product-tooltip__inquire-btn-wrap text-center my-4 text-center'>
+                             <button type="button" class="product-tooltip__inquire-btn btn btn--primary icon--b-info" onclick="popup_question_dialog('[UnasDesign - Normal{sku_id}]'); return false;">[UnasDesign - Text{inquire}]</button>
+                         </div>
+                    [UnasDesign - IfEnd{inquire_disp}]
+
+                     <div id="page_tooltip_content_inner_right_functions">
+                         <div class="product-tooltip__function d-flex justify-content-center mx-auto mb-5">
+                             [UnasDesign - IfStart{artdet_func_favourites_disp}]
+                             <div class='product-tooltip__function-outer artdet__function-outer artdet-func-favourites page_artdet_func_favourites_outer_[UnasDesign - Normal{sku_id}][UnasDesign - IfStart{artdet_func_favourites_checked}] added[UnasDesign - IfEnd{artdet_func_favourites_checked}]'>
+                                 <a class='artdet__function-btn function-btn tooltip page_artdet_func_favourites_[UnasDesign - Normal{sku_id}]'
+                                    href='[UnasDesign - Normal{artdet_func_favourites_href}]' id='page_tooltip_func_favourites'>
+                                     <div class="artdet__function-icon function-icon icon--favo"></div>
+                                     <div class="artdet__function-text tooltip-text page_artdet_func_favourites_text_[UnasDesign - Normal{sku_id}]">[UnasDesign - Normal{artdet_func_favourites_text_raw}]</div>
+                                 </a>
+                             </div>
+                             [UnasDesign - IfEnd{artdet_func_favourites_disp}]
+
+                             [UnasDesign - IfStart{artdet_func_recommend_disp}]
+                             <div class='product-tooltip__function-outer artdet__function-outer artdet-func-recommend'>
+                                 <a class='artdet__function-btn function-btn tooltip' href='[UnasDesign - Normal{artdet_func_recommend_href}]' id='page_artdet_func_recommend'>
+                                     <div class="artdet__function-icon function-icon icon--mail"></div>
+                                     <div class="artdet__function-text tooltip-text">[UnasDesign - Normal{artdet_func_recommend_text}]</div>
+                                 </a>
+                             </div>
+                             [UnasDesign - IfEnd{artdet_func_recommend_disp}]
+
+                             [UnasDesign - IfStart{artdet_func_print_disp}]
+                             <div class='product-tooltip__function-outer artdet__function-outer artdet-func-print d-none d-lg-block'>
+                                 <a class='artdet__function-btn function-btn tooltip' href='[UnasDesign - Normal{artdet_func_print_href}]' id='page_artdet_func_print'>
+                                     <div class="artdet__function-icon function-icon icon--print"></div>
+                                     <div class="artdet__function-text tooltip-text">[UnasDesign - Normal{artdet_func_print_text}]</div>
+                                 </a>
+                             </div>
+                             [UnasDesign - IfEnd{artdet_func_print_disp}]
+
+                             [UnasDesign - IfStart{artdet_func_compare_disp}]
+                             <div class='product-tooltip__function-outer artdet__function-outer artdet-func-compare'>
+                                 <a class='artdet__function-btn function-btn tooltip page_artdet_func_compare_[UnasDesign - Normal{sku_id}][UnasDesign - IfStart{artdet_func_compare_checked}] page_artdet_func_compare_checked[UnasDesign - IfEnd{artdet_func_compare_checked}]'
+                                    href='[UnasDesign - Normal{artdet_func_compare_href}]' id='page_artdet_func_compare'>
+                                     <div class="artdet__function-icon function-icon icon--compare"></div>
+                                     <div class="artdet__function-text function-text tooltip-text page_artdet_func_compare_text_[UnasDesign - Normal{sku_id}]"
+                                          data-text-add="[UnasDesign - Text{name:compare;page:design}]" data-text-delete="[UnasDesign - Text{name:compare_delete;page:design}]"
+                                     >
+                                         [UnasDesign - IfStart{compare_checked}][UnasDesign - Text{name:compare_delete;page:design}][UnasDesign - IfEnd{compare_checked}]
+                                         [UnasDesign - IfStart{!compare_checked}][UnasDesign - Text{name:compare;page:design}][UnasDesign - IfEnd{!compare_checked}]
+                                     </div>
+                                 </a>
+                             </div>
+                             [UnasDesign - IfEnd{artdet_func_compare_disp}]
+
+                             [UnasDesign - IfStart{artdet_func_question_disp}]
+                             <div class='product-tooltip__function-outer artdet__function-outer artdet-func-question'>
+                                 <a class='artdet__function-btn function-btn tooltip' href='[UnasDesign - Normal{artdet_func_question_href}]' id='page_artdet_func_question'>
+                                     <div class="artdet__function-icon function-icon icon--question"></div>
+                                     <div class="artdet__function-text tooltip-text">[UnasDesign - Normal{artdet_func_question_text}]</div>
+                                 </a>
+                             </div>
+                             [UnasDesign - IfEnd{artdet_func_question_disp}]
+                             <div class="product-tooltip__function-outer">
+                                 <a class="artdet__function-btn function-btn tooltip__btn tooltip" href="[UnasDesign - Normal{det_url}]">
+                                     <div class="artdet__function-icon function-icon icon--details"></div>
+                                     <div class="artdet__function-text tooltip-text">[UnasDesign - Text{name:det;page:common}]</div>
+                                 </a>
+                             </div>
+
+                         </div>
+                     </div>
+
+                     [UnasDesign - IfStart{warehouses_disp}]
+                     <div class="artdet__warehouses">
+                         [UnasDesign - LoopStart{warehouses}]
+                         <div class="artdet__warehouse pb-2 mb-2">
+                             <div class="artdet__warehouse--inner row no-gutters">
+                                 <div class="artdet__warehouse-left col">
+                                     <div class="artdet__warehouse-name pb-2">[UnasDesign - Loop{warehouses} - Normal{name}]</div>
+                                 </div>
+                                 <div class="artdet__warehouse-right col-auto d-flex align-items-center">
+                                     <div class="artdet__warehouse-quantity[UnasDesign - Loop{warehouses} - IfStart{variant_infos_disp}] has-variant-info[UnasDesign - Loop{warehouses} - IfEnd{variant_infos_disp}]">
+                                         [UnasDesign - Loop{warehouses} - IfStart{stock_text_disp}]
+                                         [UnasDesign - Loop{warehouses} - IfStart{out_of_stock}]
+                                         [UnasDesign - Text{name:out_of_stock;page:common}]
+                                         [UnasDesign - Loop{warehouses} - IfEnd{out_of_stock}]
+
+                                         [UnasDesign - Loop{warehouses} - IfStart{!out_of_stock}]
+                                         [UnasDesign - Text{name:in_stock;page:common}]
+                                         [UnasDesign - Loop{warehouses} - IfEnd{!out_of_stock}]
+                                         [UnasDesign - Loop{warehouses} - IfEnd{stock_text_disp}]
+
+                                         [UnasDesign - Loop{warehouses} - IfStart{!stock_text_disp}]
+                                         [UnasDesign - Loop{warehouses} - IfStart{out_of_stock}]
+                                         [UnasDesign - Text{name:out_of_stock;page:common}]
+                                         [UnasDesign - Loop{warehouses} - IfEnd{out_of_stock}]
+
+                                         [UnasDesign - Loop{warehouses} - IfStart{!out_of_stock}]
+                                         [UnasDesign - Loop{warehouses} - Normal{quantity}] [UnasDesign - Normal{unit}]
+                                         [UnasDesign - Loop{warehouses} - IfEnd{!out_of_stock}]
+                                         [UnasDesign - Loop{warehouses} - IfEnd{!stock_text_disp}]
+                                     </div>
+
+                                     [UnasDesign - Loop{warehouses} - IfStart{variant_infos_disp}]
+                                     <span class="artdet__warehouse-variant-info icon--info" data-tippy="
+                                            [UnasDesign - Loop{warehouses} - LoopStart{variant_infos}]
+                                                <div class='warehouse__variant-info mb-2 pb-2 d-flex flex-nowrap justify-content-between' style='min-width: 150px;'>
+                                                    <div class='warehouse__variant-info-name'>[UnasDesign - Loop{warehouses} - Loop{variant_infos} - Normal{name}]</div>
+                                                    <div class='warehouse__variant-info-quantity'>
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{stock_text_disp}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{out_of_stock}]
+                                                            [UnasDesign - Text{name:out_of_stock;page:common}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{out_of_stock}]
+
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{!out_of_stock}]
+                                                            [UnasDesign - Text{name:in_stock;page:common}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{!out_of_stock}]
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{stock_text_disp}]
+
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{!stock_text_disp}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{out_of_stock}]
+                                                            [UnasDesign - Text{name:out_of_stock;page:common}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{out_of_stock}]
+
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{!out_of_stock}]
+                                                            [UnasDesign - Loop{warehouses} - Loop{variant_infos} - Normal{quantity}] [UnasDesign - Normal{unit}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{!out_of_stock}]
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{!stock_text_disp}]
+                                                    </div>
+                                                </div>
+                                            [UnasDesign - Loop{warehouses} - LoopEnd{variant_infos}]
+                                        "></span>
+                                     [UnasDesign - Loop{warehouses} - IfEnd{variant_infos_disp}]
+                                 </div>
+                             </div>
+
+                             [UnasDesign - Loop{warehouses} - IfStart{info_disp}]
+                             <div class="artdet__warehouse-info-wrapper row no-gutters">
+                                 <div class="artdet__warehouse-info col-12">[UnasDesign - Loop{warehouses} - Normal{info}]</div>
+                             </div>
+                             [UnasDesign - Loop{warehouses} - IfEnd{info_disp}]
+                         </div>
+                         [UnasDesign - LoopEnd{warehouses}]
+                     </div>
+                     [UnasDesign - IfEnd{warehouses_disp}]
+                </div>
+
+            [UnasDesign - Normal{artdet_form_end}]
+            </div>
+
+            [UnasDesign - IfStart{short_desc_disp}]
+            <div class="product-tooltip__short-descripton py-3">
+                <div class="product-tooltip__short-descripton-content text-justify">[UnasDesign - Normal{short_desc}]</div>
+            </div>
+            [UnasDesign - IfEnd{short_desc_disp}]
+        </div>
+    [UnasDesign - IfEnd{art_yes}]
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".param_desc_popup[title]").tooltip({tipClass: "param_desc_tooltip text_normal bg_color_light3 border_1"});
+        if (typeof initTippy == 'function'){
+                initTippy();
+            }
+	});
+</script>

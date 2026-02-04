@@ -1,0 +1,38 @@
+<div class="order-steps page_orderflow_step_[UnasDesign - Normal{step_act_max}] mb-5" id="page_orderflow_outer">
+    <div class="d-flex no-gutters">
+    [UnasDesign - LoopStart{step_loop}]
+        <div class="col flex-grow-0 flex-md-grow-1 order-step pr-md-2 d-flex align-items-center justify-content-center justify-content-md-end order-step--[UnasDesign - Loop{step_loop} - Normal{step_key}]">
+            <div class="order-step-inner d-inline-flex align-items-center align-items-sm-end  align-items-md-center align-items-lg-end text-right">
+                <div class="order-step__text font-xs text-uppercase line-clamp--2-14">[UnasDesign - Loop{step_loop} - Normal{step_title}]</div>
+                <div class="order-step__num font-xl px-3 font-weight-700 line-height-1">[UnasDesign - Loop{step_loop} - Normal{step_num}]</div>
+            </div>
+        </div>
+    [UnasDesign - LoopEnd{step_loop}]
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    [UnasDesign - IfStart{fade_reg}]$(".order-step--reg").addClass("is-done");[UnasDesign - IfEnd{fade_reg}]
+    [UnasDesign - IfStart{fade_mods}]$(".order-step--mods").addClass("is-done");[UnasDesign - IfEnd{fade_mods}]
+    [UnasDesign - IfStart{fade_control}]$(".order-step--control").addClass("is-done");[UnasDesign - IfEnd{fade_control}]
+    [UnasDesign - IfStart{fade_send}]$(".order-step--send").addClass("is-done");[UnasDesign - IfEnd{fade_send}]
+    [UnasDesign - IfStart{fade_checkout}]$(".order-step--checkout").addClass("is-done");[UnasDesign - IfEnd{fade_checkout}]
+
+    $(".order-step--[UnasDesign - Normal{step_act_key}]").addClass("is-active");
+
+    [UnasDesign - IfStart{link_reg}]
+        $(".order-step--reg").click(function(){
+        	location.href="[UnasDesign - Normal{link_reg_url}]";
+        });
+        $(".order-step--reg").css("cursor","pointer");
+    [UnasDesign - IfEnd{link_reg}]
+
+    [UnasDesign - IfStart{link_mods}]
+    $(".order-step--mods").click(function(){
+        location.href="[UnasDesign - Normal{link_mods_url}]";
+    });
+    $(".order-step--mods").css("cursor","pointer");
+    [UnasDesign - IfEnd{link_mods}]
+});
+</script>

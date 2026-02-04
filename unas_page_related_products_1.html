@@ -1,0 +1,163 @@
+[UnasDesign - DesignVar{name:additional_product_img_maxwidth;value:180}]
+[UnasDesign - DesignVar{name:additional_product_img_maxheight;value:180}]
+[UnasDesign - DesignVar{name:attach_num;value:12}]
+[UnasDesign - DesignVar{name:similar_product_img_maxwidth;value:180}]
+[UnasDesign - DesignVar{name:similar_product_img_maxheight;value:180}]
+[UnasDesign - DesignVar{name:attach_num2;value:12}]
+[UnasDesign - DesignVar{name:list_pic_class;value:no}]
+[UnasDesign - DesignVar{name:products_in_bundle_img_maxwidth;value:180}]
+[UnasDesign - DesignVar{name:products_in_bundle_img_maxheight;value:180}]
+[UnasDesign - DesignVar{name:artpack_num;value:99}]
+
+<!--Hasonló, és kiegészítő termékek-->
+[UnasDesign - IfStart{similar_disp|additional_disp}]
+    <div class="[UnasDesign - Normal{related_type}]-product__items clearfix pb-3">
+        [UnasDesign - LoopStart{art_item}]
+        <div class='[UnasDesign - Normal{related_type}]-product__item'>
+            <div class="[UnasDesign - Normal{related_type}]-product__item-inner h-100 d-flex flex-column">
+                <div class="[UnasDesign - Normal{related_type}]-product__statuses product-statuses">
+                    [UnasDesign - Loop{art_item} - IfStart{akcio_disp}]
+                    <div class="[UnasDesign - Normal{related_type}]-product__sale product-status product-status--sale">[UnasDesign - Loop{art_item} - Normal{akcio}]</div>
+                    [UnasDesign - Loop{art_item} - IfEnd{akcio_disp}]
+
+                    [UnasDesign - Loop{art_item} - IfStart{new_disp}]
+                    <div class="[UnasDesign - Normal{related_type}]-product__new product-status product-status--new">[UnasDesign - Text{name:new_stat;page:common}]</div>
+                    [UnasDesign - Loop{art_item} - IfEnd{new_disp}]
+                </div>
+                <div class='[UnasDesign - Normal{related_type}]-product__img-wrapper product-img-wrapper'>
+                    <a class="[UnasDesign - Normal{related_type}]-product__img-link product-img-link" href="[UnasDesign - Loop{art_item} - Normal{art_item_det_url}]">
+                        <img class="[UnasDesign - Normal{related_type}]-product__img product-img lazyload"
+                             [UnasDesign - IfStart{similar_disp}]
+                             width="[UnasDesign - Normal{backvar_similar_product_img_maxwidth}]" height="[UnasDesign - Normal{backvar_similar_product_img_maxheight}]"
+                             [UnasDesign - IfEnd{similar_disp}]
+                             [UnasDesign - IfStart{additional_disp}]
+                             width="[UnasDesign - Normal{backvar_additional_product_img_maxwidth}]" height="[UnasDesign - Normal{backvar_additional_product_img_maxheight}]"
+                             [UnasDesign - IfEnd{additional_disp}]
+                             src="[unas_shop_url]/!common_design/base/001600/image/loading.gif" data-src="[UnasDesign - Loop{art_item} - Normal{art_item_pic_url}]"
+                             [UnasDesign - Loop{art_item} - IfStart{img_retina_exists}]
+                             data-srcset="[UnasDesign - Loop{art_item} - Normal{img_retina_url}] [UnasDesign - Loop{art_item} - Normal{img_retina_size}]"
+                             [UnasDesign - Loop{art_item} - IfEnd{img_retina_exists}] alt="[UnasDesign - Loop{art_item} - Normal{pic_alt_text}]"
+                        >
+                    </a>
+                </div>
+
+                <div class="[UnasDesign - Normal{related_type}]-product__datas py-4 d-flex flex-column flex-grow-1">
+                    <div class='[UnasDesign - Normal{related_type}]-product__name-wrap product-name d-flex justify-content-center mb-3'>
+                        <a class="[UnasDesign - Normal{related_type}]-product__name line-clamp--3-12" href="[UnasDesign - Loop{art_item} - Normal{art_item_det_url}]">[UnasDesign - Loop{art_item} - Normal{name}]</a>
+                    </div>
+
+                    <div class="[UnasDesign - Normal{related_type}]-product__stock mb-2">
+                        [UnasDesign - Loop{art_item} - IfStart{stock_disp}]
+                        [UnasDesign - Loop{art_item} - IfStart{stock_available}]
+                        <div class="[UnasDesign - Normal{related_type}]-product__stock-text product-stock-text text-color--on-stock d-flex flex-wrap justify-content-center align-items-center">
+                            <div class="[UnasDesign - Normal{related_type}]-product__stock-title icon--b-on-stock">[UnasDesign - Text{name:in_stock;page:common}]</div>
+                            [UnasDesign - IfStart{!stock_text_only}]<div class="[UnasDesign - Normal{related_type}]-product__stock-content">:&nbsp;[UnasDesign - Loop{art_item} - Normal{art_item_stock}]</div>[UnasDesign - IfEnd{!stock_text_only}]
+                        </div>
+                        [UnasDesign - Loop{art_item} - IfEnd{stock_available}]
+
+                        [UnasDesign - Loop{art_item} - IfStart{!stock_available}]
+                        [UnasDesign - Loop{art_item} - IfStart{!no_stock_but_buyable_disp}]
+                        <div class="[UnasDesign - Normal{related_type}]-product__stock-text product-stock-text text-color--out-of-stock text-center">
+                            <div class="[UnasDesign - Normal{related_type}]-product__stock-title icon--b-out-of-stock">[UnasDesign - Text{name:out_of_stock;page:common}]</div>
+                        </div>
+                        [UnasDesign - Loop{art_item} - IfEnd{!no_stock_but_buyable_disp}]
+                        [UnasDesign - Loop{art_item} - IfStart{no_stock_but_buyable_disp}]
+                        <div class="[UnasDesign - Normal{related_type}]-product__stock-text product-stock-text text-color--to-order text-center">
+                            <div class="[UnasDesign - Normal{related_type}]-product__stock-title icon--b-exclamation-2">[UnasDesign - Text{name:available_on_backorder;page:common}]</div>
+                        </div>
+                        [UnasDesign - Loop{art_item} - IfEnd{no_stock_but_buyable_disp}]
+
+                        [UnasDesign - Loop{art_item} - IfEnd{!stock_available}]
+                        [UnasDesign - Loop{art_item} - IfEnd{stock_disp}]
+                    </div>
+
+                    [UnasDesign - Loop{art_item} - IfStart{price_disp}]
+                    <div class="[UnasDesign - Normal{related_type}]-product__prices with-rrp row no-gutters justify-content-center align-items-baseline[UnasDesign - Loop{art_item} - IfStart{art_item_price_akcio_disp}] has-sale-price[UnasDesign - Loop{art_item} - IfEnd{art_item_price_akcio_disp}]">
+                        [UnasDesign - Loop{art_item} - IfStart{!art_item_price_akcio_disp}]
+                        <div class='[UnasDesign - Normal{related_type}]-product__price-base price-base mx-2'>[UnasDesign - Loop{art_item} - Normal{price}]</div>
+                        [UnasDesign - Loop{art_item} - IfEnd{!art_item_price_akcio_disp}]
+
+                        [UnasDesign - Loop{art_item} - IfStart{art_item_price_akcio_disp}]
+                        <div class='[UnasDesign - Normal{related_type}]-product__price-base price-base has-discount-price mx-2 col-12 col-sm-auto text-center position-relative'>
+                            [UnasDesign - Loop{art_item} - IfStart{price_normal_text_disp}]
+                                [UnasDesign - Loop{art_item} - Normal{price_normal_text}]
+                            [UnasDesign - Loop{art_item} - IfEnd{price_normal_text_disp}]
+                            [UnasDesign - Loop{art_item} - Normal{art_item_price_net}][UnasDesign - Loop{art_item} - IfStart{price_normal_info_text_disp}]&nbsp;<span class="page_artdet_param_desc param_desc_popup param_desc_popup_ver4" data-tippy="[UnasDesign - Loop{art_item} - Normal{price_normal_info_text}]"><span><p>[UnasDesign - Loop{art_item} - Normal{price_normal_info_text}]</p></span></span>[UnasDesign - Loop{art_item} - IfEnd{price_normal_info_text_disp}]
+                        </div>
+                        <div class='[UnasDesign - Normal{related_type}]-product__price-discount price-discount mx-2 col-12 col-sm-auto text-center'>
+                            [UnasDesign - Loop{art_item} - IfStart{price_discounted_text_disp}]
+                                [UnasDesign - Loop{art_item} - Normal{price_discounted_text}]
+                            [UnasDesign - Loop{art_item} - IfEnd{price_discounted_text_disp}]
+                            [UnasDesign - Loop{art_item} - Normal{price_sale}]
+                        </div>
+                        [UnasDesign - Loop{art_item} - IfEnd{art_item_price_akcio_disp}]
+                    </div>
+                    [UnasDesign - Loop{art_item} - IfEnd{price_disp}]
+                </div>
+            </div>
+        </div>
+        [UnasDesign - LoopEnd{art_item}]
+    </div>
+    <script>
+        $(document).ready(function() {
+            if (typeof initTippy == 'function'){
+                initTippy();
+            }
+        });
+    </script>
+[UnasDesign - IfEnd{similar_disp|additional_disp}]
+
+<!--Csomagtermék tartalma-->
+[UnasDesign - IfStart{bundle_disp}]
+    <div class="bundle-product__items mb-5 clearfix">
+        [UnasDesign - LoopStart{art_item}]
+        <div class='bundle-product__item usn text-center'>
+            <div class='bundle-product__item-inner h-100 d-flex flex-column'>
+                <div class="bundle-product__statuses product-statuses">
+                    [UnasDesign - Loop{art_item} - IfStart{akcio_disp}]
+                    <div class="bundle-product__sale product-status product-status--sale">[UnasDesign - Loop{art_item} - Normal{akcio}]</div>
+                    [UnasDesign - Loop{art_item} - IfEnd{akcio_disp}]
+
+                    [UnasDesign - Loop{art_item} - IfStart{new_disp}]
+                    <div class="bundle-product__new product-status product-status--new">[UnasDesign - Text{name:new_stat;page:common}]</div>
+                    [UnasDesign - Loop{art_item} - IfEnd{new_disp}]
+                </div>
+                <div class='bundle-product__img-wrapper product-img-wrapper'>
+                    <a class="bundle-product__img-link product-img-link" href="[UnasDesign - Loop{art_item} - Normal{art_item_det_url}]">
+                        <img class="bundle-product__img product-img lazyload"
+                             width="[UnasDesign - Normal{backvar_products_in_bundle_img_maxwidth}]" height="[UnasDesign - Normal{backvar_products_in_bundle_img_maxheight}]"
+                             src="[unas_shop_url]/!common_design/base/001600/image/loading.gif" data-src="[UnasDesign - Loop{art_item} - Normal{art_item_pic_url}]"
+                             [UnasDesign - Loop{art_item} - IfStart{img_retina_exists}]
+                             data-srcset="[UnasDesign - Loop{art_item} - Normal{img_retina_url}] [UnasDesign - Loop{art_item} - Normal{img_retina_size}]"
+                             [UnasDesign - Loop{art_item} - IfEnd{img_retina_exists}]
+                             alt="[UnasDesign - Loop{art_item} - Normal{pic_alt_text}]" title="[UnasDesign - Loop{art_item} - Normal{pic_alt_text}]"
+                        >
+                    </a>
+                </div>
+                <div class="bundle-product__datas pt-4 flex-grow-1 d-flex flex-column">
+                    <div class='bundle-product__name-wrap product-name d-flex justify-content-center mb-3'>
+                        <a class="bundle-product__name line-clamp--3-12" href="[UnasDesign - Loop{art_item} - Normal{art_item_det_url}]">[UnasDesign - Loop{art_item} - Normal{name}]</a>
+                    </div>
+
+                    [UnasDesign - Loop{art_item} - IfStart{price_disp}]
+                    <div class="bundle-product__prices row no-gutters justify-content-center align-items-baseline mb-3">
+                        [UnasDesign - Loop{art_item} - IfStart{!akcio_disp}]
+                        <div class='bundle-product__price-base price-base mx-2'>[UnasDesign - Loop{art_item} - Normal{price}]</div>
+                        [UnasDesign - Loop{art_item} - IfEnd{!akcio_disp}]
+
+                        [UnasDesign - Loop{art_item} - IfStart{akcio_disp}]
+                        <div class='bundle-product__price-base price-base has-discount-price mx-2'>[UnasDesign - Loop{art_item} - Normal{price_base_orig}]</div>
+                        <div class='bundle-product__price-discount price-discount mx-2'>[UnasDesign - Loop{art_item} - Normal{price}]</div>
+                        [UnasDesign - Loop{art_item} - IfEnd{akcio_disp}]
+                    </div>
+                    [UnasDesign - Loop{art_item} - IfEnd{price_disp}]
+
+                    <div class="bundle-product__qty-wrap text-center mt-auto overflow-hidden gutters-20">
+                        <button class="bundle-product__qty-btn btn--grad-sep btn--small" type="button">[UnasDesign - Loop{art_item} - Normal{artpack_qty}]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        [UnasDesign - LoopEnd{art_item}]
+    </div>
+[UnasDesign - IfEnd{bundle_disp}]

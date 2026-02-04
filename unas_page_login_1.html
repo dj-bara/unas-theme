@@ -1,0 +1,63 @@
+<div class='page-login page_content [UnasDesign - Normal{plus_class1}]' id='page_login_content'>
+
+    [UnasDesign - IfStart{text_top_disp}]
+        <div class='page_txt'>[UnasDesign - Normal{text_top}]</div>
+        <div class="line-separator"></div>
+    [UnasDesign - IfEnd{text_top_disp}]
+
+    <div class="page-login__inner container-md px-0 py-3">
+        <div class="row gutters-20">
+            <div class="col-sm-6 page-login__sign-in-col">
+                [UnasDesign - Normal{form_login_start}]
+                <div class="page-login__sign-in py-3">
+                    <div class="page-login-title title--theme-1 h4">[UnasDesign - Text{name:login_cust_back;page:box_shop}]</div>
+
+                    <div class="page-login__name mb-3">[UnasDesign - Normal{login_name}]</div>
+                    <div class="page-login__password mb-2">[UnasDesign - Normal{login_pass}]</div>
+                    <button type="button" class="page-login__remind-btn btn--text btn--block icon--b-unlock mb-4 btn--no-text-transform" onclick="overlay_login_remind();">[UnasDesign - Text{name:login_remind;page:box_shop}]</button>
+                    <button class="page-login__sign-in-btn btn btn--primary btn--block mb-4" type="submit">[UnasDesign - Text{name:login_login;page:box_shop}]</button>
+
+                    [UnasDesign - IfStart{facebook_login_disp|google_login_disp}]
+                    <div class="page-login__third-parties d-flex flex-column align-items-center">
+                        [UnasDesign - IfStart{facebook_login_disp}]
+                        <div class="d-inline-block new-cust__facebook-btn-wrap mt-2 mx-2">
+                            [UnasDesign - Normal{facebook_login}]
+                        </div>
+                        [UnasDesign - IfEnd{facebook_login_disp}]
+
+                        [UnasDesign - IfStart{google_login_disp}]
+                        <div class="d-inline-block new-cust__google-btn-wrap mt-2 mx-2">
+                            [UnasDesign - Normal{google_login}]
+                        </div>
+                        [UnasDesign - IfEnd{google_login_disp}]
+                    </div>
+                    [UnasDesign - IfEnd{facebook_login_disp|google_login_disp}]
+                </div>
+                [UnasDesign - Normal{form_login_end}]
+            </div>
+            <div class="col-sm-6">
+                <div class="page-login__reg py-3" id='page_login_reg'>
+                    <div class="page-login-title title--theme-1 h4">[UnasDesign - Text{name:login_cust_new;page:box_shop}]</div>
+                    <div class="page-login-text h5">[UnasDesign - Text{name:login_cust_new_list_title;page:box_shop}]</div>
+                    <ul class="page-login__reg-adv">
+                        <li>[UnasDesign - Text{name:login_cust_new_list1;page:box_shop}]</li>
+                        <li>[UnasDesign - Text{name:login_cust_new_list2;page:box_shop}]</li>
+                        <li>[UnasDesign - Text{name:login_cust_new_list3;page:box_shop}]</li>
+                    </ul>
+
+                    <button class="overlay-reg__btn-reg btn btn--primary btn--block mb-4" onclick="location.href='[UnasDesign - Normal{reg_url}]'">[UnasDesign - Text{name:menu_reg;page:box_shop}]</button>
+                    [UnasDesign - IfStart{noreg_disp}]
+                    <button class="overlay-reg__btn-no-reg btn btn--primary btn--block mb-4" onclick="location.href='[UnasDesign - Normal{noreg_url}]'">
+                        [UnasDesign - Text{name:no_reg;page:box_shop}]
+                    </button>
+                    [UnasDesign - IfEnd{noreg_disp}]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    [UnasDesign - IfStart{text_bottom_disp}]
+        <div class="line-separator"></div>
+        <div class='page_txt'>[UnasDesign - Normal{text_bottom}]</div>
+    [UnasDesign - IfEnd{text_bottom_disp}]
+</div>

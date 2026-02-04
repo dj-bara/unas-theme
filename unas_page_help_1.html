@@ -1,0 +1,69 @@
+<div id='page_help_content' class='page_content'>
+
+    [UnasDesign - IfStart{!tab_num_1}]
+        <div id="page_help_tabs" class="page_tabs">
+            [UnasDesign - LoopStart{tabs}]
+            	<div id="page_help_tab_[UnasDesign - Loop{tabs} - Normal{key}]" rel="[UnasDesign - Loop{tabs} - Normal{key}]" class="page_tab">[UnasDesign - Loop{tabs} - Normal{title}]</div>
+            [UnasDesign - LoopEnd{tabs}]
+        </div>
+    [UnasDesign - IfEnd{!tab_num_1}]
+
+    [UnasDesign - LoopStart{tabs}]
+        [UnasDesign - Loop{tabs} - IfStart{out}]
+        	<div id="tab2_[UnasDesign - Loop{tabs} - Normal{key}]" rel="[UnasDesign - Loop{tabs} - Normal{key}]" class="page_tab2">[UnasDesign - Loop{tabs} - Normal{title}]</div>
+            <div id='page_help_tab_[UnasDesign - Loop{tabs} - Normal{key}]_content' class='page_help_tab_content'>[UnasDesign - Loop{tabs} - Normal{content}]</div>
+        [UnasDesign - Loop{tabs} - IfEnd{out}]
+
+        [UnasDesign - Loop{tabs} - IfStart{!out}]
+        	<div id="tab2_[UnasDesign - Loop{tabs} - Normal{key}]" rel="[UnasDesign - Loop{tabs} - Normal{key}]" class="page_tab2">[UnasDesign - Loop{tabs} - Normal{title}]</div>
+            <div id='page_help_tab_[UnasDesign - Loop{tabs} - Normal{key}]_content' class='page_help_tab_content'>
+                [UnasDesign - Loop{tabs} - IfStart{pdf_type}]
+                    <div class="text-right mt-2" id='page_help_icon'>
+                        <a class='page-help-icon icon--print btn btn--alt btn--square' href='[UnasDesign - Loop{tabs} - Normal{pdf_url}]' rel='nofollow' target='_blank' title="[UnasDesign - Text{name:art_det_print;page:shop_artdet;}]"></a>
+                    </div>
+                [UnasDesign - Loop{tabs} - IfEnd{pdf_type}]
+
+                [UnasDesign - Loop{tabs} - LoopStart{item}]
+                    [UnasDesign - Loop{tabs} - Loop{item} - IfStart{title_disp}]
+                        <a name="[UnasDesign - Loop{tabs} - Normal{key}]_item_[UnasDesign - Loop{tabs} - Loop{item} - Normal{num}]"></a>[UnasDesign - Loop{tabs} - IfStart{key_terms}]<a name="item_[UnasDesign - Loop{tabs} - Loop{item} - Normal{num}]"></a>[UnasDesign - Loop{tabs} - IfEnd{key_terms}]<div class='page_artdet_name_outer border_1'><div class='page_artdet_name page_help_title title--theme-1'>[UnasDesign - Loop{tabs} - Loop{item} - Normal{title}]</div></div>
+                    [UnasDesign - Loop{tabs} - Loop{item} - IfEnd{title_disp}]
+
+                    <div class='page_help_content'>[UnasDesign - Loop{tabs} - Loop{item} - Normal{text}]</div>
+                [UnasDesign - Loop{tabs} - LoopEnd{item}]
+            </div>
+        [UnasDesign - Loop{tabs} - IfEnd{!out}]
+    [UnasDesign - LoopEnd{tabs}]
+    
+    <script type="text/javascript">
+		$('.page_tab').first().addClass('page_tab_active');
+		$('.page_tab2').first().addClass('page_tab2_active');
+		$('#page_help_tab_'+$('.page_tab_active').attr('rel')+"_content").show();
+		
+		$('.page_tab').click(function() {
+			$('.page_tab').removeClass('page_tab_active');
+			$('.page_tab2').removeClass('page_tab2_active');
+
+			$(this).addClass('page_tab_active');
+			$('#tab2_'+$(this).attr('rel')).addClass('page_tab2_active');
+
+			$('.page_help_tab_content').hide();
+			$('#page_help_tab_'+$(this).attr('rel')+"_content").show();
+		});
+		$('.page_tab2').click(function() {
+			$('.page_tab').removeClass('page_tab_active');
+			$('.page_tab2').not('#tab2_'+$(this).attr('rel')).removeClass('page_tab2_active');
+
+			$(this).toggleClass('page_tab2_active');
+			$('#page_help_tab_'+$(this).attr('rel')).toggleClass('page_tab_active');
+
+			$('.page_help_tab_content').not('#page_help_tab_'+$(this).attr('rel')+"_content").slideUp();
+			$('#page_help_tab_'+$(this).attr('rel')+"_content").stop().slideToggle(400);
+            $("html, body").animate({ scrollTop: $(this).parent().offset().top - getHeaderHeight() - 70 }, 400);
+		});
+
+		[UnasDesign - IfStart{tab_default_disp}]
+		$("#page_help_tab_[UnasDesign - Normal{tab_default}]").trigger("click");
+		[UnasDesign - IfEnd{tab_default_disp}]
+	</script>
+    
+</div>

@@ -1,0 +1,25 @@
+[UnasDesign - DesignVar{name:pic_maxwidth;value:40}]
+[UnasDesign - DesignVar{name:pic_maxheight;value:40}]
+
+<div class='search_style_0[UnasDesign - IfStart{!price_disp}] no_price[UnasDesign - IfEnd{!price_disp}]'>
+    [UnasDesign - IfStart{img_disp}]
+        <div class="ac_pic">
+            <img src="[UnasDesign - Normal{img_url}]"[UnasDesign - IfStart{img_retina_exists}] srcset="[UnasDesign - Normal{img_retina_url}] [UnasDesign - Normal{img_retina_size}]"[UnasDesign - IfEnd{img_retina_exists}] alt="[UnasDesign - Normal{pic_alt}]" title="[UnasDesign - Normal{pic_alt}]">
+        </div>
+    [UnasDesign - IfEnd{img_disp}]
+    <div class='ac_name'>
+        <span class='search_name'>[UnasDesign - Normal{name}]</span>
+    </div>
+    [UnasDesign - IfStart{category}]
+        <div class='ac_price'>
+            <span class='search_price'><i>[UnasDesign - Text{name:search_autocomplete_category;page:box}]</i></span>
+        </div>
+    [UnasDesign - IfEnd{category}]
+    [UnasDesign - IfStart{product}]
+        [UnasDesign - IfStart{price_disp}]
+            <div class='ac_price'>
+                <span class='search_price'>[UnasDesign - Normal{price_actual}]</span>
+            </div>
+        [UnasDesign - IfEnd{price_disp}]
+    [UnasDesign - IfEnd{product}]
+</div>

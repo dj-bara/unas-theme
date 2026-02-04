@@ -1,0 +1,71 @@
+<div id='page_news_content' class='page_content'>
+    [UnasDesign - IfStart{news_list_disp}]
+        [UnasDesign - IfStart{page_disp}]
+            <nav class="news-paging paging--top d-flex align-items-center justify-content-center py-3 border-bottom" aria-label="pagination">
+                [UnasDesign - Normal{paging_content}]
+            </nav>
+        [UnasDesign - IfEnd{page_disp}]
+
+        [UnasDesign - LoopStart{news_loop}]
+            <div class='page_calendar_head border-bottom p-3'>
+                <div class="row no-gutters align-items-baseline">
+                    <div class="col-sm-8">
+                        <a class="page_calendar_name font-weight-700" href="[UnasDesign - Loop{news_loop} - Normal{url}]">[UnasDesign - Loop{news_loop} - Normal{title}]</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class='page_calendar_date-and-time d-flex justify-content-end font-s'>
+                            <div class="page_calendar_date">[UnasDesign - Loop{news_loop} - Normal{date}]</div>
+
+                            [UnasDesign - Loop{news_loop} - IfStart{time_disp}]
+                            <div class="page_calendar_time">
+                                &nbsp;-&nbsp;[UnasDesign - Loop{news_loop} - Normal{time}]
+                            </div>
+                            [UnasDesign - Loop{news_loop} - IfEnd{time_disp}]
+                        </div>
+                    </div>
+                    [UnasDesign - Loop{news_loop} - IfStart{news_intro_pic_disp}]
+                    <div class="page_news_intro_pic">
+                        <a href="[UnasDesign - Loop{news_loop} - Normal{url}]">
+                            <img src="[UnasDesign - Loop{news_loop} - Normal{news_intro_pic}]" alt="[UnasDesign - Loop{news_loop} - Normal{title}]">
+                        </a>
+                    </div>
+                    [UnasDesign - Loop{news_loop} - IfEnd{news_intro_pic_disp}]
+                </div>
+            </div>
+        [UnasDesign - LoopEnd{news_loop}]
+
+        [UnasDesign - IfStart{page_disp}]
+        <nav class="news-paging paging--bottom d-flex align-items-center justify-content-center py-3 border-bottom" aria-label="pagination">
+            [UnasDesign - Normal{paging_content}]
+        </nav>
+        [UnasDesign - IfEnd{page_disp}]
+
+    [UnasDesign - IfEnd{news_list_disp}]
+
+    [UnasDesign - IfStart{news_disp}]
+    <div class="page_news_item">
+        <div class="page_news_header bg-8 p-3 font-l text-uppercase ls-normal">
+            <div class="row no-gutters align-items-baseline">
+                <div class="col-sm-8">
+                    <div class='page_news_title font-weight-700'>[UnasDesign - Normal{news_title}]</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class='page_calendar_date-and-time d-flex justify-content-end font-s'>
+                        [UnasDesign - Normal{news_date}]
+                        [UnasDesign - IfStart{news_time_disp}] [UnasDesign - Normal{news_time}][UnasDesign - IfEnd{news_time_disp}]
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='page_news_content p-3 clearfix'>
+            [UnasDesign - IfStart{news_intro_pic_disp}]
+            <div class="page_news_intro_pic_wrap mr-3 mb-3 float-left">
+                <img class="page_news_intro_pic" src="[UnasDesign - Normal{news_intro_pic}]" alt="[UnasDesign - Normal{news_title}]">
+            </div>
+            [UnasDesign - IfEnd{news_intro_pic_disp}]
+            [UnasDesign - Normal{news_text}]
+        </div>
+        <a class="page-news__btn-back btn btn--primary icon--b-back" href="[unas_shop_url]/shop_news.php">[UnasDesign - Text{name:button_back;page:box}]</a>
+    </div>
+    [UnasDesign - IfEnd{news_disp}]
+</div>

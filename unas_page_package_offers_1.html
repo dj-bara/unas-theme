@@ -1,0 +1,28 @@
+{% if package_offers|length > 0 %}
+    <div class="package-offers js-package-offers" data-error-title="{{ text.package_offer_error_title }}" data-error-title-sub="{{ text.package_offer_error_title_sub }}">
+        {% for package_offer in package_offers %}
+            <div class="package-offer js-package-offer-{{ package_offer.id }} border p-4 mb-4 mb-md-5 d-flex flex-lg-row flex-column" data-name="{{ package_offer.name }}" data-id="{{ package_offer.id }}">
+                {{ _context["package_offer_items_" ~ package_offer.id] }}
+
+                <div class="package-offer-details-wrapper col-12 col-lg-5 col-xl-4 d-flex align-items-lg-center py-5 py-lg-0">
+                    <div class="package-offer__details text-center w-100">
+                        <div class="package-offer__name text-uppercase m-0 h2 mb-3">{{ package_offer.name }}</div>
+                        <div class="package-offer__original-price js-package-offer-original-price font-l{% if price_line_through %} text_style_line{% endif %}"{% if not package_offer.original_price_disp %} style="display: none;"{% endif %} data-price="{{ package_offer.original_price }}" data-price-raw="{{ package_offer.original_price_raw }}"></div>
+                        <div class="package-offer__price d-flex align-items-center justify-content-center">
+                            <div class="package-offer__discount-percent js-package-offer-percent align-items-center product-status product-status--sale mr-3"{% if not package_offer.original_price_disp %} style="display:none;"{% endif %} data-percent="%" data-percent-value="{{ package_offer.discount_percent }}"></div>
+                            <div class="package-offer__price-value js-package-offer-price font-xxl align-items-center justify-content-center" data-price-original="{{ package_offer.price_raw }}" data-price="{{ package_offer.price }}" data-price-raw="{{ package_offer.price_raw }}"></div>
+                        </div>
+                        <div class="package_offer__button-wrapper d-flex justify-content-center">
+                            <button class="icon--b-cart btn--primary package-offer__cart-btn" onclick="addPackageOfferToCart({{ package_offer.id }});" type="button" aria-label="{{ text.common.tocart }}">{{ text.common.tocart }}</button>
+
+                            <div class="js-package-offer-add-to-cart-spinner package-offer-add-to-cart-spinner position-relative" style="display: none;">
+                                <div class="loading-spinner ml-5 position-absolute"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+

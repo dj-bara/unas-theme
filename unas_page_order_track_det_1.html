@@ -1,0 +1,868 @@
+[UnasDesign - DesignVar{name:pic_maxwidth;value:70}]
+[UnasDesign - DesignVar{name:pic_maxheight;value:70}]
+
+<div id='page_order_track_det_content' class='page_content'>
+    [UnasDesign - Normal{script}]
+
+    <!-- TABS -->
+    [UnasDesign - IfStart{tab_disp}]
+    <div id="page_tabs_outer" class="page_tabs page_tabs_v2 usn">
+        [UnasDesign - IfStart{tab_orders_disp}]
+        <div id="tab_orders" rel="orders" class="page_tab page_tab_active icon--b-cart" onclick="location.href='[UnasDesign - Normal{tab_orders_link}]'">[UnasDesign - Normal{tab_orders_title}]</div>
+        [UnasDesign - IfEnd{tab_orders_disp}]
+        [UnasDesign - IfStart{tab_subscriptions_disp}]
+        <div id="tab_subscriptions" rel="subscriptions" class="page_tab icon--b-calendar" onclick="location.href='[UnasDesign - Normal{tab_subscriptions_link}]'">[UnasDesign - Normal{tab_subscriptions_title}]</div>
+        [UnasDesign - IfEnd{tab_subscriptions_disp}]
+        [UnasDesign - IfStart{tab_discount_disp}]
+        <div id="tab_discount" rel="discount" class="page_tab icon--b-percent" onclick="location.href='[UnasDesign - Normal{tab_discount_link}]'">[UnasDesign - Normal{tab_discount_title}]</div>
+        [UnasDesign - IfEnd{tab_discount_disp}]
+        [UnasDesign - IfStart{tab_favourites_disp}]
+        <div id="tab_favourites" rel="favourites" class="page_tab icon--b-favo" onclick="location.href='[UnasDesign - Normal{tab_favourites_link}]'">[UnasDesign - Normal{tab_favourites_title}]</div>
+        [UnasDesign - IfEnd{tab_favourites_disp}]
+        [UnasDesign - IfStart{tab_saved_filters_disp}]
+        <div id="tab_saved_filters" rel="saved_filters" class="page_tab icon--b-save" onclick="location.href='[UnasDesign - Normal{tab_saved_filters_link}]'">[UnasDesign - Normal{tab_saved_filters_title}]</div>
+        [UnasDesign - IfEnd{tab_saved_filters_disp}]
+        [UnasDesign - IfStart{tab_saved_cards_disp}]
+        <div id="tab_saved_cards" rel="saved_cards" class="page_tab icon--b-credit-card" onclick="location.href='[UnasDesign - Normal{tab_saved_cards_link}]'">[UnasDesign - Normal{tab_saved_cards_title}]</div>
+        [UnasDesign - IfEnd{tab_saved_cards_disp}]
+        [UnasDesign - IfStart{tab_saved_delivery_points_disp}]
+        <div id="tab_saved_delivery_points" rel="saved_delivery_points" class="page_tab icon--b-map-location-dot" onclick="location.href='[UnasDesign - Normal{tab_saved_delivery_points_link}]'">[UnasDesign - Normal{tab_saved_delivery_points_title}]</div>
+        [UnasDesign - IfEnd{tab_saved_delivery_points_disp}]
+        [UnasDesign - IfStart{tab_customer_addresses_disp}]
+        <div id="tab_customer_addresses" rel="customer_addresses" class="page_tab icon--b-location-dot" onclick="location.href='[UnasDesign - Normal{tab_customer_addresses_link}]'">[UnasDesign - Normal{tab_customer_addresses_title}]</div>
+        [UnasDesign - IfEnd{tab_customer_addresses_disp}]
+        [UnasDesign - IfStart{tab_reg_disp}]
+        <div id="tab_reg" rel="reg" class="page_tab icon--b-edit" onclick="location.href='[UnasDesign - Normal{tab_reg_link}]'">[UnasDesign - Normal{tab_reg_title}]</div>
+        [UnasDesign - IfEnd{tab_reg_disp}]
+        <div class="page_tab icon--b-sign-out" id="tab_logout" rel="logout" onclick="location.href='[unas_shop_url]/shop_logout.php'">[UnasDesign - Text{name:login_logout;page:design;}]</div>
+    </div>
+
+    [UnasDesign - IfStart{tab_orders_disp}]
+    <div id="tab2_orders" rel="orders" class="page_tab2 page_tab2_active icon--b-cart" onclick="location.href='[UnasDesign - Normal{tab_orders_link}]'">[UnasDesign - Normal{tab_orders_title}]</div>
+    [UnasDesign - IfEnd{tab_orders_disp}]
+
+    [UnasDesign - IfEnd{tab_disp}]
+
+    [UnasDesign - Normal{form_print}]
+
+    <div class="order-details-content pt-4" id="page_order_control_main">
+
+        <div class="row">
+            <div class="col-lg-8 col-xl-9 mb-3 font-s font-md-m">
+
+                [UnasDesign - IfStart{order_stat_text_disp}]
+                <div class="order-control__order-status-text-wrap bg-8 p-3 mb-4 row no-gutters">
+                    <div class="col-auto order-control__order-status-text-icon icon--b-info"></div>
+                    <div class="col order-control__order-status-text">[UnasDesign - Normal{order_stat_text}]</div>
+                </div>
+                [UnasDesign - IfEnd{order_stat_text_disp}]
+
+                <section class="order-control__order-details pb-4">
+                    <div class="contact-title control-main-title title--theme-1 h4">[UnasDesign - Text{name:order_data;page:order}]</div>
+                    <div class="row gutters-10">
+                        <div class="col-xs-6 col-md-3 order-control__order-key">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="order-key__title control-title">[UnasDesign - Normal{order_key_title}]</div></div>
+                                <div class="col-12"><div class="order-key__data control-data">[UnasDesign - Normal{order_key}]</div></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 pr-md-4 order-control__order-status">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="order-status__title control-title">[UnasDesign - Normal{order_stat_title}]</div></div>
+                                <div class="col-12">
+                                    <div class="order-status__data control-data">
+                                        [UnasDesign - IfStart{!subver_2}]
+                                            [UnasDesign - Normal{order_stat}][UnasDesign - IfStart{status_histories_disp}]&nbsp;<div class="tooltip d-inline-block icon--history">
+                                                <div class="tooltip-text text-wrap">
+                                                    <div class="tooltip-text-inner">
+                                                        [UnasDesign - LoopStart{status_histories}]
+                                                        <div class="order_track__status_history_row d-flex gutters-5 my-2">
+                                                            <div class="col-6">[UnasDesign - Loop{status_histories} - Normal{date}]</div>
+                                                            <div class="col-6 text-left">[UnasDesign - Loop{status_histories} - Normal{name}]</div>
+                                                        </div>
+                                                        [UnasDesign - LoopEnd{status_histories}]
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            [UnasDesign - IfEnd{status_histories_disp}]
+                                        [UnasDesign - IfEnd{!subver_2}]
+
+                                        [UnasDesign - IfStart{subver_2}]
+                                            [UnasDesign - Normal{order_stat}][UnasDesign - IfStart{status_histories_disp}]&nbsp;<span class="icon--history" data-tippy='
+                                                    [UnasDesign - LoopStart{status_histories}]<div class="order_track__status_history_row d-flex gutters-5 my-2">
+                                                        <div class="col-6">[UnasDesign - Loop{status_histories} - Normal{date}]</div>
+                                                        <div class="col-6 text-left">[UnasDesign - Loop{status_histories} - Normal{name}]</div>
+                                                    </div>
+                                                    [UnasDesign - LoopEnd{status_histories}]'></span>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    initTippy();
+                                                });
+                                            </script>
+                                            [UnasDesign - IfEnd{status_histories_disp}]
+                                        [UnasDesign - IfEnd{subver_2}]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 px-md-4 order-control__order-date">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="order-date__title control-title">[UnasDesign - Normal{order_date_title}]</div></div>
+                                <div class="col-12"><div class="order-date__data control-data">[UnasDesign - Normal{order_date}]</div></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 order-control__invoice-number">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="invoice-number__title control-title">[UnasDesign - Text{name:invoice_num;page:shop_ordercust}]</div></div>
+                                <div class="col-12"><div class="invoice-number__data control-data[UnasDesign - IfStart{invoice_pdf_url_disp}] d-flex flex-column align-items-start[UnasDesign - IfEnd{invoice_pdf_url_disp}]">
+                                    [UnasDesign - IfStart{invoice_number_disp}]
+                                        [UnasDesign - Normal{invoice_number}]
+                                        [UnasDesign - IfStart{invoice_pdf_url_disp}]
+                                            <button type="button" class="btn btn--primary btn--sm icon--b-file font-xs mt-2" onclick="window.open('[UnasDesign - Normal{invoice_pdf_url}]');">[UnasDesign - Text{page:common;name:view_invoice}]</button>
+                                        [UnasDesign - IfEnd{invoice_pdf_url_disp}]
+                                    [UnasDesign - IfEnd{invoice_number_disp}]
+                                    [UnasDesign - IfStart{!invoice_number_disp}]
+                                    -
+                                    [UnasDesign - IfEnd{!invoice_number_disp}]
+                                </div></div>
+                            </div>
+                        </div>
+                        [UnasDesign - IfStart{package_number_disp}]
+                        <div class="col-xs-6 col-md-3 order-control__package-number">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="package-number__title control-title">[UnasDesign - Text{page:shop_order;name:package_number}]</div></div>
+                                <div class="col-12"><div class="package-number__data control-data[UnasDesign - IfStart{package_number_url_disp}] d-flex flex-column align-items-start[UnasDesign - IfEnd{package_number_url_disp}]">
+                                    [UnasDesign - Normal{package_number}]
+                                    [UnasDesign - IfStart{package_number_url_disp}]
+                                    <button type="button" class="btn btn--primary btn--sm icon--b-truck font-xs mt-2" onclick="window.open('[UnasDesign - Normal{package_number_url}]');">[UnasDesign - Text{page:common;name:button_package_tracking}]</button>
+                                    [UnasDesign - IfEnd{package_number_url_disp}]
+                                </div></div>
+                            </div>
+                        </div>
+                        [UnasDesign - IfEnd{package_number_disp}]
+                        [UnasDesign - IfStart{tracking_info_url_disp}]
+                        <div class="col-xs-6 col-md-3 order-control__tracking-info">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="invoice-number__title control-title">[UnasDesign - Text{name:tracking_info;page:shop_ordercust}]</div></div>
+                                <div class="col-12"><div class="invoice-number__data control-data pt-2" id="tracking_info_content">
+                                    <div class="tracking_info_loader_wrapper">
+                                        <div class="tracking_info_loader"></div>
+                                    </div>
+                                </div></div>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#tracking_info_content").load("[UnasDesign - Normal{tracking_info_url}]");
+                                });
+                            </script>
+                        </div>
+                        [UnasDesign - IfEnd{tracking_info_url_disp}]
+                    </div>
+                </section>
+
+                <section class="order-control__contact py-4">
+                    <div class="contact-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_contact}]</div>
+                    <div class="row gutters-10">
+                        <div class="col-xs-6 col-md-3">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="contact-name__title control-title">[UnasDesign - Normal{title_contact_name}]</div></div>
+                                <div class="col-12"><div class="contact-name__data control-data">[UnasDesign - Normal{data_contact_name}]</div></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 pr-md-4">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="contact-username__title control-title">[UnasDesign - Normal{title_contact_username}]</div></div>
+                                <div class="col-12"><div class="contact-username__data control-data">[UnasDesign - Normal{data_contact_username}]</div></div>
+                            </div>
+                        </div>
+                        [UnasDesign - IfStart{contact_phone_disp}]
+                        <div class="col-xs-6 col-md-3 px-md-4">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="contact-phone__title control-title">[UnasDesign - Text{page:shop_newcust;name:kap_tel}]</div></div>
+                                <div class="col-12"><div class="contact-phone__data control-data">[UnasDesign - Normal{contact_phone}]</div></div>
+                            </div>
+                        </div>
+                        [UnasDesign - IfEnd{contact_phone_disp}]
+                        [UnasDesign - IfStart{contact_mobile_disp}]
+                        <div class="col-xs-6 col-md-3">
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-12"><div class="contact-mobile__title control-title">[UnasDesign - Text{page:shop_newcust;name:kap_mobile}]</div></div>
+                                <div class="col-12"><div class="contact-mobile__data control-data">[UnasDesign - Normal{contact_mobile}]</div></div>
+                            </div>
+                        </div>
+                        [UnasDesign - IfEnd{contact_mobile_disp}]
+                    </div>
+                </section>
+
+                <section class="order-control__invoice-shipping">
+                    <div class="row">
+                        <div class="col-12 col-md">
+                            <section class="order-control__invoice py-4 h-100" id="page_order_control_szam">
+                                <div class="invoice-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_invoice}]</div>
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="invoice-name__title control-title">[UnasDesign - Normal{title_invoice_name}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="invoice-name__data control-data">[UnasDesign - Normal{data_invoice_name}]</div></div>
+                                </div>
+
+                                [UnasDesign - IfStart{data_invoice_country_disp}]
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="invoice-country__title control-title">[UnasDesign - Normal{title_invoice_country}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="invoice-country__data control-data">[UnasDesign - Normal{data_invoice_country}]</div></div>
+                                </div>
+                                [UnasDesign - IfEnd{data_invoice_country_disp}]
+
+                                [UnasDesign - IfStart{data_invoice_zip_disp}]
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="invoice-zip__title control-title">[UnasDesign - Normal{title_invoice_zip}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="invoice-zip__data control-data">[UnasDesign - Normal{data_invoice_zip}]</div></div>
+                                </div>
+                                [UnasDesign - IfEnd{data_invoice_zip_disp}]
+
+                                [UnasDesign - IfStart{data_invoice_county_disp}]
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="invoice-county__title control-title">[UnasDesign - Normal{title_invoice_county}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="invoice-county__data control-data">[UnasDesign - Normal{data_invoice_county}]</div></div>
+                                </div>
+                                [UnasDesign - IfEnd{data_invoice_county_disp}]
+
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="invoice-city__title control-title">[UnasDesign - Normal{title_invoice_city}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="invoice-city__data control-data">[UnasDesign - Normal{data_invoice_city}]</div></div>
+                                </div>
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="invoice-street__title control-title">[UnasDesign - Normal{title_invoice_street}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="invoice-street__data control-data">[UnasDesign - Normal{data_invoice_street}]</div></div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-12 col-md">
+                            <section class="order-control__shipping py-4 h-100" id="page_order_control_szall">
+                                <div class="shipping-title__outer">
+                                    <div class="shipping-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_shipping}]</div>
+                                </div>
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="shipping-name__title control-title">[UnasDesign - Normal{title_invoice_name}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="shipping-name__data control-data">[UnasDesign - Normal{data_shipping_name}]</div></div>
+                                </div>
+
+                                [UnasDesign - IfStart{data_shipping_country_disp}]
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="shipping-country__title control-title">[UnasDesign - Normal{title_invoice_country}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="shipping-country__data control-data">[UnasDesign - Normal{data_shipping_country}]</div></div>
+                                </div>
+                                [UnasDesign - IfEnd{data_shipping_country_disp}]
+
+                                [UnasDesign - IfStart{data_shipping_zip_disp}]
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="shipping-zip__title control-title">[UnasDesign - Normal{title_invoice_zip}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="shipping-zip__data control-data">[UnasDesign - Normal{data_shipping_zip}]</div></div>
+                                </div>
+                                [UnasDesign - IfEnd{data_shipping_zip_disp}]
+
+                                [UnasDesign - IfStart{data_shipping_county_disp}]
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="shipping-county__title control-title">[UnasDesign - Normal{title_shipping_county}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="shipping-county__data control-data">[UnasDesign - Normal{data_shipping_county}]</div></div>
+                                </div>
+                                [UnasDesign - IfEnd{data_shipping_county_disp}]
+
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="shipping-city__title control-title">[UnasDesign - Normal{title_invoice_city}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="shipping-city__data control-data">[UnasDesign - Normal{data_shipping_city}]</div></div>
+                                </div>
+                                <div class="row no-gutters py-2 order-control-data-row">
+                                    <div class="col-xs-6 pr-xs-3"><div class="shipping-street__title control-title">[UnasDesign - Normal{title_invoice_street}]</div></div>
+                                    <div class="col-xs-6 pl-xs-3"><div class="shipping-street__data control-data">[UnasDesign - Normal{data_shipping_street}]</div></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+                [UnasDesign - IfStart{cust_param_disp}]
+                <div class="row">
+                    <div class="col-12 col-md">
+                        <section class="order-control__cust-datas py-4 line-height-12" id="page_order_control_custdata">
+                            <div class="contact-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_cust_param}]</div>
+                            [UnasDesign - IfStart{data_shipping_name_orig_disp}]
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-xs-6"><div class="shipping_name_orig__title control-title">[UnasDesign - Normal{title_shipping_name_orig}]</div></div>
+                                <div class="col-xs-6"><div class="shipping_name_orig__data control-data">[UnasDesign - Normal{data_shipping_name_orig}]</div></div>
+                            </div>
+                            [UnasDesign - IfEnd{data_shipping_name_orig_disp}]
+
+                            [UnasDesign - IfStart{data_vat_disp}]
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-xs-6"><div class="vat__title control-title">[UnasDesign - Normal{title_vat}]</div></div>
+                                <div class="col-xs-6"><div class="vat__data control-data">[UnasDesign - Normal{data_vat}]</div></div>
+                            </div>
+                            [UnasDesign - IfEnd{data_vat_disp}]
+
+                            [UnasDesign - IfStart{data_eu_vat_disp}]
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-xs-6"><div class="eu-vat__title control-title">[UnasDesign - Normal{title_eu_vat}]</div></div>
+                                <div class="col-xs-6"><div class="eu-vat__data control-data">[UnasDesign - Normal{data_eu_vat}]</div></div>
+                            </div>
+                            [UnasDesign - IfEnd{data_eu_vat_disp}]
+
+                            [UnasDesign - LoopStart{cust_param}]
+                            <div class="row gutters-10 py-2 order-control-data-row">
+                                <div class="col-xs-6"><div class="cust-param__title control-title">[UnasDesign - Loop{cust_param} - Normal{title}]</div></div>
+                                <div class="col-xs-6"><div class="cust-param__data control-data">[UnasDesign - Loop{cust_param} - Normal{value}]</div></div>
+                            </div>
+                            [UnasDesign - LoopEnd{cust_param}]
+                        </section>
+                    </div>
+                </div>
+                [UnasDesign - IfEnd{cust_param_disp}]
+
+                [UnasDesign - IfStart{order_param_disp}]
+                <section class="order-control__order-params-section py-4">
+                    <div class="contact-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_order_param}]</div>
+
+                    <div class="order-mods__order-params line-height-12">
+                        [UnasDesign - LoopStart{order_param}]
+                        <div class="order-mods__param mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    [UnasDesign - Loop{order_param} - Normal{title}]
+                                </div>
+                                <div class="col-md-6 control-data">
+                                    [UnasDesign - Loop{order_param} - IfStart{file_link_disp}]
+                                        <a href='[UnasDesign - Loop{order_param} - Normal{file_link_href}]' target='_blank' >[UnasDesign - Loop{order_param} - Normal{value}]</a>
+                                    [UnasDesign - Loop{order_param} - IfEnd{file_link_disp}]
+
+                                    [UnasDesign - Loop{order_param} - IfStart{!file_link_disp}]
+                                        [UnasDesign - Loop{order_param} - Normal{value}]
+                                    [UnasDesign - Loop{order_param} - IfEnd{!file_link_disp}]
+                                </div>
+                            </div>
+                        </div>
+                        [UnasDesign - LoopEnd{order_param}]
+                    </div>
+                </section>
+
+                [UnasDesign - IfEnd{order_param_disp}]
+
+                <div class="order-control__cart border-bottom pt-4 mb-4">
+                    <div class="contact-title control-main-title title--theme-1 h4">[UnasDesign - Normal{title_product}]</div>
+                    <div class="order-control__cart-header py-3 font-s font-weight-700 d-none d-md-block text-center bg-8">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <div class="order-control__cart-header-name">[UnasDesign - Text{name:cart_nev;page:shop_cart}]</div>
+                            </div>
+                            <div class="col-2 text-center">
+                                <div class="order-control__cart-header-price">[UnasDesign - Text{name:cart_price;page:order}]</div>
+                            </div>
+                            <div class="col-2">
+                                <div class="order-control__cart-header-qty">[UnasDesign - Text{name:cart_menny;page:shop_cart}]</div>
+                            </div>
+                            <div class="col-2">
+                                <div class="order-control__cart-header-sum text-right pr-3">[UnasDesign - Text{name:cart_sum;page:order}]</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-products">
+                        [UnasDesign - LoopStart{product}]
+                        [UnasDesign - Loop{product} - IfStart{!plus_item|is_package_offer}]
+                        <div class="control-product [UnasDesign - Loop{product} - IfStart{!is_package_offer_item}]border-top[UnasDesign - Loop{product} - IfEnd{!is_package_offer_item}] py-4">
+                            <div class="row no-gutters align-items-center position-relative">
+                                <div class="col control-product__name-variant-param pr-md-3 order-sm-2 mb-2 my-md-2">
+                                    <div class="control-product__name line-clamp--3-12 font-s font-lg-m font-weight-700">
+                                        [UnasDesign - Loop{product} - IfStart{!is_radio_plus_service}]
+                                            <a href="[UnasDesign - Loop{product} - Normal{url}]">[UnasDesign - Loop{product} - Normal{name}]</a>
+                                        [UnasDesign - Loop{product} - IfEnd{!is_radio_plus_service}]
+                                        [UnasDesign - Loop{product} - IfStart{is_radio_plus_service}]
+                                            <a>[UnasDesign - Loop{product} - Normal{name}]</a>
+                                        [UnasDesign - Loop{product} - IfEnd{is_radio_plus_service}]
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfStart{variant1_disp|variant2_disp|variant3_disp}]<!--it has variant(s)-->
+                                    <div class='control-product__variants text-muted line-height-12 font-xs font-md-s mt-2'>
+                                        [UnasDesign - Loop{product} - IfStart{variant1_disp}]
+                                        <div class='control-product__variant control-product__variant-1 d-inline-block'>
+                                            <span class="control-product__variant-value" data-title="[UnasDesign - Loop{product} - Normal{variant1_name}]">[UnasDesign - Loop{product} - Normal{variant1_value}]</span>
+                                        </div>
+                                        [UnasDesign - Loop{product} - IfEnd{variant1_disp}]
+                                        [UnasDesign - Loop{product} - IfStart{variant2_disp}]
+                                        <div class='control-product__variant control-product__variant-2 d-inline-block'>
+                                            <span class="control-product__variant-value" data-title="[UnasDesign - Loop{product} - Normal{variant2_name}]">,&nbsp;[UnasDesign - Loop{product} - Normal{variant2_value}]</span>
+                                        </div>
+                                        [UnasDesign - Loop{product} - IfEnd{variant2_disp}]
+                                        [UnasDesign - Loop{product} - IfStart{variant3_disp}]
+                                        <div class='control-product__variant control-product__variant-3 d-inline-block'>
+                                            <span class="control-product__variant-value" data-title="[UnasDesign - Loop{product} - Normal{variant3_name}]">,&nbsp;[UnasDesign - Loop{product} - Normal{variant3_value}]</span>
+                                        </div>
+                                        [UnasDesign - Loop{product} - IfEnd{variant3_disp}]
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{variant1_disp|variant2_disp|variant3_disp}]
+
+                                    [UnasDesign - Loop{product} - IfStart{params_disp}] <!--it has product param -->
+                                    <div class="control-product__params text-muted line-height-12 font-xs font-md-s mt-2">
+                                        [UnasDesign - Loop{product} - LoopStart{params}]
+                                        <div class='control-product__param control-product__param-[UnasDesign - Loop{product} - Loop{params} - Normal{id}]'>
+                                            <span class="control-product__param-name">[UnasDesign - Loop{product} - Loop{params} - Normal{name}]:</span>
+                                            <span class="control-product__param-value mr-2">
+                                                [UnasDesign - Loop{product} - Loop{params} - IfStart{type_color_text_disp|type_color_disp}]
+                                                 <span class="d-inline-flex align-items-center align-middle">
+                                                    <span class="param_type_color mr-2" style="background-color:[UnasDesign - Loop{product} - Loop{params} - Normal{color_code}];"></span>
+                                                    [UnasDesign - Loop{product} - Loop{params} - IfStart{type_color_text_disp}]
+                                                    [UnasDesign - Loop{product} - Loop{params} - Normal{color_text}]
+                                                    [UnasDesign - Loop{product} - Loop{params} - IfEnd{type_color_text_disp}]
+                                                </span>
+                                                [UnasDesign - Loop{product} - Loop{params} - IfEnd{type_color_text_disp|type_color_disp}]
+                                                [UnasDesign - Loop{product} - Loop{params} - IfStart{!type_color_text_disp&!type_color_disp}]
+                                                [UnasDesign - Loop{product} - Loop{params} - Normal{value}]
+                                                [UnasDesign - Loop{product} - Loop{params} - IfEnd{!type_color_text_disp&!type_color_disp}]
+                                            </span>
+                                        </div>
+                                        [UnasDesign - Loop{product} - LoopEnd{params}]
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{params_disp}]
+
+                                    [UnasDesign - Loop{product} - IfStart{subscription_period_disp}]
+                                    <div class="control-product__subscription line-height-12 font-xs font-md-s mt-2 control-product__subscription-period">
+                                        <span class="control-product__subscription-name">[UnasDesign - Text{page:common;name:chosen_period;}]</span>
+                                        <span class="control-product__subscription-value mr-2">[UnasDesign - Loop{product} - Normal{subscription_period}] [UnasDesign - Text{page:common;name:daily;}]</span>
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{subscription_period_disp}]
+                                </div>
+
+                                <div class="break-row d-md-none"></div> <!-- break -->
+
+                                [UnasDesign - Loop{product} - IfStart{pic_disp|is_package_offer}]
+                                <div class="col-auto control-product__pic-col pr-3 order-md-1">
+                                    [UnasDesign - Loop{product} - IfStart{pic_disp&!is_package_offer}]
+                                    <div class="control-product__pic-outer">
+                                        [UnasDesign - Loop{product} - IfStart{!is_radio_plus_service}]
+                                            <img class="control-product__pic" src="[UnasDesign - Loop{product} - Normal{pic_url}]"[UnasDesign - Loop{product} - IfStart{img_retina_exists}] srcset="[UnasDesign - Loop{product} - Normal{img_retina_url}] [UnasDesign - Loop{product} - Normal{img_retina_size}]"[UnasDesign - Loop{product} - IfEnd{img_retina_exists}] alt="[UnasDesign - Loop{product} - Normal{pic_alt}]" title="[UnasDesign - Loop{product} - Normal{pic_alt}]">
+                                        [UnasDesign - Loop{product} - IfEnd{!is_radio_plus_service}]
+                                        [UnasDesign - Loop{product} - IfStart{is_radio_plus_service}]
+                                            <div class="cart-item__plus-service font-xl font-md-xxl icon--plus d-flex justify-content-center pr-3"></div>
+                                        [UnasDesign - Loop{product} - IfEnd{is_radio_plus_service}]
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{pic_disp&!is_package_offer}]
+
+                                    [UnasDesign - Loop{product} - IfStart{is_package_offer}]
+                                    <div class="cart-item__package-offer-wrap d-flex justify-content-center align-items-center">
+                                        <div class="icon--box-full font-xxxl"></div>
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{is_package_offer}]
+                                </div>
+                                [UnasDesign - Loop{product} - IfEnd{pic_disp|is_package_offer}]
+
+                                <div class="col-md-2 control-product__prices-col d-none d-md-block order-sm-3 text-sm-right text-md-center px-md-2 fs-0">
+                                    <div class="control-product__prices d-sm-inline-block text-right line-height-12 ml-auto">
+                                        [UnasDesign - IfStart{orderflow_show_price_net}]
+                                        <div class="control-product__price-net">
+                                            <span class="control-price-label">[UnasDesign - Text{page:common;name:netto;}]:</span>
+                                            <span class="net-price--current d-inline-block pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_net}]</span>
+                                        </div>
+                                        [UnasDesign - IfEnd{orderflow_show_price_net}]
+                                        <div class="control-product__price-gross">
+                                            <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                            <div class="gross-price--current d-inline-block pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_gross}]</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-4 control-product__sum-prices-col order-sm-4 row no-gutters align-items-center">
+                                    <div class="col-md-6 control-product__qty-wrap font-s font-md-m text-right text-md-center mb-2 mb-md-0">
+                                        <div class="control-product__qty-label font-weight-700 d-none">[UnasDesign - Text{page:cart;name:cart_menny;}]:</div>
+                                        <div class="control-product__qty d-flex align-items-baseline justify-content-end justify-content-md-center">
+                                            <span class="control-product__qty-value font-weight-bold">[UnasDesign - Loop{product} - Normal{qty}]</span>
+                                            <span class="control-product__unit pl-1">[UnasDesign - Loop{product} - Normal{unit}]</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 control-product__sum-prices-inner line-height-12 font-s font-sm-m text-right">
+                                        <div class="control-product__sum-price-label d-none font-weight-700">[UnasDesign - Text{name:cart_sum;page:order}]:</div>
+                                        [UnasDesign - IfStart{orderflow_show_price_net}]
+                                        <div class="control-product__sum-price-net">
+                                            <span class="control-price-label">[UnasDesign - Text{page:common;name:netto;}]:</span>
+                                            <span class="d-inline-block price-sum-net pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_sum_net}]</span>
+                                        </div>
+                                        [UnasDesign - IfEnd{orderflow_show_price_net}]
+                                        <div class="control-product__sum-price-gross pl-2 pl-xs-0">
+                                            <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                            <span class="d-inline-block price-sum-gross pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_sum_gross}]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            [UnasDesign - Loop{product} - IfStart{info_disp}]
+                            <div class="product-infos mt-3">
+                                [UnasDesign - Loop{product} - LoopStart{item_stat}]
+                                <div class="product-item-status row no-gutters justify-content-between w-100 font-s text-muted">
+                                    <div class="col-auto col-sm-4 col-md-3">[UnasDesign - Loop{product} - Loop{item_stat} - Normal{title}]:</div>
+                                    <div class="col-auto col-sm-8 col-md-9 font-weight-700">[UnasDesign - Loop{product} - Loop{item_stat} - Normal{value}]</div>
+                                </div>
+                                [UnasDesign - Loop{product} - LoopEnd{item_stat}]
+
+                                [UnasDesign - Loop{product} - IfStart{online_content_disp}]
+                                <div class="product-online-content row no-gutters align-items-center justify-content-between w-100 font-s text-muted mt-3">
+                                    <div class="product-online-content__title col-auto col-sm-4 col-md-3 pr-2">[UnasDesign - Loop{product} - Normal{online_content_title}]:</div>
+                                    <div class="product-online-content__value col-auto col-sm-8 col-md-9 btn-wrap--primary">[UnasDesign - Loop{product} - Normal{online_content_button}]</div>
+                                </div>
+                                [UnasDesign - Loop{product} - IfEnd{online_content_disp}]
+                            </div>
+                            [UnasDesign - Loop{product} - IfEnd{info_disp}]
+                        </div>
+                        [UnasDesign - Loop{product} - IfEnd{!plus_item|is_package_offer}]
+
+                        [UnasDesign - Loop{product} - IfStart{plus_item&!is_package_offer}]
+                        <div class="control-product control-plus-item pb-4">
+                            <div class="control-plus-item-inner">
+                                <div class="row no-gutters align-items-center line-height-12">
+                                    [UnasDesign - Loop{product} - IfStart{type_service_plus}]
+                                    <div class="col-auto control-product__pic-col pr-3 order-md-1">
+                                        <div class="col-plus-item-icon bg-5 d-flex justify-content-center align-items-center">
+                                            <div class="control-plus-item__plus-service-icon icon--cart"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col control-product__name-variant-param pr-md-3 order-sm-2 font-s font-lg-m">
+                                        <div class="control-plus-item__plus-service-text font-weight-700">[UnasDesign - Text{name:service_plus;page:shop_artdet;}]</div>
+                                        <div class="control-plus-item__plus-service-name-and-qty-wrap mt-1 font-s">
+                                            <span class="control-plus-item__plus-service-name text-muted">[UnasDesign - Loop{product} - Normal{name}]</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 control-product__prices-col d-none d-md-block order-sm-3 text-sm-right text-md-center px-md-2 fs-0">
+                                        <div class="control-product__prices d-sm-inline-block text-right line-height-12 ml-auto">
+                                            [UnasDesign - IfStart{orderflow_show_price_net}]
+                                            <div class="control-product__price-net">
+                                                <span class="control-price-label">[UnasDesign - Text{page:common;name:netto;}]:</span>
+                                                <span class="net-price--current d-inline-block pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_net}]</span>
+                                            </div>
+                                            [UnasDesign - IfEnd{orderflow_show_price_net}]
+                                            <div class="control-product__price-gross">
+                                                <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                                <div class="gross-price--current d-inline-block pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_gross}]</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4 control-product__sum-prices-col order-sm-4 row no-gutters align-items-center">
+                                        <div class="col-md-6 control-product__qty-wrap font-s font-md-m text-right text-md-center mb-2 mb-md-0">
+                                            <div class="control-product__qty-label font-weight-700 d-none">[UnasDesign - Text{page:cart;name:cart_menny;}]:</div>
+                                            <div class="control-product__qty d-flex align-items-baseline justify-content-end justify-content-md-center">
+                                                <span class="control-product__qty-value font-weight-bold">[UnasDesign - Loop{product} - Normal{qty}]</span>
+                                                <span class="control-product__unit pl-1">[UnasDesign - Loop{product} - Normal{unit}]</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 control-product__sum-prices-inner line-height-12 font-s font-sm-m text-right">
+                                            <div class="control-product__sum-price-label d-none font-weight-700">[UnasDesign - Text{name:cart_sum;page:order}]:</div>
+                                            [UnasDesign - IfStart{orderflow_show_price_net}]
+                                            <div class="control-product__sum-price-net">
+                                                <span class="control-price-label">[UnasDesign - Text{page:common;name:netto;}]:</span>
+                                                <span class="d-inline-block price-sum-net pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_sum_net}]</span>
+                                            </div>
+                                            [UnasDesign - IfEnd{orderflow_show_price_net}]
+                                            <div class="control-product__sum-price-gross pl-2 pl-xs-0">
+                                                <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                                <span class="d-inline-block price-sum-gross pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_sum_gross}]</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{type_service_plus}]
+                                    [UnasDesign - Loop{product} - IfStart{!type_service_plus}]
+                                    <div class="col col-xs-7 control-plus-item__details-col font-s font-lg-m">
+                                        <div class="control-plus-item__plus-discount d-flex">
+                                            <div class="col-plus-item-icon bg-5 d-flex justify-content-center align-items-center">
+                                                <div class="control-plus-item__discount-icon icon--percent"></div>
+                                            </div>
+                                            <div class="col px-3">
+                                                [UnasDesign - Loop{product} - IfStart{variant1_disp}]
+                                                <div class="control-plus-item__name font-weight-700">[UnasDesign - Loop{product} - Normal{name}]</div>
+                                                <div class='control-plus-item__discount text-muted font-s mt-1'>
+                                                    [UnasDesign - Loop{product} - IfStart{type_gift}]
+                                                    <span class="control-plus-item__discount-type pr-1">[UnasDesign - Loop{product} - Normal{variant1_name}]:</span>
+                                                    <span class="control-plus-item__discount-for-sku">[UnasDesign - Loop{product} - Normal{variant1_value}]</span>
+                                                    [UnasDesign - Loop{product} - IfEnd{type_gift}]
+
+                                                    [UnasDesign - Loop{product} - IfStart{!type_gift}]
+                                                            <span class="control-plus-item__discount-value">
+                                                                <span class="plus-item-coupon-text pr-1">[UnasDesign - Loop{product} - Normal{variant1_name}]:</span>
+                                                                <span class="plus-item-coupon-value">[UnasDesign - Loop{product} - Normal{variant1_value}]</span>
+                                                            </span>
+                                                    [UnasDesign - Loop{product} - IfEnd{!type_gift}]
+                                                </div>
+                                                <div class="control-plus-item__qty-and-unit d-none">
+                                                    <span class="control-plus-item__qty">[UnasDesign - Loop{product} - Normal{qty}]</span>
+                                                    <span class="control-plus-item__unit">[UnasDesign - Loop{product} - Normal{unit}]</span>
+                                                </div>
+                                                [UnasDesign - Loop{product} - IfEnd{variant1_disp}]
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto col-xs-5 control-plus-item__prices-col text-right ml-auto">
+                                        <div class="control-plus-item__prices-wrap d-flex justify-content-end">
+                                            <div class="control-item-plus-prices line-height-12 control-item-plus__discount">
+                                                [UnasDesign - IfStart{orderflow_show_price_net}]
+                                                <div class="control-item-plus__price-net-wrap text-right">
+                                                    <span class="control-price-label">[UnasDesign - Text{page:common;name:netto;}]:</span>
+                                                    <span class="control-item-plus__service-price-net pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_sum_net}]</span>
+                                                </div>
+                                                [UnasDesign - IfEnd{orderflow_show_price_net}]
+
+                                                <div class="control-item-plus__service-price-gross-wrap text-right">
+                                                    <span class="control-price-label">[UnasDesign - Text{page:common;name:brutto;}]:</span>
+                                                    <span class="control-item-plus__service-price-gross pl-2 font-s font-md-m">[UnasDesign - Loop{product} - Normal{price_sum_gross}]</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    [UnasDesign - Loop{product} - IfEnd{!type_service_plus}]
+                                </div>
+                            </div>
+                        </div>
+                        [UnasDesign - Loop{product} - IfEnd{plus_item&!is_package_offer}]
+                        [UnasDesign - LoopEnd{product}]
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-xl-3 mb-3">
+                <div class="control-summary sum-box bg-8">
+                    <div class="control-summary__title title--theme-1 sum-box__main-title underline--fw h3">[UnasDesign - Text{name:order_summary;page:order}]</div>
+
+                    [UnasDesign - IfStart{orderflow_show_price_net}]
+                    <div class="control-summary-row control-summary-netto mb-2">
+                        <div class="row no-gutters align-items-center">
+                            <div class="control-summary-title sum-box__title">[UnasDesign - Normal{title_product_sum_net}]:</div>
+                            <div class="control-summary-value sum-box__value ml-auto">[UnasDesign - Normal{product_sum_net}]</div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{orderflow_show_price_net}]
+                    <div class="control-summary-row control-summary-gross mb-2">
+                        <div class="row no-gutters align-items-center">
+                            <div class="control-summary-title sum-box__title">[UnasDesign - Normal{title_product_sum_gross}]:</div>
+                            <div class="control-summary-value sum-box__value ml-auto">[UnasDesign - Normal{product_sum_gross}]</div>
+                        </div>
+                    </div>
+
+                    [UnasDesign - IfStart{other_cost_disp}]
+                    <div class="control-summary-row sum-box__other-cost mb-2">
+                        <div class="row no-gutters align-items-baseline">
+                            <div class="control-summary-title">[UnasDesign - Text{name:other_cost;page:order}]:</div>
+                            <div class="control-summary-value js-other-cost ml-auto">[UnasDesign - Normal{other_cost}]</div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{other_cost_disp}]
+
+                    [UnasDesign - IfStart{total_discount_percent_disp}]
+                    <div class="control-summary-row control-summary-discount-percent mb-2">
+                        <div class="row no-gutters align-items-center">
+                            <div class="control-summary-title sum-box__title">[UnasDesign - Text{name:cart_kedv;page:order}] ([UnasDesign - Normal{total_discount_percent_value}]%):</div>
+                            <div class="control-summary-value sum-box__value ml-auto">[UnasDesign - Normal{total_discount_percent_price}]</div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{total_discount_percent_disp}]
+
+                    [UnasDesign - IfStart{shipping_cost_disp}]
+                    <div class="control-summary-row control-summary-shipping-cost mb-2">
+                        <div class="row no-gutters align-items-center">
+                            <div class="control-summary-title sum-box__title">[UnasDesign - Normal{title_shipping_cost}]:</div>
+                            <div class="control-summary-value sum-box__value ml-auto">[UnasDesign - Normal{shipping_cost}]</div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{shipping_cost_disp}]
+
+                    [UnasDesign - IfStart{total_discount_amount_disp}]
+                    <div class="control-summary-row control-summary-discount-amount mb-2">
+                        <div class="row no-gutters align-items-center">
+                            <div class="control-summary-title sum-box__title">[UnasDesign - Text{name:cart_virtual;page:order}]:</div>
+                            <div class="control-summary-value sum-box__value ml-auto">[UnasDesign - Normal{total_discount_amount}]</div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{total_discount_amount_disp}]
+
+                    [UnasDesign - IfStart{handel_cost_disp}]
+                    <div class="control-summary-row control-summary-handel-cost mb-2">
+                        <div class="row no-gutters align-items-center">
+                            <div class="control-summary-title sum-box__title">[UnasDesign - Normal{title_handel_cost}]:</div>
+                            <div class="control-summary-value sum-box__value ml-auto">[UnasDesign - Normal{handel_cost}]</div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{handel_cost_disp}]
+
+                    <div class="line-separator"></div>
+
+                    <section class="order-control__payment-section" id="page_order_control_modfiz">
+                        <div class="sum-box__title">
+                            [UnasDesign - Normal{title_payment_method}]:
+                        </div>
+                        <div class="order-control__payment-data sum-box__value d-flex align-items-center">
+                            <div class="order-control__payment-name control-data">
+                                [UnasDesign - Normal{payment_method}]
+                            </div>
+                        </div>
+                        [UnasDesign - IfStart{payment_method_logo_disp}]
+                        <div class="order-control__payment-logo">
+                            [UnasDesign - IfStart{payment_method_logo_link_disp}]
+                            <a href="[UnasDesign - Normal{payment_method_logo_link_href}]"
+                               title="[UnasDesign - Normal{payment_method_logo_alt}]"
+                               target="[UnasDesign - Normal{payment_method_logo_link_target}]">
+                            [UnasDesign - IfEnd{payment_method_logo_link_disp}]
+                                <img src="[UnasDesign - Normal{payment_method_logo}]" alt="[UnasDesign - Normal{payment_method_logo_alt}]" title="[UnasDesign - Normal{payment_method_logo_alt}]">
+                            [UnasDesign - IfStart{payment_method_logo_link_disp}]
+                            </a>
+                            [UnasDesign - IfEnd{payment_method_logo_link_disp}]
+                        </div>
+                        [UnasDesign - IfEnd{payment_method_logo_disp}]
+
+                        [UnasDesign - IfStart{payment_method_account_disp}]
+                        <div class="order-details__payment-method-account mt-3">
+                            [UnasDesign - IfStart{payment_method_account_finish_disp}]<strong>[UnasDesign - Normal{payment_method_account_finish_title}]:</strong> [UnasDesign - Normal{payment_method_account_finish}] &nbsp; [UnasDesign - IfEnd{payment_method_account_finish_disp}]
+                            [UnasDesign - IfStart{payment_method_account_pending_disp}]<strong>[UnasDesign - Normal{payment_method_account_pending_title}]:</strong> [UnasDesign - Normal{payment_method_account_pending}] &nbsp; [UnasDesign - IfEnd{payment_method_account_pending_disp}]
+                            [UnasDesign - IfStart{payment_method_account_need_disp}]<strong>[UnasDesign - Normal{payment_method_account_need_title}]:</strong> [UnasDesign - Normal{payment_method_account_need}] &nbsp; [UnasDesign - IfEnd{payment_method_account_need_disp}]
+                            [UnasDesign - IfStart{payment_method_account_needback_disp}]<strong>[UnasDesign - Normal{payment_method_account_needback_title}]:</strong> [UnasDesign - Normal{payment_method_account_needback}] &nbsp; [UnasDesign - IfEnd{payment_method_account_needback_disp}]
+                        </div>
+                        [UnasDesign - IfEnd{payment_method_account_disp}]
+
+                        [UnasDesign - IfStart{payment_method_details_disp}]
+                            <div class='change-payment__description'>[UnasDesign - Normal{payment_method_details}]</div>
+                        [UnasDesign - IfEnd{payment_method_details_disp}]
+
+                        [UnasDesign - IfStart{payment_method_use_oneclick_checkbox}]
+                            <input name="use_recuse_oneclick" id="use_oneclick" type="checkbox" value="1" />
+                            <label for="use_oneclick" class="font-weight-bold text-body">[UnasDesign - Text{name:use_oneclick_checkbox;page:shop_order;}]</label>
+                        [UnasDesign - IfEnd{payment_method_use_oneclick_checkbox}]
+
+                        [UnasDesign - IfStart{!payment_method_use_oneclick_checkbox}]
+                            [UnasDesign - IfStart{payment_method_use_oneclick_pass}]
+                                <div class="oneclick_pass_wrap js-oneclick-pass-wrap my-4">
+                                    <div class="new-customer-title text-body">[UnasDesign - Text{name:oneclick_pass;page:shop_order;}]</div>
+                                    <div class="new-customer-value">
+                                        <span class="page_newcust_input">
+                                            <span class="text_input">
+                                                <input onkeyup="oneclick_pass_change($(this));" name="oneclick_pass" id="oneclick_pass" type="password" class="text_normal[UnasDesign - IfStart{payment_method_oneclick_pass_required}] is-required[UnasDesign - IfEnd{payment_method_oneclick_pass_required}]" maxlength="100" />
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            [UnasDesign - IfEnd{payment_method_use_oneclick_pass}]
+                        [UnasDesign - IfEnd{!payment_method_use_oneclick_checkbox}]
+
+                        [UnasDesign - IfStart{payment_method_pay_disp}]
+                        <div class="order-details__payment-pay">
+                            <div class="order-details__payment-btn-wrap">
+                                <button class="order-details__payment-btn btn--primary btn--block my-3" onclick="[UnasDesign - Normal{payment_method_pay_button_onclick}]">
+                                    [UnasDesign - IfStart{payment_method_credit_disp}]
+                                    [UnasDesign - Text{page:shop_order;name:credit_button}]
+                                    [UnasDesign - IfEnd{payment_method_credit_disp}]
+                                    [UnasDesign - IfStart{payment_method_bnpl_disp}]
+                                    [UnasDesign - Text{page:shop_order;name:bnpl_button}]
+                                    [UnasDesign - IfEnd{payment_method_bnpl_disp}]
+                                    [UnasDesign - IfStart{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                                    [UnasDesign - Text{page:shop_order;name:paypal_button2}]
+                                    [UnasDesign - IfEnd{!payment_method_credit_disp&!payment_method_bnpl_disp}]
+                                </button>
+                            </div>
+                            [UnasDesign - IfStart{payment_method_pay_change_disp}]
+                            <div class="order-details__payment-change-btn-wrap">
+                                <button class="order-details__payment-change-btn btn--alt btn--block mb-3" onclick="[UnasDesign - Normal{payment_method_pay_change_button_onclick}]">[UnasDesign - Normal{payment_method_pay_change_button_text}]</button>
+                            </div>
+                            [UnasDesign - IfEnd{payment_method_pay_change_disp}]
+                        </div>
+                        [UnasDesign - IfEnd{payment_method_pay_disp}]
+                    </section>
+
+                    <div class="line-separator"></div>
+
+                    <section class="order-control__shipping-section">
+                        <div class="order-control__shipping-title sum-box__title">
+                            [UnasDesign - Normal{title_shipping_method}]:
+                        </div>
+                        <div class="order-control__shipping-data sum-box__value d-flex align-items-center">
+                            <div class="order-control__shipping-name control-data">
+                                [UnasDesign - Normal{shipping_method}]
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="line-separator"></div>
+
+                    [UnasDesign - IfStart{price_fullsum_disp}]
+                    <div class="control-summary-row control-summary-price-full-sum mb-3 row no-gutters align-items-center">
+                        <div class="control-summary-title font-l font-weight-bold">[UnasDesign - Normal{title_price_fullsum}]:</div>
+                        <div class="control-summary-value font-l font-weight-bold ml-auto">[UnasDesign - Normal{price_fullsum}]</div>
+                    </div>
+                    [UnasDesign - IfEnd{price_fullsum_disp}]
+
+					[UnasDesign - IfStart{point_credit_disp}]
+					<div class="control-summary-row control-summary-point-credit mb-2">
+						<div class="row no-gutters align-items-center">
+							<div class="control-summary-title">[UnasDesign - Normal{title_point_credit}]:</div>
+							<div class="control-summary-value ml-auto">[UnasDesign - Normal{point_credit}]</div>
+						</div>
+					</div>
+					[UnasDesign - IfEnd{point_credit_disp}]
+
+                    [UnasDesign - IfStart{comment_disp}]
+                    <div class="order-control__comment mb-2">
+                        <fieldset>
+                            <legend class="order-control__comment-title sum-box__title">[UnasDesign - Normal{title_comment}]:</legend>
+                            <div class="order-control__comment-content font-s">[UnasDesign - Normal{comment}]</div>
+                        </fieldset>
+                    </div>
+                    [UnasDesign - IfEnd{comment_disp}]
+
+                    [UnasDesign - IfStart{shipping_comment_disp}]
+                    <div class="order-control__comment mb-2">
+                        <fieldset>
+                            <legend class="order-control__comment-title">[UnasDesign - Normal{title_shipping_comment}]:</legend>
+                            <div class="order-control__comment-content font-s">[UnasDesign - Normal{shipping_comment}]</div>
+                        </fieldset>
+                    </div>
+                    [UnasDesign - IfEnd{shipping_comment_disp}]
+
+                    [UnasDesign - IfStart{other_disp}]
+                        <div class='page_order_track_det_data_text'>[UnasDesign - Normal{other}]</div>
+                    [UnasDesign - IfEnd{other_disp}]
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn--primary icon--b-cart m-2" type="button" onclick="[UnasDesign - Normal{button_restore_onclick}]">[UnasDesign - Normal{button_restore_title}]</button>
+    <button class="btn--alt icon--b-print m-2" type="button" onclick="[UnasDesign - Normal{button_print_onclick}]">[UnasDesign - Normal{button_print_title}]</button>
+    [UnasDesign - IfStart{button_return_disp}]
+    <button id="button_return" class="btn--alt icon--b-return m-2" type="button" onclick="[UnasDesign - Normal{button_return_onclick}]">[UnasDesign - Normal{button_return_title}]</button>
+    [UnasDesign - IfEnd{button_return_disp}]
+
+    [UnasDesign - IfStart{button_delete_disp}]
+    <button id="button_order_delete" class="btn--alt icon--b-order-delete m-2" type="button" onclick="[UnasDesign - Normal{button_delete_onclick}]">[UnasDesign - Text{page:shop_ordercust;name:order_delete}]</button>
+    [UnasDesign - IfEnd{button_delete_disp}]
+
+    [UnasDesign - IfStart{tab_disp}]
+
+    [UnasDesign - IfStart{tab_subscriptions_disp}]
+    <div id="tab2_subscriptions" rel="subscriptions" class="page_tab2 icon--b-calendar" onclick="location.href='[UnasDesign - Normal{tab_subscriptions_link}]'">[UnasDesign - Normal{tab_subscriptions_title}]</div>
+    [UnasDesign - IfEnd{tab_subscriptions_disp}]
+    [UnasDesign - IfStart{tab_discount_disp}]
+    <div id="tab2_discount" rel="discount" class="page_tab2 icon--b-percent" onclick="location.href='[UnasDesign - Normal{tab_discount_link}]'">[UnasDesign - Normal{tab_discount_title}]</div>
+    [UnasDesign - IfEnd{tab_discount_disp}]
+    [UnasDesign - IfStart{tab_favourites_disp}]
+    <div id="tab2_favourites" rel="favourites" class="page_tab2 icon--b-favo" onclick="location.href='[UnasDesign - Normal{tab_favourites_link}]'">[UnasDesign - Normal{tab_favourites_title}]</div>
+    [UnasDesign - IfEnd{tab_favourites_disp}]
+    [UnasDesign - IfStart{tab_saved_filters_disp}]
+    <div id="tab2_saved_filters" rel="saved_filters" class="page_tab2 icon--b-save" onclick="location.href='[UnasDesign - Normal{tab_saved_filters_link}]'">[UnasDesign - Normal{tab_saved_filters_title}]</div>
+    [UnasDesign - IfEnd{tab_saved_filters_disp}]
+    [UnasDesign - IfStart{tab_saved_cards_disp}]
+    <div id="tab2_saved_cards" rel="saved_cards" class="page_tab2 icon--b-credit-card" onclick="location.href='[UnasDesign - Normal{tab_saved_cards_link}]'">[UnasDesign - Normal{tab_saved_cards_title}]</div>
+    [UnasDesign - IfEnd{tab_saved_cards_disp}]
+    [UnasDesign - IfStart{tab_saved_delivery_points_disp}]
+    <div id="tab2_saved_delivery_points" rel="saved_delivery_points" class="page_tab2 icon--b-map-location-dot" onclick="location.href='[UnasDesign - Normal{tab_saved_delivery_points_link}]'">[UnasDesign - Normal{tab_saved_delivery_points_title}]</div>
+    [UnasDesign - IfEnd{tab_saved_delivery_points_disp}]
+    [UnasDesign - IfStart{tab_customer_addresses_disp}]
+    <div id="tab2_customer_addresses" rel="customer_addresses" class="page_tab2 icon--b-location-dot" onclick="location.href='[UnasDesign - Normal{tab_customer_addresses_link}]'">[UnasDesign - Normal{tab_customer_addresses_title}]</div>
+    [UnasDesign - IfEnd{tab_customer_addresses_disp}]
+    [UnasDesign - IfStart{tab_reg_disp}]
+    <div id="tab2_reg" rel="reg" class="page_tab2 icon--b-edit" onclick="location.href='[UnasDesign - Normal{tab_reg_link}]'">[UnasDesign - Normal{tab_reg_title}]</div>
+    [UnasDesign - IfEnd{tab_reg_disp}]
+
+    <div id="tab2_logout" rel="logout" class="page_tab2 icon--b-sign-out" onclick="location.href='[unas_shop_url]/shop_logout.php'">[UnasDesign - Text{name:login_logout;page:design;}]</div>
+
+    [UnasDesign - IfEnd{tab_disp}]
+
+</div>

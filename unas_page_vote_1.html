@@ -1,0 +1,59 @@
+<div id='page_vote_content' class='page_content'>
+    [UnasDesign - LoopStart{votes}]
+        <div class="page_vote_title p-3 mb-4">[UnasDesign - Loop{votes} - Normal{title}]</div>
+        <div class="page_vote_item p-3">
+            [UnasDesign - Loop{votes} - IfStart{already_voted}]
+                <div class="page_vote_item_row1 icon--b-info color--primary mb-3">[UnasDesign - Text{vote_already}]</div>
+            [UnasDesign - Loop{votes} - IfEnd{already_voted}]
+
+            [UnasDesign - Loop{votes} - Normal{form_start}]
+
+                [UnasDesign - Loop{votes} - LoopStart{items}]
+                    <div class="page_vote_item_row2 py-2 [UnasDesign - Loop{votes} - IfStart{!limit_disp}]page_vote_item_bar_no[UnasDesign - Loop{votes} - IfEnd{!limit_disp}][UnasDesign - Loop{votes} - IfStart{limit_disp}]page_vote_item_bar_yes[UnasDesign - Loop{votes} - IfEnd{limit_disp}]">
+                        <div class="row">
+                            <div class="col-md-4">
+                                [UnasDesign - Loop{votes} - IfStart{can_vote}]
+                                    <div class="page-vote-radio-wrap d-flex align-items-center">
+                                        <input class="vote_radio_[UnasDesign - Loop{votes} - Normal{vote_id}]" id="vote_radio_[UnasDesign - Loop{votes} - Normal{vote_id}]_[UnasDesign - Loop{votes} - Loop{items} - Normal{num}]" name="vote" type="radio" onclick="vote_disable('[UnasDesign - Loop{votes} - Normal{vote_id}]');" value="[UnasDesign - Loop{votes} - Loop{items} - Normal{option}]">
+                                        <label for="vote_radio_[UnasDesign - Loop{votes} - Normal{vote_id}]_[UnasDesign - Loop{votes} - Loop{items} - Normal{num}]">[UnasDesign - Loop{votes} - Loop{items} - Normal{option}]</label>
+                                    </div>
+                                [UnasDesign - Loop{votes} - IfEnd{can_vote}]
+
+                                [UnasDesign - Loop{votes} - IfStart{!can_vote}]
+                                    <div class="vote_[UnasDesign - Loop{votes} - Normal{vote_id}]_[UnasDesign - Loop{votes} - Loop{items} - Normal{num}] d-flex align-items-center">[UnasDesign - Loop{votes} - Loop{items} - Normal{option}]</div>
+                                [UnasDesign - Loop{votes} - IfEnd{!can_vote}]
+                            </div>
+                            <div class="col-md-8">
+                                [UnasDesign - Loop{votes} - IfStart{limit_disp}]
+                                    <div class="page_vote_item_bar d-flex align-items-center h-100">
+                                        <div class="page_vote_item_bar_left w-100 position-relative">
+                                            <div class="page_vote_item_bar_left_center" style="width:[UnasDesign - Loop{votes} - Loop{items} - Normal{percent}]%" rel="[UnasDesign - Loop{votes} - Loop{items} - Normal{width}]"></div>
+                                            <div class="page_vote_item_bar_right">
+                                                [UnasDesign - Loop{votes} - Loop{items} - Normal{percent}]%&nbsp;&nbsp;[UnasDesign - IfStart{count_disp}]([UnasDesign - Loop{votes} - Loop{items} - Normal{count}])[UnasDesign - IfEnd{count_disp}]
+                                            </div>
+                                        </div>
+                                     </div>
+                                [UnasDesign - Loop{votes} - IfEnd{limit_disp}]
+                            </div>
+                        </div>
+                    </div>
+                [UnasDesign - Loop{votes} - LoopEnd{items}]
+
+                [UnasDesign - Loop{votes} - IfStart{can_vote}]
+                    <div class="page_vote_item_row3 page_vote_privacy_policy mt-5 mb-3 font-s">
+                        <input name="vote_privacy_policy" id="vote_privacy_policy_[UnasDesign - Loop{votes} - Normal{vote_id}]" type="checkbox" onclick="vote_disable('[UnasDesign - Loop{votes} - Normal{vote_id}]');" value="1">
+                        <label for="vote_privacy_policy_[UnasDesign - Loop{votes} - Normal{vote_id}]">[UnasDesign - Normal{vote_privacy_policy_title}]</label>
+                    </div>
+                    <div class="page-vote__btn-vote-wrap">
+                        <button class="page-vote__btn-vote btn--primary icon--b-vote" name="submit_button" type="submit" id="vote_button_[UnasDesign - Loop{votes} - Normal{vote_id}]" disabled="">[UnasDesign - Text{name:vote_submit;page:box_home}]</button>
+                    </div>
+                [UnasDesign - Loop{votes} - IfEnd{can_vote}]
+
+            [UnasDesign - Loop{votes} - Normal{form_end}]
+
+            [UnasDesign - IfStart{vote_num_disp}]
+                <div class="page_vote_item_row1 my-3">[UnasDesign - Text{vote_num}]: [UnasDesign - Loop{votes} - Normal{num}]&nbsp;[UnasDesign - Text{vote_db}]</div>
+            [UnasDesign - IfEnd{vote_num_disp}]
+        </div>
+    [UnasDesign - LoopEnd{votes}]
+</div>

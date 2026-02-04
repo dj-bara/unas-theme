@@ -1,0 +1,416 @@
+[UnasDesign - DesignVar{name:slide_direction;value:left}]
+
+[UnasDesign - IfStart{popup_disp}]
+
+    <div class="popup-contents d-flex flex-column">
+        [UnasDesign - IfStart{up_disp}]
+            <section class='up-sale popup-content p-3 px-md-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id="popup_up_content">
+                <header class='up-sale__title popup-title popup-title--up-sale pr-4'>
+                    <div class="title--theme-1 h6">[UnasDesign - Text{title_up}] <span class="page_popuplist__page-info page-info-up mb-3 text-muted round-bracket-around"><span class="itemsum"></span></span></div>
+                </header>
+                <div class='up-sale__items page-popuplist-items'>
+                    [UnasDesign - Normal{up_artlist}]
+                </div>
+            </section>
+        [UnasDesign - IfEnd{up_disp}]
+
+        [UnasDesign - IfStart{cross_disp}]
+            <section class='cross-sale popup-content p-3 px-md-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id="popup_cross_content">
+                <header class='cross-sale__title popup-title popup-title--cross-sale pr-4'>
+                    <div class="title--theme-1 h6">[UnasDesign - Text{title_cross}] <span class="page_popuplist__page-info page-info-cross mb-3 text-muted round-bracket-around"><span class="itemsum"></span></span></div>
+                </header>
+                [UnasDesign - Normal{cross_artlist}]
+            </section>
+        [UnasDesign - IfEnd{cross_disp}]
+
+        [UnasDesign - IfStart{postsale_disp}]
+        <section class='post-sale popup-content p-3 px-md-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id="popup_postsale_content">
+            <header class='post-sale__title popup-title popup-title--cross-sale pr-4'>
+                <div class="title--theme-1 h6">[UnasDesign - Text{name:postsale_title;page:order}]</div>
+            </header>
+            [UnasDesign - Normal{postsale_artdet}]
+        </section>
+        [UnasDesign - IfEnd{postsale_disp}]
+    </div>
+
+[UnasDesign - IfEnd{popup_disp}]
+
+[UnasDesign - IfStart{page_disp}]
+    [UnasDesign - IfStart{gift_disp}]
+        [UnasDesign - LoopStart{gift}]
+            <section class='gift page-content mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id='page_gift_content_[UnasDesign - Loop{gift} - Normal{gift_id}]'>
+                [UnasDesign - Loop{gift} - IfStart{gift_cardinality_by_cart}]
+                <div class='gift__title gift__title--by-cart page_pagelist_title title--theme-1 h6'>
+                    [UnasDesign - Text{title_gift1}]:
+                </div>
+                [UnasDesign - Loop{gift} - IfEnd{gift_cardinality_by_cart}]
+
+                [UnasDesign - Loop{gift} - IfStart{gift_cardinality_by_name}]
+                <div class='gift__title gift__title--by-name page_pagelist_title title--theme-1 h6'>
+                    <div class="fs-inherit d-inline-block mb-0 mr-2">[UnasDesign - Text{title_gift2}]:</div><span class="gift__base-product-name font-s font-sm-m ls-0 d-inline-block">[UnasDesign - Loop{gift} - Normal{base_product_name}]</span>
+                </div>
+                [UnasDesign - Loop{gift} - IfEnd{gift_cardinality_by_name}]
+
+                [UnasDesign - Loop{gift} - IfStart{gift_cardinality_artdet}]
+                <div class='gift__title gift__title--by-artdet page_pagelist_title title--theme-1 h6'>
+                    [UnasDesign - Text{title_gift3}] <span class="page_pagelist__page-info page-info-gift mb-3 text-muted round-bracket-around"><span class="itemsum"></span></span>
+                </div>
+                [UnasDesign - Loop{gift} - IfEnd{gift_cardinality_artdet}]
+                [UnasDesign - Loop{gift} - Normal{gift_artlist}]
+            </section>
+        [UnasDesign - LoopEnd{gift}]
+    [UnasDesign - IfEnd{gift_disp}]
+
+    [UnasDesign - IfStart{up_disp}]
+        <section class='up-sale page-content mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id="page_up_content">
+            <div class='up-sale__title page_pagelist_title title--theme-1 h6'>
+                [UnasDesign - Text{title_up}] <span class="page_pagelist__page-info page-info-up mb-3 text-muted round-bracket-around"><span class="itemsum"></span></span>
+            </div>
+            <div class='up-sale__items page_pagelist_items'>
+                [UnasDesign - Normal{up_artlist}]
+            </div>
+        </section>
+    [UnasDesign - IfEnd{up_disp}]
+
+    [UnasDesign - IfStart{cross_disp}]
+        <section class='cross-sale page-content mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id="page_cross_content">
+            <div class='cross-sale__title page_pagelist_title title--theme-1 h6'>
+                [UnasDesign - Text{title_cross}] <span class="page_pagelist__page-info page-info-cross mb-3 text-muted round-bracket-around"><span class="itemsum"></span></span>
+            </div>
+            <div class='cross-sale__items page_pagelist_items'>
+                [UnasDesign - Normal{cross_artlist}]
+            </div>
+        </section>
+    [UnasDesign - IfEnd{cross_disp}]
+
+    [UnasDesign - IfStart{artpack_disp}]
+        <section class='in-bundle page-content mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap' id="page_artpack_content">
+            <div class='in-bundle__title page_pagelist_title title--theme-1 h6'>
+                [UnasDesign - Text{title_artpack}] <span class="page_pagelist__page-info page-info-artpack mb-3 text-muted round-bracket-around"><span class="itemsum"></span></span>
+            </div>
+            <div class='in-bundle__items page_pagelist_items'>
+                [UnasDesign - Normal{artpack_artlist}]
+            </div>
+        </section>
+    [UnasDesign - IfEnd{artpack_disp}]
+[UnasDesign - IfEnd{page_disp}]
+
+[UnasDesign - IfStart{page_disp}]
+
+<script type="text/javascript">
+$(document).ready(function(){
+        [UnasDesign - IfStart{gift_disp}]
+        /*GIFT PAGE*/
+        $(document).ready(function() {
+            //pageinfo
+            var $status = $('.page-info-gift .itemsum');
+            var $slickElement = $(".gift__items");
+
+            $slickElement.on('init reInit', function(event, slick){
+                $status.text(slick.slideCount);
+            });
+
+            $slickElement.not('.slick-initialized').slick({
+                autoplay: false,
+                dots: false,
+                arrows: true,
+                infinite: false,
+                speed: 1000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                useTransform: true,
+                adaptiveHeight: false,
+                touchThreshold: 80,
+                mobileFirst: true,
+                lazyLoad: 'ondemand',
+                waitForAnimate: 'false',
+                responsive: [
+                    {
+                        breakpoint: 575,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1019,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    },
+                    {
+                        breakpoint: 1259,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1365,
+                        settings: {
+                            draggable: false,
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    }
+
+                ]
+            });
+
+            $('.js-pagelist-cart-btn').click(function() {
+                setTimeout(
+                    function()
+                    {
+                        $slickElement.slick('slickSetOption', {}, true);
+                    }, 800
+                );
+
+            })
+        });
+        [UnasDesign - IfEnd{gift_disp}]
+
+        [UnasDesign - IfStart{cross_disp}]
+        /*CROSS PAGE*/
+        $(document).ready(function() {
+            //pageinfo
+            var $status2 = $('.page-info-cross .itemsum');
+            var $slickElement2 = $(".cross__items");
+
+            $slickElement2.on('init reInit', function(event, slick){
+                $status2.text(slick.slideCount);
+            });
+
+            $slickElement2.not('.slick-initialized').slick({
+                autoplay: false,
+                dots: false,
+                arrows: true,
+                infinite: false,
+                speed: 1000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                useTransform: true,
+                adaptiveHeight: false,
+                touchThreshold: 80,
+                mobileFirst: true,
+                lazyLoad: 'ondemand',
+                waitForAnimate: 'false',
+                responsive: [
+                    {
+                        breakpoint: 575,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1019,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    },
+                    {
+                        breakpoint: 1259,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1365,
+                        settings: {
+                            draggable: false,
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    }
+
+                ]
+            });
+
+            $('.js-pagelist-cart-btn').click(function() {
+                setTimeout(
+                    function()
+                    {
+                        $slickElement2.slick('slickSetOption', {}, true);
+                    }, 800
+                );
+
+            })
+        });
+        [UnasDesign - IfEnd{cross_disp}]
+
+        [UnasDesign - IfStart{up_disp}]
+        /*UP PAGE */
+        $(document).ready(function() {
+            //pageinfo
+            var $status3 = $('.page-info-up .itemsum');
+            var $slickElement3 = ".up__items";
+
+            $($slickElement3).on('init reInit', function(event, slick){
+                $status3.text(slick.slideCount);
+            });
+
+            $($slickElement3).not('.slick-initialized').slick({
+                autoplay: false,
+                dots: false,
+                arrows: true,
+                infinite: false,
+                speed: 1000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                useTransform: true,
+                adaptiveHeight: false,
+                touchThreshold: 80,
+                mobileFirst: true,
+                lazyLoad: 'ondemand',
+                waitForAnimate: 'false',
+                responsive: [
+                    {
+                        breakpoint: 575,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1019,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    },
+                    {
+                        breakpoint: 1259,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1365,
+                        settings: {
+                            draggable: false,
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    }
+
+                ]
+            });
+
+            $('.js-pagelist-cart-btn', $slickElement3).click(function() {
+                setTimeout(
+                    function()
+                    {
+                        $($slickElement3).slick('slickSetOption', {}, true);
+                    }, 800
+                );
+
+            })
+        });
+        [UnasDesign - IfEnd{up_disp}]
+
+
+        [UnasDesign - IfStart{artpack_disp}]
+        /*ARTPACK PAGE */
+        $(document).ready(function() {
+            //pageinfo
+            var $status4 = $('.page-info-artpack .itemsum');
+            var $slickElement4 = ".artpack__items";
+
+            $($slickElement4).on('init reInit', function(event, slick){
+                $status4.text(slick.slideCount);
+            });
+
+            $($slickElement4).not('.slick-initialized').slick({
+                autoplay: false,
+                dots: false,
+                arrows: true,
+                infinite: false,
+                speed: 1000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                useTransform: true,
+                adaptiveHeight: false,
+                touchThreshold: 80,
+                mobileFirst: true,
+                lazyLoad: 'ondemand',
+                waitForAnimate: 'false',
+                responsive: [
+                    {
+                        breakpoint: 575,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1019,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    },
+                    {
+                        breakpoint: 1259,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 1365,
+                        settings: {
+                            draggable: false,
+                            slidesToShow: 4,
+                            slidesToScroll: 4
+                        }
+                    }
+
+                ]
+            });
+
+            $('.js-pagelist-cart-btn', $slickElement4).click(function() {
+                setTimeout(
+                    function()
+                    {
+                        $($slickElement4).slick('slickSetOption', {}, true);
+                    }, 800
+                );
+
+            })
+        });
+        [UnasDesign - IfEnd{artpack_disp}]
+});
+</script>
+[UnasDesign - IfEnd{page_disp}]

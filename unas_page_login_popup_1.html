@@ -1,0 +1,61 @@
+<div class="overlay-sign-in absolute-full d-flex justify-content-center align-items-center">
+    <div class="overlay-sign-inner bg-white drop-shadow px-3 px-sm-0 py-sm-5 position-relative">
+        <div class="row no-gutters">
+            <div class="col-sm-6">
+                <div class="overlay-login h-100 px-4 px-sm-5 pt-5 pb-4 pt-sm-4" id="overlay_login1">
+                    <div class="overlay-title title--theme-1 h4">[UnasDesign - Text{name:login_cust_back;page:box_shop}]</div>
+                    [UnasDesign - Normal{form_login_start}]
+
+                        <div class="overlay-login-email-wrap mb-3">
+                            [UnasDesign - Normal{login_name}]
+                        </div>
+                        <div class="overlay-login-psw-wrap mb-1">
+                            [UnasDesign - Normal{login_pass}]
+                        </div>
+                        <div class="overlay-btns">
+                            <button type="button" class="overlay-login__remind-btn btn--text btn--block icon--b-unlock mb-3 btn--no-text-transform" onclick="overlay_login_remind();">[UnasDesign - Text{name:login_remind;page:box_shop}]</button>
+                            <button class="btn btn--primary btn--block" type="submit">[UnasDesign - Text{name:login_login;page:box_shop}]</button>
+                        </div>
+
+                    [UnasDesign - Normal{form_login_end}]
+
+                    [UnasDesign - IfStart{facebook_login_disp|google_login_disp}]
+                    <div class="login-with-third-parties text-center mt-3">
+                        [UnasDesign - IfStart{facebook_login_disp}]
+                        <div class="d-inline-block new-cust__facebook-btn-wrap mt-2 mx-2">
+                            [UnasDesign - Normal{facebook_login}]
+                        </div>
+                        [UnasDesign - IfEnd{facebook_login_disp}]
+
+                        [UnasDesign - IfStart{google_login_disp}]
+                        <div class="d-inline-block new-cust__facebook-btn-wrap mt-2 mx-2">
+                            [UnasDesign - Normal{google_login}]
+                        </div>
+                        [UnasDesign - IfEnd{google_login_disp}]
+                    </div>
+                    [UnasDesign - IfEnd{facebook_login_disp|google_login_disp}]
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="overlay-reg h-100 px-4 px-sm-5 pt-4 pb-5 pb-sm-4" id="overlay_login2">
+                    <button class="overlay-sign-in__btn-close btn-close btn--square icon--close" onclick="overlay_close('overlay_login_outer');"></button>
+                    <div class="overlay-title title--theme-1 h4">[UnasDesign - Text{name:login_cust_new;page:box_shop}]</div>
+                    <div class="overlay-text h5">[UnasDesign - Text{name:login_cust_new_list_title;page:box_shop}]</div>
+                    <ul class="overlay-reg__adv">
+                        <li>[UnasDesign - Text{name:login_cust_new_list1;page:box_shop}]</li>
+                        <li>[UnasDesign - Text{name:login_cust_new_list2;page:box_shop}]</li>
+                        <li>[UnasDesign - Text{name:login_cust_new_list3;page:box_shop}]</li>
+                    </ul>
+                    <div class="overlay-btns">
+                        <button class="overlay-reg__btn-reg btn btn--primary btn--block mb-3" onclick="location.href='[UnasDesign - Normal{reg_url}]'">[UnasDesign - Text{name:menu_reg;page:box_shop}]</button>
+                        [UnasDesign - IfStart{noreg_disp}]
+                            <button class="overlay-reg__btn-no-reg btn btn--primary btn--block" onclick="location.href='[UnasDesign - Normal{noreg_url}]'">
+                                [UnasDesign - Text{name:no_reg;page:box_shop}]
+                            </button>
+                        [UnasDesign - IfEnd{noreg_disp}]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

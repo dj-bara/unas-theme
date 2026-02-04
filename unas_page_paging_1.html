@@ -1,0 +1,42 @@
+[UnasDesign - IfStart{paging_disp}]
+    <ul class='paging paging--prev'>
+        <li class='page-item page-first [UnasDesign - IfStart{page_first}]is-disabled[UnasDesign - IfEnd{page_first}] page-arrow'>
+            <a class="page-link icon--arrow-first" [UnasDesign - IfStart{!page_first}][UnasDesign - IfStart{!ajax_first_page_forced}] href="[UnasDesign - Normal{page_first_url}]" [UnasDesign - IfEnd{!ajax_first_page_forced}][UnasDesign - IfStart{ajax_first_page_forced}] onclick="[UnasDesign - Normal{ajax_first_onclick}]" [UnasDesign - IfEnd{ajax_first_page_forced}][UnasDesign - IfEnd{!page_first}]>
+            [UnasDesign - IfStart{!page_first}]<span class="sr-only">First</span>[UnasDesign - IfEnd{!page_first}]
+            </a>
+        </li>
+        <li class='page-item[UnasDesign - IfStart{page_first}] is-disabled[UnasDesign - IfEnd{page_first}] page-prev page-arrow'>
+            <a class="page-link icon--arrow-left" [UnasDesign - IfStart{!page_first}][UnasDesign - IfStart{!ajax_page_prev_disp}] href="[UnasDesign - Normal{page_prev_url}]" [UnasDesign - IfEnd{!ajax_page_prev_disp}] [UnasDesign - IfStart{ajax_page_prev_disp}] class="pointer" onclick="[UnasDesign - Normal{ajax_page_prev_onclick}]" [UnasDesign - IfEnd{ajax_page_prev_disp}][UnasDesign - IfEnd{!page_first}]>
+            [UnasDesign - IfStart{!page_first}]<span class="sr-only">Previous</span>[UnasDesign - IfEnd{!page_first}]
+            </a>
+        </li>
+    </ul>
+    <ul class='paging paging--pages paging--desktop-pages d-none d-xs-flex'>
+        [UnasDesign - LoopStart{pages}]
+        <li class="page-item[UnasDesign - Loop{pages} - IfStart{actual}] is-active[UnasDesign - Loop{pages} - IfEnd{actual}] page_select_num_[UnasDesign - Loop{pages} - Normal{num}]">
+            <a class="page-link" [UnasDesign - Loop{pages} - IfStart{!actual}][UnasDesign - Loop{pages} - IfStart{!ajax_pagination}]href="[UnasDesign - Loop{pages} - Normal{url}]"[UnasDesign - Loop{pages} - IfEnd{!ajax_pagination}] [UnasDesign - Loop{pages} - IfStart{ajax_pagination}]class="pointer" onclick="[UnasDesign - Loop{pages} - Normal{ajax_onclick}]"[UnasDesign - Loop{pages} - IfEnd{ajax_pagination}][UnasDesign - Loop{pages} - IfEnd{!actual}]>[UnasDesign - Loop{pages} - Normal{num}]</a>
+            [UnasDesign - Loop{pages} - IfStart{actual}]<span class="sr-only">[UnasDesign - Loop{pages} - Normal{num}]</span>[UnasDesign - Loop{pages} - IfEnd{actual}]
+        </li>
+        [UnasDesign - LoopEnd{pages}]
+    </ul>
+    <ul class='paging paging--pages paging--mobile-pages d-xs-none'>
+        [UnasDesign - LoopStart{mobile_pages}]
+        <li class="page-item[UnasDesign - Loop{mobile_pages} - IfStart{actual}] is-active[UnasDesign - Loop{mobile_pages} - IfEnd{actual}] page_select_num_[UnasDesign - Loop{mobile_pages} - Normal{num}]">
+            <a class="page-link" [UnasDesign - Loop{mobile_pages} - IfStart{!actual}][UnasDesign - Loop{mobile_pages} - IfStart{!actual}][UnasDesign - Loop{mobile_pages} - IfStart{!ajax_pagination}]href="[UnasDesign - Loop{mobile_pages} - Normal{url}]"[UnasDesign - Loop{mobile_pages} - IfEnd{!ajax_pagination}] [UnasDesign - Loop{mobile_pages} - IfStart{ajax_pagination}]class="pointer" onclick="[UnasDesign - Loop{mobile_pages} - Normal{ajax_onclick}]"[UnasDesign - Loop{mobile_pages} - IfEnd{ajax_pagination}][UnasDesign - Loop{mobile_pages} - IfEnd{!actual}]>[UnasDesign - Loop{mobile_pages} - Normal{num}]</a>
+            [UnasDesign - Loop{mobile_pages} - IfStart{actual}]<span class="sr-only">[UnasDesign - Loop{mobile_pages} - Normal{num}]</span>[UnasDesign - Loop{mobile_pages} - IfEnd{actual}]
+        </li>
+        [UnasDesign - LoopEnd{mobile_pages}]
+    </ul>
+    <ul class='paging paging--next'>
+        <li class='page-item[UnasDesign - IfStart{page_last}] is-disabled[UnasDesign - IfEnd{page_last}] page-next page-arrow'>
+            <a class="page-link icon--arrow-right" [UnasDesign - IfStart{!page_last}][UnasDesign - IfStart{!ajax_page_next_disp}] href="[UnasDesign - Normal{page_next_url}]" [UnasDesign - IfEnd{!ajax_page_next_disp}] [UnasDesign - IfStart{ajax_page_next_disp}] onclick="[UnasDesign - Normal{ajax_page_next_onclick}]" [UnasDesign - IfEnd{ajax_page_next_disp}][UnasDesign - IfEnd{!page_last}]>
+            [UnasDesign - IfStart{!page_last}]<span class="sr-only">Next</span>[UnasDesign - IfEnd{!page_last}]
+            </a>
+        </li>
+        <li class='page-item page-last [UnasDesign - IfStart{page_last}]is-disabled[UnasDesign - IfEnd{page_last}] page-arrow'>
+            <a class="page-link icon--arrow-last" [UnasDesign - IfStart{!page_last}][UnasDesign - IfStart{!ajax_last_page_forced}] href="[UnasDesign - Normal{page_last_url}]" [UnasDesign - IfEnd{!ajax_last_page_forced}] [UnasDesign - IfStart{ajax_last_page_forced}] onclick="[UnasDesign - Normal{ajax_last_onclick}]" [UnasDesign - IfEnd{ajax_last_page_forced}] [UnasDesign - IfEnd{!page_last}]>
+            [UnasDesign - IfStart{!page_last}]<span class="sr-only">Last</span>[UnasDesign - IfEnd{!page_last}]
+            </a>
+        </li>
+    </ul>
+[UnasDesign - IfEnd{paging_disp}]

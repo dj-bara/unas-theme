@@ -1,0 +1,170 @@
+{{ backvar(img_maxwidth,135) }}
+{{ backvar(img_maxheight,135) }}
+{{ backvar(cat_img_maxwidth,40) }}
+{{ backvar(cat_img_maxheight,40) }}
+{{ backvar(mobile_breakpoint,768) }}
+
+{% if result_exists %}{% set global_index = 0 %}
+    <div class="search-smart-arrow type--3"></div>
+    <div class="search-smart-autocomplete type--3">
+        <div class="row gutters-10">
+            <div class="{% if mobile_disp %}col-12{% else %}col-left{% endif %} d-flex flex-column">
+                {% if search_query_exists %}
+                    <section class="search-smart-autocomplete-search-query search-smart-section">
+                        <ul class="d-flex flex-wrap px-0">
+                            {% for search_query in search_queries %}
+                                {% set global_index = global_index + 1 %}
+                                <li onclick="location.href='{{ url_full }}shop_search.php?search={{ search_query.name_urlencoded }}'" data-type="text" data-index="{{ global_index }}" data-value="{{ search_query.name }}" class="js-search-result search-query px-3 icon--b-search" role="link">
+                                    <span class="search_name">{{ search_query.name_highlighted }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% endif %}
+
+                {% if query is not empty %}
+                    <div class="search-smart-actual-query search-smart-section px-0">
+                        <a href="{{ url_full }}shop_search.php?search={{ query_urlencoded }}">
+                            <span class="mr-3">{{ text.results_for_this }}</span> <strong class="icon--b-search text-primary">{{ query }}</strong>
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% if mobile_disp %}
+                    {% if product_exists %}
+                        <section class="search-smart-autocomplete-product search-smart-section search-smart-mobile">
+                            <div class="search-smart-title">{{ text.autocomplete_product }}</div>
+                            <ul class="row no-gutters w-100">
+                                {% for product in products %}
+                                    {% set global_index = global_index + 1 %}
+                                    <li onclick="location.href='{{ product.url }}'" data-index="{{ global_index }}" data-value="{{ product.name }}" class="js-search-result search-product col-6" role="link">
+                                        <div class="d-flex flex-grow-1 flex-column h-100{% if not price_disp %} no_price{% endif %}">
+                                            <div class="search-smart-product-img">
+                                                <img class="mr-auto" src="{{ product.img_url }}" {% if product.img_retina_exists %} srcset="{{ product.img_retina_url }} {{ product.img_retina_size }}"{% endif %} alt="{{ product.img_alt }}" width="{{ backvar.img_maxwidth }}" height="{{ backvar.img_maxheight }}">
+                                                {% if price_disp and product.sale_disp %}<div class="search-smart-sale-percent badge badge--sale">{{ product.sale_percent }}%</div>{% endif %}
+                                            </div>
+                                            <div class="search_name">{{ product.name_highlighted }}</div>
+                                            {% if price_disp %}
+                                                <div class="search-smart-prices with-rrp mt-auto{% if product.price_sale_disp %} has-sale-price{% endif %}">
+                                                    <div class="search-smart-price-base">
+                                                        {{ product.price_normal_text }}
+                                                        <span class="search-smart-price-base-value{% if product.sale_disp and product.price_line_through %} text-line-through{% endif %}">{{ product.price }}</span>
+                                                        {% if product.price_normal_info_text_disp %}&nbsp;
+                                                            <span class="icon--info" data-tippy="{{ product.price_normal_info_text }}"></span>
+                                                        {% endif %}
+                                                    </div>
+                                                    {% if product.price_sale_disp %}
+                                                        <div class="search-smart-price-sale">
+                                                            {{ product.price_discounted_text }}
+                                                            {{ product.price_sale }}
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    {% endif %}
+                {% endif %}
+
+                {% if category_exists %}
+                    <section class="search-smart-autocomplete-category search-smart-section">
+                        <div class="search-smart-title">{{ text.autocomplete_category }}</div>
+                        <ul>
+                            {% for category in categories %}
+                                {% set global_index = global_index + 1 %}
+                                <li onclick="location.href='{{ category.url }}'" data-index="{{ global_index }}" data-value="{{ category.name }}" class="js-search-result py-2" role="link">
+                                    <div class="row no-gutters align-items-center{% if not price_disp %} no_price{% endif %}">
+                                        <div class="search-smart-category-img col-auto {% if mobile_disp %}pl-4{% else %}pl-3{% endif %}">
+                                            <img src="{{ category.img_url }}"{% if category.img_retina_exists %} srcset="{{ category.img_retina_url }} {{ category.img_retina_size }}"{% endif %} alt="{{ category.img_alt }}" width="{{ backvar.cat_img_maxwidth }}" height="{{ backvar.cat_img_maxwidth }}">
+                                        </div>
+                                        <div class="col pl-3 {% if mobile_disp %}pr-4{% else %}pr-3{% endif %}">
+                                            <span class="search_name">{{ category.name_highlighted }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% endif %}
+
+                {% if content_exists %}
+                    <section class="search-smart-autocomplete-content search-smart-section">
+                        <div class="search-smart-title">{{ text.autocomplete_content }}</div>
+                        <ul>
+                            {% for content in contents %}
+                                {% set global_index = global_index + 1 %}
+                                <li onclick="location.href='{{ content.url }}'" data-index="{{ global_index }}" data-value="{{ content.name }}" class="js-search-result search-content" role="link">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col {% if mobile_disp %}px-4{% else %}px-3{% endif %}">
+                                            <span class="search_name">{{ content.name_highlighted }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% endif %}
+            </div>
+
+            {% if not mobile_disp %}
+                <div class="col-right">
+                    {% if product_exists %}
+                        <section class="search-smart-autocomplete-product search-smart-section">
+                            <ul class="row no-gutters w-100">
+                                {% for product in products %}
+                                    {% set global_index = global_index + 1 %}
+                                    <li onclick="location.href='{{ product.url }}'" data-index="{{ global_index }}" data-value="{{ product.name }}" class="js-search-result search-product" role="link">
+                                        <div class="d-flex flex-grow-1 flex-column h-100{% if not price_disp %} no_price{% endif %}">
+                                            <div class="search-smart-product-img">
+                                                <img class="mr-auto" src="{{ product.img_url }}" {% if product.img_retina_exists %} srcset="{{ product.img_retina_url }} {{ product.img_retina_size }}"{% endif %} alt="{{ product.img_alt }}" width="{{ backvar.img_maxwidth }}" height="{{ backvar.img_maxheight }}">
+                                                {% if price_disp and product.sale_disp %}<div class="search-smart-sale-percent badge badge--sale">{{ product.sale_percent }}%</div>{% endif %}
+                                            </div>
+                                            <div class="">
+                                                <div class="search_name">{{ product.name_highlighted }}</div>
+                                            </div>
+                                            {% if price_disp %}
+                                                <div class="search-smart-prices with-rrp mt-auto{% if product.price_sale_disp %} has-sale-price{% endif %}">
+                                                    <div class="search-smart-price-base">
+                                                        {{ product.price_normal_text }}<span class="search-smart-price-base-value{% if product.sale_disp and product.price_line_through %} text-line-through{% endif %}">{{ product.price }}</span>{% if product.price_normal_info_text_disp %}&nbsp;<span class="icon--info" data-tippy="{{ product.price_normal_info_text }}"></span>{% endif %}
+                                                    </div>
+                                                    {% if product.price_sale_disp %}
+                                                        <div class="search-smart-price-sale">
+                                                            {{ product.price_discounted_text }}
+                                                            {{ product.price_sale }}
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% block script %}
+        <script>
+            $(document).on('smartSearchCreate smartSearchOpen smartSearchKeyup', function(){
+                if (typeof initTippy == 'function'){
+                    initTippy();
+                }
+                search_smart_autocomplete_make_visible(20);
+            });
+            $(document).ready(function(){
+                if (typeof initTippy == 'function'){
+                    initTippy();
+                }
+                search_smart_autocomplete_make_visible(20);
+            });
+            $(".icon--info").click(function(e) {
+                e.stopPropagation();
+            });
+        </script>
+    {% endblock %}
+{% endif %}

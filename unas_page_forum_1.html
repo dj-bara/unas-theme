@@ -1,0 +1,39 @@
+<div id='page_forum_content' class=page-forum page_content'>
+    [UnasDesign - IfStart{forum_disp}]
+    <div class="page-forum-topic-wrap mb-5">
+        <div class="forum-topcis__title bg-8 p-3 text-center font-l text-uppercase ls-normal icon--b-comments">[UnasDesign - Normal{title_topic}]</div>
+
+        [UnasDesign - IfStart{page_disp}]
+        <nav class="forum-paging d-flex align-items-center justify-content-center my-4 py-3 border-top" aria-label="pagination">
+            [UnasDesign - Normal{paging_content}]
+        </nav>
+        [UnasDesign - IfEnd{page_disp}]
+
+        <div class="forum-topics">
+        [UnasDesign - LoopStart{forum_loop}]
+            <div class="forum-topic p-3 border-bottom">
+                <a href="[UnasDesign - Loop{forum_loop} - Normal{link}]">[UnasDesign - Loop{forum_loop} - Normal{title}]</a>
+            </div>
+        [UnasDesign - LoopEnd{forum_loop}]
+        </div>
+    </div>
+    [UnasDesign - IfEnd{forum_disp}]
+
+    [UnasDesign - IfStart{!forum_disp}]
+    <div class="page_forum_topic">
+    	<div class="page_forum_topic_head">
+        	<div class="page_forum_topic_no">[UnasDesign - Normal{title_notopic}]</div>
+        </div>
+    </div>
+    [UnasDesign - IfEnd{!forum_disp}]
+
+    [UnasDesign - IfStart{maketopic_disp}]
+        [UnasDesign - Normal{maketopic_form_start}]
+        <div class="page-forum__create-topic bg-8 container-xs p-4 ml-0 mb-4">
+            <div class="create-topic__title mb-2 icon--b-edit">[UnasDesign - Normal{maketopic_title}]</div>
+            <div class="create-topic__input mb-3">[UnasDesign - Normal{design_input_befor}][UnasDesign - Normal{maketopic_input}][UnasDesign - Normal{design_input_after}]</div>
+            <div class="create-topic__btn-wrap btn-wrap--primary">[UnasDesign - Normal{design_button_befor}][UnasDesign - Normal{maketopic_button}][UnasDesign - Normal{design_button_after}]</div>
+        </div>
+        [UnasDesign - Normal{maketopic_form_end}]
+    [UnasDesign - IfEnd{maketopic_disp}]
+</div>
