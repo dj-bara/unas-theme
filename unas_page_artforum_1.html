@@ -1,0 +1,556 @@
+[UnasDesign - DesignVar{name:max_item_num;value:3}]
+[UnasDesign - DesignVar{name:product_img_width;value:50}]
+[UnasDesign - DesignVar{name:product_img_height;value:50}]
+
+[UnasDesign - IfStart{upload_review_images}]
+<link rel="stylesheet" type="text/css" href="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/css/default-skin.min.css">
+<link rel="stylesheet" type="text/css" href="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/css/photoswipe.min.css">
+<script src="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/photoswipe.min.js" type="text/javascript" defer></script>
+<script src="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/photoswipe-ui-default.min.js" type="text/javascript" defer></script>
+[UnasDesign - IfEnd{upload_review_images}]
+
+<div id='page_artforum_content' class='page--artforum with-verified-opinions page_content py-4'>
+    [UnasDesign - IfStart{artforum_disp}]
+        [UnasDesign - Normal{script}]
+        <div class="artforum__btn-back-wrap mb-3">
+            <button class="artforum__btn-back btn btn-square btn-square--large btn--alt icon--back" type="button" onclick="location.href='[UnasDesign - Normal{back_url}]'" title='[UnasDesign - Text{name:button_back;page:box_home}]' data-text="[UnasDesign - Text{name:button_back;page:box_home}]"></button>
+        </div>
+        [UnasDesign - IfStart{forum_yes_disp}]<!--has review-->
+            <a href="[UnasDesign - Normal{back_url}]">
+                <div class='artforum__title title--theme-1 mb-5'>
+                    <h1 class="mb-0">[UnasDesign - Normal{name}]</h1>
+                    <div class="artforum__subtitle font-m">[UnasDesign - Text{forum_title}]</div>
+                </div>
+            </a>
+            <div class='artforum__review pb-5'>
+                <div class="row review-summary-block">
+                    <div class="col-sm-5 col-md-3">
+                        <div class="review-summary">
+                            <div class="review-summary__average-text mb-3 h4">
+                                [UnasDesign - Text{forum_avr}]:
+                            </div>
+                            <div class="review-summary__stars rating-stars">
+                                <div class="rating-stars__back">
+                                    <div class="rating-stars__front" style="width: [UnasDesign - Normal{forum_score_percent}]%;"></div>
+                                </div>
+                            </div>
+                            <div class="review-summary__score-wrap">
+                                <span class="review-summary__score-num pr-2">[UnasDesign - Normal{forum_score_num}]</span>
+                                <span class="review-summary__reviews-count">([UnasDesign - Normal{forum_count}] [UnasDesign - Text{name:forum_review;page:artdet}])</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7 col-md-5">
+                        <div class="artforum__summary-bars mt-4 mt-sm-0">
+                            <div class="artforum__summary-bar mb-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                        <div class="star-5-text">5</div>
+                                        <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress-bar-full">
+                                            <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_5}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_5}])</div>
+                                </div>
+                            </div>
+                            <div class="artforum__summary-bar mb-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                        <div class="star-5-text">4</div>
+                                        <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress-bar-full">
+                                            <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_4}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_4}])</div>
+                                </div>
+                            </div>
+                            <div class="artforum__summary-bar mb-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                        <div class="star-5-text">3</div>
+                                        <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress-bar-full">
+                                            <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_3}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_3}])</div>
+                                </div>
+                            </div>
+                            <div class="artforum__summary-bar mb-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                        <div class="star-5-text">2</div>
+                                        <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress-bar-full">
+                                            <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_2}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_2}])</div>
+                                </div>
+                            </div>
+                            <div class="artforum__summary-bar">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                        <div class="star-5-text">1</div>
+                                        <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress-bar-full">
+                                            <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_1}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_1}])</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="artforum__write-your-own-opinion my-4 my-md-0 text-center text-md-left">
+                            <div class="h4">[UnasDesign - Text{name:forum_not_yet;page:artdet}]</div>
+                            <button type="button" class='artforum__jump-to-writing-btn js-scroll-down btn--primary' data-scroll='writing-review'>[UnasDesign - Text{name:forum_write;page:artdet}]</button>
+                        </div>
+                    </div>
+                </div>
+
+                [UnasDesign - IfStart{forum_page}]
+                    <nav class="artforum-paging paging--top d-flex align-items-center justify-content-center py-3 border-bottom" aria-label="pagination">
+                        [UnasDesign - Normal{paging_content}]
+                    </nav>
+                [UnasDesign - IfEnd{forum_page}]
+
+                    <div class="product-reviews">
+                        [UnasDesign - LoopStart{forum}]
+                            <div class='product-review border-bottom py-5'>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="product-review__head d-flex flex-wrap">
+                                            <div class="col-auto pl-0 pr-3">
+                                                <div class="product-review__avatar">
+                                                    [UnasDesign - Loop{forum} - IfStart{!forum_name_disp}]
+                                                    <div class="product-review__avatar-default-icon icon--comment"></div>
+                                                    [UnasDesign - Loop{forum} - IfEnd{!forum_name_disp}]
+
+                                                    [UnasDesign - Loop{forum} - IfStart{forum_name_disp}]
+                                                    <div class="product-review__avatar-first-letter">[UnasDesign - Loop{forum} - Normal{forum_name}]</div>
+                                                    [UnasDesign - Loop{forum} - IfEnd{forum_name_disp}]
+                                                </div>
+                                            </div>
+                                            <div class="col px-0">
+                                                [UnasDesign - Loop{forum} - IfStart{forum_name_disp}]
+                                                <div class="product-review__author line-clamp--3-12 font-weight-700">[UnasDesign - Loop{forum} - Normal{forum_name}]</div>
+                                                [UnasDesign - Loop{forum} - IfEnd{forum_name_disp}]
+                                                <div class="product-review__email font-s text-muted">[UnasDesign - Loop{forum} - Normal{forum_email}]</div>
+                                                <div class="product-review__created-at d-flex font-s text-muted">
+                                                    <div class="product-review__created-date">[UnasDesign - Loop{forum} - Normal{forum_date}]</div>
+                                                    <div class="product-review__created-time">&nbsp;-&nbsp;[UnasDesign - Loop{forum} - Normal{forum_time}]</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <div class="product-review__body">
+                                            <div class="d-flex mt-2 align-items-center">
+                                                <div class="product-review__stars rating-stars">
+                                                    <div class="rating-stars__back">
+                                                        <div class="rating-stars__front" style="width:calc( 100% * [UnasDesign - Loop{forum} - Normal{forum_score}] / 5);"></div>
+                                                    </div>
+                                                </div>
+                                                [UnasDesign - Loop{forum} - IfStart{is_verified_customer}]
+                                                    <div class="verified-customer-wrap ml-3">
+                                                        <div class="verified-customer__badge">[UnasDesign - Text{verified_customer}]</div>
+                                                    </div>
+                                                [UnasDesign - Loop{forum} - IfEnd{is_verified_customer}]
+                                            </div>
+
+                                            <div class='product-review__wrap'>
+                                                <div class='product-review__message my-3'>[UnasDesign - Loop{forum} - Normal{forum_message}]</div>
+                                                [UnasDesign - IfStart{write_pros_cons_disp}]
+                                                [UnasDesign - Loop{forum} - IfStart{pro_disp|con_disp}]
+                                                <div class="product-review__adv-disadv row">
+                                                    [UnasDesign - Loop{forum} - IfStart{pro_disp}]
+                                                    <div class="col-sm-6">
+                                                        <div class="product-review__advantage mb-2">[UnasDesign - Loop{forum} - Normal{forum_message_pros}]</div>
+                                                    </div>
+                                                    [UnasDesign - Loop{forum} - IfEnd{pro_disp}]
+
+                                                    [UnasDesign - Loop{forum} - IfStart{con_disp}]
+                                                    <div class="col-sm-6">
+                                                        <div class="product-review__disadvantage">[UnasDesign - Loop{forum} - Normal{forum_message_cons}]</div>
+                                                    </div>
+                                                    [UnasDesign - Loop{forum} - IfEnd{con_disp}]
+                                                </div>
+                                                [UnasDesign - Loop{forum} - IfEnd{pro_disp|con_disp}]
+                                                [UnasDesign - IfEnd{write_pros_cons_disp}]
+
+                                                [UnasDesign - Loop{forum} - IfStart{images_disp}]
+                                                <div class='product-review__images row no-gutters mt-2 pl-2'>
+                                                    <div class='product-review__images-title mb-2 col-12'>
+                                                        <strong>[UnasDesign - Text{name:art_image;page:artdet}]:</strong>
+                                                    </div>
+
+                                                    <div class='product-review__images-wrap col-12'>
+                                                        <div class="product-review__images-inner row">
+                                                            [UnasDesign - Loop{forum} - LoopStart{images}]
+                                                            <div class="product-review__image js-init-ps-reviews mb-2 col-md-4 col-sm-6" data-loop-index="[UnasDesign - Loop{forum} - Loop{images} - Normal{pswp_loop_index}]">
+                                                                <img src="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_url}]" alt="[UnasDesign - Normal{name}]" title="[UnasDesign - Normal{name}]"
+                                                                     width="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_width}]" height="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_height}]"
+                                                               >
+                                                            </div>
+                                                            [UnasDesign - Loop{forum} - LoopEnd{images}]
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                [UnasDesign - Loop{forum} - IfEnd{images_disp}]
+
+                                                [UnasDesign - Loop{forum} - IfStart{admin_answer_disp}]
+                                                <div class="product-review__admin-answer-wrap">
+                                                    <div class="product-review__admin-answer-title">
+                                                        <strong>[UnasDesign - Loop{forum} - Normal{respondent}]:</strong>
+                                                    </div>
+
+                                                    <div class="product-review__admin-answer">[UnasDesign - Loop{forum} - Normal{admin_answer}]</div>
+                                                </div>
+                                                [UnasDesign - Loop{forum} - IfEnd{admin_answer_disp}]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        [UnasDesign - LoopEnd{forum}]
+                    </div>
+
+            [UnasDesign - IfStart{forum_page}]
+            <nav class="artforum-paging paging--bottom d-flex align-items-center justify-content-center py-3 border-top" aria-label="pagination">
+                [UnasDesign - Normal{paging_content}]
+            </nav>
+            [UnasDesign - IfEnd{forum_page}]
+
+        [UnasDesign - IfEnd{forum_yes_disp}]
+
+        <div class="writing-review my-5 container-md">
+            <div class="writing-review__title title--theme-1 h2">[UnasDesign - Text{write_title}]</div>
+            <div class="writing-review__product-pic-name-wrap row no-gutters align-items-center mb-5">
+                [UnasDesign - IfStart{image_disp}]
+                <div class="writing-review__product-pic-wrap col-auto">
+                    <a href="[UnasDesign - Normal{back_url}]" title="[UnasDesign - Normal{name}]">
+                        <img src="[UnasDesign - Normal{product_img_url}]"[UnasDesign - IfStart{product_img_retina_exists}] srcset="[UnasDesign - Normal{product_img_retina_url}] [UnasDesign - Normal{product_img_retina_size}]"[UnasDesign - IfEnd{product_img_retina_exists}] alt="[UnasDesign - Normal{product_img_alt}]" title="[UnasDesign - Normal{product_img_title}]" id="[UnasDesign - Normal{product_img_id}]">
+                    </a>
+                </div>
+                [UnasDesign - IfEnd{image_disp}]
+                <div class="writing-review__product-name-wrap col pl-4">
+                    <a href="[UnasDesign - Normal{back_url}]">
+                        [UnasDesign - IfStart{forum_yes_disp}]
+                            <div class='writing-review__product-name artdet__name'>[UnasDesign - Normal{name}]</div>
+                        [UnasDesign - IfEnd{forum_yes_disp}]
+                        [UnasDesign - IfStart{!forum_yes_disp}]
+                            <h1 class='writing-review__product-name artdet__name mb-0'>[UnasDesign - Normal{name}]</h1>
+                        [UnasDesign - IfEnd{!forum_yes_disp}]
+                    </a>
+                </div>
+            </div>
+
+            [UnasDesign - Normal{form_start}]
+
+            [UnasDesign - IfStart{login_needed&!only_verified_customer_can_write_opinion&!only_verified_registered_customer_can_write_opinion}]
+            <div class="writing-review__info my-3 font-xs">[UnasDesign - Text{page:shop_artforum;name:java_login;}]</div>
+            [UnasDesign - IfEnd{login_needed&!only_verified_customer_can_write_opinion&!only_verified_registered_customer_can_write_opinion}]
+
+            [UnasDesign - IfStart{only_verified_customer_can_write_opinion|only_verified_registered_customer_can_write_opinion}]
+            <div class="writing-review__verification-info my-3 font-xs">[UnasDesign - Normal{who_can_write_review_info_text}]</div>
+            [UnasDesign - IfEnd{only_verified_customer_can_write_opinion|only_verified_registered_customer_can_write_opinion}]
+
+            <div class='writing-review__form-inner mb-5'>
+                <div class="row">
+                    <div class="writing-review__name form-group col-sm [UnasDesign - IfStart{write_name_fault_disp}]has-fault[UnasDesign - IfEnd{write_name_fault_disp}]">
+                        <label class='writing-review__name-label form-label'>[UnasDesign - Normal{write_name_title}]:</label>
+                        <div class='writing-review__name-value form-value'>[UnasDesign - Normal{write_name}]</div>
+                        [UnasDesign - IfStart{write_name_fault_disp}]
+                        <div class='form-invalid'>[UnasDesign - Normal{write_name_fault_text}]</div>
+                        [UnasDesign - IfEnd{write_name_fault_disp}]
+                    </div>
+
+                    [UnasDesign - IfStart{write_email_disp}]
+                    <div class="writing-review__email form-group col-sm [UnasDesign - IfStart{write_email_fault_disp}]has-fault[UnasDesign - IfEnd{write_email_fault_disp}]">
+                        <label class='writing-review__email-label form-label'>[UnasDesign - Normal{write_email_title}]:</label>
+                        <div class='writing-review__email-value form-value'><input name="forum_emai" type="email" maxlength="100" class="text_normal" value="[UnasDesign - Normal{author_email}]" required="" [UnasDesign - IfStart{login_needed}]readonly[UnasDesign - IfEnd{login_needed}]></div>
+                        [UnasDesign - IfStart{write_email_fault_disp}]
+                        <div class='form-invalid'>[UnasDesign - Normal{write_email_fault_text}]</div>
+                        [UnasDesign - IfEnd{write_email_fault_disp}]
+                    </div>
+                    [UnasDesign - IfEnd{write_email_disp}]
+
+                    <div class="writing-review__message form-group col-12 [UnasDesign - IfStart{write_message_fault_disp}]has-fault[UnasDesign - IfEnd{write_message_fault_disp}]">
+                        <label class='writing-review__message-label form-label'>[UnasDesign - Normal{write_message_title}]:</label>
+                        <div class='writing-review__message-label form-value'>[UnasDesign - Normal{write_message}]</div>
+                        [UnasDesign - IfStart{write_message_fault_disp}]
+                        <div class='form-invalid'>[UnasDesign - Normal{write_message_fault_text}]</div>
+                        [UnasDesign - IfEnd{write_message_fault_disp}]
+                    </div>
+
+                    [UnasDesign - IfStart{write_pros_cons_disp}]
+                    <div class="writing-review__advantage form-group col-sm [UnasDesign - IfStart{write_pros_fault_disp}]has-fault[UnasDesign - IfEnd{write_pros_fault_disp}]">
+                        <label class='writing-review__advantage-label form-label'>[UnasDesign - Normal{write_pros_title}]:</label>
+                        <div class='writing-review__advantage-value form-value'>[UnasDesign - Normal{write_pros}]</div>
+                        [UnasDesign - IfStart{write_pros_fault_disp}]
+                        <div class='form-invalid'>[UnasDesign - Normal{write_pros_fault_text}]</div>
+                        [UnasDesign - IfEnd{write_pros_fault_disp}]
+                    </div>
+
+                    <div class="writing-review__disadvantage form-group col-sm [UnasDesign - IfStart{write_cons_fault_disp}]has-fault[UnasDesign - IfEnd{write_cons_fault_disp}]">
+                        <label class='writing-review__disadvantage-label form-label'>[UnasDesign - Normal{write_cons_title}]:</label>
+                        <div class='writing-review__disadvantage-value form-value'>[UnasDesign - Normal{write_cons}]</div>
+                        [UnasDesign - IfStart{write_cons_fault_disp}]
+                        <div class='form-invalid'>[UnasDesign - Normal{write_cons_fault_text}]</div>
+                        [UnasDesign - IfEnd{write_cons_fault_disp}]
+                    </div>
+                    [UnasDesign - IfEnd{write_pros_cons_disp}]
+
+                    [UnasDesign - IfStart{upload_review_images}]
+                    <script>
+                        var fileUploader = new reviewFileUploader('[UnasDesign - Normal{sku}]');
+                        fileUploader.init();
+                    </script>
+
+                    <input type="hidden" name="review_image_random" id="review_image_random" value="[UnasDesign - Normal{review_image_random}]">
+
+                    <div class="writing-review__images form-group col-12 [UnasDesign - IfStart{write_cons_fault_disp}]has-fault[UnasDesign - IfEnd{write_cons_fault_disp}]">
+                        <label class='writing-review__images-label form-label'>[UnasDesign - Text{name:art_image;page:artdet}]:</label>
+                        <div class='writing-review__images-outer'>
+                            <div class="js-review-images row gutters-5">
+                                [UnasDesign - LoopStart{review_images}]
+                                <div class="js-review-image js-review-image-[UnasDesign - Loop{review_images} - Normal{review_image_number}] col-md-4 col-sm-6 mb-4">
+                                    <div class="js-review-image-delete icon--close [UnasDesign - Loop{review_images} - IfStart{!review_image_old_url_disp}]d-none[UnasDesign - Loop{review_images} - IfEnd{!review_image_old_url_disp}]" data-image-number="[UnasDesign - Loop{review_images} - Normal{review_image_number}]"></div>
+                                    <div class="js-review-image-upload-outer" data-image-number="[UnasDesign - Loop{review_images} - Normal{review_image_number}]">
+                                        <label for="review-images-file-upload-[UnasDesign - Loop{review_images} - Normal{review_image_number}]" class="js-review-image-upload icon--plus [UnasDesign - Loop{review_images} - IfStart{review_image_old_url_disp}]d-none[UnasDesign - Loop{review_images} - IfEnd{review_image_old_url_disp}]"></label>
+                                        <input type='file' name="review_image" class='d-none' id='review-images-file-upload-[UnasDesign - Loop{review_images} - Normal{review_image_number}]' onchange="fileUploader.upload([UnasDesign - Loop{review_images} - Normal{review_image_number}]);">
+                                        <div class="js-review-image-wrapper p-3 [UnasDesign - Loop{review_images} - IfStart{!review_image_old_url_disp}]d-none[UnasDesign - Loop{review_images} - IfEnd{!review_image_old_url_disp}]">
+                                            <div class="loading-spinner [UnasDesign - Loop{review_images} - IfStart{review_image_old_url_disp}]d-none[UnasDesign - Loop{review_images} - IfEnd{review_image_old_url_disp}]"></div>
+                                            <div class="js-review-image-content">
+                                                [UnasDesign - Loop{review_images} - IfStart{review_image_old_url_disp}]
+                                                <img src="[UnasDesign - Loop{review_images} - Normal{review_image_old_url}]" alt="">
+                                                [UnasDesign - Loop{review_images} - IfEnd{review_image_old_url_disp}]
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="js-review-image-errors mt-3 text-danger font-xs d-none"></div>
+                                </div>
+                                [UnasDesign - LoopEnd{review_images}]
+                            </div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{upload_review_images}]
+
+                    <div class="writing-review__score form-group col-sm-12 d-flex align-items-center" id="page_artforum_write_score">
+                        <div class='writing-review__score-label form-label mb-0 mr-2'>[UnasDesign - Normal{write_score_title}]:</div>
+                        <div class='writing-review__score-value form-value'><div class='page_artforum_write_score_wrap position-relative'>[UnasDesign - Normal{write_score}]</div></div>
+                        [UnasDesign - IfStart{posted_score_error_disp}]
+                            <div class='form-invalid'>
+                                [UnasDesign - Text{page:shop_newcust;name:fault_require;}]
+                            </div>
+                        [UnasDesign - IfEnd{posted_score_error_disp}]
+                    </div>
+
+                    <div class="writing-review__policy form-group col-sm-12 [UnasDesign - IfStart{write_privacy_policy_fault_disp}]has-fault[UnasDesign - IfEnd{write_privacy_policy_fault_disp}]">
+                        <div class='writing-review__policy'>
+                            [UnasDesign - Normal{write_privacy_policy}]
+                            <label for="forum_privacy_policy" class="p-0">[UnasDesign - Normal{write_privacy_policy_title}]</label>
+                        </div>
+                        [UnasDesign - IfStart{write_privacy_policy_fault_disp}]
+                        <div class='form-invalid'>[UnasDesign - Normal{write_privacy_policy_fault_text}]</div>
+                        [UnasDesign - IfEnd{write_privacy_policy_fault_disp}]
+                    </div>
+
+                    <div class='btn-wrap btn-wrap--primary col-12 text-center mt-5'>[UnasDesign - Normal{write_button}]</div>
+
+                    [UnasDesign - Normal{write_recaptcha}]
+                </div>
+            </div>
+            [UnasDesign - Normal{form_end}]
+
+        </div>
+    </div>
+    [UnasDesign - IfEnd{artforum_disp}]
+
+    [UnasDesign - IfStart{upload_review_images}]
+    <div class="photoSwipeDatasReviews invisible">
+        [UnasDesign - LoopStart{forum}]
+            [UnasDesign - Loop{forum} - IfStart{images_disp}]
+                [UnasDesign - Loop{forum} - LoopStart{images}]
+                    <a href="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_url}]"></a>
+                [UnasDesign - Loop{forum} - LoopEnd{images}]
+            [UnasDesign - Loop{forum} - IfEnd{images_disp}]
+        [UnasDesign - LoopEnd{forum}]
+    </div>
+
+    <script>
+        var $clickElementToInitPsReviews = '.js-init-ps-reviews';
+
+        var initPhotoSwipeReviewsFromDOM = function () {
+            var $pswp = $('.pswp')[0];
+            var $psDatas = $('.photoSwipeDatasReviews');
+
+            $psDatas.each(function () {
+                var $pics = $(this),
+                    getItems = function () {
+                        var items = [];
+                        $pics.find('a').each(function () {
+                            var $this = $(this),
+                                $href = $this.attr('href'),
+                                $width = 0,
+                                $height = 0,
+                                item = {
+                                    src: $href,
+                                    w: $width,
+                                    h: $height
+                                };
+                            items.push(item);
+                        });
+                        return items;
+                    };
+
+                var items = getItems();
+
+                $($clickElementToInitPsReviews).on('click', function (event) {
+                    var $this = $(this);
+                    event.preventDefault();
+
+                    var $index = parseInt($this.attr('data-loop-index'));
+                    var options = {
+                        index: $index,
+                        history: false,
+                        bgOpacity: 0.5,
+                        shareEl: false,
+                        showHideOpacity: true,
+                        getThumbBoundsFn: function (index) {
+                            /** azon képeről nagyítson a photoswipe, melyek láthatók **/
+                            var thumbnails = $($clickElementToInitPsReviews).map(function () {
+                                var $this = $(this);
+                                if ($this.is(":visible")) {
+                                    return this;
+                                }
+                            }).get();
+
+                            var thumbnail = thumbnails[index];
+                            var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+                            var zoomedImgHeight = items[index].h;
+                            var zoomedImgWidth = items[index].w;
+                            var zoomedImgRatio = zoomedImgHeight / zoomedImgWidth;
+                            var rect = thumbnail.getBoundingClientRect();
+                            var zoomableImgHeight = rect.height;
+                            var zoomableImgWidth = rect.width;
+                            var zoomableImgRatio = (zoomableImgHeight / zoomableImgWidth);
+                            var offsetY = 0;
+                            var offsetX = 0;
+                            var returnWidth = zoomableImgWidth;
+
+                            if (zoomedImgRatio < 1) { /* a nagyított kép fekvő */
+                                if (zoomedImgWidth < zoomableImgWidth) { /*A nagyított kép keskenyebb */
+                                    offsetX = (zoomableImgWidth - zoomedImgWidth) / 2;
+                                    offsetY = (Math.abs(zoomableImgHeight - zoomedImgHeight)) / 2;
+                                    returnWidth = zoomedImgWidth;
+                                } else { /*A nagyított kép szélesebb */
+                                    offsetY = (zoomableImgHeight - (zoomableImgWidth * zoomedImgRatio)) / 2;
+                                }
+
+                            } else if (zoomedImgRatio > 1) { /* a nagyított kép álló */
+                                if (zoomedImgHeight < zoomableImgHeight) { /*A nagyított kép alacsonyabb */
+                                    offsetX = (zoomableImgWidth - zoomedImgWidth) / 2;
+                                    offsetY = (zoomableImgHeight - zoomedImgHeight) / 2;
+                                    returnWidth = zoomedImgWidth;
+                                } else { /*A nagyított kép magasabb */
+                                    offsetX = (zoomableImgWidth - (zoomableImgHeight / zoomedImgRatio)) / 2;
+                                    if (zoomedImgRatio > zoomableImgRatio) returnWidth = zoomableImgHeight / zoomedImgRatio;
+                                }
+                            } else { /*A nagyított kép négyzetes */
+                                if (zoomedImgWidth < zoomableImgWidth) { /*A nagyított kép keskenyebb */
+                                    offsetX = (zoomableImgWidth - zoomedImgWidth) / 2;
+                                    offsetY = (Math.abs(zoomableImgHeight - zoomedImgHeight)) / 2;
+                                    returnWidth = zoomedImgWidth;
+                                } else { /*A nagyított kép szélesebb */
+                                    offsetY = (zoomableImgHeight - zoomableImgWidth) / 2;
+                                }
+                            }
+
+                            return {x: rect.left + offsetX, y: rect.top + pageYScroll + offsetY, w: returnWidth};
+                        },
+                        getDoubleTapZoom: function (isMouseClick, item) {
+                            if (isMouseClick) {
+                                return 1;
+                            } else {
+                                return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+                            }
+                        }
+                    };
+
+                    var photoSwipeReviews = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+
+                    //Méret nélküli képekhez képek lekérdezése
+                    photoSwipeReviews.listen('gettingData', function (index, item) {
+                        if (item.w < 1 || item.h < 1) {
+                            var img = new Image();
+                            img.onload = function () { // Kép betöltése után lekéri a méreteket
+                                item.w = this.width; // Kép szélességének beállítása
+                                item.h = this.height; // Kép magasságának beállítása
+                                photoSwipeReviews.invalidateCurrItems(); // Elemek újra inicializálása
+                                photoSwipeReviews.updateSize(true); // Elemek újra inicializálása
+                            }
+                            img.src = item.src; // Képek betöltése
+                        }
+                    });
+
+                    photoSwipeReviews.init();
+                });
+            });
+        };
+
+        $(document).ready(function () {
+            initPhotoSwipeReviewsFromDOM();
+        });
+    </script>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close"></button>
+                    <button class="pswp__button pswp__button--fs"></button>
+                    <button class="pswp__button pswp__button--zoom"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left"></button>
+                <button class="pswp__button pswp__button--arrow--right"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    [UnasDesign - IfEnd{upload_review_images}]
+</div>

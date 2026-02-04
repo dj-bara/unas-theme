@@ -1,0 +1,219 @@
+[UnasDesign - DesignVar{name:img_size;value:1}]
+[UnasDesign - DesignVar{name:transition_effects;value:slide,fade}]
+
+[UnasDesign - IfStart{element_disp}]
+    [UnasDesign - IfStart{style_disp}]
+        [UnasDesign - LoopStart{slide}]
+            [UnasDesign - Loop{slide} - IfStart{img_default_disp}]
+            <style>
+                .[UnasDesign - Normal{name}]-wrapper:not(.inited) > .slider-pro {
+                    position:absolute;top:0;left:0;right:0;bottom:0;
+                }
+                .[UnasDesign - Normal{name}]-wrapper:not(.inited) {
+                padding-top: calc([UnasDesign - Loop{slide} - Normal{img_default_height}] / [UnasDesign - Loop{slide} - Normal{img_default_width}] * 100%);
+                }
+                [UnasDesign - Loop{slide} - IfStart{img_large_disp}]
+                @media (max-width: 1019.8px) {
+                    .[UnasDesign - Normal{name}]-wrapper:not(.inited) {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_large_height}] / [UnasDesign - Loop{slide} - Normal{img_large_width}] * 100%);
+                    }
+                }
+                [UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+
+                [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]
+                @media (max-width: 767.8px){
+                    .[UnasDesign - Normal{name}]-wrapper:not(.inited) {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_medium_height}] / [UnasDesign - Loop{slide} - Normal{img_medium_width}] * 100%);
+                    }
+                }
+                [UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+
+                [UnasDesign - Loop{slide} - IfStart{img_small_disp}]
+                @media (max-width: 479.8px){
+                    .[UnasDesign - Normal{name}]-wrapper:not(.inited) {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_small_height}] / [UnasDesign - Loop{slide} - Normal{img_small_width}] * 100%);
+                    }
+                }
+                [UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+
+                @media (min-width: 1921px){
+                    .[UnasDesign - Normal{name}]-wrapper:not(.inited) > .slider-pro {
+                        position: static;transform:none;top:unset;left:unset;
+                    }
+                    .[UnasDesign - Normal{name}]-wrapper:not(.inited) { padding-top:0;}
+                }
+            </style>
+
+            [UnasDesign - Loop{slide} - IfStart{img_small_disp}]
+            <link rel="preload" media="(max-width: 479.8px)" imagesrcset="[UnasDesign - Loop{slide} - Normal{img_small}] 1x[UnasDesign - Loop{slide} - IfStart{img_small_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_small_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_small_retina_disp}]" href="[UnasDesign - Loop{slide} - Normal{img_small}]" as="image">
+            [UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+            [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]
+            <link rel="preload" media="[UnasDesign - Loop{slide} - IfStart{img_small_disp}](min-width: 480px) and [UnasDesign - Loop{slide} - IfEnd{img_small_disp}](max-width: 767.8px)" imagesrcset="[UnasDesign - Loop{slide} - Normal{img_medium}] 1x[UnasDesign - Loop{slide} - IfStart{img_medium_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_medium_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_medium_retina_disp}]" href="[UnasDesign - Loop{slide} - Normal{img_medium}]" as="image">
+            [UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+            [UnasDesign - Loop{slide} - IfStart{img_large_disp}]
+            <link rel="preload" media="[UnasDesign - Loop{slide} - IfStart{img_medium_disp}](min-width: 768px) and [UnasDesign - Loop{slide} - IfEnd{img_medium_disp}](max-width: 1019.8px)" imagesrcset="[UnasDesign - Loop{slide} - Normal{img_large}] 1x[UnasDesign - Loop{slide} - IfStart{img_large_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_large_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_large_retina_disp}]" href="[UnasDesign - Loop{slide} - Normal{img_large}]" as="image">
+            [UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+            <link rel="preload" media="(min-width: 1020px)" imagesrcset="[UnasDesign - Loop{slide} - Normal{img_default}] 1x[UnasDesign - Loop{slide} - IfStart{img_default_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_default_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_default_retina_disp}]" href="[UnasDesign - Loop{slide} - Normal{img_default}]" as="image">
+
+            [UnasDesign - Loop{slide} - IfEnd{img_default_disp}]
+        [UnasDesign - LoopEnd{slide}]
+    [UnasDesign - IfEnd{style_disp}]
+
+    [UnasDesign - IfStart{!style_disp}]
+        <script type="text/javascript">
+            /** add js-header--fixed class to header, when slideshow element is using */
+            $('html').addClass('has-big-slideshow');
+
+            [UnasDesign - IfStart{!slide_num_1_disp}]
+            function nextSlide() {
+                $( '#[UnasDesign - Normal{name}]_slider-pro' ).sliderPro( 'nextSlide' );
+            }
+
+            function prevSlide() {
+                $( '#[UnasDesign - Normal{name}]_slider-pro' ).sliderPro( 'previousSlide' );
+            }
+
+            (function($) {
+                $.fn.clickToggle = function(func1, func2) {
+                    var funcs = [func1, func2];
+                    this.data('toggleclicked', 0);
+                    this.click(function() {
+                        var data = $(this).data();
+                        var tc = data.toggleclicked;
+                        $.proxy(funcs[tc], this)();
+                        data.toggleclicked = (tc + 1) % 2;
+                    });
+                    return this;
+                };
+            }(jQuery));
+            [UnasDesign - IfEnd{!slide_num_1_disp}]
+
+            $(document).ready(function($) {
+                $('#[UnasDesign - Normal{name}]_slider-pro').sliderPro({
+                    [UnasDesign - IfStart{width_disp}]width: [UnasDesign - Normal{width}],[UnasDesign - IfEnd{width_disp}]
+                    [UnasDesign - IfStart{height_disp}]height: [UnasDesign - Normal{height}],[UnasDesign - IfEnd{height_disp}]
+                    autoHeight: true,
+                    responsive: true,
+                    [UnasDesign - IfStart{!arrows_disable_disp}]arrows: true,[UnasDesign - IfEnd{!arrows_disable_disp}]
+                    [UnasDesign - IfStart{arrows_disable_disp}]arrows: false,[UnasDesign - IfEnd{arrows_disable_disp}]
+                    [UnasDesign - IfStart{!buttons_disable_disp}]buttons: true,[UnasDesign - IfEnd{!buttons_disable_disp}]
+                    [UnasDesign - IfStart{buttons_disable_disp}]buttons: false,[UnasDesign - IfEnd{buttons_disable_disp}]
+                    [UnasDesign - IfStart{slide_num_1_disp}]loop: false,[UnasDesign - IfEnd{slide_num_1_disp}]
+                    [UnasDesign - IfStart{slide_num_2_disp}]loop: false,[UnasDesign - IfEnd{slide_num_2_disp}]
+                    [UnasDesign - IfStart{slide_num_1_disp}]touchSwipe: false,[UnasDesign - IfEnd{slide_num_1_disp}]
+                    [UnasDesign - IfStart{slide_distance_disp}]slideDistance: [UnasDesign - Normal{slide_distance}],[UnasDesign - IfEnd{slide_distance_disp}]
+                    waitForLayers: true,
+                    keyboardOnlyOnFocus: true,
+                    autoScaleLayers: false,
+                    centerImage: true,
+                    autoplayOnHover: 'none',
+                    allowScaleUp: 'false',
+                    [UnasDesign - IfStart{transition_effect_fade_disp}]
+                    fade: true,
+                    [UnasDesign - IfEnd{transition_effect_fade_disp}]
+                    [UnasDesign - IfStart{slide_num_1_disp}]
+                    autoplay: false
+                    [UnasDesign - IfEnd{slide_num_1_disp}]
+                    [UnasDesign - IfStart{!slide_num_1_disp&autoplay_enabled}]
+                    autoplay: true,
+                    autoplayDelay: [UnasDesign - Normal{delay}]
+                    [UnasDesign - IfEnd{!slide_num_1_disp&autoplay_enabled}]
+                    [UnasDesign - IfStart{!autoplay_enabled&!slide_num_1_disp}]
+                    autoplay: false
+                    [UnasDesign - IfEnd{!autoplay_enabled&!slide_num_1_disp}]
+                });
+
+                [UnasDesign - IfStart{!slide_num_1_disp}]
+                var slider = $('#[UnasDesign - Normal{name}]_slider-pro').data( 'sliderPro' );
+                $('.js-sp-nav__counter').prepend('<span class="js-sp-nav__current">'+(parseInt(slider.getSelectedSlide()) + 1) +'</span>/'+slider.getTotalSlides()+'</div>');
+                slider.on( 'gotoSlide', function( event ) {
+                    jQuery(this).find('.js-sp-nav__current').text(event.index + 1);
+                    $('.[UnasDesign - Normal{name}]-wrapper').addClass('inited');
+                });
+
+                $('.js-sp-nav__pause').clickToggle(
+                    function() {
+                        $( '#[UnasDesign - Normal{name}]_slider-pro' ).sliderPro( 'autoplay', false );
+                        $(this).addClass('is-paused');
+                    },
+                    function() {
+                        $( '#[UnasDesign - Normal{name}]_slider-pro' ).sliderPro( 'autoplay', true );
+                        $(this).removeClass('is-paused');
+                    }
+                );
+                [UnasDesign - IfEnd{!slide_num_1_disp}]
+            });
+        </script>
+
+        <div class="js-element [UnasDesign - Normal{name}]-wrapper position-relative [UnasDesign - Normal{class}]" data-element-name="[UnasDesign - Normal{name}]">
+            <div id="[UnasDesign - Normal{name}]_slider-pro" class="slider-pro">
+                <div class="sp-slides">
+                [UnasDesign - LoopStart{slide}]
+                <div class="sp-slide">
+                    [UnasDesign - Loop{slide} - IfStart{img_disp}]
+                    [UnasDesign - Loop{slide} - IfStart{img_link_disp}]<a class="sp-image-link" href="[UnasDesign - Loop{slide} - Normal{img_link}]"[UnasDesign - Loop{slide} - IfStart{img_link_blank}] target="_blank"[UnasDesign - Loop{slide} - IfEnd{img_link_blank}]>[UnasDesign - Loop{slide} - IfEnd{img_link_disp}]
+                    <img width="[UnasDesign - Loop{slide} - Normal{img_default_width}]" height="[UnasDesign - Loop{slide} - Normal{img_default_height}]" class="sp-image" alt="[UnasDesign - Loop{slide} - IfStart{alt_disp}][UnasDesign - Loop{slide} - Normal{alt}][UnasDesign - Loop{slide} - IfEnd{alt_disp}][UnasDesign - Loop{slide} - IfStart{!alt_disp}][UnasDesign - Normal{service_name}][UnasDesign - Loop{slide} - IfEnd{!alt_disp}]" src="[unas_shop_url]/main_pic/space.gif"
+                         [UnasDesign - Loop{slide} - IfStart{img_default_disp}]data-src="[UnasDesign - Loop{slide} - Normal{img_default}]"[UnasDesign - Loop{slide} - IfEnd{img_default_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_small_disp}]data-small="[UnasDesign - Loop{slide} - Normal{img_small}]"[UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]data-medium="[UnasDesign - Loop{slide} - Normal{img_medium}]"[UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_large_disp}]data-large="[UnasDesign - Loop{slide} - Normal{img_large}]"[UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_default_retina_disp}]data-retina="[UnasDesign - Loop{slide} - Normal{img_default_retina}]"[UnasDesign - Loop{slide} - IfEnd{img_default_retina_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_small_retina_disp}]data-retinasmall="[UnasDesign - Loop{slide} - Normal{img_small_retina}]"[UnasDesign - Loop{slide} - IfEnd{img_small_retina_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_medium_retina_disp}]data-retinamedium="[UnasDesign - Loop{slide} - Normal{img_medium_retina}]"[UnasDesign - Loop{slide} - IfEnd{img_medium_retina_disp}]
+                         [UnasDesign - Loop{slide} - IfStart{img_large_retina_disp}]data-retinalarge="[UnasDesign - Loop{slide} - Normal{img_large_retina}]"[UnasDesign - Loop{slide} - IfEnd{img_large_retina_disp}]>
+                    [UnasDesign - Loop{slide} - IfStart{img_link_disp}]</a>[UnasDesign - Loop{slide} - IfEnd{img_link_disp}]
+                    [UnasDesign - Loop{slide} - IfEnd{img_disp}]
+
+                    [UnasDesign - Loop{slide} - LoopStart{text}]
+                    <style>
+                        #[UnasDesign - Loop{slide} - Loop{text} - Normal{text_full_id}] {
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{font_color_disp}]color:[UnasDesign - Loop{slide} - Loop{text} - Normal{font_color}];[UnasDesign - Loop{slide} - Loop{text} - IfEnd{font_color_disp}]
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{bg_color_disp}]background-color:[UnasDesign - Loop{slide} - Loop{text} - Normal{bg_color}];[UnasDesign - Loop{slide} - Loop{text} - IfEnd{bg_color_disp}]
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{text_border_color_disp}]border-color:#[UnasDesign - Loop{slide} - Loop{text} - Normal{text_border_color}];[UnasDesign - Loop{slide} - Loop{text} - IfEnd{text_border_color_disp}]
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{text_border_style_disp}]border-style:[UnasDesign - Loop{slide} - Loop{text} - Normal{text_border_style}];[UnasDesign - Loop{slide} - Loop{text} - IfEnd{text_border_style_disp}]
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{text_border_thickness_disp}]border-width:[UnasDesign - Loop{slide} - Loop{text} - Normal{text_border_thickness}]px;[UnasDesign - Loop{slide} - Loop{text} - IfEnd{text_border_thickness_disp}]
+                        }
+
+                        [UnasDesign - Loop{slide} - Loop{text} - IfStart{text_hover_disp}]
+                        #[UnasDesign - Loop{slide} - Loop{text} - Normal{text_full_id}]:hover {
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{text_hover_background_color_disp}]
+                            background-color:#[UnasDesign - Loop{slide} - Loop{text} - Normal{text_hover_background_color}];
+                            background:#[UnasDesign - Loop{slide} - Loop{text} - Normal{text_hover_background_color}];
+                            [UnasDesign - Loop{slide} - Loop{text} - IfEnd{text_hover_background_color_disp}]
+
+                            [UnasDesign - Loop{slide} - Loop{text} - IfStart{text_hover_font_color_disp}]
+                            color:#[UnasDesign - Loop{slide} - Loop{text} - Normal{text_hover_font_color}];
+                            [UnasDesign - Loop{slide} - Loop{text} - IfEnd{text_hover_font_color_disp}]
+                        }
+                        [UnasDesign - Loop{slide} - Loop{text} - IfEnd{text_hover_disp}]
+                    </style>
+                    <p class="sp-layer sp-layer-[UnasDesign - Loop{slide} - Loop{text} - Normal{num}][UnasDesign - Loop{slide} - Loop{text} - IfStart{!link_disp}] sp-padding[UnasDesign - Loop{slide} - Loop{text} - IfEnd{!link_disp}] sp-[UnasDesign - Loop{slide} - Loop{text} - Normal{size}]"
+                       data-position="centerCenter"
+                       data-horizontal="[UnasDesign - Loop{slide} - Loop{text} - Normal{horizontal}]" data-vertical="[UnasDesign - Loop{slide} - Loop{text} - Normal{vertical}]"
+                       data-show-transition="[UnasDesign - Loop{slide} - Loop{text} - Normal{animation_show}]" data-show-delay="[UnasDesign - Loop{slide} - Loop{text} - Normal{animation_show_delay}]"
+                       data-hide-transition="[UnasDesign - Loop{slide} - Loop{text} - Normal{animation_hide}]" data-hide-delay="[UnasDesign - Loop{slide} - Loop{text} - Normal{animation_hide_delay}]"
+                       [UnasDesign - Loop{slide} - Loop{text} - IfStart{link_disp}][UnasDesign - Loop{slide} - Loop{text} - IfStart{!link_blank}]onclick="location.href='[UnasDesign - Loop{slide} - Loop{text} - Normal{link}]'"[UnasDesign - Loop{slide} - Loop{text} - IfEnd{!link_blank}][UnasDesign - Loop{slide} - Loop{text} - IfEnd{link_disp}]
+                       id="[UnasDesign - Loop{slide} - Loop{text} - Normal{text_full_id}]">
+                        [UnasDesign - Loop{slide} - Loop{text} - IfStart{link_disp}]<a class="sp-layer-link" href="[UnasDesign - Loop{slide} - Loop{text} - Normal{link}]"[UnasDesign - Loop{slide} - Loop{text} - IfStart{link_blank}] target="_blank"[UnasDesign - Loop{slide} - Loop{text} - IfEnd{link_blank}] style="[UnasDesign - Loop{slide} - Loop{text} - IfStart{font_color_disp}]color:[UnasDesign - Loop{slide} - Loop{text} - Normal{font_color}];[UnasDesign - Loop{slide} - Loop{text} - IfEnd{font_color_disp}]">[UnasDesign - Loop{slide} - Loop{text} - IfEnd{link_disp}]
+                            [UnasDesign - Loop{slide} - Loop{text} - Normal{content}]
+                        [UnasDesign - Loop{slide} - Loop{text} - IfStart{link_disp}]</a>[UnasDesign - Loop{slide} - Loop{text} - IfEnd{link_disp}]
+                    </p>
+                    [UnasDesign - Loop{slide} - LoopEnd{text}]
+
+                    [UnasDesign - Loop{slide} - Normal{html}]
+                </div>
+                [UnasDesign - LoopEnd{slide}]
+            </div>
+
+                [UnasDesign - IfStart{!slide_num_1_disp}]
+                <div class="sp-nav d-flex flex-lg-column align-items-center bg-opacity-50 p-lg-2">
+                    <div class="sp-nav__counter js-sp-nav__counter btn--text btn--square text-center usn"></div>
+                    <button class="sp-nav__prev sp-nav-btn btn--text btn--square icon--arrow-left" onclick="prevSlide();" aria-label="[UnasDesign - Text{name:previous;page:design}]"></button>
+                    <button class="sp-nav__next sp-nav-btn btn--text btn--square icon--arrow-right" onclick="nextSlide();" aria-label="[UnasDesign - Text{name:next;page:design}]"></button>
+                    <button class="sp-nav__pause sp-nav-btn js-sp-nav__pause btn--text btn--square icon--pause" aria-label="Pause"></button>
+                </div>
+                [UnasDesign - IfEnd{!slide_num_1_disp}]
+            </div>
+        </div>
+    [UnasDesign - IfEnd{!style_disp}]
+[UnasDesign - IfEnd{element_disp}]

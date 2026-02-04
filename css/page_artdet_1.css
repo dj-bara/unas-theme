@@ -1,0 +1,478 @@
+@import url('../../../../!common_packages/jquery/plugins/photoswipe/css/default-skin.min.css');
+@import url('../../../../!common_packages/jquery/plugins/photoswipe/css/photoswipe.min.css');
+
+/*** ARTDET ***/
+.artdet__subscribe-btn {
+    padding: 0.66em 1.32em !important;
+}
+.artdet__name {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0;
+}
+@media (min-width: 576px) {
+    .artdet__name {
+        font-size: 1.8rem;
+    }
+}
+@media (min-width: 768px) {
+    .artdet__name {
+        font-size: 2.4rem;
+    }
+}
+/*** ARTDET HEAD ***/
+.artdet__pagination-btn a {
+    display:block;
+    font-size: 1.4rem;
+}
+.artdet__pagination-btn strong {
+    display: none;
+}
+.artdet__pagination-btn a::before {
+    content:'';
+    font-family:'Font Awesome 5 Pro';
+    font-weight: 300;
+}
+.artdet__pagination-prev a::before {
+    content:'\f060';
+}
+.artdet__pagination-next a::before {
+    content:'\f061';
+}
+/*** SOCIAL ***/
+.artdet__rating-highlighted {
+    margin:2px 0;
+}
+/*** PRODUCT TYPE ***/
+.product-type__item  + .product-type__item {
+    margin-top: 1rem;
+}
+.product-type__title {
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size: 1rem;
+}
+.product-type__value-wrap {
+    display:inline-block;
+    vertical-align:top;
+    min-height: 3.6rem;
+    min-width: 3.6rem;
+}
+.product-type__value-link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0.8rem 1rem;
+    width: 100%;
+    white-space: nowrap;
+    max-width: 120px;
+}
+
+.product-type__value--piclink .product-type__value-link {
+    padding: 0.1rem 0.1rem;
+    max-width: 54px;
+}
+.product-type__value--piclink img {
+    width: 100%;
+}
+.product-type__value--color_text,
+.product-type__value--color {
+    -webkit-transition:0.4s;
+    -o-transition:0.4s;
+    -moz-transition:0.4s;
+    transition:0.4s;
+    position:relative;
+}
+.product-type__value--color_text,
+.product-type__value--color a {
+    border:none;
+}
+.product-type__value-link > span {
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.product-type__value--color_text,
+.product-type__value--color.is-active {
+    border:none;
+}
+.product-type__value--color_text.is-active::before,
+.product-type__value--color.is-active::before,
+.product-type__value--color_text:hover::before,
+.product-type__value--color.is:hover:before {
+    display:block;
+    content:'\f00c';
+    font-family:'font awesome 5 pro';
+    width:24px;
+    height:24px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    line-height:24px;
+    font-size:14px;
+    text-align: center;
+}
+.has-price .product-type__value-link { 
+    max-width: none;
+    -webkit-box-align: baseline !important;
+    -ms-flex-align: baseline !important;
+    align-items: baseline !important;
+}
+/*** ARTDET 1 PARAMETERS ***/
+.product-type .page_artdet_product_param_color {
+    margin: 0.5rem;
+}
+.artdet__spec-param {
+    line-height: 1.4;
+}
+.product_param_type_pic img {
+    max-width:80px;
+    max-height:80px;
+}
+.product_param_type_cust_input_file input {
+    max-width: 220px;
+    font-size: 11px;
+    width: 100%;
+}
+/*** ARTDET 1 PLUS SERVICE ***/
+.plus-service__label {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.plus-service__price {
+    -webkit-transition: font-size cubic-bezier(0, 0.7, 0.6, 1.3) 0.3s;
+    -o-transition: font-size cubic-bezier(0, 0.7, 0.6, 1.3) 0.3s;
+    -moz-transition: font-size cubic-bezier(0, 0.7, 0.6, 1.3) 0.3s;
+    transition: font-size cubic-bezier(0, 0.7, 0.6, 1.3) 0.3s;
+}
+input[type="radio"]:checked+label .plus-service__price {
+    font-size: 1.4rem;
+}
+.plus-service__item {
+    min-height: 2.3rem;
+}
+/*** PRICE ***/
+.artdet__price-discount, .artdet__price-base, .artdet__price-base-discount-prices-disabled {
+    font-size: 3.2rem;
+    line-height: 1;
+}
+.artdet__price-base-has-discount {
+    font-size: 1.6rem;
+}
+.artdet__price-discount-period {
+    font-size: 1.6rem;
+}
+.artdet__price-discount-period strong {
+    font-weight: 400;
+}
+.artdet__price-unit, .artdet__virtual-point-highlighted {
+    font-size: 1.2rem;
+}
+.artdet__price-login {
+    font-size: 1.4rem;
+}
+/* COUNTDOWN */
+.sale_countdown_simple_inner span {
+    font-weight:700;
+    font-size:24px;
+    letter-spacing:1px;
+    line-height:18px;
+}
+.cd_wrap {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 4px;
+    left: 4px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+    padding-top: 10px;
+}
+.cd_sec, .cd_min, .cd_hour, .cd_day {
+    width: 58px;
+    height: 58px;
+    position: relative;
+    margin: 10px 20px 0 0;
+}
+.cd_sec {
+    margin-right:0;
+}
+.cd_txt {
+    display:block;
+    font-size:10px;
+    font-weight:400;
+    line-height:10px;
+}
+.countdown--simple #cd_custom div {
+    width:auto;
+    height:auto;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
+    margin:0;
+    position:static;
+    line-height:normal;
+    display:inline;
+}
+.countdown--simple .cd_day {
+    margin-right:10px;
+}
+.countdown--simple .cd_hour:after, .countdown--simple .cd_min:after {
+    content:':';
+    display:inline;
+    font-size:20px;
+    font-weight:700;
+    padding:0 4px;
+}
+.countdown--simple .cd_hour .cd_txt, .countdown--simple .cd_min .cd_txt, .countdown--simple .cd_sec .cd_txt {
+    display:none;
+}
+.countdown--simple .cd_day .cd_txt {
+    display:inline;
+    padding: 0 5px;
+}
+.countdown--simple .cd_wrap {
+    padding:0;
+    line-height:normal;
+}
+#cd_color_front {
+    display: none;
+}
+#cd_color_back {
+    display: none;
+}
+/*** SUBSCRIBE ***/
+.artdet__cart + .artdet__subscribe {
+    margin-top: -1rem;
+}
+/*** CART ***/
+.artdet__cart-btn-wrap a {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-left: 1px solid transparent;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    padding: 0.8em 0;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+.artdet__cart-btn-wrap a::before {
+    content: '\f290';
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 400;
+    margin-right: 1rem;
+}
+.artdet__cart-no-stock {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 1.1rem;
+}
+.artdet__cart-unit {
+    font-size: 1rem;
+    white-space: nowrap;
+    line-height: 3rem;
+    padding: 0 1rem 0 0.5rem;
+}
+@media (min-width: 576px) {
+    .artdet__cart-btn-wrap a {
+        font-size: 1.6rem;
+    }
+}
+/*** ARTDET FUNC ***/
+.artdet__function-outer {
+    margin: 0 10px;
+}
+/*** SHORT DESCRIPTION ***/
+.artdet__short-descripton {
+    text-align: justify;
+}
+/*** BUNDLE Product / Artpack ***/
+.bundle-product__items {
+    /*max-height: 34.2rem;*/
+    overflow: hidden;
+}
+.bundle-product__item {
+    width: 25%;
+}
+.bundle-product__item:not(:last-child) .bundle-product__img-wrapper::after {
+    content: "\f067";
+    font-family: "font awesome 5 pro";
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 2rem;
+    text-align: center;
+    margin-top: -17px;
+}
+.bundle-product__item {
+    float: left;
+}
+.bundle-product .slick-track {
+    margin-left: -1rem;
+}
+.bundle-product__stock-wrap {
+    height: 1.8rem;
+}
+/*** ARTPACK END ***/
+/*** LONG DESCRIPTION ***/
+.long-description__content {
+    text-align: justify;
+}
+/*** LONG DESCRIPTION ***/
+/*** DATA ITEMS ***/
+.data__item-wrap {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+.data__item-title {
+    position: relative;
+}
+.data__item-value {
+    font-weight: 700;
+    word-break: break-word;
+}
+.data__item-stock strong {
+    font-weight: 400;
+}
+.data__item-stock.has-variant .data__item-value {
+    max-height: 5.8rem;
+    overflow: hidden;
+}
+.data__item-more {
+    display: none;
+}
+.data__item-stock.has-variant .data__item-more {
+    display: inline;
+}
+/*** ADD DATAS 1-2-3 ***/
+.art-add-data__content {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+/*** ARTDET UP/CROSS/BUNDLE/GIFT product START ***/
+
+.product-name {
+    height: 3.6em;
+    font-size: 1rem;
+    text-align: center;
+}
+.price-base, .price-discount {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.price-base.has-discount-price {
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+@media ( min-width: 576px) {
+    .price-base, .price-discount, .product-name {
+        font-size: 1.3rem;
+    }
+    .price-base.has-discount-price {
+        font-size: 1.1rem;
+    }
+}
+
+/*** ARTDET UP/CROSS/BUNDLE/GIFT product END ***/
+/*** FORUM ***/
+.page_artforum_more {
+    text-align:center;
+    margin-top:20px;
+}
+.page_artforum_more a {
+    display:inline-block;
+    width:auto;
+    padding:10px 20px;
+    height:auto;
+    line-height:14px;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:1px;
+}
+.page_artforum_element_no {
+    text-align:center;
+}
+/*
+.artdet__img-main-wrap.slick-slide {
+    padding-top: 0;
+}
+.artdet__img-main-wrap.slick-slide .artdet__img-main {
+    position: static;
+}*/
+.artdet__img-main.product-img, .artdet__img--alt.product-img {
+    margin: 0;
+}
+.artdet-product-img-wrapper {
+    padding-top: 100%;
+}
+@media (min-width: 510px) {
+    .artdet-product-img-wrapper {
+        padding-top: 490px;
+    }
+}
+@media (min-width: 576px) {
+    .artdet__img--thumbs {
+        padding: 0 3rem;
+    }
+}
+.artdet__img-wrap--thumb {
+    margin: 0 0.5rem;
+    float: left;
+    cursor: pointer;
+}
+.artdet__img-wrap--thumb img {
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    margin: 0 auto;
+}
+/*cls*/
+.artdet__img--alts:not(.slick-initialized) {
+     display: flex;
+ }
+.artdet__img--alts:not(.slick-initialized) > .artdet__img-main-wrapper {
+    flex: 0 0 100%;
+}
+.artdet__img-main-wrap-outer {
+    width: 100%;
+    max-width: 490px;
+    margin: 0 auto;
+    position: relative;
+}
+.artdet__img--thumbs {
+    height: 54px;
+    overflow: hidden;
+}

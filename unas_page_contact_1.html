@@ -1,0 +1,516 @@
+<div id='page_contact_content' class='page_content'>
+
+    <!--page_contact_tab begin-->
+    <div class="page_tabbed_area">
+		<div class="page_tabs" id='page_tabs'>
+        	<div id="tab_contactinfo" rel="contactinfo" class="page_tab icon--b-info">[UnasDesign - Text{tab_contact}]</div>
+            [UnasDesign - IfStart{shipping_disp}]
+            	<div id="tab_contactshipping" rel="contactshipping" class="page_tab icon--b-truck">[UnasDesign - Text{tab_shipping}]</div>
+            [UnasDesign - IfEnd{shipping_disp}]
+            [UnasDesign - IfStart{payment_disp}]
+            	<div id="tab_contactpayment" rel="contactpayment" class="page_tab icon--b-money-bill">[UnasDesign - Text{tab_payment}]</div>
+            [UnasDesign - IfEnd{payment_disp}]
+            [UnasDesign - IfStart{discount_disp}]
+            	<div id="tab_contactdiscount" rel="contactdiscount" class="page_tab icon--b-percent">[UnasDesign - Text{tab_discount}]</div>
+            [UnasDesign - IfEnd{discount_disp}]
+            [UnasDesign - IfStart{mail_disp}]
+            	<div id="tab_contactmail" rel="contactmail" class="page_tab icon--b-mail">[UnasDesign - Text{tab_mail}]</div>
+            [UnasDesign - IfEnd{mail_disp}]
+        </div>     
+
+       	<div id="tab2_contactinfo" rel="contactinfo" class="page_tab2 icon--b-info">[UnasDesign - Text{tab_contact}]</div>
+		<div id="tab_contactinfo_content" class="page_tab_content font-s font-sm-m">
+            [UnasDesign - IfStart{text_top_disp}]
+                <div class='page_txt'>[UnasDesign - Normal{text_top}]</div>
+            [UnasDesign - IfEnd{text_top_disp}]
+            <div class='page_contact_main_2'>
+                [UnasDesign - IfStart{name_disp}]
+                <div class="page-contact-row row name">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{cegnev}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{name}]</div>
+                </div>
+                [UnasDesign - IfEnd{name_disp}]
+
+                [UnasDesign - IfStart{addr_disp}]
+                <div class="page-contact-row row addr">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{cim}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{addr}]</div>
+                </div>
+                [UnasDesign - IfEnd{addr_disp}]
+
+                [UnasDesign - IfStart{addr_shop_disp}]
+                <div class="page-contact-row row addr_shop">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{boltcim}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{addr_shop}]</div>
+                </div>
+                [UnasDesign - IfEnd{addr_shop_disp}]
+
+                [UnasDesign - IfStart{opening_hours_disp}]
+                <div class="page-contact-row row opening_hours">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{opening_hours}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{opening_hours_value}]</div>
+                </div>
+                [UnasDesign - IfEnd{opening_hours_disp}]
+
+                [UnasDesign - IfStart{phone_disp}]
+                <div class="page-contact-row row phone">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{tel}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{phone}]</div>
+                </div>
+                [UnasDesign - IfEnd{phone_disp}]
+
+                [UnasDesign - IfStart{fax_disp}]
+                <div class="page-contact-row row fax">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{fax}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{fax}]</div>
+                </div>
+                [UnasDesign - IfEnd{fax_disp}]
+
+                [UnasDesign - IfStart{email_disp}]
+                <div class="page-contact-row row email">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{email}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{email}]</div>
+                </div>
+                [UnasDesign - IfEnd{email_disp}]
+
+                [UnasDesign - IfStart{web_disp}]
+                <div class="page-contact-row row web">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{web}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{web}]</div>
+                </div>
+                [UnasDesign - IfEnd{web_disp}]
+
+                [UnasDesign - IfStart{shopname_disp}]
+                <div class="page-contact-row row shopname">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Normal{shopname_text}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{shopname}]</div>
+                </div>
+                [UnasDesign - IfEnd{shopname_disp}]
+
+                [UnasDesign - IfStart{data_disp}]
+                <div class="page-contact-row row data">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{adat}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{data}]</div>
+                </div>
+                [UnasDesign - IfEnd{data_disp}]
+
+                [UnasDesign - IfStart{vatnum_disp}]
+                <div class="page-contact-row row vatnum">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{ado}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{vatnum}]</div>
+                </div>
+                [UnasDesign - IfEnd{vatnum_disp}]
+
+                [UnasDesign - IfStart{eu_vatnum_disp}]
+                <div class="page-contact-row row eu_vatnum">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{eu_vatnum}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{eu_vatnum}]</div>
+                </div>
+                [UnasDesign - IfEnd{eu_vatnum_disp}]
+
+                [UnasDesign - IfStart{registry_disp}]
+                <div class="page-contact-row row registry">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{cegjegyzek}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{registry}]</div>
+                </div>
+                [UnasDesign - IfEnd{registry_disp}]
+
+                [UnasDesign - IfStart{court_disp}]
+                <div class="page-contact-row row court">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{cegvez}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{court}]</div>
+                </div>
+                [UnasDesign - IfEnd{court_disp}]
+
+                [UnasDesign - IfStart{regnum_ie_disp}]
+                <div class="page-contact-row row regnum_ie">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{regnum_ie}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{regnum_ie}]</div>
+                </div>
+                [UnasDesign - IfEnd{regnum_ie_disp}]
+
+                [UnasDesign - IfStart{license_disp}]
+                <div class="page-contact-row row license">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{mukod}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{license}]</div>
+                </div>
+                [UnasDesign - IfEnd{license_disp}]
+
+                [UnasDesign - IfStart{regdate_disp}]
+                <div class="page-contact-row row regdate">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{regdate}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{regdate}]</div>
+                </div>
+                [UnasDesign - IfEnd{regdate_disp}]
+
+                [UnasDesign - IfStart{notary_disp}]
+                <div class="page-contact-row row notary">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{notary}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{notary}]</div>
+                </div>
+                [UnasDesign - IfEnd{notary_disp}]
+
+                [UnasDesign - IfStart{bankaccountnum_disp}]
+                <div class="page-contact-row row bankaccountnum">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{bankaccountnum}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{bankaccountnum}]</div>
+                </div>
+                [UnasDesign - IfEnd{bankaccountnum_disp}]
+
+                [UnasDesign - IfStart{iban_disp}]
+                <div class="page-contact-row row ibannum">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{name:iban;page:order}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{iban}]</div>
+                </div>
+                [UnasDesign - IfEnd{iban_disp}]
+
+                [UnasDesign - IfStart{contact_name_disp}]
+                <div class="page-contact-row row contact_name">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{kap_nev}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{contact_name}]</div>
+                </div>
+                [UnasDesign - IfEnd{contact_name_disp}]
+
+                [UnasDesign - IfStart{contact_phone_disp}]
+                <div class="page-contact-row row contact_phone">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{kap_tel}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{contact_phone}]</div>
+                </div>
+                [UnasDesign - IfEnd{contact_phone_disp}]
+
+                [UnasDesign - IfStart{contact_email_disp}]
+                <div class="page-contact-row row contact_email">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{kap_email}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{contact_email}]</div>
+                </div>
+                [UnasDesign - IfEnd{contact_email_disp}]
+
+                [UnasDesign - LoopStart{contact_more}]
+                <div class="page-contact-row row contact">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Loop{contact_more} - Normal{contact_more_title}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Loop{contact_more} - Normal{contact_more_value}]</div>
+                </div>
+                [UnasDesign - LoopEnd{contact_more}]
+
+                [UnasDesign - IfStart{hosting_data_disp}]
+                <div class="page-contact-row row hosting_data">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{hosting_data}]:</div>
+                    <div class="page-contact-value col-md-7">[UnasDesign - Normal{hosting_data}]</div>
+                </div>
+                [UnasDesign - IfEnd{hosting_data_disp}]
+                [UnasDesign - IfStart{order_min_disp}]
+                <div class="page-contact-row row hosting_data">
+                    <div class="page-contact-label col-md-5 text-md-right">[UnasDesign - Text{name:fault_minorder2;page:cart}]:</div>
+                    <div class="page-contact-value col-md-7"><strong>[UnasDesign - Normal{order_min_type}] [UnasDesign - Normal{order_min}]</strong></div>
+                </div>
+                [UnasDesign - IfEnd{order_min_disp}]
+            </div>
+            [UnasDesign - IfStart{info_bottom_text_disp}]
+                <div class='page_txt'>[UnasDesign - Normal{info_bottom_text}]</div>
+            [UnasDesign - IfEnd{info_bottom_text_disp}]  
+            [UnasDesign - IfStart{text_bottom_disp}]
+                <div class='page_txt'>[UnasDesign - Normal{text_bottom}]</div>
+            [UnasDesign - IfEnd{text_bottom_disp}] 
+        </div>                           
+
+        [UnasDesign - IfStart{shipping_disp}]
+        <div id="tab2_contactshipping" rel="contactshipping" class="page_tab2 icon--b-truck">[UnasDesign - Text{tab_shipping}]</div>
+        <div id="tab_contactshipping_content" class="page_tab_content">
+            [UnasDesign - IfStart{shipping_main_disp}]
+                [UnasDesign - LoopStart{shipping_type}]
+                <div class="page_contact_mod_1 mb-5" id="page_contact_shipping_[UnasDesign - Loop{shipping_type} - Normal{shipping_id}]">
+                    <div class="page-contact-subtitle font-s font-sm-m title--theme-2">[UnasDesign - Loop{shipping_type} - Normal{shipping_name}]</div>
+                    <div class="page-contact-content">
+                        [UnasDesign - Loop{shipping_type} - IfStart{shipping_spec}]
+                        <div class="page_contact_shipping_spec_pic mb-3">
+                            [UnasDesign - Loop{shipping_type} - Normal{shipping_spec_pic}]
+                        </div>
+                        [UnasDesign - Loop{shipping_type} - IfEnd{shipping_spec}]
+
+                        [UnasDesign - Loop{shipping_type} - IfStart{shipping_text_disp}]
+                        <div class="page-contact-text font-s mb-3">[UnasDesign - Loop{shipping_type} - Normal{shipping_text}]</div>
+                        [UnasDesign - Loop{shipping_type} - IfEnd{shipping_text_disp}]
+
+                        <div class="page_contact_mod_table_outer mb-3 font-s font-sm-m">
+                            [UnasDesign - Loop{shipping_type} - IfStart{shipping_price_disp}]<!--has shipping cost on admin-->
+
+                            [UnasDesign - Loop{shipping_type} - IfStart{price_text}]<!--shipping cost type text-->
+                            <div class="shipping-cost__type-text font-weight-700">
+                                <div class="shipping-cost__type-text--text">[UnasDesign - Loop{shipping_type} - Normal{fix_text}]</div>
+                            </div>
+                            [UnasDesign - Loop{shipping_type} - IfEnd{price_text}]
+
+                            [UnasDesign - Loop{shipping_type} - IfStart{price_fix}]<!--shipping cost type fix -->
+                            <div class="shipping-cost__type-fix font-weight-700">
+                                <span class="shipping-cost__type-fix--text">[UnasDesign - Text{post_cost}]:</span>
+                                <span class="shipping-cost__type-fix--price">[UnasDesign - Loop{shipping_type} - Normal{price}]</span>
+                                <span class="shipping-cost__type-fix--currency">[UnasDesign - Loop{shipping_type} - Normal{money_type}]</span>
+                            </div>
+                            [UnasDesign - Loop{shipping_type} - IfEnd{price_fix}]
+
+                            [UnasDesign - Loop{shipping_type} - IfStart{price_range}]
+                            <div class="table shipping-cost-table">
+                                <div class="th shipping-cost__header bg-8">
+                                    <div class="td td-2x shipping-cost__type-text">
+                                        <div class="td-inner">
+                                            [UnasDesign - Loop{shipping_type} - IfStart{sum_price}]
+                                            [UnasDesign - Text{post_full}]
+                                            [UnasDesign - Loop{shipping_type} - IfEnd{sum_price}]
+
+                                            [UnasDesign - Loop{shipping_type} - IfStart{sum_weight}]
+                                            [UnasDesign - Text{post_text_weight}]
+                                            [UnasDesign - Loop{shipping_type} - IfEnd{sum_weight}]
+
+                                            [UnasDesign - Loop{shipping_type} - IfStart{sum_qty}]
+                                            [UnasDesign - Text{post_text_menny}]
+                                            [UnasDesign - Loop{shipping_type} - IfEnd{sum_qty}]
+                                        </div>
+                                    </div>
+                                    <div class="td shipping-cost__cost-text">
+                                        <div class="td-inner">
+                                            [UnasDesign - Text{post_cost}]
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tb shipping-cost__body">
+                                    [UnasDesign - Loop{shipping_type} - LoopStart{shipping_rows}]
+                                    <div class="tr">
+                                        <div class="td shipping-cost__col-from">
+                                            <div class="td-inner">
+                                                <span class="shipping-cost__from">[UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - Normal{from}]</span>
+
+                                                [UnasDesign - Loop{shipping_type} - IfStart{sum_weight}]
+                                                <span class="shipping-cost__unit">&nbsp;[UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - Normal{unit}]</span>
+                                                [UnasDesign - Loop{shipping_type} - IfEnd{sum_weight}]
+
+                                                [UnasDesign - Loop{shipping_type} - IfStart{sum_price}]
+                                                <span class="shipping-cost__currency-type">&nbsp;[UnasDesign - Loop{shipping_type} - Normal{money_type}]</span>
+                                                [UnasDesign - Loop{shipping_type} - IfEnd{sum_price}]
+                                            </div>
+                                        </div>
+                                        <div class="td shipping-cost__col-to">
+                                            <div class="td-inner">
+                                                [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfStart{to_disp}]
+                                                <span class="shipping-cost__to">[UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - Normal{to}]</span>
+
+                                                [UnasDesign - Loop{shipping_type} - IfStart{sum_weight}]
+                                                <span class="shipping-cost__unit">&nbsp;[UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - Normal{unit}]</span>
+                                                [UnasDesign - Loop{shipping_type} - IfEnd{sum_weight}]
+
+                                                [UnasDesign - Loop{shipping_type} - IfStart{sum_price}]
+                                                <span class="shipping-cost__currency-type-s">&nbsp;[UnasDesign - Loop{shipping_type} - Normal{money_type}]</span>
+                                                [UnasDesign - Loop{shipping_type} - IfEnd{sum_price}]
+                                                [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfEnd{to_disp}]
+                                                [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfStart{!to_disp}]
+                                                -
+                                                [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfEnd{!to_disp}]
+                                            </div>
+                                        </div>
+                                        <div class="td shipping-cost__col-cost font-weight-700">
+                                            [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfStart{price_disp}]
+                                            <div class="td-inner">
+                                                <span class="shipping-cost__price">[UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - Normal{price}]&nbsp;[UnasDesign - Loop{shipping_type} - Normal{money_type}]</span>
+                                            </div>
+                                            [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfEnd{price_disp}]
+
+                                            [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfStart{!price_disp}]
+                                            <div class="td-inner"><span class="shipping-cost__text-free">[UnasDesign - Text{page:box;name:free;}]</span></div>
+                                            [UnasDesign - Loop{shipping_type} - Loop{shipping_rows} - IfEnd{!price_disp}]
+                                        </div>
+                                    </div>
+                                    [UnasDesign - Loop{shipping_type} - LoopEnd{shipping_rows}]
+                                </div>
+                            </div>
+                            [UnasDesign - Loop{shipping_type} - IfEnd{price_range}]
+
+                            [UnasDesign - Loop{shipping_type} - IfEnd{shipping_price_disp}]
+                        </div>
+
+                        [UnasDesign - Loop{shipping_type} - IfStart{shipping_spec_link_disp}]
+                        <div class="page_contact_spec_link_disp font-s mb-3">
+                            [UnasDesign - Loop{shipping_type} - Normal{shipping_spec_link}]
+                        </div>
+                        [UnasDesign - Loop{shipping_type} - IfEnd{shipping_spec_link_disp}]
+                    </div>
+                </div>
+                [UnasDesign - LoopEnd{shipping_type}]
+            [UnasDesign - IfEnd{shipping_main_disp}]
+
+            [UnasDesign - IfStart{shipping_bottom_text_disp}]
+            <div class='page_txt'>[UnasDesign - Normal{shipping_bottom_text}]</div>
+            [UnasDesign - IfEnd{shipping_bottom_text_disp}]
+        </div>
+        [UnasDesign - IfEnd{shipping_disp}]
+
+        [UnasDesign - IfStart{payment_disp}]
+       	<div id="tab2_contactpayment" rel="contactpayment" class="page_tab2 icon--b-money-bill">[UnasDesign - Text{tab_payment}]</div>
+        <div id="tab_contactpayment_content" class="page_tab_content">
+            [UnasDesign - IfStart{payment_main_disp}]
+                [UnasDesign - LoopStart{payment_type}]
+                    <div class="page_contact_mod_2 mb-5" id="page_contact_payment_[UnasDesign - Loop{payment_type} - Normal{payment_id}]">
+                        <div class="page_contact_payment_name page-contact-subtitle title--theme-2">[UnasDesign - Loop{payment_type} - Normal{payment_name}]</div>
+                        [UnasDesign - Loop{payment_type} - IfStart{payment_text_disp}]
+                             <div class="page_contact_payment_text font-s mb-3">[UnasDesign - Loop{payment_type} - Normal{payment_text}]</div>
+                        [UnasDesign - Loop{payment_type} - IfEnd{payment_text_disp}]
+
+                        [UnasDesign - Loop{payment_type} - IfStart{payment_spec}]
+                             <div class="page_contact_payment_spec_pic my-3">
+                                [UnasDesign - Loop{payment_type} - Normal{payment_spec_pic}]
+                             </div>
+                        [UnasDesign - Loop{payment_type} - IfEnd{payment_spec}]                                
+
+                        [UnasDesign - Loop{payment_type} - IfStart{payment_spec_link_disp}]
+                             <div class="page_contact_spec_link_disp my-3 font-s">
+                                [UnasDesign - Loop{payment_type} - Normal{payment_spec_link}] 
+                             </div>
+                        [UnasDesign - Loop{payment_type} - IfEnd{payment_spec_link_disp}]
+                    </div>
+                [UnasDesign - LoopEnd{payment_type}]
+            [UnasDesign - IfEnd{payment_main_disp}]
+            
+            [UnasDesign - IfStart{payment_bottom_text_disp}]
+                <div class='page_txt'>[UnasDesign - Normal{payment_bottom_text}]</div>
+            [UnasDesign - IfEnd{payment_bottom_text_disp}]
+        </div>
+        [UnasDesign - IfEnd{payment_disp}]
+            
+        [UnasDesign - IfStart{discount_disp}]
+       	<div id="tab2_contactdiscount" rel="contactdiscount" class="page_tab2 icon--b-percent">[UnasDesign - Text{tab_discount}]</div>
+        <div id="tab_contactdiscount_content" class="page_tab_content">
+            [UnasDesign - IfStart{discount_main_disp}]
+                [UnasDesign - LoopStart{discount_type}]
+                    <div class="page_contact_mod_2 mb-5">
+                        <div class="page_contact_discount_name title--theme-2 mb-3">[UnasDesign - Loop{discount_type} - Normal{discount_name}]</div>
+                        <div class="table discount-table">
+                            <div class="th">
+                                <div class="td td-2x discount__text-ordered-qty">[UnasDesign - Text{post_full}]</div>
+                                <div class="td discount__text-discount-amount">[UnasDesign - Text{kedv_perc}]</div>
+                            </div>
+                            [UnasDesign - Loop{discount_type} - LoopStart{discount_rows}]
+                            <div class="tr">
+                                <div class="td">
+                                    <div class="td-inner">
+                                        <div class="discount__from-wrap">
+                                            <span class="discount__from">[UnasDesign - Loop{discount_type} - Loop{discount_rows} - Normal{from}]</span>
+                                            <span class="discount__unit font-s">&nbsp;[UnasDesign - Loop{discount_type} - Loop{discount_rows} - Normal{money_type}]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="td">
+                                    <div class="td-inner">
+                                        [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfStart{!to_disp}]
+                                        <span class="discount__no-limit">-</span>
+                                        [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfEnd{!to_disp}]
+
+                                        [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfStart{to_disp}]
+                                        <div class="discount__to-wrap">
+                                            <span class="discount__to">[UnasDesign - Loop{discount_type} - Loop{discount_rows} - Normal{to}]</span>
+                                            <span class="discount__unit font-s">&nbsp;[UnasDesign - Loop{discount_type} - Loop{discount_rows} - Normal{money_type}]</span>
+                                        </div>
+                                        [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfEnd{to_disp}]
+                                    </div>
+                                </div>
+                                <div class="td font-weight-700">
+                                    [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfStart{percent_disp}]
+                                    <div class="td-inner"><span class="discount__percent">[UnasDesign - Loop{discount_type} - Loop{discount_rows} - Normal{percent}]&nbsp;%</span></div>
+                                    [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfEnd{percent_disp}]
+
+                                    [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfStart{!percent_disp}]
+                                    <div class="td-inner"><span class="discount__no-percent">-</span></div>
+                                    [UnasDesign - Loop{discount_type} - Loop{discount_rows} - IfEnd{!percent_disp}]
+                                </div>
+                            </div>
+                            [UnasDesign - Loop{discount_type} - LoopEnd{discount_rows}]
+                        </div>
+                    </div>
+                [UnasDesign - LoopEnd{discount_type}] 
+            [UnasDesign - IfEnd{discount_main_disp}]
+            
+            [UnasDesign - IfStart{discount_bottom_text_disp}]
+                <div class='page_txt'>[UnasDesign - Normal{discount_bottom_text}]</div>
+            [UnasDesign - IfEnd{discount_bottom_text_disp}]                            
+        </div>
+        [UnasDesign - IfEnd{discount_disp}]
+
+        [UnasDesign - IfStart{mail_disp}]
+        <div id="tab2_contactmail" rel="contactmail" class="page_tab2 icon--b-mail">[UnasDesign - Text{tab_mail}]</div>
+        <div id="tab_contactmail_content" class="page_tab_content">
+            [UnasDesign - IfStart{mail_main_disp}]
+                <div class="contact_form container-xs">
+                    [UnasDesign - Normal{mail_script}][UnasDesign - Normal{mail_form_start}]
+                    <div class="row no-gutters mb-3">
+                        <div class="contact_form_label col-12 py-2 font-s font-sm-m">[UnasDesign - Normal{title_name}]</div>
+                        <div class="contact_form_input col-12">[UnasDesign - Normal{mail_name}]</div>
+                    </div>
+                    <div class="row no-gutters mb-3">
+                        <div class="contact_form_label col-12 py-2 font-s font-sm-m">[UnasDesign - Normal{title_sender}]</div>
+                        <div class="contact_form_input col-12">[UnasDesign - Normal{mail_sender}]</div>
+                    </div>
+                    <div class="row no-gutters mb-3">
+                        <div class="contact_form_label col-12 py-2 font-s font-sm-m">[UnasDesign - Normal{title_phone}]</div>
+                        <div class="contact_form_input col-12">[UnasDesign - Normal{mail_phone}]</div>
+                    </div>
+                    <div class="row no-gutters mb-3">
+                        <div class="contact_form_label col-12 py-2 font-s font-sm-m">[UnasDesign - Normal{title_subject}]</div>
+                        <div class="contact_form_input col-12">[UnasDesign - Normal{mail_subject}]</div>
+                    </div>
+                    <div class="row no-gutters mb-3">
+                        <div class="contact_form_label col-12 py-2 font-s font-sm-m">[UnasDesign - Normal{title_message}]</div>
+                        <div class="contact_form_input col-12">[UnasDesign - Normal{mail_message}]</div>
+                    </div>
+                    <div class="contact_form_privacy_policy font-xs d-flex">[UnasDesign - Normal{mail_privacy_policy}] <label class="contact_form_policy_label ml-2" for="mail_privacy_policy">[UnasDesign - Normal{title_privacy_policy}]</label></div>
+                </div>
+                [UnasDesign - IfStart{mail_captcha_disp}] 
+                    [UnasDesign - Text{name:captcha_title;page:common}][UnasDesign - Normal{mail_captcha}]
+                [UnasDesign - IfEnd{mail_captcha_disp}]
+                <div class='page_headbutton btn-wrap--primary'>
+                    [UnasDesign - IfStart{recaptcha_disp}][UnasDesign - Normal{recaptcha_client_script}][UnasDesign - IfEnd{recaptcha_disp}]
+                    <span class="text_button"><input name="Button" type="button" class="text_normal" value="[UnasDesign - Text{email_send}]" onclick="mail_submit();"></span>
+                </div>
+                [UnasDesign - Normal{mail_form_end}]
+            [UnasDesign - IfEnd{mail_main_disp}]
+            
+            [UnasDesign - IfStart{mail_bottom_text_disp}]
+                <div class='page_txt'>[UnasDesign - Normal{mail_bottom_text}]</div>
+            [UnasDesign - IfEnd{mail_bottom_text_disp}]                     
+        </div>
+        [UnasDesign - IfStart{recaptcha_disp}][UnasDesign - Normal{recaptcha_client_span}][UnasDesign - IfEnd{recaptcha_disp}]
+        [UnasDesign - IfEnd{mail_disp}]
+            
+    </div>
+    <!--page_contact_tab end-->  
+    
+    <script type="text/javascript">
+		$('.page_tab').first().addClass('page_tab_active');
+		$('.page_tab2').first().addClass('page_tab2_active');
+		$('#tab_'+$('.page_tab_active').attr('rel')+"_content").show();
+		
+		$('.page_tab').click(function() {
+			$('.page_tab').removeClass('page_tab_active');
+			$('.page_tab2').removeClass('page_tab2_active');
+
+			$(this).addClass('page_tab_active');
+			$('#tab2_'+$(this).attr('rel')).addClass('page_tab2_active');
+
+			$('.page_tab_content').hide();
+			$('#tab_'+$(this).attr('rel')+"_content").show();
+		});
+		$('.page_tab2').click(function() {
+			$('.page_tab').removeClass('page_tab_active');
+			$('.page_tab2').not('#tab2_'+$(this).attr('rel')).removeClass('page_tab2_active');
+
+			$(this).toggleClass('page_tab2_active');
+			$('#tab_'+$(this).attr('rel')).toggleClass('page_tab_active');
+
+			$('.page_tab_content').not('#tab_'+$(this).attr('rel')+"_content").slideUp();
+			$('#tab_'+$(this).attr('rel')+"_content").stop().slideToggle(400);
+            $("html, body").animate({ scrollTop: $(this).parent().offset().top - getHeaderHeight() - 70 }, 400);
+		});
+
+		[UnasDesign - IfStart{tab_default_disp}]
+		$("#tab_contact[UnasDesign - Normal{tab_default}]").trigger("click");
+		[UnasDesign - IfEnd{tab_default_disp}]
+	</script>
+
+</div><!--page_contact_content-->

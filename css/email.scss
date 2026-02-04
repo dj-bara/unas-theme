@@ -1,0 +1,40 @@
+.border_1 {
+	border:none;
+}
+.text_link {
+	color: $color-base;
+}
+h1.text_biggest {
+	color: $color-base;
+	text-transform:uppercase;
+	font-weight:700;
+	font-family:'Open Sans', Arial, sans-serif;
+}
+.text_normal {
+	color: $color-text;
+}
+.text_color_dark1 {
+	color:#fff;
+}
+.bg_color_light1 {
+	background-color:#fff;
+}
+.bg_color_light3 {
+	background-color:transparent;
+}
+.bg_color_dark1 {
+	padding:10px;
+	background-color: $color-base;
+	font-size: 13px;
+    text-transform: uppercase;
+}
+.bg_color_dark2 {
+	padding:10px;
+	background-color:transparent;
+	border-bottom:1px solid #dddddd;
+}
+.bg_color_dark3 {
+	padding:10px;
+	background-color:transparent;
+	border-bottom:1px solid #dddddd;
+}

@@ -1,0 +1,226 @@
+{{ backvar(img_maxwidth,140) }}
+{{ backvar(img_maxheight,140) }}
+
+{# old compare popup #}
+{% if subver < 3 %}
+    {% if compare_disp %}
+        <div id="page_PopupConatiner_content">
+            <div class="popup_title" id="compare_title">{{ text.comparison }}</div>
+
+            <div class="popup_compare_content">
+                <table cellpadding="0" cellspacing="0" class="compare_list_table">
+                    <thead>
+                    {% for line in lines %}
+                        {% if line.type in ['name','sku','pic','price','stock'] %}
+                            <tr>
+                                <th class="compare_list_label{% if line.type != 'price' %} type_{{ line.type }}{% endif %}"><div class="compare_list_label_wrap"><div class="compare_list_label_wrap_inner">{{ line.title }}</div></div></th>
+                                {% for cell in line.cells %}
+                                    <th class="compare_list_value type_{{ line.type }} col_{{ cell.sku_id }}">
+                                        <div class="compare_list_value_wrap">
+                                            <div class="compare_list_value_wrap_inner">
+                                                <div class="compare_list_value_wrap_inner_cell">
+                                                    {% if line.type != 'pic' %}
+                                                        {% if line.type == 'stock' and cell.out_of_stock %}
+                                                            {{ text.status_no_stock }}
+                                                        {% else %}
+                                                            {{ cell.value }}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if cell.img_exists %}
+                                                            <div class="compare-img-outer">
+                                                                <a href="{{ cell.url }}">
+                                                                    <img id="main_image" src="{{ cell.img_url }}"{% if cell.img_retina_exists %} srcset="{{ cell.img_retina_url }} {{ cell.img_retina_size }}"{% endif %} alt="{{ cell.img_alt }}" title="{{ cell.img_alt }}" width="{{ backvar.img_maxwidth }}" height="{{ backvar.img_maxheight }}">
+                                                                </a>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                {% endfor %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </thead>
+                    <tbody>
+                    {% for line in lines %}
+                        {% if line.type in ['price_unit'] %}
+                            <tr>
+                                <td class="compare_list_label type_{{ line.type }}"><div class="compare_list_label_wrap"><div class="compare_list_label_wrap_inner">{{ line.title }}</div></div></td>
+                                {% for cell in line.cells %}
+                                    <td class="compare_list_value type_{{ line.type }} col_{{ cell.sku_id }}">
+                                        <div class="compare_list_value_wrap">
+                                            <div class="compare_list_value_wrap_inner">
+                                                <div class="compare_list_value_wrap_inner_cell">
+                                                    {{ cell.value }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endif %}
+
+                        {# paraméterek #}
+                        {% if line.type not in ['name','sku','pic','price','price_unit','stock','tocart'] %} {# paraméterek #}
+                            <tr class="compare_data_tr compare-param-type--{{ line.param_type }}{% if line.same %} compare_list_value_same{% else %} compare_list_value_not_same{% endif %}">
+                                <td>
+                                    <div class="compare_list_label_wrap">
+                                        <div class="compare_list_label_wrap_inner">
+                                            <span class="compare-param-name">{{ line.param_name }}</span>
+                                            {% if line.param_description != '' %}
+                                                <span class="page_artdet_param_desc param_desc_popup param_desc_popup_ver4"><span>{{ line.param_description }}</span></span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </td>
+                                {% for cell in line.cells %}
+                                    <td class="col_{{ cell.sku_id }}{% if line.same %} compare_list_value_same{% else %} compare_list_value_not_same{% endif %}">
+                                        <div class="compare_list_value_wrap">
+                                            <div class="compare_list_value_wrap_inner">
+                                                <div class="compare_list_value_wrap_inner_cell">
+                                                    {{ cell.value }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endif %}
+
+                        {% if line.type == 'tocart' %}
+                            <tr>
+                                <td><div class="compare_list_label_wrap"></div></td>
+                                {% for cell in line.cells %}
+                                <td class="compare_list_footer col_{{ cell.sku_id }}">
+                                    <div class="compare_list_value_wrap font-m">
+                                        {% if cell.tocart_disp %}
+                                        <div class="page_compare_cart">
+                                            <a class="page_compare_cart_link icon--cart" href="{{ cell.cart_url }}"></a>
+                                        </div>
+                                        {% endif %}
+                                        <div class="page_compare_details">
+                                            <a href="{{ cell.url }}" class="icon--details"></a>
+                                        </div>
+                                        <div class="page_compare_delete icon--close" onclick="{{ cell.delete_onclick_value }}return false;"></div>
+                                    </div>
+                                </td>
+                                {% endfor %}
+                            </tr>
+                        {% endif %}
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('.compare_list_table tbody').scroll(function(e) {
+                            $('.compare_list_table thead').css("left", -$(".compare_list_table tbody").scrollLeft());
+                            $('.compare_list_table thead th:nth-child(1)').css("left", $(".compare_list_table tbody").scrollLeft());
+                            $('.compare_list_table tbody td:nth-child(1)').css("left", $(".compare_list_table tbody").scrollLeft());
+                        });
+
+                        $( document ).ready(function() {
+                            $('#page_compare_table_fixhead').width($('#page_compare_table').width());
+                        });
+                    });
+                </script>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $("#box_compare_content").load(unas_shop_url+'/shop_ajax/ajax_box_compare.php?get_ajax=1&lang_master='+actual_lang+'&unas_design='+unas_design_code);
+                    $("#box_container_shop_compare").css("display","block");
+                    $(".param_desc_popup[title]").tooltip({tipClass: "param_desc_tooltip"});
+                    $("#compare_button").click(function () { $.shop_popup("close"); });
+                });
+            </script>
+        </div>
+    {% else %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.shop_popup("close");
+            });
+        </script>
+    {% endif %}
+{% else %}{# bigger compare popup #}
+    {% if compare_disp %}
+        <div class="compare d-flex flex-column" id="compare">
+            <div class="compare__title popup_title icon--b-compare">{{ text.comparison }}</div>
+            <div class="compare__table d-flex flex-grow-1 font-s font-md-m">
+                <div class="compare__table-inner">
+                    {% for line in lines %}
+                        {% if line.type in ['name'] %}
+                        <div class="compare__row compare__row--name position-sticky" id="compare__name-row">
+                            <div class="compare__label" id="compare__name-label">{{ line.title }}</div>
+                            {% for cell in line.cells %}
+                            <div class="compare__value col_{{ cell.sku_id }}"><a class="compare__name-link" href="{{ cell.url }}">{{ cell.value }}</a></div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% if line.type in ['sku','pic','price','price_unit','stock'] %} {# fő adataok, kivéve: parméterek, név, funkciók #}
+                        <div class="compare__row compare__row--{{ line.type }}">
+                            <div class="compare__label">{{ line.title }}</div>
+                            {% for cell in line.cells %}
+                                <div class="compare__value col_{{ cell.sku_id }}">
+                                    {% if line.type != 'pic' %}
+                                        {% if line.type == 'stock' and cell.out_of_stock %}
+                                            {{ text.status_no_stock }}
+                                        {% else %}
+                                            {{ cell.value }}
+                                        {% endif %}
+                                    {% else %}
+                                        <a href="{{ cell.url }}">
+                                        {% if cell.img_exists %}
+                                            <img src="{{ cell.img_url }}"{% if cell.img_retina_exists %} srcset="{{ cell.img_retina_url }} {{ cell.img_retina_size }}"{% endif %} alt="{{ cell.img_alt }}" title="{{ cell.img_alt }}">
+                                        {% else %}
+                                            <div class="icon--image font-xl"></div>
+                                        {% endif %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% if line.type not in ['name','sku','pic','price','price_unit','stock','tocart'] %} {# paraméterek #}
+                        <div class="compare__row compare__row--param compare__row--{{ line.type }} compare__row--{{ line.param_type }}{% if line.same %} values-are-same{% else %} values-are-not-same{% endif %}">
+                            <div class="compare__label">
+                                {{ line.param_name }}{% if line.param_description_disp %}<span class="page_artdet_param_desc" data-tippy="{{ line.param_description|escape }}"></span>{% endif %}
+                            </div>
+                            {% for cell in line.cells %}
+                            <div class="compare__value col_{{ cell.sku_id }}">{{ cell.value }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if line.type == 'tocart' %}
+                        <div class="compare__row compare__row--functions position-sticky" id="compare__functions-row">
+                            <div class="compare__label" id="compare__functions-label">{{ line.title }}</div>
+                            {% for cell in line.cells %}
+                                <div class="compare__value compare__function-buttons col_{{ cell.sku_id }}">
+                                    {% if cell.tocart_disp %}
+                                    <a class="compare__func-btn compare__func-cart-btn btn btn--primary icon--cart" data-tippy="{{ text.button_to_cart }}" href="{{ cell.cart_url }}"></a>
+                                    {% endif %}
+                                    <button class="compare__func-btn compare__func-del-btn btn icon--close" data-tippy="{{ text.delete }} " onclick="{{ cell.delete_onclick_value }}return false;"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    initTippy();
+                });
+            </script>
+        </div>
+    {% else %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.shop_popup("close");
+            });
+        </script>
+    {% endif %}
+{% endif %}

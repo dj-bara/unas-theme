@@ -1,0 +1,130 @@
+[UnasDesign - DesignVar{name:text_page;value:shop_ordercust}]
+
+[UnasDesign - IfStart{!div_no}]<div id='box_login_content' class='box_content'>[UnasDesign - IfEnd{!div_no}]
+    [UnasDesign - IfStart{login_allow}]
+    <div class="profile-col d-flex align-items-center position-relative">
+        <div class="profile js-dropdown-container">
+            <button class="profile__btn header-btn js-profile-btn js-dropdown--btn dropdown--btn" aria-label="[UnasDesign - Text{page:design;name:menu_order;}]" id="profile__btn" onclick="checkLogged(this.id); return false;" data-login="javascript:overlay_login();" data-orders="[unas_shop_url]/shop_order_track.php">
+                <span class="profile__btn-icon d-xl-none icon--head"></span>
+                <span class="profile__btn-text header-btn-text d-none d-xl-block">[UnasDesign - Text{page:design;name:menu_order;}]</span>
+            </button>
+            [UnasDesign - IfStart{type_link}]
+                [UnasDesign - IfStart{!logged_in}]
+                    <script type='text/javascript'>
+                        function overlay_login() {
+                            $(document).ready(function(){
+                                $("#overlay_login_outer").overlay().load();
+                            });
+                        }
+                    </script>
+                    <a[UnasDesign - IfStart{link_id_disp}] id="[UnasDesign - Normal{link_id}]"[UnasDesign - IfEnd{link_id_disp}] href="javascript:overlay_login();" class="menu_login">[UnasDesign - Normal{link_text_prefix}][UnasDesign - Normal{link_text}]</a>
+                [UnasDesign - IfEnd{!logged_in}]
+
+                [UnasDesign - IfStart{logged_in}]
+                    <a[UnasDesign - IfStart{link_id_disp}] id="[UnasDesign - Normal{link_id}]"[UnasDesign - IfEnd{link_id_disp}] href="[UnasDesign - Normal{logout_url}]" class="menu_logout">[UnasDesign - Normal{link_text_prefix}][UnasDesign - Normal{link_text}]</a>
+                    <script type='text/javascript'>
+                        $(document).ready(function(){
+                            $("#container").addClass("logged-in");
+                        });
+                    </script>
+                [UnasDesign - IfEnd{logged_in}]
+
+            [UnasDesign - IfEnd{type_link}]
+
+            [UnasDesign - IfStart{type_form}]
+                [UnasDesign - IfStart{logged_in}]
+                <div class="profile__dropdown dropdown--content js-dropdown--content d-none d-xl-block">
+                    <div class="profile__btn-close icon--close btn btn--square btn--link d-xl-none dropdown--btn-close js-dropdown--btn-close"></div>
+                    <div class='login-box__loggedin-container'>
+                        <div class="login-box__loggedin-header">
+                            <div class='login-box__loggedin-text d-none'>[UnasDesign - Text{name:login_loggedin;page:box_shop}]</div>
+                            <div class='login-box__loggedin-user text-left'>
+                                <div class="login-box__loggedin-user-name">[UnasDesign - Global{cust_name}]</div>
+                                <div class="login-box__loggedin-user-email font-s text-muted round-bracket-around">[UnasDesign - Global{cust}]</div>
+                            </div>
+                        </div>
+                        <div class="line-separator my-3"></div>
+                        <div class="login-box__loggedin-btns">
+                            [UnasDesign - IfStart{menu_orders_disp}]
+                            <button  class="login-box-btn login-box__btn-orders btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_order_track.php?tab=orders'">
+                                <div class="shape-square-xs icon--cart text-left"></div>
+                                [UnasDesign - Text{name:tab_order;page:shop_ordercust}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_orders_disp}]
+
+                            [UnasDesign - IfStart{menu_subscriptions_disp}]
+                            <button  class="login-box-btn login-box__btn-subscriptions btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_order_subscriptions.php'">
+                                <div class="shape-square-xs icon--calendar text-left"></div>
+                                [UnasDesign - Text{name:tab_subscription;page:shop_ordercust}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_subscriptions_disp}]
+
+                            [UnasDesign - IfStart{menu_discount_disp}]
+                            <button  class="login-box-btn login-box__btn-discount btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_order_track.php?tab=discount'">
+                                <div class="shape-square-xs icon--percent text-left"></div>
+                                [UnasDesign - Text{name:tab_kedv;page:shop_ordercust}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_discount_disp}]
+
+                            [UnasDesign - IfStart{menu_favourites_disp}]
+                            <button  class="login-box-btn login-box__btn-favourites btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_order_track.php?tab=favourites'">
+                                <div class="shape-square-xs icon--favo text-left"></div>
+                                [UnasDesign - Text{name:tab_favourite;page:shop_ordercust}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_favourites_disp}]
+
+                            [UnasDesign - IfStart{menu_saved_filters_disp}]
+                            <button  class="login-box-btn login-box__btn-saved-filters btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_order_track.php?tab=saved_filters'">
+                                <div class="shape-square-xs icon--save text-left"></div>
+                                [UnasDesign - Text{name:menu_saved_filters;page:design}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_saved_filters_disp}]
+
+                            [UnasDesign - IfStart{menu_saved_cards_disp}]
+                            <button  class="login-box-btn login-box__btn-saved-cards btn btn--text px-0 btn--block" onclick="location.href='[UnasDesign - Normal{saved_cards_url}]'">
+                                <div class="shape-square-xs icon--credit-card text-left"></div>
+                                [UnasDesign - Text{name:menu_saved_cards;page:design}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_saved_cards_disp}]
+
+                            [UnasDesign - IfStart{menu_saved_delivery_points_disp}]
+                            <button  class="login-box-btn login-box__btn-saved-delivery-points btn btn--text px-0 btn--block" onclick="location.href='[UnasDesign - Normal{saved_delivery_points_url}]'">
+                                <div class="shape-square-xs icon--map-location-dot text-left"></div>
+                                [UnasDesign - Text{name:menu_saved_delivery_points;page:design}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_saved_delivery_points_disp}]
+
+                            [UnasDesign - IfStart{menu_customer_addresses_disp}]
+                            <button  class="login-box-btn login-box__btn-customer-addresses btn btn--text px-0 btn--block" onclick="location.href='[UnasDesign - Normal{customer_addresses_url}]'">
+                                <div class="shape-square-xs icon--location-dot text-left"></div>
+                                [UnasDesign - Text{name:menu_customer_addresses;page:design}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_customer_addresses_disp}]
+
+                            [UnasDesign - IfStart{menu_reg_disp}]
+                            <button  class="login-box-btn login-box__btn-reg btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_reg.php'">
+                                <div class="shape-square-xs icon--edit text-left"></div>
+                                [UnasDesign - Text{name:menu_modcust;page:design}]
+                            </button>
+                            [UnasDesign - IfEnd{menu_reg_disp}]
+
+                            <div class="line-separator my-3"></div>
+
+                            <button  class="login-box-btn login-box__btn-logout btn btn--text px-0 btn--block" onclick="location.href='[unas_shop_url]/shop_logout.php'">
+                                <div class="shape-square-xs icon--sign-out text-left"></div>
+                                [UnasDesign - Text{name:login_logout;page:design;}]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <script type='text/javascript'>
+                    $(document).ready(function(){
+                        $("#container").addClass("logged-in");
+                    });
+                </script>
+                [UnasDesign - IfEnd{logged_in}]
+            [UnasDesign - IfEnd{type_form}]
+        </div>
+    </div>
+    [UnasDesign - IfEnd{login_allow}]
+[UnasDesign - IfStart{!div_no}]</div>[UnasDesign - IfEnd{!div_no}]

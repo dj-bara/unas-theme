@@ -1,0 +1,166 @@
+{{ backvar(cat_img_maxwidth,360) }}
+{{ backvar(cat_img_maxheight,360) }}
+{{ backvar(custom_img_width_mobile,190) }}
+{{ backvar(custom_img_height_mobile,190) }}
+{{ backvar(custom_img_width_retina_mobile,380) }}
+{{ backvar(custom_img_height_retina_mobile,380) }}
+{{ backvar(custom_img_breakpoint_mobile,412) }}
+{{ backvar(disable_cat_sub,1) }}
+
+<div id='page_cat_content' class='page_content cat--type-1'>
+
+    {% if custom_content_top_disp %}
+    <div class='page_txt py-4 border-bottom'>{{ custom_content_top }}</div>
+    {% endif %}
+
+    {% if product_count_disp %}
+    <div class='cat-artnum py-4 border-bottom font-s font-sm-m'>
+        <span class="cat-artnum__icon icon--b-info color--primary"></span>
+        <span class="cat-artnum__text">{{ shopname_title }}</span>
+        <span class="cat-artnum__num">{{ cat_num }}</span>
+    </div>
+    {% endif %}
+
+    {% if tags_disp %}
+    <div class="js-tags my-3">
+        {% for tag in tags %}
+        <div class="js-filter-by-tag tags__col mr-2 px-3 py-1" data-filter="js-filterable-{{ tag.id }}">
+            {{ tag.name }}
+        </div>
+        {% endfor %}
+
+        <div class="js-clear-tag-filter tags__col mr-2 px-3 py-1" data-filter="clear-all">
+            {{ text.delete_filter }}
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var tagFilter = new filterByTag({type:"category"});
+
+            tagFilter.filterInit();
+            tagFilter.clearFilterInit();
+        });
+    </script>
+    {% endif %}
+
+    {% if cats_spec_disp %}
+    <div class='spec-categories mt-4 border-bottom'>
+        <div class="row gutters-5 gutters-sm-10">
+            {% for cat_spec in cat_spec_list %}
+            <div class="col-6 col-md-4 col-lg-3 col-xl-4 col-xxl-3 spec-categories__col mb-4">
+                <div class="spec-category d-flex flex-column border spec-category-{{ cat_spec.id }} bg-8">
+                    {% if cat_spec.img_exists %}
+                    <div class="spec-category__pic-wrap text-center product-img-wrapper">
+                        <a class="spec-category__pic-url" href="{{ cat_spec.url }}" title="{{ cat_spec.name }}">
+                            <picture>
+                                <source width="{{ backvar.custom_img_width_mobile }}" height="{{ backvar.custom_img_height_mobile }}"
+                                        srcset="{{ cat_spec.img_url|resize(backvar.custom_img_width_mobile,backvar.custom_img_height_mobile) }} 1x,{{ cat_spec.img_url|resize(backvar.custom_img_width_retina_mobile,backvar.custom_img_height_retina_mobile) }} 2x"
+                                        media="(max-width: {{ backvar.custom_img_breakpoint_mobile }}px)"
+                                >
+                                <img width="{{ backvar.cat_img_maxwidth }}" height="{{ backvar.cat_img_maxheight }}" alt="{{ cat_spec.name }}"
+                                    {% if loop.index > 4 %}
+                                        class="spec-category__pic product-img lazyload"
+                                        src="[unas_shop_url]/main_pic/space.gif" data-src="{{ cat_spec.img_url }}"
+                                        {% if cat_spec.img_retina_exists %}
+                                        data-srcset="{{ cat_spec.img_retina_url }} {{ cat_spec.img_retina_size }}"
+                                        {% endif %}
+                                    {% else %}
+                                        class="spec-category__pic product-img" src="{{ cat_spec.img_url }}" fetchpriority="high"
+                                        {% if cat_spec.img_retina_exists %}
+                                        srcset="{{ cat_spec.img_retina_url }} {{ cat_spec.img_retina_size }}"
+                                        {% endif %}
+                                    {% endif %}
+                                >
+                            </picture>
+                        </a>
+                    </div>
+                    {% endif %}
+                    <a class="spec-category__name d-block text-center p-3 font-s font-sm-m" href="{{ cat_spec.url }}">
+                        <div class="spec-category__name-inner line-clamp--2-14 text-center">
+                            {{ cat_spec.name }}
+                        </div>
+                        {% if cat_spec.product_count_disp %}
+                        <div class="spec-category__qty d-inline-block text-muted font-s">({{ cat_spec.product_count }}<span class="artnum__small d-none">{{ text.product }}</span>)</div>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if cats_disp %}
+    <div class='normal-categories{% if not cat_all_skipped %} mt-4 border-bottom{% endif %}'>
+        <div class="row gutters-5 gutters-sm-10">
+            {% for cat in cats_list %}
+            <div class="col-6 col-md-4 col-lg-3 col-xl-4 col-xxl-3 normal-categories__col mb-4 {% if tags_disp %} js-filterable {% endif %} {% if cat.tag_list_disp %} {{ cat.tag_list }} {% endif %}">
+                <div class='normal-category d-flex flex-column h-100'>
+                    <div class='normal-category__pic-wrap text-center product-img-wrapper'>
+                        {% if not cat.alt_url_exists and cat.product_new_count_disp %}
+                        <div class="normal-category__stasuses fs-0">
+                            <div class="normal-category__new font-xxs font-sm-s">
+                                <span class="normal-category__new-qty">{{ cat.product_new_count }}&nbsp;</span>
+                                <span class="normal-category__new-text">{{ text.status_new }}</span>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if cat.img_disp %}
+                        <a class="normal-category__pic-url" href="{{ cat.url }}" title="{{ cat.name }}"{% if cat.target_blank %} target="_blank"{% endif %}>
+                            <picture>
+                                {% if cat.img_exists %}
+                                <source width="{{ backvar.custom_img_width_mobile }}" height="{{ backvar.custom_img_height_mobile }}"
+                                        srcset="{{ cat.img_url|resize(backvar.custom_img_width_mobile,backvar.custom_img_height_mobile) }} 1x,{{ cat.img_url|resize(backvar.custom_img_width_retina_mobile,backvar.custom_img_height_retina_mobile) }} 2x"
+                                        media="(max-width: {{ backvar.custom_img_breakpoint_mobile }}px)"
+                                >
+                                {% endif %}
+                                <img width="{{ backvar.cat_img_maxwidth }}" height="{{ backvar.cat_img_maxheight }}" alt="{{ cat.name }}"
+                                     {% if loop.index > 4 %}
+                                         class="normal-category__pic product-img lazyload"
+                                         src="[unas_shop_url]/main_pic/space.gif" data-src="{{ cat.img_url }}"
+                                         {% if cat.img_retina_exists %}
+                                         data-srcset="{{ cat.img_retina_url }} {{ cat.img_retina_size }}"
+                                         {% endif %}
+                                     {% else %}
+                                         class="normal-category__pic product-img" src="{{ cat.img_url }}" fetchpriority="high"
+                                         {% if cat.img_retina_exists %}
+                                         srcset="{{ cat.img_retina_url }} {{ cat.img_retina_size }}"
+                                         {% endif %}
+                                     {% endif %}
+                                >
+                            </picture>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <a class="normal-category__link d-block text-center py-3 font-s font-sm-m flex-grow-1" href="{{ cat.url }}"{% if cat.target_blank %} target="_blank"{% endif %}>
+                         <div class="normal-category__name line-clamp--3-14 text-center">{{ cat.name }}</div>
+                         {% if not cat.alt_url_exists and cat.product_count_disp %}
+                         <span class="normal-category__qty text-muted font-xxs font-sm-s">({{ cat.product_count }}<span class="artnum__small d-none">&nbsp;{{ text.product }}</span>)</span>
+                         {% endif %}
+                     </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if cat_all_skipped %}
+    <div class="all-cat-skipped page_txt py-4 border-bottom">{{ text.no_product }}</div>
+    {% endif %}
+
+    {% if retargeting_div_category_disp %}{{ retargeting_div_category }}{% endif %}
+
+    {% if product_list_disp %}
+        {{ product_list_script }}
+        <div id="page_cat_artlist">
+            {{ product_list }}
+        </div>
+    {% endif %}
+
+    {% if custom_content_bottom_disp %}
+    <div class='page_txt py-4 border-bottom'>{{ custom_content_bottom }}</div>
+    {% endif %}
+</div><!--page_cat_content-->

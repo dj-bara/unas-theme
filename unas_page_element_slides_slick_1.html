@@ -1,0 +1,151 @@
+[UnasDesign - DesignVar{name:slide_max;value:100}]
+[UnasDesign - DesignVar{name:img_size;value:1}]
+[UnasDesign - DesignVar{name:enable;value:maintitle,img,img_link,html,delay}]
+
+[UnasDesign - IfStart{element_disp}]
+    [UnasDesign - IfStart{style_disp}]
+    <style>
+        [UnasDesign - LoopStart{slide}]
+            [UnasDesign - Loop{slide} - IfStart{img_default_disp}]
+                [UnasDesign - Loop{slide} - IfStart{num1_disp}]
+                    .[UnasDesign - Normal{name}] .element__img-outer {
+                        overflow: hidden;
+                    }
+                    .[UnasDesign - Normal{name}] .element__img-wrapper {
+                        position: relative;
+                    }
+                    .[UnasDesign - Normal{name}] .element__img {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        top: 0;
+                    }
+                [UnasDesign - Loop{slide} - IfEnd{num1_disp}]
+
+                .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-outer {
+                    width: [UnasDesign - Loop{slide} - Normal{img_default_width}]px;
+                }
+                .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-wrapper {
+                    padding-top: calc([UnasDesign - Loop{slide} - Normal{img_default_height}] / [UnasDesign - Loop{slide} - Normal{img_default_width}] * 100%);
+                }
+
+                [UnasDesign - Loop{slide} - IfStart{img_large_disp}]
+                @media (max-width: 1023.8px) {
+                    .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-outer {
+                        width: [UnasDesign - Loop{slide} - Normal{img_large_width}]px;
+                    }
+                    .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-wrapper {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_large_height}] / [UnasDesign - Loop{slide} - Normal{img_large_width}] * 100%);
+                    }
+                }
+                [UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+
+                [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]
+                @media (max-width: 767.8px){
+                    .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-outer {
+                        width: [UnasDesign - Loop{slide} - Normal{img_medium_width}]px;
+                    }
+                    .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-wrapper {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_medium_height}] / [UnasDesign - Loop{slide} - Normal{img_medium_width}] * 100%);
+                    }
+                }
+                [UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+
+                [UnasDesign - Loop{slide} - IfStart{img_small_disp}]
+                @media (max-width: 479.8px){
+                    .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-outer {
+                        width: [UnasDesign - Loop{slide} - Normal{img_small_width}]px;
+                    }
+                    .[UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] .element__img-wrapper {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_small_height}] / [UnasDesign - Loop{slide} - Normal{img_small_width}] * 100%);
+                    }
+                }
+                [UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+            [UnasDesign - Loop{slide} - IfEnd{img_default_disp}]
+        [UnasDesign - LoopEnd{slide}]
+    </style>
+    [UnasDesign - IfEnd{style_disp}]
+
+    [UnasDesign - IfStart{!style_disp}]
+    <div class="js-element [UnasDesign - Normal{name}] py-5 slick-indent slick-arrow--middle slick-arrow--small slick-gap slick-fade" data-element-name="[UnasDesign - Normal{name}]">
+        <div class="[UnasDesign - Normal{name}]__container container">
+            [UnasDesign - IfStart{maintitle_disp}]
+            <div class="[UnasDesign - Normal{name}]__main-title"><div class="text-center h2">[UnasDesign - Normal{maintitle}]</div></div>
+            [UnasDesign - IfEnd{maintitle_disp}]
+
+            <div class="[UnasDesign - Normal{name}]__elements">
+                [UnasDesign - LoopStart{slide}]
+                <div class="[UnasDesign - Normal{name}]__element [UnasDesign - Normal{name}]__element--[UnasDesign - Loop{slide} - Normal{num}] element-[UnasDesign - Loop{slide} - Normal{num}]">
+                    [UnasDesign - Loop{slide} - IfStart{img_default_disp}]
+                    <div class="element__img-outer">
+                        <div class="element__img-wrapper">
+                            [UnasDesign - Loop{slide} - IfStart{img_link_disp}]
+                            <a class="element__link" href="[UnasDesign - Loop{slide} - Normal{img_link}]"[UnasDesign - Loop{slide} - IfStart{img_link_blank}] target="_blank"[UnasDesign - Loop{slide} - IfEnd{img_link_blank}]>
+                            [UnasDesign - Loop{slide} - IfEnd{img_link_disp}]
+                            <picture>
+                                [UnasDesign - Loop{slide} - IfStart{img_small_disp}]
+                                <source width="[UnasDesign - Loop{slide} - Normal{img_small_width}]" height="[UnasDesign - Loop{slide} - Normal{img_small_height}]" media="(max-width: 479.8px)"
+                                        srcset="[unas_shop_url]/main_pic/space.gif" data-srcset="[UnasDesign - Loop{slide} - Normal{img_small}] 1x[UnasDesign - Loop{slide} - IfStart{img_small_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_small_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_small_retina_disp}]">
+                                [UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+
+                                [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]
+                                <source width="[UnasDesign - Loop{slide} - Normal{img_medium_width}]" height="[UnasDesign - Loop{slide} - Normal{img_medium_height}]" media="(max-width: 767.8px)"
+                                        srcset="[unas_shop_url]/main_pic/space.gif" data-srcset="[UnasDesign - Loop{slide} - Normal{img_medium}] 1x[UnasDesign - Loop{slide} - IfStart{img_medium_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_medium_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_medium_retina_disp}]">
+                                [UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+
+                                [UnasDesign - Loop{slide} - IfStart{img_large_disp}]
+                                <source width="[UnasDesign - Loop{slide} - Normal{img_large_width}]" height="[UnasDesign - Loop{slide} - Normal{img_large_height}]" media="(max-width: 1023.8px)"
+                                        srcset="[unas_shop_url]/main_pic/space.gif" data-srcset="[UnasDesign - Loop{slide} - Normal{img_large}] 1x[UnasDesign - Loop{slide} - IfStart{img_large_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_large_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_large_retina_disp}]">
+                                [UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+                                <source width="[UnasDesign - Loop{slide} - Normal{img_default_width}]" height="[UnasDesign - Loop{slide} - Normal{img_default_height}]"
+                                        srcset="[unas_shop_url]/main_pic/space.gif" data-srcset="[UnasDesign - Loop{slide} - Normal{img_default}] 1x[UnasDesign - Loop{slide} - IfStart{img_default_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_default_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_default_retina_disp}]">
+                                <img width="[UnasDesign - Loop{slide} - Normal{img_default_width}]" height="[UnasDesign - Loop{slide} - Normal{img_default_height}]" class="element__img lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{slide} - Normal{img_default}]"
+                                     alt="[UnasDesign - Loop{slide} - IfStart{alt_disp}][UnasDesign - Loop{slide} - Normal{alt}][UnasDesign - Loop{slide} - IfEnd{alt_disp}][UnasDesign - Loop{slide} - IfStart{!alt_disp}][UnasDesign - Normal{service_name}][UnasDesign - Loop{slide} - IfEnd{!alt_disp}]">
+                             </picture>
+                            [UnasDesign - Loop{slide} - IfStart{img_link_disp}]
+                            </a>
+                            [UnasDesign - Loop{slide} - IfEnd{img_link_disp}]
+                        </div>
+                    </div>
+                    [UnasDesign - Loop{slide} - IfEnd{img_default_disp}]
+
+                    [UnasDesign - Loop{slide} - IfStart{!img_default_disp}]
+                        [UnasDesign - Loop{slide} - Normal{html}]
+                    [UnasDesign - Loop{slide} - IfEnd{!img_default_disp}]
+                </div>
+                [UnasDesign - LoopEnd{slide}]
+            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $(".[UnasDesign - Normal{name}]__elements").on('mousedown','.slick-list', function(e){
+                        let $this_slick = $(".[UnasDesign - Normal{name}]__elements");
+                        $this_slick.addClass('dragging');
+
+                        $this_slick.one('mouseup', function(e){
+                            $this_slick.off('mousemove');
+                            $this_slick.removeClass('dragging')
+                        });
+                    });
+                    $(".[UnasDesign - Normal{name}]__elements").not('.slick-initialized').slick({
+                        slidesToShow: 6, /*hacky to repair cloned elements after and before*/
+                        [UnasDesign - IfStart{autoplay_enabled}]
+                        autoplay: true,
+                        autoplaySpeed: [UnasDesign - Normal{delay}],
+                        [UnasDesign - IfEnd{autoplay_enabled}]
+                        speed: 500,
+                        accessibility: false,
+                        mobileFirst: true,
+                        variableWidth: true,
+                        centerMode: true,
+                        centerPadding: 0,
+                        lazyLoad: false,
+                        waitForAnimate: false
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    [UnasDesign - IfEnd{!style_disp}]
+[UnasDesign - IfEnd{element_disp}]

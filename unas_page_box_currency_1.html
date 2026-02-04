@@ -1,0 +1,17 @@
+[UnasDesign - IfStart{!div_no}]<div id='box_money_content' class='box_content'>[UnasDesign - IfEnd{!div_no}]
+
+    [UnasDesign - Normal{form_start}]
+
+    <div class="form-group fs-0">
+        <input class="currency__radio" id="-1" type="radio" name="session_money_select" value="-1" [UnasDesign - IfStart{!base_currency_selected}]onclick="[UnasDesign - Normal{on_change}]"[UnasDesign - IfEnd{!base_currency_selected}] [UnasDesign - IfStart{base_currency_selected}]checked[UnasDesign - IfEnd{base_currency_selected}]>
+        <label class="currency__label" for="-1">[UnasDesign - Normal{base_currency}]</label>
+
+        [UnasDesign - LoopStart{currencies}]
+            <input class="currency__radio" id="[UnasDesign - Loop{currencies} - Normal{value}]" [UnasDesign - Loop{currencies} - IfStart{!selected}]onclick="[UnasDesign - Normal{on_change}]"[UnasDesign - Loop{currencies} - IfEnd{!selected}] type="radio" name="session_money_select" value="[UnasDesign - Loop{currencies} - Normal{value}]" [UnasDesign - Loop{currencies} - IfStart{selected}]checked[UnasDesign - Loop{currencies} - IfEnd{selected}]>
+            <label class="currency__label" for="[UnasDesign - Loop{currencies} - Normal{value}]">[UnasDesign - Loop{currencies} - Normal{name}]</label>
+        [UnasDesign - LoopEnd{currencies}]
+    </div>
+
+    [UnasDesign - Normal{form_end}]
+
+[UnasDesign - IfStart{!div_no}]</div>[UnasDesign - IfEnd{!div_no}]

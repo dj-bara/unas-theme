@@ -1,0 +1,26 @@
+<div id="box_search_content[UnasDesign - Normal{plus_id}]" class="position-relative browser-is-[UnasDesign - Normal{browser}]">
+    <form name="form_include_search[UnasDesign - Normal{plus_id}]" id="form_include_search[UnasDesign - Normal{plus_id}]" action="[UnasDesign - Normal{form_action}]" method="get">
+        <input data-stay-visible-breakpoint="1020" name="search" id="box_search_input[UnasDesign - Normal{suffix}]" type="text" value="[UnasDesign - Normal{search_query}]"
+               pattern=".{[UnasDesign - Normal{min_len}],100}" maxlength="100" class="text_small ac_input js-search-input" title="[UnasDesign - Text{page:design;name:search_pattern}]"
+               placeholder="[UnasDesign - Text{page:design;name:boxtitle_search}]" autocomplete="off"
+               required[UnasDesign - IfStart{browser_safari}] readonly[UnasDesign - IfEnd{browser_safari}]
+        >
+        <div class="search-box__search-btn-outer">
+            <button class="search-box__search-btn btn--text text-center icon--search" type="submit" title="[UnasDesign - Text{page:shop_search;name:button_search}]"></button>
+        </div>
+        <div class="search-box__mask"></div>
+    </form>
+    <div class="ac_results"></div>
+</div>
+<script>
+    $(document).ready(function(){
+        $(document).on('smartSearchInputLoseFocus', function(){
+            if ($('.js-search-smart-autocomplete').length>0) {
+                setTimeout(function () {
+                    let height = $(window).height() - ($('.js-search-smart-autocomplete').offset().top - $(window).scrollTop()) - 20;
+                    $('.search-smart-autocomplete').css('max-height', height + 'px');
+                }, 300);
+            }
+        });
+    });
+</script>

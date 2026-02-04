@@ -1,0 +1,485 @@
+[UnasDesign - DesignVar{name:det_pic_maxwidth;value:285}]
+[UnasDesign - DesignVar{name:det_pic_maxheight;value:285}]
+<!DOCTYPE html>
+<html style="background-image:none; height:100%">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Robots" content="noindex, nofollow">
+[UnasDesign - Normal{css_link}]
+
+<title>[UnasDesign - Normal{name}] - Print Preview</title>
+
+<script type='text/javascript' src='[UnasDesign - Normal{packages_url}]jquery/jquery.js'></script>
+<script type="text/javascript">
+	$(document).ready(function () {	
+		//right_click
+		$(document).bind("contextmenu",function(e){
+        	//return false;
+       	});
+		
+		//copy
+		var omitformtags=["input", "textarea", "select"];
+		omitformtags=omitformtags.join("|");
+			
+		function disableselect(e) {
+			if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1) return false;
+			if (omitformtags.indexOf(e.target.tagName.toLowerCase())==2) return false;
+		}
+			
+		function reEnable() {
+			return true;
+		}
+			
+		if (typeof document.onselectstart!="undefined") {
+			document.onselectstart=new Function ("return false");
+		} else {
+			document.onmousedown=disableselect;
+			document.onmouseup=reEnable;
+		}
+	
+		//button
+		$("#printing_button").click(function () {
+			window.focus(); 
+			window.print();
+			return false;
+		});		
+	});	
+</script>
+
+</head>
+<body style="background-image:none; height:100%">
+    <div class='art_print_outer'>
+            
+        <div class="popup_title" id="print_title">
+            [UnasDesign - Text{print_view}]
+        </div>
+        
+        <div id='page_artdet_content_print_1' class="p-4 overflow-hidden">
+            [UnasDesign - IfStart{art_yes}]
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class='artdet-print__name h3'>[UnasDesign - Normal{name}]</div>
+                </div>
+
+                <div class='artdet-print__img-outer col-6'>
+                    <div class="artdet-print__properties position-relative">
+                        [UnasDesign - IfStart{sale_disp}]
+                        <div class="artdet-print__sale product-status product-status--sale">-[UnasDesign - Normal{price_save}]</div>
+                        [UnasDesign - IfEnd{sale_disp}]
+
+                        [UnasDesign - IfStart{art_item_new_disp}]
+                        <div class="artdet-print__new product-status product-status--new">[UnasDesign - Text{name:new_stat;page:common}]</div>
+                        [UnasDesign - IfEnd{art_item_new_disp}]
+
+                        [UnasDesign - IfStart{stock_disp}]
+                        <div class="artdet-print__stock product-status product-status--stock[UnasDesign - IfStart{!stock_text_only}] stock-number[UnasDesign - IfEnd{!stock_text_only}][UnasDesign - IfStart{stock_available}] stock-available[UnasDesign - IfEnd{stock_available}]">
+
+                            [UnasDesign - IfStart{stock_available}]
+                            <div class="artdet-print__stock-text product-stock-text text-color--on-stock">
+                                <div class="artdet-print__stock-title product-stock-title icon--b-on-stock">[UnasDesign - Text{name:in_stock;page:common}][UnasDesign - IfStart{!stock_text_only}]<div class="d-inline-block icon--a-chevron-down"></div>[UnasDesign - IfEnd{!stock_text_only}]</div>
+                                <div class="artdet-print__stock-dropdown product-stock-dropdown">
+                                    <div class="artdet-print__stock-label product-stock-label">[UnasDesign - Text{name:stock_title;page:common}]:</div>
+                                    <div class="artdet-print__stock-content p-1">[UnasDesign - Normal{stock}]</div>
+                                </div>
+                            </div>
+                            [UnasDesign - IfEnd{stock_available}]
+
+                            [UnasDesign - IfStart{!stock_available}]
+                                [UnasDesign - IfStart{!no_stock_but_buyable_disp}]
+                                    <div class="artdet-print__stock-text product-stock-text text-color--out-of-stock">
+                                        <div class="artdet-print__stock-title product-stock-title icon--b-out-of-stock">[UnasDesign - Text{name:out_of_stock;page:common}]</div>
+                                    </div>
+                                [UnasDesign - IfEnd{!no_stock_but_buyable_disp}]
+
+                                [UnasDesign - IfStart{no_stock_but_buyable_disp}]
+                                    <div class="artdet-print__stock-text product-stock-text text-color--to-order">
+                                        <div class="artdet-print__stock-title product-stock-title icon--b-exclamation-2">[UnasDesign - Text{name:available_on_backorder;page:common}]</div>
+                                    </div>
+                                [UnasDesign - IfEnd{no_stock_but_buyable_disp}]
+                            [UnasDesign - IfEnd{!stock_available}]
+
+                            [UnasDesign - IfStart{!stock_available}]
+                            [UnasDesign - IfStart{artpack_tab_disp}]
+                            [UnasDesign - IfStart{min_quant_disp}]
+                            <div class="property__min-quant">
+                                [UnasDesign - Text{art_minorder}]:[UnasDesign - Normal{min_quant}]
+                            </div>
+                            [UnasDesign - IfEnd{min_quant_disp}]
+                            [UnasDesign - IfEnd{artpack_tab_disp}]
+                            [UnasDesign - IfEnd{!stock_available}]
+                        </div>
+                        [UnasDesign - IfEnd{stock_disp}]
+
+                        [UnasDesign - IfStart{status1_disp}]
+                        <div class="artdet-print__custom-status product-status product-status--custom-1">[UnasDesign - Normal{status1}]</div>
+                        [UnasDesign - IfEnd{status1_disp}]
+
+                        [UnasDesign - IfStart{status2_disp}]
+                        <div class="artdet-print__custom-status product-status product-status--custom-2">[UnasDesign - Normal{status2}]</div>
+                        [UnasDesign - IfEnd{status2_disp}]
+
+                        [UnasDesign - IfStart{status3_disp}]
+                        <div class="artdet-print__custom-status product-status product-status--custom-3">[UnasDesign - Normal{status3}]</div>
+                        [UnasDesign - IfEnd{status3_disp}]
+                    </div>
+                    <div class='artdet-print__img-inner position-relative'>
+                        <div class='artdet-print__img-wrapper'>
+                            <figure class="artdet-print__img-main-wrap text-center">
+                                <img class="artdet-print__img-main" src="[UnasDesign - Normal{pic_raw}]" alt="[UnasDesign - Normal{pic_alt_text}]" title="[UnasDesign - Normal{pic_alt_text}]" id="main_image">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='artdet-print__data-outer col-6'>
+
+                    [UnasDesign - IfStart{product_param_spec_disp}]
+                        <div id="artdet-print__param-spec" class="artdet-print__spec-params py-3 border-bottom font-s">
+                            [UnasDesign - LoopStart{product_param_spec}]
+                            <div class="artdet-print__spec-param product_param_type_[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_type}]" id="page_artdet_product_param_spec_[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_id}]" >
+                                <div class="row gutters-10 align-items-center">
+                                    <div class="col-6 text-right">
+                                        <div class="artdet-print__spec-param-title d-inline-block position-relative">
+                                            [UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_title}]
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <div class="artdet-print__spec-param-value">[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_value}]</div>
+                                    </div>
+                                </div>
+                            </div>
+                            [UnasDesign - LoopEnd{product_param_spec}]
+                        </div>
+                    [UnasDesign - IfEnd{product_param_spec_disp}]
+
+                    [UnasDesign - IfStart{product_type_disp}]
+                        <div id="artdet__type" class="product-type mb-4[UnasDesign - IfStart{product_type_style_select}] product-type--style-select[UnasDesign - IfEnd{product_type_style_select}][UnasDesign - IfStart{!product_type_style_select}] product-type--style-button[UnasDesign - IfEnd{!product_type_style_select}][UnasDesign - IfStart{product_type_price}] has-price[UnasDesign - IfEnd{product_type_price}]">
+                            [UnasDesign - LoopStart{product_type}]
+                            [UnasDesign - IfStart{product_type_style_select}]
+                            <div class="product-type__item [UnasDesign - Loop{product_type} - IfStart{product_type_param_desc_if}]has-description[UnasDesign - Loop{product_type} - IfEnd{product_type_param_desc_if}]" id="page_artdet_product_type_[UnasDesign - Loop{product_type} - Normal{product_type_id}]">
+                                <div class="product-type__title d-inline-flex align-items-center position-relative">
+                                    [UnasDesign - Loop{product_type} - Normal{product_type_title}]
+                                </div>
+                                <div class="product-type__values">[UnasDesign - Loop{product_type} - Normal{product_type_value}]</div>
+                            </div>
+                            [UnasDesign - IfEnd{product_type_style_select}]
+                            [UnasDesign - IfStart{!product_type_style_select}]
+                            <div class="product-type__item [UnasDesign - Loop{product_type} - IfStart{product_type_param_desc_if}]has-description[UnasDesign - Loop{product_type} - IfEnd{product_type_param_desc_if}]" id="page_artdet_product_type_[UnasDesign - Loop{product_type} - Normal{product_type_id}]">
+                                <div class="product-type__title d-inline-flex align-items-center position-relative">
+                                    [UnasDesign - Loop{product_type} - Normal{product_type_title}]
+                                </div>
+                                <div class="product-type__values d-flex flex-wrap">
+                                    [UnasDesign - Loop{product_type} - LoopStart{item}]
+                                    <div class='product-type__value-wrap font-s font-sm-m m-2 product-type__value--[UnasDesign - Loop{product_type} - Normal{product_type_type}][UnasDesign - Loop{product_type} - Loop{item} - IfStart{selected}] is-active[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{selected}][UnasDesign - Loop{product_type} - Loop{item} - IfStart{parent}] is-base[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{parent}]' onclick='product_type_mod("[UnasDesign - Loop{product_type} - Normal{product_type_id}]","[UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}]");' data-sku='[UnasDesign - Loop{product_type} - Loop{item} - Normal{sku}]' [UnasDesign - Loop{product_type} - IfStart{product_type_color}]style="background-color:#[UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}];" data-hexa="[UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}]"[UnasDesign - Loop{product_type} - IfEnd{product_type_color}]>
+                                        <a class='product-type__value-link' href='[UnasDesign - Loop{product_type} - Loop{item} - Normal{url}]' title='[UnasDesign - Loop{product_type} - Loop{item} - Normal{title}]'>
+                                            <span class='product-type__value'>[UnasDesign - Loop{product_type} - Loop{item} - Normal{value}]</span>
+                                            [UnasDesign - IfStart{product_type_price}]<span class='product-type__price font-xs round-bracket-around ml-3'>[UnasDesign - Loop{product_type} - Loop{item} - Normal{price}]</span>[UnasDesign - IfEnd{product_type_price}]
+                                        </a>
+                                    </div>
+                                    [UnasDesign - Loop{product_type} - LoopEnd{item}]
+                                    <input class='product_type_select' type='hidden' id='param_type_[UnasDesign - Loop{product_type} - Normal{product_type_id}]' data-param_id='[UnasDesign - Loop{product_type} - Normal{product_type_id}]' value='[UnasDesign - Loop{product_type} - Normal{product_type_value_act}]'>
+                                 </div>
+                            </div>
+                            [UnasDesign - IfEnd{!product_type_style_select}]
+                            [UnasDesign - LoopEnd{product_type}]
+                        </div>
+                    [UnasDesign - IfEnd{product_type_disp}]
+
+                    [UnasDesign - IfStart{other_disp}]
+                        <div id="artdet-print__other" class='product-variants py-3 font-s border-bottom'>
+                            <div class='product-variants-inner'>
+                                [UnasDesign - IfStart{other_1_disp}]
+                                <div class='product-variant product-variant--1 d-flex'>
+                                    <div class="col-5 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                        <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_1_label}]</div>
+                                    </div>
+                                    <div class="col-7 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                        <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_1_select}]</div>
+                                    </div>
+                                </div>
+                                [UnasDesign - IfEnd{other_1_disp}]
+                                [UnasDesign - IfStart{other_2_disp}]
+                                <div class='product-variant product-variant--2 d-flex'>
+                                    <div class="col-5 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                        <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_2_label}]</div>
+                                    </div>
+                                    <div class="col-7 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                        <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_2_select}]</div>
+                                    </div>
+                                </div>
+                                [UnasDesign - IfEnd{other_2_disp}]
+                                [UnasDesign - IfStart{other_3_disp}]
+                                <div class='product-variant product-variant--3 d-flex'>
+                                    <div class="col-5 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                        <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_3_label}]</div>
+                                    </div>
+                                    <div class="col-7 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                        <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_3_select}]</div>
+                                    </div>
+                                </div>
+                                [UnasDesign - IfEnd{other_3_disp}]
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{other_disp}]
+
+                    [UnasDesign - Normal{other_temp}]
+
+                    <!-- Plus service BEGIN -->
+                    [UnasDesign - IfStart{service_plus_disp}]
+                    <div id="artdet-print__service-plus" class="plus-service py-3 font-s border-bottom">
+                        [UnasDesign - LoopStart{service_plus_loop}]
+                            <div class="row align-items-center no-gutters justify-content-between col px-0 plus-service__label-content">
+                                <span class='col plus-service__name'>[UnasDesign - Loop{service_plus_loop} - Normal{name}]</span>
+                                <span class='col-auto plus-service__price'>[UnasDesign - Loop{service_plus_loop} - Normal{price}]</span>
+                            </div>
+                        [UnasDesign - LoopEnd{service_plus_loop}]
+                    </div>
+                    [UnasDesign - IfEnd{service_plus_disp}]
+                    <!-- Plus service END -->
+
+                    [UnasDesign - IfStart{price_disp}]
+                    <div id="artdet-print__price" class="artdet-print__price py-3 font-s border-bottom with-rrp">
+                        [UnasDesign - IfStart{price_net_disp}]
+                        <div class="artdet-print__price-base font-weight-700 [UnasDesign - IfStart{!price_akcio_disp}]font-l[UnasDesign - IfEnd{!price_akcio_disp}] [UnasDesign - IfStart{price_akcio_disp}]font-s[UnasDesign - IfEnd{price_akcio_disp}] [UnasDesign - IfStart{price_akcio_no_disp}]artdet-print__price-base-discount-prices-disabled[UnasDesign - IfEnd{price_akcio_no_disp}]">
+                            [UnasDesign - IfStart{price_normal_text_disp}]
+                                [UnasDesign - Normal{price_normal_text}]
+                            [UnasDesign - IfEnd{price_normal_text_disp}]
+                            [UnasDesign - Normal{price_net}]
+                            [UnasDesign - IfStart{price_normal_info_text_disp}]
+                                *
+                            [UnasDesign - IfEnd{price_normal_info_text_disp}]
+                        </div>
+                        [UnasDesign - IfEnd{price_net_disp}]
+
+                        [UnasDesign - IfStart{price_akcio_disp}]
+                        <div class="artdet-print__price-discount font-l font-weight-700">
+                            [UnasDesign - IfStart{price_discounted_text_disp}]
+                                [UnasDesign - Normal{price_discounted_text}]
+                            [UnasDesign - IfEnd{price_discounted_text_disp}]
+                            [UnasDesign - Normal{price_akcio}]
+                        </div>
+                        [UnasDesign - IfEnd{price_akcio_disp}]
+
+                        [UnasDesign - IfStart{price_akcio_text_disp}]
+                        <div class="artdet-print__price-discount-period mb-1">
+                            <span class="artdet-print__price-discount-period-start">[UnasDesign - Normal{price_akcio_text_start}]</span>&nbsp;&nbsp;
+                            <span class="artdet-print__price-discount-period-end">[UnasDesign - Normal{price_akcio_text_end}]</span>
+                        </div>
+                        [UnasDesign - IfEnd{price_akcio_text_disp}]
+
+                        [UnasDesign - IfStart{price_unit_disp}]
+                        <div class="artdet-print__price-unit mb-1">[UnasDesign - Text{art_price_unit}]: [UnasDesign - Normal{price_unit}]</div>
+                        [UnasDesign - IfEnd{price_unit_disp}]
+
+                        [UnasDesign - IfStart{point_highlighted_disp}]
+                        <div class="artdet-print__virtual-point-highlighted mb-1">[UnasDesign - Text{art_virt_pont}]: [UnasDesign - Normal{point}]</div>
+                        [UnasDesign - IfEnd{point_highlighted_disp}]
+
+                        [UnasDesign - IfStart{price_normal_info_text_disp}]
+                            <div>* [UnasDesign - Normal{price_normal_info_text}]</div>
+                        [UnasDesign - IfEnd{price_normal_info_text_disp}]
+                    </div>
+
+                    [UnasDesign - IfStart{short_desc_disp}]
+                    <div id="artdet-print__short-descrition" class="artdet-print__short-descripton py-3 font-s">
+                        [UnasDesign - Normal{short_desc}]
+                    </div>
+                    [UnasDesign - IfEnd{short_desc_disp}]
+
+                    [UnasDesign - IfStart{warehouses_disp}]
+                    <div class="artdet__warehouses print">
+                        [UnasDesign - LoopStart{warehouses}]
+                        <div class="artdet__warehouse pb-2 mb-2">
+                            <div class="artdet__warehouses--inner row no-gutters">
+                                <div class="artdet__warehouse-left col">
+                                    <div class="artdet__warehouse-name pb-2">[UnasDesign - Loop{warehouses} - Normal{name}]</div>
+                                </div>
+                                <div class="artdet__warehouse-right col-auto d-flex align-items-center">
+                                    <div class="artdet__warehouse-quantity[UnasDesign - Loop{warehouses} - IfStart{variant_infos_disp}] has-variant-info[UnasDesign - Loop{warehouses} - IfEnd{variant_infos_disp}]">
+                                        [UnasDesign - Loop{warehouses} - IfStart{stock_text_disp}]
+                                        [UnasDesign - Loop{warehouses} - IfStart{out_of_stock}]
+                                        [UnasDesign - Text{name:out_of_stock;page:common}]
+                                        [UnasDesign - Loop{warehouses} - IfEnd{out_of_stock}]
+
+                                        [UnasDesign - Loop{warehouses} - IfStart{!out_of_stock}]
+                                        [UnasDesign - Text{name:in_stock;page:common}]
+                                        [UnasDesign - Loop{warehouses} - IfEnd{!out_of_stock}]
+                                        [UnasDesign - Loop{warehouses} - IfEnd{stock_text_disp}]
+
+                                        [UnasDesign - Loop{warehouses} - IfStart{!stock_text_disp}]
+                                        [UnasDesign - Loop{warehouses} - IfStart{out_of_stock}]
+                                        [UnasDesign - Text{name:out_of_stock;page:common}]
+                                        [UnasDesign - Loop{warehouses} - IfEnd{out_of_stock}]
+
+                                        [UnasDesign - Loop{warehouses} - IfStart{!out_of_stock}]
+                                        [UnasDesign - Loop{warehouses} - Normal{quantity}] [UnasDesign - Normal{unit}]
+                                        [UnasDesign - Loop{warehouses} - IfEnd{!out_of_stock}]
+                                        [UnasDesign - Loop{warehouses} - IfEnd{!stock_text_disp}]
+                                    </div>
+                                </div>
+                            </div>
+
+                            [UnasDesign - Loop{warehouses} - IfStart{info_disp}]
+                            <div class="artdet__warehouses-info-wrapper row no-gutters">
+                                <div class="artdet__warehouse-info col-12">[UnasDesign - Loop{warehouses} - Normal{info}]</div>
+                            </div>
+                            [UnasDesign - Loop{warehouses} - IfEnd{info_disp}]
+                        </div>
+                        [UnasDesign - LoopEnd{warehouses}]
+                    </div>
+                    [UnasDesign - IfEnd{warehouses_disp}]
+                </div>
+
+                <div id="page_artdet_print_details" class="col-12">
+                
+                    [UnasDesign - IfStart{long_desc_disp}]
+                        <div id="page_artdet_tulaj" class="mb-3">
+                            <div class="sub_titles">[UnasDesign - Text{tab_detail}]</div>
+                            <div class='sub_text mt-3'>[UnasDesign - Normal{long_desc}]</div>
+                        </div>
+                    [UnasDesign - IfEnd{long_desc_disp}] 
+    
+                    [UnasDesign - IfStart{discount_disp}]
+                    <div id="artdet__discount" class='discount mb-3'>
+                        <div class="discount__title sub_titles">[UnasDesign - Text{tab_discount}]</div>
+                        <div class="discount__content font-xs font-sm-m mt-3">
+                            <div class="table">
+                                <div class="th">
+                                    <div class="td discount__text-ordered-qty">[UnasDesign - Text{post_full}]</div>
+                                    <div class="td discount__text-discount-amount">[UnasDesign - Text{kedv_perc}]</div>
+                                    <div class="td discount__text-product-price">[UnasDesign - Text{art_price}]</div>
+                                </div>
+                                [UnasDesign - LoopStart{discount_qty}]
+                                <div class="tr">
+                                    <div class="td order-0" data-label="[UnasDesign - Text{post_full}]">
+                                        <div class="td-inner">
+                                            <div class="discount__from-wrap">
+                                                <span class="discount__from">[UnasDesign - Loop{discount_qty} - Normal{from}]+</span>
+                                                <span class="discount__unit text-muted font-s">&nbsp;[UnasDesign - Normal{unit}]</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="td order-1" data-label="[UnasDesign - Text{kedv_perc}]">
+                                        <div class="td-inner">
+                                            [UnasDesign - Loop{discount_qty} - IfStart{no}]
+                                            <span class="discount__text-no-discount">[UnasDesign - Text{kedv_no}]</span>
+                                            [UnasDesign - Loop{discount_qty} - IfEnd{no}]
+
+                                            [UnasDesign - Loop{discount_qty} - IfStart{!no}]
+                                            [UnasDesign - Loop{discount_qty} - IfStart{percent}]
+                                            <span class="discount__amount percent-based">-[UnasDesign - Loop{discount_qty} - Normal{discount}]</span>&nbsp;%
+                                            [UnasDesign - Loop{discount_qty} - IfEnd{percent}]
+
+                                            [UnasDesign - Loop{discount_qty} - IfStart{!percent}]
+                                            <span class="discount__amount amount-based">-[UnasDesign - Loop{discount_qty} - Normal{discount}]</span>
+                                            [UnasDesign - Loop{discount_qty} - IfEnd{!percent}]
+                                            [UnasDesign - Loop{discount_qty} - IfEnd{!no}]
+                                        </div>
+                                    </div>
+                                    <div class="td order-2" data-label="[UnasDesign - Text{art_price}]"><div class="td-inner"><span class="discount__product-price">[UnasDesign - Loop{discount_qty} - Normal{price}]</span></div></div>
+                                </div>
+                                [UnasDesign - LoopEnd{discount_qty}]
+                            </div>
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{discount_disp}]
+    
+                    [UnasDesign - IfStart{data_disp}]
+                    <div class="sub_titles">[UnasDesign - Text{tab_data}]</div>
+                        <div id="page_artdet_datas" class="py-3">
+                            [UnasDesign - IfStart{product_param_disp}]
+                                [UnasDesign - LoopStart{product_param}]
+                                <div class="artdet-print__data-row d-flex">
+                                    <div class="data_titles position-relative col-6 text-right">[UnasDesign - Loop{product_param} - Normal{product_param_title}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Loop{product_param} - Normal{product_param_value}]</div>
+                                </div>
+                                [UnasDesign - LoopEnd{product_param}]
+                            [UnasDesign - IfEnd{product_param_disp}]
+                        
+                            [UnasDesign - IfStart{data_1_disp}]
+                                <div id="page_artdet_data1" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Normal{data_1_title}]:</div>
+                                    <div class="data_values">[UnasDesign - Normal{data_1}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{data_1_disp}]
+                            
+                            [UnasDesign - IfStart{data_2_disp}]
+                            	<div id="page_artdet_data2" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Normal{data_2_title}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{data_2}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{data_2_disp}]
+                            
+                            [UnasDesign - IfStart{data_3_disp}]
+                            	<div id="page_artdet_data3" class="artdet-print__data-row d-flex">
+                                	<div class="data_titles col-6 text-right">[UnasDesign - Normal{data_3_title}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{data_3}]</div>
+                            	</div>
+                            [UnasDesign - IfEnd{data_3_disp}] 
+                            
+                            [UnasDesign - IfStart{sku_disp}]
+                                <div id="page_artdet_cikk" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Text{art_cikk}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{sku}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{sku_disp}]     
+                            
+                            [UnasDesign - IfStart{link_disp}]
+                                <div id="page_artdet_link" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Text{art_link}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{link}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{link_disp}]
+
+                            [UnasDesign - IfStart{weight_disp}]
+                            	<div id="page_artdet_weight" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Text{art_weight}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{weight}]</div>
+                            	</div>
+                            [UnasDesign - IfEnd{weight_disp}]
+                            
+                            [UnasDesign - IfStart{point_disp}]
+                                <div id="page_artdet_virtpont" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Text{art_virt_pont}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{point}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{point_disp}] 
+                            
+                            [UnasDesign - IfStart{min_quant_disp}]
+                                <div id="page_artdet_minmenny" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Text{art_minorder}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{min_quant}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{min_quant_disp}]
+                            
+                            [UnasDesign - IfStart{unit_step_disp}]
+                                <div id="page_artdet_unitstep" class="artdet-print__data-row d-flex">
+                                    <div class="data_titles col-6 text-right">[UnasDesign - Text{unit_step}]:</div>
+                                    <div class="data_values col-6 text-left">[UnasDesign - Normal{unit_step}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{unit_step_disp}]  
+                        </div>                             
+                    [UnasDesign - IfEnd{data_disp}]
+                    <div class="artdet-print-btn-wrap text-center mb-3 mt-5">
+                        <button id="printing_button" class="artdet-print-btn btn btn--primary icon--b-print">[UnasDesign - Text{art_det_print}]</button>
+                    </div>
+                </div>
+
+            </div>
+    
+            [UnasDesign - IfEnd{art_yes}]
+            
+            [UnasDesign - IfStart{art_no}]    
+                <div class='page_artdet_name'>[UnasDesign - Text{no_art}]</div>
+                [UnasDesign - IfStart{ref_disp}] 
+                    [UnasDesign - Normal{ref}]
+                [UnasDesign - IfEnd{ref_disp}] 
+            [UnasDesign - IfEnd{art_no}]    
+        
+        </div><!--page_artdet_content-->
+    </div>
+</body>
+</html>

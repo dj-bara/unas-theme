@@ -1,0 +1,35 @@
+.icon--return::before, .icon--b-return::before, .icon--a-return::after {
+    content:"\f2ea";
+}
+
+.order-return-price-label {
+    text-transform: lowercase;
+    font-size: 1rem;
+}
+
+/*page order return*/
+.order-return__item-row.has_fault .control-product__name{
+    color: rgba(255, 34, 34, 0.7) !important;
+    text-decoration: underline;
+}
+
+@media(max-width: 424px) {
+    #page_order_track_returnfull,
+    #page_order_track_returnnum,
+    #page_order_track_orderfull,
+    #page_order_track_ordernum {
+        display:block !important;
+    }
+
+    .ordernum_title,
+    .ordernum_num,
+    .orderfull_title,
+    .orderfull_full,
+    .order_returnnum_title,
+    .order_returnnum_num,
+    .order_returnfull_title,
+    .order_returnfull_full {
+        width: 100% !important;
+        display: block !important;
+    }
+}

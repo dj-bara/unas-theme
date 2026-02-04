@@ -1,0 +1,80 @@
+[UnasDesign - DesignVar{name:det_pic_maxwidth;value:260}]
+[UnasDesign - DesignVar{name:det_pic_maxheight;value:260}]
+
+<div class="js-postsale-container">
+    <div class="row">
+        <div class="col-sm-6 popup-postsale-artdet-left text-center">
+            <div class="post-sale__img-outer" style="width: 100%;max-width:260px;margin:0 auto;">
+                <div class="post-sale__img-wrap product-img-wrapper">
+                    <img class="lazyload product-img" width="260" height="260"
+                         src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Normal{pic_raw}]"
+                         [UnasDesign - IfStart{img_retina_exists}]
+                         data-srcset="[UnasDesign - Normal{img_retina_url}] [UnasDesign - Normal{img_retina_size}]"
+                         [UnasDesign - IfEnd{img_retina_exists}]
+                         id="main_image" alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_alt_text}]"
+                   >
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 popup-postsale-artdet-right with-rrp text-center">
+            <div class="popup-postsale-artdet-product__name mb-3">[UnasDesign - Normal{name}]</div>
+            [UnasDesign - IfStart{price_net_disp}]
+            <div class="popup-postsale-artdet-product__normal-price mb-2 position-relative">
+                [UnasDesign - IfStart{price_normal_text_disp}]
+                    [UnasDesign - Normal{price_normal_text}]
+                [UnasDesign - IfEnd{price_normal_text_disp}]
+                [UnasDesign - Normal{price_net}][UnasDesign - IfStart{price_normal_info_text_disp}]&nbsp;<span class="page_artdet_param_desc param_desc_popup param_desc_popup_ver4" data-tippy="[UnasDesign - Normal{price_normal_info_text}]"><span><p>[UnasDesign - Normal{price_normal_info_text}]</p></span></span>[UnasDesign - IfEnd{price_normal_info_text_disp}]
+            </div>
+            [UnasDesign - IfEnd{price_net_disp}]
+
+            [UnasDesign - IfStart{price_akcio_disp}]
+            <div class="popup-postsale-artdet-product__sale-price mb-2">
+                [UnasDesign - IfStart{price_discounted_text_disp}]
+                    [UnasDesign - Normal{price_discounted_text}]
+                [UnasDesign - IfEnd{price_discounted_text_disp}]
+                [UnasDesign - Normal{price_akcio}]
+            </div>
+            [UnasDesign - IfEnd{price_akcio_disp}]
+
+            [UnasDesign - IfStart{postsale_price_disp}]
+            <div class="popup-postsale-artdet-product__postsale-price">
+                [UnasDesign - Normal{postsale_price_title}]: <span class="popup-postsale-artdet-product__postsale-price-amount">[UnasDesign - Normal{postsale_price}]</span>
+            </div>
+            [UnasDesign - IfEnd{postsale_price_disp}]
+
+            <div class="popup-postsale-artdet-order__total-amount mb-3 mt-3">
+                [UnasDesign - Normal{postsale_full_sum}]
+            </div>
+
+            <div class="popup-postsale-ardtet-informations mb-4">
+                [UnasDesign - Normal{postsale_info_text}]
+            </div>
+        </div>
+    </div>
+    <div class="popup-postsale-artdet-functions page_postsale_buttons js-postsale-hide-this-after-click-yes">
+        <button onclick="popup_action_postsale([UnasDesign - Normal{postsale_order_key}],'[UnasDesign - Normal{sku_always}]');" class="popup-postsale-artdet-function-postsale-button btn--primary mb-3 btn--block">
+            [UnasDesign - Normal{postsale_button_text}]
+        </button>
+        <a onclick="postsale_close();" class="popup-postsale-artdet-function-postsale-link btn btn--text btn--block">[UnasDesign - Normal{postsale_not_want_it}]</a>
+    </div>
+    <div class="beforesend m-auto"></div>
+    <div class="success_wrapper">
+        <div class="success"></div>
+        <div class="success_text my-2">
+            [UnasDesign - Normal{postsale_success_text}]
+        </div>
+    </div>
+    <div class="success_wrapper">
+        <button type="button" onclick="postsale_close();" type="button" class="popup-postsale-artdet-function-postsale-button-close btn--primary">
+            [UnasDesign - Normal{postsale_overlay_close_text}]
+        </button>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        if (typeof initTippy == 'function'){
+                initTippy();
+            }
+    });
+</script>
+<!-- [UnasDesign - Normal{postsale_success_text}]  -->

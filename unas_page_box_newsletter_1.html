@@ -1,0 +1,79 @@
+[UnasDesign - IfStart{type_link}]
+    <div class='newsletter__box--link'>
+        <div id='overlay_newsletter_temp' style='display:none;'>
+            <div class='overlay_close'>
+                <a href='javascript:overlay_close('overlay_newsletter');'></a>
+            </div>
+            <div class='overlay_title'>[UnasDesign - Text{name:boxtitle_newsletter;page:box_shop}]</div>
+            [UnasDesign - Normal{type_link_form_start}]
+                <div class='overlay_text'>
+                    [UnasDesign - IfStart{name_disp}]<div class='overlay_login_input'><label>[UnasDesign - Text{name:newsletter_name;page:box_shop}]:</label> [UnasDesign - Normal{input_name}]</div>[UnasDesign - IfEnd{name_disp}]
+                    <div class='overlay_login_input'><label>[UnasDesign - Normal{title_email}]:</label> [UnasDesign - Normal{input_email}]</div>
+                    [UnasDesign - IfStart{addr_disp}]<div class='overlay_login_input'><label>[UnasDesign - Text{name:newsletter_addr;page:box_shop}]:</label> [UnasDesign - Normal{input_addr}]</div>[UnasDesign - IfEnd{addr_disp}]
+                    <div class='overlay_login_input overlay_privacy_policy'><span class='text_input text_input_checkbox'>[UnasDesign - Normal{input_privacy_policy}]</span> <label for='news_privacy_policy_[UnasDesign - Normal{box_num}]'><span class='text_small'>[UnasDesign - Normal{title_privacy_policy}]</span></label></div>
+                </div>
+            [UnasDesign - Normal{type_link_form_end}]
+            <div>
+                <button class='close' onclick='[UnasDesign - Normal{submit}]'><span>[UnasDesign - Text{name:newsletter_up;page:box_shop}]</span></button>
+                <button class='close' onclick='document.[UnasDesign - Normal{form_name}].action.value='unsubscribe'; document.[UnasDesign - Normal{form_name}].submit();'><span>[UnasDesign - Text{name:newsletter_down;page:box_shop}]</span></button>
+                <div class='clear_fix'></div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $('#overlay_newsletter').html($('#overlay_newsletter_temp').html());
+            $('#overlay_newsletter_temp').html('');
+        });
+
+        function overlay_newsletter() {
+            $(document).ready(function(){
+                $('#overlay_newsletter').overlay().load();
+            });
+        }
+    </script>
+    <a href='javascript:overlay_newsletter();' class='text_normal'>[UnasDesign - Text{name:boxtitle_newsletter;page:box_shop}]</a>
+
+[UnasDesign - IfEnd{type_link}]
+
+[UnasDesign - IfStart{!type_link}]
+
+<div class="newsletter__container container py-5">
+    <div class="row justify-content-center m-0">
+        <div class="newsletter__title col-12 text-center loose text-uppercase font-weight-light h2">[UnasDesign - Text{name:boxtitle_newsletter;page:box_shop}]</div>
+        <div class="newsletter__box w-100">
+            <div class='newsletter__box--box newsletter__box-input-count-[UnasDesign - Normal{field_num}]'>
+                [UnasDesign - Normal{type_normal_form_start}]
+                <div class='row no-gutters align-items-center justify-content-center'>
+                    [UnasDesign - Element{name:newsletter_text;class:newsletter-box__text text-center text-xl-right p-2 pr-4;layout:html}]
+
+                    [UnasDesign - IfStart{name_disp}]
+                    <div class='col-sm-12 col-lg-auto align-self-center order-1 newsletter-box__name newsletter-box__input px-0 pr-md-3 py-2 text-center'>
+                        <input name="news_name" placeholder="[UnasDesign - Text{name:newsletter_name;page:box_shop}]" value="[UnasDesign - Normal{name_value}]" type="text" maxlength="200" class="newsletter-box__name" tabindex="1">
+                    </div>
+                    [UnasDesign - IfEnd{name_disp}]
+
+                    [UnasDesign - IfStart{addr_disp}]
+                    <div class='col-sm-12 col-lg-auto align-self-center order-2 newsletter-box__address newsletter-box__input px-0 pr-md-3 py-2 text-center'>
+                        <input name="news_addr" placeholder="[UnasDesign - Text{name:newsletter_addr;page:box_shop}]" value="[UnasDesign - Normal{addr_value}]" type="text" maxlength="200" class="newsletter-box__address" tabindex="2">
+                    </div>
+                    [UnasDesign - IfEnd{addr_disp}]
+
+                    <div class='col-sm-12 col-lg-auto align-self-center order-3 newsletter-box__email newsletter-box__input px-0 pr-md-3 py-2 text-center'>
+                        <input name="news_emai" placeholder="[UnasDesign - Text{name:login_email;page:design}]" value="[UnasDesign - Normal{email_value}]" type="text" maxlength="200" class="newsletter-box__email" tabindex="3">
+                    </div>
+                    <div class='col-12 newsletter-box__privacy_policy d-inline-flex justify-content-center align-items-center order-4 order-xl-5 px-0 py-2 font-xs'>
+                        <input name="news_privacy_policy" id="news_privacy_policy_[UnasDesign - Normal{box_num}]" type="checkbox" value="1" tabindex="4">
+                        <label for='news_privacy_policy_[UnasDesign - Normal{box_num}]' class="text-center">[UnasDesign - Normal{title_privacy_policy}]</label>
+                    </div>
+                    <div class='col-auto align-self-center order-5 order-xl-4 newsletter-box__button-up-wrap px-0 py-2 text-center'>
+                        <button class="newsletter-box__button-up btn btn--primary" tabindex="5" type="button" onclick="newsletter[UnasDesign - Normal{box_num}]_submit();">[UnasDesign - Text{name:newsletter_up;page:box_shop}]</button>
+                    </div>
+                </div>
+                [UnasDesign - Normal{type_normal_form_end}]
+            </div>
+        </div>
+    </div>
+</div>
+
+[UnasDesign - IfEnd{!type_link}]

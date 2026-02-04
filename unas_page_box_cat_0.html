@@ -1,0 +1,76 @@
+[UnasDesign - DesignVar{name:cat_pic_maxwidth;value:50}]
+[UnasDesign - DesignVar{name:cat_pic_maxheight;value:50}]
+
+<div class='cat-box__items py-3'>
+    [UnasDesign - LoopStart{list_item}]
+        <div class='cat-box__item cat-box__item-level-[UnasDesign - Normal{level}][UnasDesign - Loop{list_item} - IfStart{spec}] is-spec-item[UnasDesign - Loop{list_item} - IfEnd{spec}][UnasDesign - Loop{list_item} - IfStart{children_disp}] has-item[UnasDesign - Loop{list_item} - IfEnd{children_disp}] js-cat-menu-[UnasDesign - Loop{list_item} - Normal{id}]'>
+            <div class="row no-gutters">
+				[UnasDesign - Loop{list_item} - IfStart{pic_disp&!spec}]
+				<div class="col-auto">
+					<div class="cat-box__img-wrap d-none">
+						[UnasDesign - Loop{list_item} - Normal{pic}]
+					</div>
+				</div>
+				[UnasDesign - Loop{list_item} - IfEnd{pic_disp&!spec}]
+                <div class="col">
+                    <div class="cat-box__name-wrap pl-3">
+                        <a class="cat-box__name" href="[UnasDesign - Loop{list_item} - Normal{link}]"
+                            [UnasDesign - Loop{list_item} - IfStart{target_disp}]
+                            target="[UnasDesign - Loop{list_item} - Normal{target}]"
+                            [UnasDesign - Loop{list_item} - IfEnd{target_disp}]
+                        >
+                            <div class="row no-gutters align-items-center position-relative pr-5">
+                                <div class="col">
+                                    <div class="cat-box__name-text line-clamp--3-12">[UnasDesign - Loop{list_item} - Normal{name}]</div>
+                                </div>
+                                [UnasDesign - Loop{list_item} - IfStart{children_disp}]
+                                <div class="cat-box__icon">
+                                    <div class="icon--chevron-right icon--md line-height-1"></div>
+                                </div>
+                                [UnasDesign - Loop{list_item} - IfEnd{children_disp}]
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        [UnasDesign - Loop{list_item} - IfStart{children_disp}]
+            <div class="cat-box__level-0 bg-white drop-shadow-b border-top border-top-2 border-primary p-4 [UnasDesign - Loop{list_item} - IfStart{text_menu_disp}]has-banner[UnasDesign - Loop{list_item} - IfEnd{text_menu_disp}]">
+
+                <div class="cat-box__level-0-inner h-100 d-flex flex-column position-relative">
+                    <a class="cat-box__pic-name d-block" href="[UnasDesign - Loop{list_item} - Normal{link}]">
+                        <div class="d-flex align-items-center border-bottom border-primary pb-3">
+                            [UnasDesign - Loop{list_item} - IfStart{pic_disp}]
+                            <div class="col-fix-1">
+                                <div class="cat-box__img-wrap product-img-wrapper">
+                                    <img class="cat-box__img lazyload product-img" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{list_item} - Normal{pic_link}]"[UnasDesign - Loop{list_item} - IfStart{img_retina_exists}] data-srcset="[UnasDesign - Loop{list_item} - Normal{img_retina_url}] [UnasDesign - Loop{list_item} - Normal{img_retina_size}]" [UnasDesign - Loop{list_item} - IfEnd{img_retina_exists}] alt="[UnasDesign - Loop{list_item} - Normal{name}]" width="50" height="50">
+                                </div>
+                            </div>
+                            [UnasDesign - Loop{list_item} - IfEnd{pic_disp}]
+                            <div class="col">
+                                <div class="cat-box__level-0-name mb-0 h3">
+                                    [UnasDesign - Loop{list_item} - Normal{name}]
+                                    [UnasDesign - Loop{list_item} - IfStart{product_num_disp}]
+                                    <span class="cat-box__product-num font-s text-muted">([UnasDesign - Loop{list_item} - Normal{product_num}])</span>
+                                    [UnasDesign - Loop{list_item} - IfEnd{product_num_disp}]
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="cat-box__inner-levels clearfix pt-4">
+                        [UnasDesign - Loop{list_item} - Normal{children}]
+                    </div>
+
+                    [UnasDesign - Loop{list_item} - IfStart{text_menu_disp}]
+                        <div class="cat-box__banner">[UnasDesign - Loop{list_item} - Normal{text_menu}]</div>
+                    [UnasDesign - Loop{list_item} - IfEnd{text_menu_disp}]
+                </div>
+
+            </div>
+        [UnasDesign - Loop{list_item} - IfEnd{children_disp}]
+        </div>
+    [UnasDesign - LoopEnd{list_item}]
+</div>
+
+

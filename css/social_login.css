@@ -1,0 +1,70 @@
+.social_login_table {
+	height: 30px;
+	width: 200px;
+	border-spacing: 0;
+	border-radius: 0;
+	margin: 0;
+	padding: 0;
+}
+.social_login_table.google{
+	background-color: #DB4937;
+}
+.social_login_table.facebook{
+	background-color: #3B579D;
+}
+.social_login_table.google:hover{
+	opacity: 0.8;
+}
+.social_login_table.facebook:hover{
+	opacity: 0.8;
+}
+.social_login_icon {
+	height: 30px;
+	width: 30px;
+	margin: 0;
+	padding: 0;
+}
+.social_login_icon.google{
+	background-image: url("../../../base/000001/image/google_social_icon.png");
+	background-position: 2px 2px;
+	background-repeat: no-repeat;
+	border-right: 1px solid #8B8A8A;
+}
+.social_login_icon.facebook{
+	background-image: url("../../../base/000001/image/facebook_social_icon.png");
+	background-position: 8px 2px;
+	background-repeat: no-repeat;
+	border-right: 1px solid #8B8A8A;
+}
+.social_login_text {
+	height: 30px;
+	width: 150px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+.social_login_text a{
+	font-size: 11px;
+	font-weight: bold;
+	font-family: helvetica, arial, sans-serif;
+	color: #FFF;
+	text-decoration: none;
+	display: block;
+	width: 170px;
+	height: 30px;
+	line-height: 30px;
+}
+.social_login_text button{
+	font-size: 11px;
+	font-weight: bold;
+	font-family: helvetica, arial, sans-serif;
+	color: #FFF;
+	text-decoration: none;
+	display: block;
+	width: 170px;
+	height: 30px;
+	line-height: 30px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}

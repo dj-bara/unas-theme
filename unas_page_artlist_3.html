@@ -1,0 +1,516 @@
+[UnasDesign - DesignVar{name:list_pic_maxwidth;value:290}]
+[UnasDesign - DesignVar{name:list_pic_maxheight;value:290}]
+[UnasDesign - DesignVar{name:func_favourite_html;value:1}]
+[UnasDesign - DesignVar{name:func_compare_html;value:1}]
+[UnasDesign - DesignVar{name:alt_pic;value:1}]
+[UnasDesign - DesignVar{name:alt_pic_maxwidth;value:290}]
+[UnasDesign - DesignVar{name:alt_pic_maxheight;value:290}]
+[UnasDesign - DesignVar{name:alt_img_thumbnail_maxwidth;value:48}]
+[UnasDesign - DesignVar{name:alt_img_thumbnail_maxheight;value:48}]
+
+[UnasDesign - IfStart{art_num}]
+    [UnasDesign - IfStart{!infinite_scroll_disp}]<div id='page_artlist_content' class="page_content artlist--type-3">[UnasDesign - IfEnd{!infinite_scroll_disp}]
+
+        [UnasDesign - Normal{start_script}]
+        [UnasDesign - Normal{start_form}]
+
+            [UnasDesign - IfStart{view_select_top|art_page_top|art_order1}]
+            <div class="viewing-sorting-paging row no-gutters border-bottom justify-content-center [UnasDesign - IfStart{view_select_top}]viewing--enabled [UnasDesign - IfEnd{view_select_top}][UnasDesign - IfStart{art_page_top}]paging--enabled [UnasDesign - IfEnd{art_page_top}][UnasDesign - IfStart{art_order1}]sorting--enabled[UnasDesign - IfEnd{art_order1}]">
+                [UnasDesign - IfStart{view_select_top}]
+                <div class="view--top col-auto d-inline-flex align-items-center mr-auto pr-0 my-2 my-sm-3">
+                    <div class="view__label mr-3 d-none">[UnasDesign - Text{name:art_view;page:common}]:</div>
+                    <button title="[UnasDesign - Text{name:art_view;page:common}] 1" class="view__btn btn--square view__btn--1[UnasDesign - IfStart{design_page_disp_1}] is-selected[UnasDesign - IfEnd{design_page_disp_1}]"[UnasDesign - IfStart{!design_page_disp_1}] onclick="location.href=location_href_with_get('change_page_design=1')"[UnasDesign - IfEnd{!design_page_disp_1}] type="button"></button>
+                    <button title="[UnasDesign - Text{name:art_view;page:common}] 2" class="view__btn btn--square view__btn--2[UnasDesign - IfStart{design_page_disp_2}] is-selected[UnasDesign - IfEnd{design_page_disp_2}]"[UnasDesign - IfStart{!design_page_disp_2}] onclick="location.href=location_href_with_get('change_page_design=2')"[UnasDesign - IfEnd{!design_page_disp_2}] type="button"></button>
+                    <button title="[UnasDesign - Text{name:art_view;page:common}] 3" class="view__btn btn--square view__btn--3[UnasDesign - IfStart{design_page_disp_3}] is-selected[UnasDesign - IfEnd{design_page_disp_3}]"[UnasDesign - IfStart{!design_page_disp_3}] onclick="location.href=location_href_with_get('change_page_design=3')"[UnasDesign - IfEnd{!design_page_disp_3}] type="button"></button>
+                </div>
+                [UnasDesign - IfEnd{view_select_top}]
+
+                [UnasDesign - IfStart{art_page_top}]
+                <div class="paging--top my-2 my-sm-3 col-12 col-xs-auto [UnasDesign - IfStart{!view_select_top&art_order1}]col-xs-12 col-sm-auto mt-up-sm-0 order-up-sm-2 [UnasDesign - IfEnd{!view_select_top&art_order1}][UnasDesign - IfStart{!art_order1&view_select_top}]mt-up-xs-0 [UnasDesign - IfEnd{!art_order1&view_select_top}][UnasDesign - IfStart{art_order1&view_select_top}]col-xs-12 col-md-auto order-up-md-3 mt-up-md-0 [UnasDesign - IfEnd{art_order1&view_select_top}] page_artlist_page">
+                    <nav class="paging__nav" aria-label="pagination">
+                        [UnasDesign - Normal{paging_content}]
+                    </nav>
+                </div>
+                [UnasDesign - IfEnd{art_page_top}]
+
+                [UnasDesign - IfStart{art_order1}]
+                <div class='order--top col-auto d-inline-flex align-items-center ml-auto pl-0 my-2 my-sm-3'>
+                    [UnasDesign - Normal{art_order1_form_start}]
+                    <div class='order__wrap d-flex align-items-center'>
+                        <div class="order__label mr-3 d-none">[UnasDesign - Text{name:art_sorrend;page:common}]:</div>
+                        <div class="order__select-outer" title="[UnasDesign - Text{name:art_sorrend;page:common}]">[UnasDesign - Normal{art_order1_form_select}]</div>
+                    </div>
+                    [UnasDesign - Normal{art_order1_form_end}]
+                </div>
+                [UnasDesign - IfEnd{art_order1}]
+            </div>
+            [UnasDesign - IfEnd{view_select_top|art_page_top|art_order1}]
+
+            [UnasDesign - Normal{art_list_form_start}]
+
+            [UnasDesign - IfStart{!infinite_scroll_disp}]
+            <section class='artlist__products products page_artlist_list row'[UnasDesign - IfStart{!onlyreg_price}] id='list_no_price'[UnasDesign - IfEnd{!onlyreg_price}]>
+            [UnasDesign - IfEnd{!infinite_scroll_disp}]
+
+                [UnasDesign - LoopStart{art_item}]
+                <article class='col-12 artlist__product-col artlist-col--3 my-3 py-4 border-bottom [UnasDesign - Loop{art_item} - Normal{art_item_class}] [UnasDesign - Loop{art_item} - IfStart{art_item_pic_alt_disp_1}]has-alt-image js-on-hover-alt-img[UnasDesign - Loop{art_item} - IfEnd{art_item_pic_alt_disp_1}]' id='page_artlist_[UnasDesign - Loop{art_item} - Normal{art_item_id}]'>
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 pr-sm-3 col-md-custom-30 text-center position-relative overflow-hidden">
+                            <div class='artlist__img-wrapper mb-3 mb-sm-0'>
+                                <a class="artlist__img-link product_link_normal" [UnasDesign - Loop{art_item} - IfStart{art_item_sku_disp}]data-sku="[UnasDesign - Loop{art_item} - Normal{sku}]"[UnasDesign - Loop{art_item} - IfEnd{art_item_sku_disp}] href="[UnasDesign - Loop{art_item} - Normal{art_item_url}]">
+                                    <img width="[UnasDesign - Normal{backvar_list_pic_maxwidth}]" height="[UnasDesign - Normal{backvar_list_pic_maxheight}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{num_1}]
+                                             class="artlist__img js-main-img" src="[UnasDesign - Loop{art_item} - Normal{art_item_pic_url}]" fetchpriority="high"
+                                             [UnasDesign - Loop{art_item} - IfStart{img_retina_exists}]
+                                             srcset="[UnasDesign - Loop{art_item} - Normal{img_retina_url}] [UnasDesign - Loop{art_item} - Normal{img_retina_size}]"
+                                             data-srcset-orig="[UnasDesign - Loop{art_item} - Normal{img_retina_url}] [UnasDesign - Loop{art_item} - Normal{img_retina_size}]"
+                                             [UnasDesign - Loop{art_item} - IfEnd{img_retina_exists}]
+                                         [UnasDesign - Loop{art_item} - IfEnd{num_1}]
+
+                                         [UnasDesign - Loop{art_item} - IfStart{!num_1}]
+                                             class="artlist__img js-main-img lazyload" src="[unas_shop_url]/main_pic/space.gif"
+                                             data-src="[UnasDesign - Loop{art_item} - Normal{art_item_pic_url}]"
+                                             data-srcset="[UnasDesign - Loop{art_item} - Normal{img_retina_url}] [UnasDesign - Loop{art_item} - Normal{img_retina_size}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{!num_1}]
+
+                                         data-src-orig="[UnasDesign - Loop{art_item} - Normal{art_item_pic_url}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{img_retina_exists}]
+                                         data-srcset-orig="[UnasDesign - Loop{art_item} - Normal{img_retina_url}] [UnasDesign - Loop{art_item} - Normal{img_retina_size}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{img_retina_exists}]
+                                         alt="[UnasDesign - Loop{art_item} - Normal{pic_alt_text}]" title="[UnasDesign - Loop{art_item} - Normal{pic_alt_text}]"
+                                         id="main_image_[UnasDesign - Loop{art_item} - Normal{art_item_id}]"
+                                    >
+                                </a>
+                            </div>
+                            [UnasDesign - Loop{art_item} - IfStart{art_item_pic_alt_disp_1}]
+                            <div class="artlist__alt-images d-inline-flex justify-content-center js-alt-images my-3">
+                                <div class="artlist__alt-img-wrap js-alt-img-wrap">
+                                    <img width="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxwidth}]" height="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxheight}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{num_1}]
+                                         class="artlist__alt-img js-alt-img" src="[UnasDesign - Loop{art_item} - Normal{alt_img_1_thumbnail_url}]" fetchpriority="high"
+                                         [UnasDesign - Loop{art_item} - IfEnd{num_1}]
+                                         [UnasDesign - Loop{art_item} - IfStart{!num_1}]
+                                         class="artlist__alt-img js-alt-img lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{art_item} - Normal{alt_img_1_thumbnail_url}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{!num_1}]
+                                         alt="[UnasDesign - Loop{art_item} - Normal{alt_img_1_alt}]" data-src-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_1_url}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{alt_img_1_thumbnail_retina_exists}]
+                                         data-srcset="[UnasDesign - Loop{art_item} - Normal{alt_img_1_thumbnail_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_1_thumbnail_retina_size}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{alt_img_1_thumbnail_retina_exists}]
+                                         data-srcset-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_1_url}] 1x[UnasDesign - Loop{art_item} - IfStart{alt_img_1_retina_exists}],[UnasDesign - Loop{art_item} - Normal{alt_img_1_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_1_retina_size}][UnasDesign - Loop{art_item} - IfEnd{alt_img_1_retina_exists}]"
+                                    >
+                                </div>
+
+                                [UnasDesign - Loop{art_item} - IfStart{art_item_pic_alt_disp_2}]
+                                <div class="artlist__alt-img-wrap js-alt-img-wrap">
+                                    <img width="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxwidth}]" height="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxheight}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{num_1}]
+                                         class="artlist__alt-img js-alt-img" src="[UnasDesign - Loop{art_item} - Normal{alt_img_2_thumbnail_url}]" fetchpriority="high"
+                                         [UnasDesign - Loop{art_item} - IfEnd{num_1}]
+                                         [UnasDesign - Loop{art_item} - IfStart{!num_1}]
+                                         class="artlist__alt-img js-alt-img lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{art_item} - Normal{alt_img_2_thumbnail_url}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{!num_1}]
+                                         alt="[UnasDesign - Loop{art_item} - Normal{alt_img_2_alt}]" data-src-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_2_url}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{alt_img_2_thumbnail_retina_exists}]
+                                         data-srcset="[UnasDesign - Loop{art_item} - Normal{alt_img_2_thumbnail_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_2_thumbnail_retina_size}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{alt_img_2_thumbnail_retina_exists}]
+                                         data-srcset-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_2_url}] 1x[UnasDesign - Loop{art_item} - IfStart{alt_img_2_retina_exists}],[UnasDesign - Loop{art_item} - Normal{alt_img_2_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_2_retina_size}][UnasDesign - Loop{art_item} - IfEnd{alt_img_2_retina_exists}]"
+                                    >
+                                </div>
+                                [UnasDesign - Loop{art_item} - IfEnd{art_item_pic_alt_disp_2}]
+
+                                [UnasDesign - Loop{art_item} - IfStart{art_item_pic_alt_disp_3}]
+                                <div class="artlist__alt-img-wrap js-alt-img-wrap">
+                                    <img width="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxwidth}]" height="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxheight}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{num_1}]
+                                         class="artlist__alt-img js-alt-img" src="[UnasDesign - Loop{art_item} - Normal{alt_img_3_thumbnail_url}]" fetchpriority="high"
+                                         [UnasDesign - Loop{art_item} - IfEnd{num_1}]
+                                         [UnasDesign - Loop{art_item} - IfStart{!num_1}]
+                                         class="artlist__alt-img js-alt-img lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{art_item} - Normal{alt_img_3_thumbnail_url}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{!num_1}]
+                                         alt="[UnasDesign - Loop{art_item} - Normal{alt_img_3_alt}]" data-src-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_3_url}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{alt_img_3_thumbnail_retina_exists}]
+                                         data-srcset="[UnasDesign - Loop{art_item} - Normal{alt_img_3_thumbnail_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_3_thumbnail_retina_size}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{alt_img_3_thumbnail_retina_exists}]
+                                         data-srcset-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_3_url}] 1x[UnasDesign - Loop{art_item} - IfStart{alt_img_3_retina_exists}],[UnasDesign - Loop{art_item} - Normal{alt_img_3_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_3_retina_size}][UnasDesign - Loop{art_item} - IfEnd{alt_img_3_retina_exists}]"
+                                    >
+                                </div>
+                                [UnasDesign - Loop{art_item} - IfEnd{art_item_pic_alt_disp_3}]
+
+                                [UnasDesign - Loop{art_item} - IfStart{art_item_pic_alt_disp_4}]
+                                <div class="artlist__alt-img-wrap js-alt-img-wrap">
+                                    <img width="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxwidth}]" height="[UnasDesign - Normal{backvar_alt_img_thumbnail_maxheight}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{num_1}]
+                                         class="artlist__alt-img js-alt-img" src="[UnasDesign - Loop{art_item} - Normal{alt_img_4_thumbnail_url}]" fetchpriority="high"
+                                         [UnasDesign - Loop{art_item} - IfEnd{num_1}]
+                                         [UnasDesign - Loop{art_item} - IfStart{!num_1}]
+                                         class="artlist__alt-img js-alt-img lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{art_item} - Normal{alt_img_4_thumbnail_url}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{!num_1}]
+                                         alt="[UnasDesign - Loop{art_item} - Normal{alt_img_4_alt}]" data-src-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_4_url}]"
+                                         [UnasDesign - Loop{art_item} - IfStart{alt_img_4_thumbnail_retina_exists}]
+                                         data-srcset="[UnasDesign - Loop{art_item} - Normal{alt_img_4_thumbnail_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_4_thumbnail_retina_size}]"
+                                         [UnasDesign - Loop{art_item} - IfEnd{alt_img_4_thumbnail_retina_exists}]
+                                         data-srcset-orig="[UnasDesign - Loop{art_item} - Normal{alt_img_4_url}] 1x[UnasDesign - Loop{art_item} - IfStart{alt_img_4_retina_exists}],[UnasDesign - Loop{art_item} - Normal{alt_img_4_retina_url}] [UnasDesign - Loop{art_item} - Normal{alt_img_4_retina_size}][UnasDesign - Loop{art_item} - IfEnd{alt_img_4_retina_exists}]"
+                                    >
+                                </div>
+                                [UnasDesign - Loop{art_item} - IfEnd{art_item_pic_alt_disp_4}]
+                            </div>
+                            [UnasDesign - Loop{art_item} - IfEnd{art_item_pic_alt_disp_1}]
+                        </div>
+
+                        <div class="col-sm-6 pl-sm-3 col-md artlist__datas-col">
+                            <div class="row no-gutters flex-sm-column flex-lg-row h-100 artlist__datas text-center text-sm-left">
+                                <div class="col-sm col-lg-6 pr-lg-4 flex-grow-1 artlist__datas-inner pb-sm-4 pb-lg-0">
+                                    <div class="d-sm-flex flex-column no-gutters h-100">
+                                        [UnasDesign - Loop{art_item} - IfStart{sale_disp|art_item_new_disp|art_item_stock_disp|status1_disp|status2_disp|status3_disp}]
+                                        <div class="col-auto">
+                                            <div class="product-statuses mb-4 position-relative text-left">
+                                                [UnasDesign - Loop{art_item} - IfStart{sale_disp}]
+                                                <div class="artlist__sale product-status product-status--sale">-[UnasDesign - Loop{art_item} - Normal{art_item_price_save}]</div>
+                                                [UnasDesign - Loop{art_item} - IfEnd{sale_disp}]
+
+                                                [UnasDesign - Loop{art_item} - IfStart{art_item_new_disp}]
+                                                <div class="artlist__new product-status product-status--new">[UnasDesign - Text{name:new_stat;page:common}]</div>
+                                                [UnasDesign - Loop{art_item} - IfEnd{art_item_new_disp}]
+
+                                                [UnasDesign - Loop{art_item} - IfStart{art_item_stock_disp}]
+                                                    <div class="artlist__stock product-status product-status--stock[UnasDesign - Loop{art_item} - IfStart{!stock_text_only}] stock-number[UnasDesign - Loop{art_item} - IfEnd{!stock_text_only}][UnasDesign - Loop{art_item} - IfStart{stock_available}] stock-available[UnasDesign - Loop{art_item} - IfEnd{stock_available}]">
+                                                        [UnasDesign - Loop{art_item} - IfStart{stock_available}]
+                                                        <div class="artlist__stock-text product-stock-text text-color--on-stock">
+                                                            <div class="artlist__stock-title product-stock-title icon--b-on-stock">[UnasDesign - Text{name:in_stock;page:common}][UnasDesign - Loop{art_item} - IfStart{!stock_text_only}]<div class="d-inline-block icon--a-chevron-down"></div>[UnasDesign - Loop{art_item} - IfEnd{!stock_text_only}]</div>
+                                                            <div class="artlist__stock-dropdown product-stock-dropdown">
+                                                                [UnasDesign - Loop{art_item} - IfStart{disp_stock_text}]<div class="artlist__stock-label product-stock-label">[UnasDesign - Text{name:stock_title;page:common}]:</div>[UnasDesign - Loop{art_item} - IfEnd{disp_stock_text}]
+                                                                <div class="artlist__stock-content p-1">[UnasDesign - Loop{art_item} - Normal{art_item_stock}]</div>
+                                                            </div>
+                                                        </div>
+                                                        [UnasDesign - Loop{art_item} - IfEnd{stock_available}]
+
+                                                        [UnasDesign - Loop{art_item} - IfStart{!stock_available}]
+
+                                                            [UnasDesign - Loop{art_item} - IfStart{!no_stock_but_buyable_disp}]
+                                                                <div class="artlist__stock-text product-stock-text text-color--out-of-stock">
+                                                                    <div class="artlist__stock-title product-stock-title icon--b-out-of-stock">[UnasDesign - Text{name:out_of_stock;page:common}]</div>
+                                                                </div>
+                                                            [UnasDesign - Loop{art_item} - IfEnd{!no_stock_but_buyable_disp}]
+
+                                                            [UnasDesign - Loop{art_item} - IfStart{no_stock_but_buyable_disp}]
+                                                                <div class="artlist__stock-text product-stock-text text-color--to-order">
+                                                                    <div class="artlist__stock-title product-stock-title icon--b-exclamation-2">[UnasDesign - Text{name:available_on_backorder;page:common}]</div>
+                                                                </div>
+                                                            [UnasDesign - Loop{art_item} - IfEnd{no_stock_but_buyable_disp}]
+
+                                                        [UnasDesign - Loop{art_item} - IfEnd{!stock_available}]
+                                                    </div>
+                                                [UnasDesign - Loop{art_item} - IfEnd{art_item_stock_disp}]
+
+                                                [UnasDesign - Loop{art_item} - IfStart{status1_disp}]
+                                                    <div class="artlist__custom-status product-status product-status--custom-1">[UnasDesign - Loop{art_item} - Normal{status1}]</div>
+                                                [UnasDesign - Loop{art_item} - IfEnd{status1_disp}]
+
+                                                [UnasDesign - Loop{art_item} - IfStart{status2_disp}]
+                                                    <div class="artlist__custom-status product-status product-status--custom-2">[UnasDesign - Loop{art_item} - Normal{status2}]</div>
+                                                [UnasDesign - Loop{art_item} - IfEnd{status2_disp}]
+
+                                                [UnasDesign - Loop{art_item} - IfStart{status3_disp}]
+                                                    <div class="artlist__custom-status product-status product-status--custom-3">[UnasDesign - Loop{art_item} - Normal{status3}]</div>
+                                                [UnasDesign - Loop{art_item} - IfEnd{status3_disp}]
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{sale_disp|art_item_new_disp|art_item_stock_disp|status1_disp|status2_disp|status3_disp}]
+
+                                        <div class="col-auto">
+                                            <div class='artlist__name-wrap'>
+                                                <a class="artlist__name line-clamp--2-12 product_link_normal" [UnasDesign - Loop{art_item} - IfStart{art_item_sku_disp}]data-sku="[UnasDesign - Loop{art_item} - Normal{sku}]"[UnasDesign - Loop{art_item} - IfEnd{art_item_sku_disp}] href="[UnasDesign - Loop{art_item} - Normal{art_item_url}]">[UnasDesign - Loop{art_item} - Normal{art_item_name_only}]</a>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_sku_disp}]
+                                        <div class="col-auto">
+                                            <div class="artlist__sku product-sku">[UnasDesign - Loop{art_item} - Normal{art_item_sku}]</div>
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_sku_disp}]
+
+                                        <div class="col row no-gutters overflow-hidden position-relative pt-4">
+                                            <div class="col artlist__description-short product-description-short text-justify">
+                                                [UnasDesign - Loop{art_item} - Normal{art_item_desc_short}]
+                                                <div class="fade-bottom"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-auto col-lg-6 artlist__prices-col">
+                                    <div class='artlist__prices with-rrp [UnasDesign - Loop{art_item} - IfStart{art_item_price_akcio_disp}]has-sale-price[UnasDesign - Loop{art_item} - IfEnd{art_item_price_akcio_disp}]'>
+
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_price_akcio_disp}]
+                                        <div class='artlist__price-sale product-price--sale'>
+                                            [UnasDesign - Loop{art_item} - IfStart{price_discounted_text_disp}]
+                                                [UnasDesign - Loop{art_item} - Normal{price_discounted_text}]
+                                            [UnasDesign - Loop{art_item} - IfEnd{price_discounted_text_disp}]
+                                            [UnasDesign - Loop{art_item} - Normal{art_item_price_akcio}]
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_price_akcio_disp}]
+
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_price_net_disp}]
+                                        <div class='artlist__price-base product-price--base mt-1 position-relative'>
+                                            [UnasDesign - Loop{art_item} - IfStart{price_normal_text_disp}]
+                                                [UnasDesign - Loop{art_item} - Normal{price_normal_text}]
+                                            [UnasDesign - Loop{art_item} - IfEnd{price_normal_text_disp}]
+                                            [UnasDesign - Loop{art_item} - Normal{art_item_price_net}][UnasDesign - Loop{art_item} - IfStart{price_normal_info_text_disp}]&nbsp;<span class="page_artdet_param_desc param_desc_popup param_desc_popup_ver4" data-tippy="[UnasDesign - Loop{art_item} - Normal{price_normal_info_text}]"><span><p>[UnasDesign - Loop{art_item} - Normal{price_normal_info_text}]</p></span></span>[UnasDesign - Loop{art_item} - IfEnd{price_normal_info_text_disp}]
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_price_net_disp}]
+
+                                        [UnasDesign - IfStart{price_unit_enabled}]
+                                            [UnasDesign - Loop{art_item} - IfStart{price_unit_disp}]
+                                                <div class="artlist__price-unit product-price--unit">[UnasDesign - Text{page:artdet;name:art_price_unit}]: [UnasDesign - Loop{art_item} - Normal{price_unit}]</div>
+                                            [UnasDesign - Loop{art_item} - IfEnd{price_unit_disp}]
+                                        [UnasDesign - IfEnd{price_unit_enabled}]
+
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_price_akcio_text_disp}]
+                                        <div class="artlist__price-sale-duration product-price--sale-duration mt-2">
+                                            [UnasDesign - Loop{art_item} - Normal{art_item_price_akcio_text_start}]
+                                            [UnasDesign - Loop{art_item} - Normal{art_item_price_akcio_text_end}]
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_price_akcio_text_disp}]
+
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_price_discount_disp}]
+                                            <div class="artlist__price-quantitative-sale product-price--quantitative-sale">[UnasDesign - Loop{art_item} - Normal{art_item_price_discount}]</div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_price_discount_disp}]
+
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_price_disp_no}]
+                                            <button class='artlist__need-login-to-show-price-btn price-need-login text-center btn btn--link font-s btn--block line-height-12' type='button' onclick='overlay_login()'>
+                                                [UnasDesign - Text{name:needlogin_price;page:common}]
+                                            </button>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_price_disp_no}]
+                                    </div>
+
+                                    [UnasDesign - Loop{art_item} - IfStart{art_item_other}]
+                                    <div class='artlist__variants mt-4 px-4 px-sm-0'>
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_other_1_disp}]
+                                        <div class="artlist__variant">
+                                            <div class="row no-gutters">
+                                                <div class="col-4 d-flex align-items-center">
+                                                    <label class="artlist__variant-label pr-2 line-clamp--2-12" title="[UnasDesign - Loop{art_item} - Normal{art_item_other_1_label}]"
+                                                           for="[UnasDesign - Loop{art_item} - Normal{variant_1_select_id}]"
+                                                    >
+                                                        [UnasDesign - Loop{art_item} - Normal{art_item_other_1_label}]
+                                                    </label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="artlist__variant-select-wrap">[UnasDesign - Loop{art_item} - Normal{art_item_other_1}]</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_other_1_disp}]
+
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_other_2_disp}]
+                                        <div class="artlist__variant">
+                                            <div class="row no-gutters">
+                                                <div class="col-4 d-flex align-items-center">
+                                                    <label class="artlist__variant-label pr-2 line-clamp--2-12" title="[UnasDesign - Loop{art_item} - Normal{art_item_other_2_label}]"
+                                                           for="[UnasDesign - Loop{art_item} - Normal{variant_2_select_id}]"
+                                                    >
+                                                        [UnasDesign - Loop{art_item} - Normal{art_item_other_2_label}]
+                                                    </label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="artlist__variant-select-wrap">[UnasDesign - Loop{art_item} - Normal{art_item_other_2}]</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_other_2_disp}]
+                                        [UnasDesign - Loop{art_item} - IfStart{art_item_other_3_disp}]
+                                        <div class="artlist__variant">
+                                            <div class="row no-gutters">
+                                                <div class="col-4 d-flex align-items-center">
+                                                    <label class="artlist__variant-label pr-2 line-clamp--2-12" title="[UnasDesign - Loop{art_item} - Normal{art_item_other_3_label}]"
+                                                         for="[UnasDesign - Loop{art_item} - Normal{variant_3_select_id}]"
+                                                    >
+                                                        [UnasDesign - Loop{art_item} - Normal{art_item_other_3_label}]
+                                                    </label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="artlist__variant-select-wrap">[UnasDesign - Loop{art_item} - Normal{art_item_other_3}]</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{art_item} - IfEnd{art_item_other_3_disp}]
+                                    </div>
+                                    [UnasDesign - Loop{art_item} - IfEnd{art_item_other}]
+
+                                    [UnasDesign - Loop{art_item} - Normal{art_item_other_temp}]
+
+                                    <div class="artlist__cart-and-functions row no-gutters align-items-center mt-4 usn">
+                                        <div class="col-12 col-xs d-flex justify-content-center artlist__cart-wrap mb-2">
+                                            [UnasDesign - Loop{art_item} - IfStart{art_item_cart_disp}]<!-- van kosar -->
+                                            <div class="artlist__cart p-2 w-100">
+                                                <div class="row flex-nowrap no-gutters justify-content-center align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="page_qty_input_outer">
+                                                            <div class="artlist__buttons d-flex justify-content-center">
+                                                                <button type="button" class="qtyminus qtyminus_common qty_disable icon--minus btn--square-sm btn--primary" aria-label="[UnasDesign - Text{name:minus;page:design}]"></button>
+                                                                <div class="artlist__cart-input-wrap page_qty_input_wrap d-flex">
+                                                                    <input name="[UnasDesign - Loop{art_item} - Normal{cart_input_name}]" id="[UnasDesign - Loop{art_item} - Normal{cart_input_id}]"
+                                                                           type="number" value="[UnasDesign - Loop{art_item} - Normal{cart_input_data_min}]" maxlength="7" class="text_normal page_qty_input"
+                                                                           step="[UnasDesign - Loop{art_item} - Normal{cart_input_data_step}]" data-min="[UnasDesign - Loop{art_item} - Normal{cart_input_data_min}]"
+                                                                           data-max="[UnasDesign - Loop{art_item} - Normal{cart_input_data_max}]" data-step="[UnasDesign - Loop{art_item} - Normal{cart_input_data_step}]"
+                                                                           aria-label="Quantity"
+                                                                    >
+
+                                                                    [UnasDesign - IfStart{cart_unit_disp}]
+                                                                    <div class='artlist__cart-unit text-center usn'>[UnasDesign - Loop{art_item} - Normal{cart_unit}]</div>
+                                                                    [UnasDesign - IfEnd{cart_unit_disp}]
+                                                                </div>
+                                                                <button type='button' class="qtyplus qtyplus_common icon--plus btn--square-sm btn--primary" aria-label="[UnasDesign - Text{name:plus;page:design}]"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a class="artlist__cart-btn icon--b-cart d-flex justify-content-center align-items-center" href="[UnasDesign - Loop{art_item} - Normal{cart_url}]" aria-label="[UnasDesign - Text{name:tocart;page:common}]">[UnasDesign - Text{name:tocart;page:common}]</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            [UnasDesign - Loop{art_item} - IfEnd{art_item_cart_disp}]
+
+                                            [UnasDesign - Loop{art_item} - IfStart{!art_item_cart_disp}]<!-- nincs kosar -->
+                                            [UnasDesign - Loop{art_item} - IfStart{!art_item_no_stock_disp}] <!-- nem vasarolhato -->
+                                            <div class="not-buyable">
+                                                <div class="not-buyable__text text-muted">[UnasDesign - Text{name:no_buyable;page:common}]</div>
+                                            </div>
+                                            [UnasDesign - Loop{art_item} - IfEnd{!art_item_no_stock_disp}]
+                                            [UnasDesign - Loop{art_item} - IfEnd{!art_item_cart_disp}]
+                                        </div>
+
+                                        <div class="col-12 col-xs-auto d-flex justify-content-center artlist__functions mt-xs-0 mb-2">
+                                            [UnasDesign - Loop{art_item} - IfStart{art_func_favourites_disp}]<!-- kedvencekhez adas -->
+                                                [UnasDesign - IfStart{!favourites_disp}]
+                                                <div class='function-btn-outer d-flex favourites__btn-outer page_artdet_func_favourites_outer_[UnasDesign - Loop{art_item} - Normal{sku_id}][UnasDesign - Loop{art_item} - IfStart{art_func_favourites_checked}] added[UnasDesign - Loop{art_item} - IfEnd{art_func_favourites_checked}]' id='page_artlist_func_favourites_outer_[UnasDesign - Loop{art_item} - Normal{sku_id}]'>
+                                                    <a href='[UnasDesign - Loop{art_item} - Normal{art_func_favourites_href}]'
+                                                       class="function-btn tooltip favourites__btn page_artdet_func_favourites_[UnasDesign - Loop{art_item} - Normal{sku_id}] [UnasDesign - Loop{art_item} - IfStart{art_func_favourites_checked}] remove_favourites[UnasDesign - Loop{art_item} - IfEnd{art_func_favourites_checked}]"
+                                                       id="page_artlist_func_favourites_[UnasDesign - Loop{art_item} - Normal{sku_id}]"
+                                                       aria-label="[UnasDesign - Loop{art_item} - Normal{favourite_text}]"
+                                                    >
+                                                        <div class="function__icon favourites__icon function-icon icon--favo"></div>
+
+                                                        [UnasDesign - Loop{art_item} - IfStart{art_func_favourites_a_text}]
+                                                        <div class="function__text favourites__text tooltip-text page_artdet_func_favourites_text_[UnasDesign - Loop{art_item} - Normal{sku_id}]">[UnasDesign - Loop{art_item} - Normal{art_func_favourites_text_raw}]</div>
+                                                        [UnasDesign - Loop{art_item} - IfEnd{art_func_favourites_a_text}]
+                                                    </a>
+                                                </div>
+                                                [UnasDesign - IfEnd{!favourites_disp}]
+
+                                                [UnasDesign - IfStart{favourites_disp}]<!-- Profil - Kedvencek ful: torles a kedvencek kozul -->
+                                                <div class='function-btn-outer remover-favourites__btn-outer'>
+                                                    <a class="function-btn tooltip artlist__button-remove-from-favourites favourites_item_del" href="#"
+                                                       onclick="[UnasDesign - Loop{art_item} - Normal{favourite_del_onclick}] ;return false;"
+                                                       aria-label="[UnasDesign - Loop{art_item} - Normal{favourite_text}]"
+                                                    >
+                                                        <div class="function__icon favourites__icon function-icon icon--close"></div>
+                                                        <div class="function__text favourites__text tooltip-text">[UnasDesign - Loop{art_item} - Normal{art_func_favourites_text}]</div>
+                                                    </a>
+                                                </div>
+                                                [UnasDesign - IfEnd{favourites_disp}]
+
+                                            [UnasDesign - Loop{art_item} - IfEnd{art_func_favourites_disp}]
+
+                                            [UnasDesign - Loop{art_item} - IfStart{art_func_compare_disp}]<!-- osszehasonlitas -->
+                                            <div class="function-btn-outer d-flex compare__btn-outer">
+                                                <a href='[UnasDesign - Loop{art_item} - Normal{art_func_compare_href}]'
+                                                   class="function-btn tooltip compare__btn page_art_func_compare[UnasDesign - Loop{art_item} - IfStart{art_func_compare_checked}] page_art_func_compare_checked[UnasDesign - Loop{art_item} - IfEnd{art_func_compare_checked}]"
+                                                   [UnasDesign - Loop{art_item} - IfStart{compare_checked}]
+                                                   aria-label="[UnasDesign - Text{name:compare_delete;page:design}]"
+                                                   [UnasDesign - Loop{art_item} - IfEnd{compare_checked}]
+                                                   [UnasDesign - Loop{art_item} - IfStart{!compare_checked}]
+                                                   aria-label="[UnasDesign - Text{name:compare;page:design}]"
+                                                   [UnasDesign - Loop{art_item} - IfEnd{!compare_checked}]
+                                                >
+                                                    <div class="function__icon compare__icon function-icon icon--compare"></div>
+
+                                                    [UnasDesign - Loop{art_item} - IfStart{compare_text_disp}]
+                                                    <div class="function__text compare__text tooltip-text page_artdet_func_compare_text_[UnasDesign - Loop{art_item} - Normal{sku_id}]"
+                                                         data-text-add="[UnasDesign - Text{name:compare;page:design}]" data-text-delete="[UnasDesign - Text{name:compare_delete;page:design}]"
+                                                    >
+                                                        [UnasDesign - Loop{art_item} - IfStart{compare_checked}][UnasDesign - Text{name:compare_delete;page:design}][UnasDesign - Loop{art_item} - IfEnd{compare_checked}]
+                                                        [UnasDesign - Loop{art_item} - IfStart{!compare_checked}][UnasDesign - Text{name:compare;page:design}][UnasDesign - Loop{art_item} - IfEnd{!compare_checked}]
+                                                    </div>
+                                                    [UnasDesign - Loop{art_item} - IfEnd{compare_text_disp}]
+                                                </a>
+                                            </div>
+                                            [UnasDesign - Loop{art_item} - IfEnd{art_func_compare_disp}]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article><!--product-->
+                [UnasDesign - LoopEnd{art_item}]
+            [UnasDesign - Normal{infinite_scroll}]
+            [UnasDesign - Normal{art_list_form_end}]
+            [UnasDesign - Normal{infinite_scroll_loading}]
+            [UnasDesign - IfStart{infinite_scroll_button_disp}]
+            <article class="col-12 artlist-load-more-items d-flex justify-content-center">
+                <button class="page_artlist_load_more_content btn--primary m-2" type="button">[UnasDesign - Text{name:more_products;page:shop_art}]</button>
+            </article>
+            [UnasDesign - IfEnd{infinite_scroll_button_disp}]
+            [UnasDesign - IfStart{!infinite_scroll_disp}]</section><!--products-->[UnasDesign - IfEnd{!infinite_scroll_disp}]
+
+            [UnasDesign - IfStart{view_select_bottom|art_page_bottom|art_order2}]
+            <div class="viewing-sorting-paging row no-gutters border-top [UnasDesign - IfStart{!view_select_bottom&!art_order2&infinite_scroll_enabled}]border-top-0 [UnasDesign - IfEnd{!view_select_bottom&!art_order2&infinite_scroll_enabled}]justify-content-center">
+                [UnasDesign - IfStart{view_select_bottom}]
+                <div class="view--bottom col-auto d-inline-flex align-items-center mr-auto pr-0 my-2 my-sm-3">
+                    <div class="view__label mr-3 d-none">[UnasDesign - Text{name:art_view;page:common}]:</div>
+                    <button title="[UnasDesign - Text{name:art_view;page:common}] 1" class="view__btn btn--square view__btn--1[UnasDesign - IfStart{design_page_disp_1}] is-selected[UnasDesign - IfEnd{design_page_disp_1}]"[UnasDesign - IfStart{!design_page_disp_1}] onclick="location.href=location_href_with_get('change_page_design=1')"[UnasDesign - IfEnd{!design_page_disp_1}] type="button"></button>
+                    <button title="[UnasDesign - Text{name:art_view;page:common}] 2" class="view__btn btn--square view__btn--2[UnasDesign - IfStart{design_page_disp_2}] is-selected[UnasDesign - IfEnd{design_page_disp_2}]"[UnasDesign - IfStart{!design_page_disp_2}] onclick="location.href=location_href_with_get('change_page_design=2')"[UnasDesign - IfEnd{!design_page_disp_2}] type="button"></button>
+                    <button title="[UnasDesign - Text{name:art_view;page:common}] 3" class="view__btn btn--square view__btn--3[UnasDesign - IfStart{design_page_disp_3}] is-selected[UnasDesign - IfEnd{design_page_disp_3}]"[UnasDesign - IfStart{!design_page_disp_3}] onclick="location.href=location_href_with_get('change_page_design=3')"[UnasDesign - IfEnd{!design_page_disp_3}] type="button"></button>
+                </div>
+                [UnasDesign - IfEnd{view_select_bottom}]
+
+                [UnasDesign - IfStart{art_page_bottom}]
+                <div class="paging--bottom my-2 my-sm-3 col-12 col-xs-auto [UnasDesign - IfStart{infinite_scroll_enabled}]is-invisible [UnasDesign - IfEnd{infinite_scroll_enabled}][UnasDesign - IfStart{!view_select_bottom&art_order2}]col-xs-12 col-sm-auto mt-up-sm-0 order-up-sm-2 [UnasDesign - IfEnd{!view_select_bottom&art_order2}][UnasDesign - IfStart{!art_order2&view_select_bottom}]mt-up-xs-0 [UnasDesign - IfEnd{!art_order2&view_select_bottom}][UnasDesign - IfStart{art_order2&view_select_bottom}]col-xs-12 col-md-auto order-up-md-3 mt-up-md-0 [UnasDesign - IfEnd{art_order2&view_select_bottom}] page_artlist_page">
+                    <nav class="paging__nav" aria-label="pagination">
+                        [UnasDesign - Normal{paging_content}]
+                    </nav>
+                </div>
+                [UnasDesign - IfEnd{art_page_bottom}]
+
+                [UnasDesign - IfStart{art_order2}]
+                <div class='order--bottom col-auto d-inline-flex align-items-center ml-auto pl-0 my-2 my-sm-3'>
+                    [UnasDesign - Normal{art_order2_form_start}]
+                    <div class='order__wrap d-flex align-items-center'>
+                        <div class="order__label mr-3 d-none">[UnasDesign - Text{name:art_sorrend;page:common}]:</div>
+                        <div class="order__select-outer" title="[UnasDesign - Text{name:art_sorrend;page:common}]">[UnasDesign - Normal{art_order2_form_select}]</div>
+                    </div>
+                    [UnasDesign - Normal{art_order2_form_end}]
+                </div>
+                [UnasDesign - IfEnd{art_order2}]
+            </div>
+            [UnasDesign - IfEnd{view_select_bottom|art_page_bottom|art_order2}]
+
+        [UnasDesign - IfStart{!art_num&artlist_type_product_list_cat_disp&ajax_filter_reload_disp}]
+        <div id='page_art_head_box' class='page_headtext'>[UnasDesign - Text{name:noart;page:artspec}]</div>
+        [UnasDesign - IfEnd{!art_num&artlist_type_product_list_cat_disp&ajax_filter_reload_disp}]
+
+    [UnasDesign - IfStart{!infinite_scroll_disp}]</div><!--page_artlist_content-->[UnasDesign - IfEnd{!infinite_scroll_disp}]
+[UnasDesign - IfEnd{art_num}]
+[UnasDesign - IfStart{!infinite_scroll_disp&art_num}]
+<script>
+    $(document).ready(function() {
+        /* Get all elements that have alt imgs */
+        var productsWithAltPic = $(".js-on-hover-alt-img");
+
+        /* Call the altPicHover fn (see above) on all elements with alt imgs */
+        productsWithAltPic.each(altPicHover);
+        if (typeof initTippy == 'function') {
+            initTippy();
+        }
+    });
+
+    [UnasDesign - IfStart{infinite_scroll_enabled}]
+    $(document).ajaxStop(function() {
+        productsWithAltPic = $(".js-on-hover-alt-img");
+        productsWithAltPic.each(altPicHover);
+        if (typeof initTippy == 'function') {
+            initTippy();
+        }
+    });
+    [UnasDesign - IfEnd{infinite_scroll_enabled}]
+</script>
+[UnasDesign - IfEnd{!infinite_scroll_disp&art_num}]

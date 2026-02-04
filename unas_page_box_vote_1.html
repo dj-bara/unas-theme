@@ -1,0 +1,50 @@
+[UnasDesign - IfStart{type_link}]
+    <a href="[UnasDesign - Normal{vote_link}]">[UnasDesign - Text{name:title_vote;page:box_home}]</a>
+[UnasDesign - IfEnd{type_link}]
+
+[UnasDesign - IfStart{!type_link}]
+    <div id='box_vote_content' class='box_content'>
+        [UnasDesign - IfStart{vote_disp}]
+            <form name="form_include_vote" action="[UnasDesign - Normal{vote_link}]" method="post">
+                [UnasDesign - Normal{form_hidden}]
+
+                <div class='box_vote_list'>
+                    <div class="box_vote_item_title">[UnasDesign - Normal{vote_title}]</div>
+
+                    [UnasDesign - IfStart{!voted}]
+                        [UnasDesign - LoopStart{vote_options}]
+                            <div class="box_vote_item mb-1">
+                                <input name="vote" type="radio" id="vote_box_radio[UnasDesign - Loop{vote_options} - Normal{value}]" class="vote_box_radio" onclick="vote_disable('');" value="[UnasDesign - Loop{vote_options} - Normal{value}]">
+                                <label for="vote_box_radio[UnasDesign - Loop{vote_options} - Normal{value}]">[UnasDesign - Loop{vote_options} - Normal{name}]</label>
+                            </div>
+                        [UnasDesign - LoopEnd{vote_options}]
+                    [UnasDesign - IfEnd{!voted}]
+
+                    [UnasDesign - IfStart{voted}]
+                        [UnasDesign - LoopStart{vote_options}]
+                            <div class="box_vote_item">
+                                <div class="box_vote_item_name">[UnasDesign - Loop{vote_options} - Normal{option}]</div>
+                                <div class="box_vote_item_row">
+                                    <div class="box_vote_item_bar" style="width:[UnasDesign - Loop{vote_options} - Normal{percent}]%;">
+                                        <div class="box_vote_item_bar_percent">[UnasDesign - Loop{vote_options} - Normal{percent}]%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        [UnasDesign - LoopEnd{vote_options}]
+                    [UnasDesign - IfEnd{voted}]
+                </div>
+
+                [UnasDesign - IfStart{!voted}]
+                    <input name="vote_privacy_policy" id="vote_box_privacy_policy" type="checkbox" onclick="vote_disable('');" value="1">
+                    <label for="vote_box_privacy_policy" class="pr-0 font-s my-3">[UnasDesign - Text{name:accept_privacy_policy;page:box_shop}]</label>
+                    <div class="vote-box__btn-wrap">
+                        <button name="submit_button" class="vote-box__btn btn--primary icon--b-vote" id="vote_box_button" type="submit" disabled="disabled">[UnasDesign - Text{name:vote_submit;page:box_home}]</button>
+                    </div>
+                [UnasDesign - IfEnd{!voted}]
+            </form>
+        [UnasDesign - IfEnd{vote_disp}]
+
+        [UnasDesign - IfStart{!vote_disp}]<div class='box_common_nocontent_outer'><div class='box_common_nocontent'>[UnasDesign - Text{name:vote_novote;page:box_home}]</div></div>[UnasDesign - IfEnd{!vote_disp}]
+        <a href="[UnasDesign - Normal{vote_link}]" class="box_vote_link d-inline-block mt-2 font-weight-700">[UnasDesign - Text{name:vote_more;page:box_home}]</a>
+    </div>
+[UnasDesign - IfEnd{!type_link}]

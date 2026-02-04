@@ -1,0 +1,14 @@
+[UnasDesign - LoopStart{list_item}]
+<div class="cat-box__level-1 mb-3">
+    <a class="cat-box__level-1-name d-inline-block line-height-12 js-cat-menu-[UnasDesign - Loop{list_item} - Normal{id}]" href="[UnasDesign - Loop{list_item} - Normal{link}]"[UnasDesign - Loop{list_item} - IfStart{target_disp}] target="[UnasDesign - Loop{list_item} - Normal{target}]"[UnasDesign - Loop{list_item} - IfEnd{target_disp}]>
+        [UnasDesign - Loop{list_item} - Normal{name}]
+
+        [UnasDesign - Loop{list_item} - IfStart{product_num_disp}]
+        <span class="cat-box__product-num font-xs text-muted font-weight-400 d-inline-block">([UnasDesign - Loop{list_item} - Normal{product_num}])</span>
+        [UnasDesign - Loop{list_item} - IfEnd{product_num_disp}]
+    </a>
+    [UnasDesign - Loop{list_item} - IfStart{children_disp}]
+        [UnasDesign - Loop{list_item} - Normal{children}]
+    [UnasDesign - Loop{list_item} - IfEnd{children_disp}]
+</div>
+[UnasDesign - LoopEnd{list_item}]

@@ -1,0 +1,60 @@
+[UnasDesign - DesignVar{name:pic_maxwidth;value:113}]
+[UnasDesign - DesignVar{name:pic_maxheight;value:113}]
+
+[UnasDesign - IfStart{!no}]
+    <div class="box__arts">
+        <div class="row gutters-10">
+            [UnasDesign - LoopStart{item}]
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-12 mb-4 mb-xl-0 box__art-col">
+                <div class="box__art h-100 p-3 py-lg-4">
+                    <div class="row gutters-10">
+                        [UnasDesign - Loop{item} - IfStart{pic_disp}]
+                        <div class="col-auto col-sm-5">
+                            <div class="box__art-img-wrap product-img-wrapper">
+                                <a class="box__art-img-link product_link_promo" data-sku="[UnasDesign - Loop{item} - Normal{sku}]" href="[UnasDesign - Loop{item} - Normal{url}]"title="[UnasDesign - Loop{item} - Normal{pic_alt}]">
+                                    <img class="box__art-img product-img lazyload"
+                                         width="[UnasDesign - Normal{backvar_pic_maxwidth}]" height="[UnasDesign - Normal{backvar_pic_maxheight}]"
+                                         src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{item} - Normal{pic_url_orig}]"
+                                         [UnasDesign - Loop{item} - IfStart{img_retina_exists}]
+                                         data-srcset="[UnasDesign - Loop{item} - Normal{img_retina_url}] [UnasDesign - Loop{item} - Normal{img_retina_size}]"
+                                         [UnasDesign - Loop{item} - IfEnd{img_retina_exists}]
+                                         alt="[UnasDesign - Loop{item} - Normal{pic_alt}]"
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                        [UnasDesign - Loop{item} - IfEnd{pic_disp}]
+                        <div class="col col-sm">
+                            <div class="box__art-body d-flex flex-column">
+                                [UnasDesign - Loop{item} - IfStart{new_disp}]
+                                <div class="box__art-tags font-xs">
+                                    <div class="box__art-tag box__art-tag-new bg--new d-inline-block text-center">[UnasDesign - Loop{item} - Normal{new}]</div>
+                                </div>
+                                [UnasDesign - Loop{item} - IfEnd{new_disp}]
+
+                                <a class="box__art-name line-clamp--3-12 my-3 product_link_promo" data-sku="[UnasDesign - Loop{item} - Normal{sku}]" href="[UnasDesign - Loop{item} - Normal{url}]">[UnasDesign - Loop{item} - Normal{name}]</a>
+
+                                [UnasDesign - Loop{item} - IfStart{price_disp}]
+                                    [UnasDesign - Loop{item} - IfStart{!price_sale_disp}]
+                                        <div class="box__art-price product-price--base">[UnasDesign - Loop{item} - Normal{price}]</div>
+                                    [UnasDesign - Loop{item} - IfEnd{!price_sale_disp}]
+                                    [UnasDesign - Loop{item} - IfStart{price_sale_disp}]
+                                        <div class="box__art-price product-price--sale">[UnasDesign - Loop{item} - Normal{price_sale}]</div>
+                                    [UnasDesign - Loop{item} - IfEnd{price_sale_disp}]
+
+                                    [UnasDesign - Loop{item} - IfStart{price_unit_disp}]
+                                        <div class="box__art-price-unit product-price--unit">
+                                            <span class="unit-title">[UnasDesign - Loop{item} - Normal{price_unit_title}]:</span>
+                                            <span class="unit-value">[UnasDesign - Loop{item} - Normal{price_unit}]</span>
+                                        </div>
+                                    [UnasDesign - Loop{item} - IfEnd{price_unit_disp}]
+                                [UnasDesign - Loop{item} - IfEnd{price_disp}]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            [UnasDesign - LoopEnd{item}]
+        </div>
+    </div>
+[UnasDesign - IfEnd{!no}]

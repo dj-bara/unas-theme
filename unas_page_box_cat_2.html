@@ -1,0 +1,16 @@
+[UnasDesign - DesignVar{name:level_limit;value:5}]
+[UnasDesign - DesignVar{name:children_forbidden;value:1}]
+
+[UnasDesign - IfStart{list_disp}]
+<div class="cat-box__level-2 pl-2">
+
+    [UnasDesign - LoopStart{list_item}]
+        <a class="cat-box__level-2-name line-height-12 d-block js-cat-menu-[UnasDesign - Loop{list_item} - Normal{id}]" href="[UnasDesign - Loop{list_item} - Normal{link}]"[UnasDesign - Loop{list_item} - IfStart{target_disp}] target="[UnasDesign - Loop{list_item} - Normal{target}]"[UnasDesign - Loop{list_item} - IfEnd{target_disp}]>[UnasDesign - Loop{list_item} - Normal{name}]</a>
+    [UnasDesign - LoopEnd{list_item}]
+
+    [UnasDesign - IfStart{level_limit_exceeded}]
+        <a class="cat-box__more-btn text-muted btn--text d-block icon--a-chevron-right icon--sm" href="[UnasDesign - Normal{parent_link}]">[UnasDesign - Text{name:more;page:box_shop}]</a>
+    [UnasDesign - IfEnd{level_limit_exceeded}]
+
+</div>
+[UnasDesign - IfEnd{list_disp}]

@@ -1,0 +1,48 @@
+[UnasDesign - Normal{script}]
+
+<div id='box_calendar_content' class='box_content'>
+    <div class='box_calendar_header_outer border_1'>
+        <div class='box_calendar_header'>
+            <div class='box_calendar_header_left bg_color_dark2'><a href="javascript:get_month('[UnasDesign - Normal{month_before}]');"><span class="text_smaller"><span class="text_color_white">&lt;&lt;&lt;</span></span></a></div>
+            <div class='box_calendar_header_center bg_color_dark1'><span class="text_normal"><span class="text_color_white">[UnasDesign - Normal{month_actual}]</span></span></div>
+            <div class='box_calendar_header_right bg_color_dark2'><a href="javascript:get_month('[UnasDesign - Normal{month_after}]');"><span class="text_smaller"><span class="text_color_white">&gt;&gt;&gt;</span></span></a></div>
+            <div class='clear_fix'></div>
+        </div>
+    </div>
+
+    <div class='box_calendar_week'>
+        [UnasDesign - IfStart{week_start_sunday}]<div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_sun}]</span></div>[UnasDesign - IfEnd{week_start_sunday}]
+        <div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_mon}]</span></div>
+        <div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_tue}]</span></div>
+        <div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_wed}]</span></div>
+        <div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_thu}]</span></div>
+        <div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_fri}]</span></div>
+        <div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_sat}]</span></div>
+        [UnasDesign - IfStart{!week_start_sunday}]<div class="box_calendar_week_outer"><span class="text_small">[UnasDesign - Normal{day_sun}]</span></div>[UnasDesign - IfEnd{!week_start_sunday}]
+        <div class='clear_fix'></div>
+    </div>
+
+    [UnasDesign - LoopStart{loop_weeks}]
+        <div class='box_calendar_day clearfix'>
+            [UnasDesign - Loop{loop_weeks} - LoopStart{loop_days}]
+                <div class='box_calendar_element_outer'>
+                    [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{!empty}]
+                        <div class='box_calendar_element[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{select}]_select[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{select}] bg_color_dark2'>
+                            [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{select}]<a href="[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - Normal{link}]">[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{select}]
+                            <span class='text_normal'><span class='text_color_white'>
+                            [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{today}]<strong>[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{today}]
+                            [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - Normal{date_day}]
+                            [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{today}]</strong>[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{today}]
+                            </span></span>
+                            [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{select}]</a>[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{select}]
+
+                        </div>
+                    [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{!empty}]
+
+                    [UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfStart{empty}]&nbsp;[UnasDesign - Loop{loop_weeks} - Loop{loop_days} - IfEnd{empty}]
+                </div>
+            [UnasDesign - Loop{loop_weeks} - LoopEnd{loop_days}]
+            <div class='clear_fix'></div>
+        </div>
+    [UnasDesign - LoopEnd{loop_weeks}]
+</div>

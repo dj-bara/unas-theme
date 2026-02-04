@@ -1,0 +1,114 @@
+[UnasDesign - DesignVar{name:disable_cat_sub;value:1}]
+
+<div id='page_cat_content' class='page_content cat--type-3'>
+
+    [UnasDesign - IfStart{cat_text_up}]
+    <div class='page_txt py-4 border-bottom'>[UnasDesign - Normal{cat_text_up_value}]</div>
+    [UnasDesign - IfEnd{cat_text_up}]
+
+    [UnasDesign - IfStart{cat_num_start}]
+    <div class='cat-artnum py-4 border-bottom font-s font-sm-m'>
+        <span class="cat-artnum__icon icon--b-info color--primary"></span>
+        <span class="cat-artnum__text">[UnasDesign - Normal{cat_num_text}]</span>
+        <span class="cat-artnum__num">[UnasDesign - Normal{cat_num}]</span>
+    </div>
+    [UnasDesign - IfEnd{cat_num_start}]
+
+    [UnasDesign - IfStart{tags_disp}]
+    <div class="js-tags my-3">
+        [UnasDesign - LoopStart{tags}]
+        <div class="js-filter-by-tag tags__col mr-2 px-3 py-1" data-filter="js-filterable-[UnasDesign - Loop{tags} - Normal{id}]">
+            [UnasDesign - Loop{tags} - Normal{name}]
+        </div>
+        [UnasDesign - LoopEnd{tags}]
+
+        <div class="js-clear-tag-filter tags__col mr-2 px-3 py-1" data-filter="clear-all">
+            [UnasDesign - Text{name:filter_delete_all;page:box}]
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var tagFilter = new filterByTag({type:"category"});
+
+            tagFilter.filterInit();
+            tagFilter.clearFilterInit();
+        });
+    </script>
+    [UnasDesign - IfEnd{tags_disp}]
+
+    [UnasDesign - IfStart{cat_spec_disp}]
+    <div class='spec-categories mt-4 border-bottom'>
+        <div class="row gutters-5 gutters-sm-10">
+            [UnasDesign - LoopStart{cat_spec}]
+            <div class="col-6 col-md-4 col-lg-3 col-xl-4 col-xxl-3 spec-categories__col mb-4">
+                <div class='spec-category d-flex flex-column border spec-category-[UnasDesign - Loop{cat_spec} - Normal{cat_spec_id}] bg-8'>
+                    <a class="spec-category__name d-block text-center p-3 font-s font-sm-m" href="[UnasDesign - Loop{cat_spec} - Normal{cat_spec_url}]">
+                        <div class="spec-category__name-inner line-clamp--2-14 text-center">
+                            [UnasDesign - Loop{cat_spec} - Normal{cat_spec_name_only}]
+                        </div>
+                        [UnasDesign - Loop{cat_spec} - IfStart{cat_spec_qty_disp}]
+                        <div class='spec-category__qty d-inline-block text-muted font-s'>([UnasDesign - Loop{cat_spec} - Normal{cat_spec_qty}]<span class="artnum__small d-none">[UnasDesign - Text{artnum_db}]</span>)</div>
+                        [UnasDesign - Loop{cat_spec} - IfEnd{cat_spec_qty_disp}]
+                    </a>
+                </div>
+            </div>
+            [UnasDesign - LoopEnd{cat_spec}]
+        </div>
+    </div>
+    [UnasDesign - IfEnd{cat_spec_disp}]
+
+    [UnasDesign - IfStart{cat_normal_disp}]
+    <div class='normal-categories [UnasDesign - IfStart{!cat_all_skipped}]mt-4 border-bottom[UnasDesign - IfEnd{!cat_all_skipped}]'>
+        <div class="row gutters-5 gutters-sm-10">
+            [UnasDesign - LoopStart{cat_normal}]
+            <div class="col-6 col-md-4 col-lg-3 col-xl-4 col-xxl-3 normal-categories__col mb-4 [UnasDesign - IfStart{tags_disp}] js-filterable [UnasDesign - IfEnd{tags_disp}] [UnasDesign - Loop{cat_normal} - IfStart{cat_tag_list_disp}] [UnasDesign - Loop{cat_normal} - Normal{cat_tag_list}] [UnasDesign - Loop{cat_normal} - IfEnd{cat_tag_list_disp}]">
+                <div class='normal-category h-100'>
+                    <a class="normal-category__link d-flex flex-column justify-content-center h-100 border bg-8 text-center p-3"
+                       href="[UnasDesign - Loop{cat_normal} - Normal{cat_normal_url}]"
+                       [UnasDesign - Loop{cat_normal} - IfStart{target_blank}] target="_blank"[UnasDesign - Loop{cat_normal} - IfEnd{target_blank}]
+                    >
+                        <div class="normal-category__name line-clamp--3-12 text-center font-s font-sm-m font-weight-700">
+                            [UnasDesign - Loop{cat_normal} - Normal{cat_normal_name_only}]
+                        </div>
+                        [UnasDesign - Loop{cat_normal} - IfStart{!cat_alturl_exists}]
+                            <div class="category-statuses d-flex flex-wrap align-items-center justify-content-center font-xs font-sm-s">
+                                [UnasDesign - Loop{cat_normal} - IfStart{cat_normal_qty_disp}]
+                                <div class="category-qty text-muted d-inline-block mt-2 mx-1">([UnasDesign - Loop{cat_normal} - Normal{cat_normal_qty}]<span class="artnum__small d-none">&nbsp;[UnasDesign - Text{artnum_db}]</span>)</div>
+                                [UnasDesign - Loop{cat_normal} - IfEnd{cat_normal_qty_disp}]
+
+                                [UnasDesign - Loop{cat_normal} - IfStart{cat_normal_qty_new_disp}]
+                                <div class="normal-category__new page_cat_main-status d-inline-block mx-1 mt-2">
+                                    <span class="normal-category__new-qty">[UnasDesign - Loop{cat_normal} - Normal{cat_normal_qty_new}]</span>
+                                    <span class="normal-category__new-text">&nbsp;[UnasDesign - Text{name:new_stat;page:common}]</span>
+                                </div>
+                                [UnasDesign - Loop{cat_normal} - IfEnd{cat_normal_qty_new_disp}]
+                            </div>
+                        [UnasDesign - Loop{cat_normal} - IfEnd{!cat_alturl_exists}]
+                    </a>
+                </div>
+            </div>
+            [UnasDesign - LoopEnd{cat_normal}]
+        </div>
+    </div>
+    [UnasDesign - IfEnd{cat_normal_disp}]
+
+    [UnasDesign - IfStart{cat_all_skipped}]
+        <div class="all-cat-skipped page_txt py-4 border-bottom">[UnasDesign - Text{name:noart;page:artspec}]</div>
+    [UnasDesign - IfEnd{cat_all_skipped}]
+
+    [UnasDesign - IfStart{retargeting_div_category_disp}]
+    [UnasDesign - Normal{retargeting_div_category}]
+    [UnasDesign - IfEnd{retargeting_div_category_disp}]
+
+    [UnasDesign - IfStart{art_list_disp}]
+    [UnasDesign - Normal{art_list_script}]
+    <div id="page_cat_artlist">
+        [UnasDesign - Normal{art_list}]
+    </div>
+    [UnasDesign - IfEnd{art_list_disp}]
+
+    [UnasDesign - IfStart{cat_text_down}]
+    <div class='page_txt py-4 border-bottom'>[UnasDesign - Normal{cat_text_down_value}]</div>
+    [UnasDesign - IfEnd{cat_text_down}]
+
+</div><!--page_cat_content-->

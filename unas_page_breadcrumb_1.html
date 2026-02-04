@@ -1,0 +1,30 @@
+<div class="breadcrumb underline underline--normal underline--fw mb-0">
+    <span class="breadcrumb__item breadcrumb__home [UnasDesign - IfStart{!main_cat}]is-clickable [UnasDesign - IfEnd{!main_cat}]">
+        [UnasDesign - IfStart{!main_cat}]
+        <a href="[UnasDesign - Normal{main_cat_link}]" class="breadcrumb-link breadcrumb-home-link" title="[UnasDesign - Text{name:main_cat;page:common}]">
+        [UnasDesign - IfEnd{!main_cat}]
+            <span class='breadcrumb__text'>[UnasDesign - Text{name:main_cat;page:common}]</span>
+        [UnasDesign - IfStart{!main_cat}]
+        </a>
+        [UnasDesign - IfEnd{!main_cat}]
+    </span>
+    [UnasDesign - LoopStart{item}]
+        <span class="breadcrumb__item">
+            [UnasDesign - Loop{item} - IfStart{link_disp}]
+            <a href="[UnasDesign - Loop{item} - Normal{link}]" class="breadcrumb-link" target="[UnasDesign - Loop{item} - Normal{target}]">
+                <span class="breadcrumb__text">[UnasDesign - Loop{item} - Normal{name}]</span>
+            </a>
+            [UnasDesign - Loop{item} - IfEnd{link_disp}]
+
+            [UnasDesign - Loop{item} - IfStart{!link_disp}]
+                [UnasDesign - IfStart{h1}]<h1>[UnasDesign - IfEnd{h1}]<span class="breadcrumb__text">[UnasDesign - Loop{item} - Normal{name}]</span>[UnasDesign - IfStart{h1}]</h1>[UnasDesign - IfEnd{h1}]
+            [UnasDesign - Loop{item} - IfEnd{!link_disp}]
+
+            <script type="text/javascript_load">
+                $("document").ready(function(){
+                    $(".js-cat-menu-[UnasDesign - Loop{item} - Normal{id}]").addClass("is-selected");
+                });
+            </script>
+        </span>
+    [UnasDesign - LoopEnd{item}]
+</div>

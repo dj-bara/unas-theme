@@ -1,0 +1,16 @@
+<div class="checkout__box d-inline-flex flex-wrap align-items-center justify-content-center my-3">
+    [UnasDesign - LoopStart{item}]
+    <div class="checkout__item m-2">
+        [UnasDesign - Loop{item} - IfStart{link_disp}]
+        <a href="[UnasDesign - Loop{item} - Normal{link}]" [UnasDesign - Loop{item} - IfStart{blank_disp}]target='_blank'[UnasDesign - Loop{item} - IfEnd{blank_disp}] class="checkout__link">
+        [UnasDesign - Loop{item} - IfEnd{link_disp}]
+            <img class="checkout__img lazyload" title="[UnasDesign - Loop{item} - Normal{title}]" alt="[UnasDesign - Loop{item} - Normal{alt}]"
+                 width="[UnasDesign - Loop{item} - Normal{img_width}]" height="[UnasDesign - Loop{item} - Normal{img_height}]"
+                 src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{item} - Normal{img_url}]" data-srcset="[UnasDesign - Loop{item} - Normal{img_retina_url}] 2x"
+                 style="width:[UnasDesign - Loop{item} - Normal{img_width}]px;max-height:[UnasDesign - Loop{item} - Normal{img_height}]px;">
+        [UnasDesign - Loop{item} - IfStart{link_disp}]
+        </a>
+        [UnasDesign - Loop{item} - IfEnd{link_disp}]
+    </div>
+    [UnasDesign - LoopEnd{item}]
+</div>

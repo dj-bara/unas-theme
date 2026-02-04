@@ -1,0 +1,2019 @@
+[UnasDesign - DesignVar{name:pic_enlarge_force;value:1}]
+[UnasDesign - DesignVar{name:det_pic_maxwidth;value:490}]
+[UnasDesign - DesignVar{name:det_pic_maxheight;value:490}]
+[UnasDesign - DesignVar{name:det_pic_size2_maxwidth;value:50}]
+[UnasDesign - DesignVar{name:det_pic_size2_maxheight;value:50}]
+[UnasDesign - DesignVar{name:alt_pic_maxwidth;value:490}]
+[UnasDesign - DesignVar{name:alt_pic_maxheight;value:490}]
+[UnasDesign - DesignVar{name:alt_pic_size2_maxwidth;value:50}]
+[UnasDesign - DesignVar{name:alt_pic_size2_maxheight;value:50}]
+[UnasDesign - DesignVar{name:alt_pic_class;value:no}]
+[UnasDesign - DesignVar{name:facebook_comments_width;value:100%}]
+[UnasDesign - DesignVar{name:cetelem_type;value:hor}]
+[UnasDesign - DesignVar{name:img_enlarge_forced_jpg_disabled;value:1}]
+[UnasDesign - DesignVar{name:ajax_additional_products;value:1}]
+[UnasDesign - DesignVar{name:ajax_similar_products;value:1}]
+[UnasDesign - DesignVar{name:ajax_bundle_product;value:1}]
+
+[UnasDesign - IfStart{pic_exists}]
+<script src="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/photoswipe.min.js" type="text/javascript" defer></script>
+<script src="[unas_shop_url]/!common_packages/jquery/plugins/photoswipe/photoswipe-ui-default.min.js" type="text/javascript" defer></script>
+<script>
+    [UnasDesign - IfStart{!alt_pic}]
+        var $activeProductImg = '.artdet__img-main';
+        var $productImgContainer = '.artdet__img-main-wrap';
+        var $clickElementToInitPs = '.artdet__img-main';
+    [UnasDesign - IfEnd{!alt_pic}]
+
+    [UnasDesign - IfStart{alt_pic}]
+        var $activeProductImg = '.js-slick--alts .slick-slide img';
+        var $productImgContainer = '.js-slick--alts';
+        var $slickContainerThumbs = '.js-slick--thumbs';
+        var $clickElementToInitPs = '.slick-slide';
+    [UnasDesign - IfEnd{alt_pic}]
+
+        var initPhotoSwipeFromDOM = function() {
+            var $pswp = $('.pswp')[0];
+            var $psDatas = $('.photoSwipeDatas');
+            var image = [];
+
+            $psDatas.each( function() {
+                var $pics     = $(this),
+                        getItems = function() {
+                            var items = [];
+                            $pics.find('a').each(function() {
+                                var $href   = $(this).attr('href'),
+                                        $size   = $(this).data('size').split('x'),
+                                        $width  = $size[0],
+                                        $height = $size[1];
+
+                                var item = {
+                                    src : $href,
+                                    w   : $width,
+                                    h   : $height
+                                }
+
+                                items.push(item);
+                            });
+                            return items;
+                        }
+
+                var items = getItems();
+
+                $($productImgContainer).on('click', $clickElementToInitPs, function(event) {
+                    event.preventDefault();
+
+                    var $index = $(this).index();
+                    var options = {
+                        index: $index,
+                        history: false,
+                        bgOpacity: 0.5,
+                        shareEl: false,
+                        showHideOpacity: false,
+                        getThumbBoundsFn: function(index) {
+                            var thumbnail = document.querySelectorAll($activeProductImg)[index];
+                            var activeBigPicRatio = items[index].w / items[index].h;
+                            var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+                            var rect = thumbnail.getBoundingClientRect();
+                            var offsetY = (rect.height - (rect.height / activeBigPicRatio)) / 2;
+                            return {x:rect.left, y:rect.top + pageYScroll + offsetY, w:rect.width};
+                        },
+                        getDoubleTapZoom: function(isMouseClick, item) {
+                            if(isMouseClick) {
+                                return 1;
+                            } else {
+                                return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+                            }
+                        }
+                    }
+
+                    var photoSwipe = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                    photoSwipe.init();
+
+                    [UnasDesign - IfStart{alt_pic}]
+                    var psIndex = photoSwipe.getCurrentIndex();
+
+                    photoSwipe.listen('initialZoomIn', function() {
+                        $($productImgContainer).slick("slickSetOption", "asNavFor", "", false);
+                    });
+
+                    photoSwipe.listen('initialZoomOut', function() {
+                        //$(".slick-slide.slick-current", $slickContainerThumbs).removeClass('slick-current');
+                        $($productImgContainer).slick("slickSetOption", "asNavFor", $slickContainerThumbs, false);
+                    });
+
+                    photoSwipe.listen('afterChange', function() {
+                        psIndex = photoSwipe.getCurrentIndex();
+
+                        $(".slick-slide.slick-current", $slickContainerThumbs).removeClass('slick-current');
+                        $(".slick-slide[data-slick-index="+psIndex+"]", $slickContainerThumbs).addClass('slick-current');
+
+                        $($productImgContainer).slick("slickGoTo", psIndex);
+                    });
+                    [UnasDesign - IfEnd{alt_pic}]
+                });
+
+
+            });
+        };
+</script>
+[UnasDesign - IfEnd{pic_exists}]
+
+<div id='page_artdet_content' class='artdet'>
+	
+    [UnasDesign - Normal{start_script}]
+	[UnasDesign - Normal{start_form}]
+        
+	[UnasDesign - IfStart{art_yes}]
+    <div class='artdet__inner'>
+    
+        <header class="artdet__header">
+            <div class="artdet__header-wrap row no-gutters align-items-center py-4">
+                <div class="col artdet__name-rating text-left pr-md-3">
+                    <h1 class='artdet__name line-clamp--3-12'>[UnasDesign - Normal{name}]</h1>
+                    [UnasDesign - IfStart{forum_art_rating_disp}]
+                        <div class="artdet__rating-highlighted rating-stars" title="[UnasDesign - Normal{forum_score_num}]">
+                            <div class="rating-stars__back">
+                                <div class="rating-stars__front" style="width: [UnasDesign - Normal{forum_score_percent}]%;"></div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{forum_art_rating_disp}]
+
+                    [UnasDesign - IfStart{social_media_disp}]
+                    <div class="social_icons d-inline-flex align-items-center">
+                        [UnasDesign - IfStart{social_share_disp}]
+                            [UnasDesign - LoopStart{social_shares}]
+                                <div class="social_icon icon_[UnasDesign - Loop{social_shares} - Normal{name}]" onclick='[UnasDesign - Loop{social_shares} - Normal{onclick_value}]' title="[UnasDesign - Loop{social_shares} - Normal{name}]"></div>
+                            [UnasDesign - LoopEnd{social_shares}]
+                        [UnasDesign - IfEnd{social_share_disp}]
+                        [UnasDesign - IfStart{social_like_disp}]
+                            [UnasDesign - Normal{facebook_like_content}]
+                        [UnasDesign - IfEnd{social_like_disp}]
+                    </div>
+                    [UnasDesign - IfEnd{social_media_disp}]
+                </div>
+                <div class="col-auto d-none d-md-flex artdet__pagination">
+                    [UnasDesign - IfStart{art_prevnext}]
+                    <a class='artdet__pagination-btn artdet__pagination-prev btn btn--square btn--alt icon--arrow-left' href="javascript:[UnasDesign - Normal{prev_js}]" aria-label="prevoius product"></a>
+
+                    <a class='artdet__pagination-btn artdet__pagination-next btn btn--square btn--alt icon--arrow-right ml-2' href="javascript:[UnasDesign - Normal{next_js}]" aria-label="next product"></a>
+                    [UnasDesign - IfEnd{art_prevnext}]
+                </div>
+            </div>
+        </header>
+    
+    	[UnasDesign - Normal{artdet_form_start}]
+
+        <div class="artdet__pic-data-wrap mb-3 mb-lg-5">
+            <div class="row">
+                <div class='artdet__img-outer col-lg-6 pr-lg-5'>
+                    <div class="artdet__properties position-relative">
+                        [UnasDesign - IfStart{sale_disp}]
+                        <div class="artdet__sale product-status product-status--sale">-[UnasDesign - Normal{price_save}]</div>
+                        [UnasDesign - IfEnd{sale_disp}]
+
+                        [UnasDesign - IfStart{art_item_new_disp}]
+                        <div class="artdet__new product-status product-status--new">[UnasDesign - Text{name:new_stat;page:common}]</div>
+                        [UnasDesign - IfEnd{art_item_new_disp}]
+
+                        [UnasDesign - IfStart{stock_disp}]
+
+                        <div class="artdet__stock product-status product-status--stock[UnasDesign - IfStart{!stock_text_only}] stock-number[UnasDesign - IfEnd{!stock_text_only}][UnasDesign - IfStart{stock_available}] stock-available[UnasDesign - IfEnd{stock_available}][UnasDesign - IfStart{warehouses_disp}] js-scroll-down cursor-pointer[UnasDesign - IfEnd{warehouses_disp}]"[UnasDesign - IfStart{warehouses_disp}] data-scroll="artdet__warehouses"[UnasDesign - IfEnd{warehouses_disp}]>
+
+                            [UnasDesign - IfStart{stock_available}]
+                            <div class="artdet__stock-text product-stock-text text-color--on-stock">
+                                <div class="artdet__stock-title product-stock-title icon--b-on-stock[UnasDesign - IfStart{warehouses_disp}] icon--a-chevron-down[UnasDesign - IfEnd{warehouses_disp}]">
+                                    [UnasDesign - IfStart{stock_text_only}]
+                                        [UnasDesign - IfStart{!disp_stock_text }]
+                                            [UnasDesign - Normal{stock}]
+                                        [UnasDesign - IfEnd{!disp_stock_text }]
+
+                                        [UnasDesign - IfStart{ disp_stock_text }]
+                                            [UnasDesign - Text{name:in_stock;page:common}]
+                                        [UnasDesign - IfEnd{ disp_stock_text }]
+                                    [UnasDesign - IfEnd{stock_text_only}]
+                                    [UnasDesign - IfStart{!stock_text_only}]
+                                        [UnasDesign - IfStart{!disp_stock_text }]
+                                            [UnasDesign - Text{name:in_stock;page:common}]
+                                        [UnasDesign - IfEnd{!disp_stock_text }]
+                                    [UnasDesign - IfEnd{!stock_text_only}]
+                                </div>
+                                <div class="artdet__stock-dropdown product-stock-dropdown">
+                                    [UnasDesign - IfStart{disp_stock_text}]<div class="artdet__stock-label product-stock-label">[UnasDesign - Text{name:stock_title;page:common}]:</div>[UnasDesign - IfEnd{disp_stock_text}]
+                                    [UnasDesign - IfStart{!stock_text_only}]<div class="artdet__stock-content p-1">[UnasDesign - Normal{stock}]</div>[UnasDesign - IfEnd{!stock_text_only}]
+                                </div>
+                            </div>
+                            [UnasDesign - IfEnd{stock_available}]
+
+                            [UnasDesign - IfStart{!stock_available}]
+                                [UnasDesign - IfStart{!no_stock_but_buyable_disp}]
+                                    <div class="artdet__stock-text product-stock-text text-color--out-of-stock">
+                                        <div class="artdet__stock-title product-stock-title icon--b-out-of-stock[UnasDesign - IfStart{warehouses_disp}] icon--a-chevron-down[UnasDesign - IfEnd{warehouses_disp}]">[UnasDesign - Text{name:out_of_stock;page:common}]</div>
+                                    </div>
+                                [UnasDesign - IfEnd{!no_stock_but_buyable_disp}]
+
+                                [UnasDesign - IfStart{no_stock_but_buyable_disp}]
+                                    <div class="artdet__stock-text product-stock-text text-color--to-order">
+                                        <div class="artdet__stock-title product-stock-title icon--b-exclamation-2">[UnasDesign - Text{name:available_on_backorder;page:common}]</div>
+                                    </div>
+                                [UnasDesign - IfEnd{no_stock_but_buyable_disp}]
+                            [UnasDesign - IfEnd{!stock_available}]
+
+                            [UnasDesign - IfStart{!stock_available}]
+                            [UnasDesign - IfStart{artpack_tab_disp}]
+                            [UnasDesign - IfStart{min_quant_disp}]
+                            <div class="property__min-quant">
+                                [UnasDesign - Text{art_minorder}]:[UnasDesign - Normal{min_quant}]
+                            </div>
+                            [UnasDesign - IfEnd{min_quant_disp}]
+                            [UnasDesign - IfEnd{artpack_tab_disp}]
+                            [UnasDesign - IfEnd{!stock_available}]
+                        </div>
+                        [UnasDesign - IfEnd{stock_disp}]
+
+                        [UnasDesign - IfStart{status1_disp}]
+                        <div class="artdet__custom-status product-status product-status--custom-1">[UnasDesign - Normal{status1}]</div>
+                        [UnasDesign - IfEnd{status1_disp}]
+
+                        [UnasDesign - IfStart{status2_disp}]
+                        <div class="artdet__custom-status product-status product-status--custom-2">[UnasDesign - Normal{status2}]</div>
+                        [UnasDesign - IfEnd{status2_disp}]
+
+                        [UnasDesign - IfStart{status3_disp}]
+                        <div class="artdet__custom-status product-status product-status--custom-3">[UnasDesign - Normal{status3}]</div>
+                        [UnasDesign - IfEnd{status3_disp}]
+                    </div>
+                    <div class='artdet__img-inner position-relative'>
+                        <div class='artdet__img-wrapper mt-3 overflow-hidden'>
+                            [UnasDesign - IfStart{!alt_pic}]
+
+                            <div class="artdet__img-main-wrapper">
+                                <div class="artdet__img-main-wrap-outer">
+                                    <figure class="artdet__img-main-wrap [UnasDesign - IfStart{pic_exists}]js-photoswipe--main [UnasDesign - IfEnd{pic_exists}]text-center artdet-product-img-wrapper">
+                                        <img width="[UnasDesign - Normal{backvar_det_pic_maxwidth}]" height="[UnasDesign - Normal{backvar_det_pic_maxheight}]" fetchpriority="high"
+                                             class="artdet__img-main product-img" src="[UnasDesign - Normal{pic_raw}]"
+                                             [UnasDesign - IfStart{img_retina_exists}]
+                                             srcset="[UnasDesign - Normal{img_retina_url}] [UnasDesign - Normal{img_retina_size}]"
+                                             [UnasDesign - IfEnd{img_retina_exists}]
+                                             alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_title_text}]" id="main_image"
+                                        >
+                                    </figure>
+                                </div>
+                            </div>
+                            [UnasDesign - IfEnd{!alt_pic}]
+
+                            [UnasDesign - IfStart{alt_pic}]
+                            <div class="artdet__img--alts js-slick--alts">
+                                <div class="artdet__img-main-wrapper">
+                                    <div class="artdet__img-main-wrap-outer">
+                                        <figure class="artdet__img-main-wrap product-img-wrapper text-center">
+                                            <img width="[UnasDesign - Normal{backvar_det_pic_maxwidth}]" height="[UnasDesign - Normal{backvar_det_pic_maxheight}]" fetchpriority="high"
+                                                 class="artdet__img-main product-img" src="[UnasDesign - Normal{pic_raw}]"
+                                                 [UnasDesign - IfStart{img_retina_exists}]
+                                                 srcset="[UnasDesign - Normal{img_retina_url}] [UnasDesign - Normal{img_retina_size}]"
+                                                 [UnasDesign - IfEnd{img_retina_exists}]
+                                                 alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_title_text}]" id="main_image"
+                                            >
+                                        </figure>
+                                    </div>
+                                </div>
+                                [UnasDesign - IfStart{alt_images_disp}]
+                                    [UnasDesign - LoopStart{alt_images}]
+                                        [UnasDesign - Loop{alt_images} - IfStart{disp}]
+                                        <div class="artdet__img-main-wrapper">
+                                            <div class="artdet__img-main-wrap-outer">
+                                                <figure class="artdet__img-wrap--alt">
+                                                    <img width="[UnasDesign - Normal{backvar_alt_pic_maxwidth}]" height="[UnasDesign - Normal{backvar_alt_pic_maxheight}]"
+                                                         class="artdet__img--alt lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{alt_images} - Normal{url}]"
+                                                         [UnasDesign - Loop{alt_images} - IfStart{retina_exists}]
+                                                         data-srcset="[UnasDesign - Loop{alt_images} - Normal{retina_url}] [UnasDesign - Loop{alt_images} - Normal{retina_size}]"
+                                                         [UnasDesign - Loop{alt_images} - IfEnd{retina_exists}]
+                                                         alt="[UnasDesign - Loop{alt_images} - Normal{alt_pic_alt_text}]" title="[UnasDesign - Loop{alt_images} - Normal{alt_pic_title_text}]"
+                                                    >
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{alt_images} - IfEnd{disp}]
+                                    [UnasDesign - LoopEnd{alt_images}]
+                                [UnasDesign - IfEnd{alt_images_disp}]
+                            </div>
+
+                            <div class="artdet__img--thumbs-wrap slick-indent-md slick-center slick-arrow--middle slick-arrow--small slick-gap--10 mt-3">
+                                <div class="artdet__img--thumbs js-slick--thumbs clearfix">
+                                    <div class="artdet__img-wrap--thumb">
+                                        <img width="[UnasDesign - Normal{backvar_det_pic_size2_maxwidth}]" height="[UnasDesign - Normal{backvar_det_pic_size2_maxheight}]"
+                                             class="artdet__img-main--thumb lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Normal{pic_size2_raw}]"
+                                             [UnasDesign - IfStart{img_thumbnail_retina_exists}]
+                                             data-srcset="[UnasDesign - Normal{img_thumbnail_retina_url}] [UnasDesign - Normal{img_thumbnail_retina_size}]"
+                                             [UnasDesign - IfEnd{img_thumbnail_retina_exists}]
+                                             alt="[UnasDesign - Normal{main_pic_alt_text}]" title="[UnasDesign - Normal{main_pic_title_text}]"
+                                        >
+                                    </div>
+                                    [UnasDesign - IfStart{alt_images_disp}]
+                                        [UnasDesign - LoopStart{alt_images}]
+                                            [UnasDesign - Loop{alt_images} - IfStart{disp}]
+                                            <div class="artdet__img-wrap--thumb">
+                                                <img width="[UnasDesign - Normal{backvar_alt_pic_size2_maxwidth}]" height="[UnasDesign - Normal{backvar_alt_pic_size2_maxheight}]"
+                                                     class="artdet__img--thumb lazyload" src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{alt_images} - Normal{small_url}]"
+                                                     [UnasDesign - Loop{alt_images} - IfStart{thumbnail_retina_exists}]
+                                                     data-srcset="[UnasDesign - Loop{alt_images} - Normal{thumbnail_retina_url}] [UnasDesign - Loop{alt_images} - Normal{thumbnail_retina_size}]"
+                                                     [UnasDesign - Loop{alt_images} - IfEnd{thumbnail_retina_exists}]
+                                                     alt="[UnasDesign - Loop{alt_images} - Normal{alt_pic_alt_text}]" title="[UnasDesign - Loop{alt_images} - Normal{alt_pic_title_text}]"
+                                                >
+                                            </div>
+                                            [UnasDesign - Loop{alt_images} - IfEnd{disp}]
+                                        [UnasDesign - LoopEnd{alt_images}]
+                                    [UnasDesign - IfEnd{alt_images_disp}]
+                                </div>
+                            </div>
+
+                            <script>
+                            $(document).ready(function() {
+                                // execute above function
+                                $($productImgContainer).on("init", function (event, slick) {
+                                    initPhotoSwipeFromDOM();
+                                });
+
+                                // Main/Product image slider for product page
+                                $($productImgContainer).slick({
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    swipe: false,
+                                    infinite: false,
+                                    draggable: false,
+                                    arrows: false,
+                                    speed: 300,
+                                    lazyLoad: false,
+                                    asNavFor: $slickContainerThumbs,
+                                    prevArrow: '<div class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="sr-text">Previous</span></div>',
+                                    nextArrow: '<div class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-text">Next</span></div>'
+                                });
+                                // Thumbnail/alternates slider for product page
+                                $($slickContainerThumbs).slick({
+                                    slidesToShow: 4,
+                                    slidesToScroll: 1,
+                                    infinite: false,
+                                    centerPadding: '0px',
+                                    asNavFor: $productImgContainer,
+                                    speed: 300,
+                                    focusOnSelect: true,
+                                    touchThreshold: 100,
+                                    useTransform: true,
+                                    waitForAnimate: false,
+                                    lazyLoad: false,
+                                    mobileFirst: true,
+                                    prevArrow: '<div class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="sr-text">Previous</span></div>',
+                                    nextArrow: '<div class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-text">Next</span></div>',
+                                    responsive: [
+                                        {
+                                            breakpoint: 1500,
+                                            settings: {
+                                                slidesToShow: 6
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 1259,
+                                            settings: {
+                                                slidesToShow: 5
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 1150,
+                                            settings: {
+                                                slidesToShow: 8
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 1080,
+                                            settings: {
+                                                slidesToShow: 7
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 1019,
+                                            settings: {
+                                                slidesToShow: 6
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 940,
+                                            settings: {
+                                                slidesToShow: 14
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 880,
+                                            settings: {
+                                                slidesToShow: 13
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 820,
+                                            settings: {
+                                                slidesToShow: 12
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 760,
+                                            settings: {
+                                                slidesToShow: 11
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 700,
+                                            settings: {
+                                                slidesToShow: 10
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 640,
+                                            settings: {
+                                                slidesToShow: 9
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 580,
+                                            settings: {
+                                                slidesToShow: 8
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 520,
+                                            settings: {
+                                                slidesToShow: 7
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 460,
+                                            settings: {
+                                                slidesToShow: 6
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 400,
+                                            settings: {
+                                                slidesToShow: 5
+                                            }
+                                        }
+                                    ]
+                                });
+                            })
+
+                            </script>
+                            [UnasDesign - IfEnd{alt_pic}]
+
+                            [UnasDesign - IfStart{pic_exists}]
+                                [UnasDesign - IfStart{!alt_pic}]
+                                <script>
+                                $(document).ready(function() {
+                                    initPhotoSwipeFromDOM();
+                                })
+                                </script>
+                                [UnasDesign - IfEnd{!alt_pic}]
+
+                                <div class="photoSwipeDatas">
+                                    <a aria-hidden="true" tabindex="-1" href="[UnasDesign - Normal{pic_big_raw}]" data-size="[UnasDesign - Normal{pic_big_width}]x[UnasDesign - Normal{pic_big_height}]"></a>
+                                    [UnasDesign - IfStart{alt_images_disp}]
+                                        [UnasDesign - LoopStart{alt_images}]
+                                            [UnasDesign - Loop{alt_images} - IfStart{disp}]
+                                            [UnasDesign - Loop{alt_images} - IfStart{!big_disp}]
+                                            <a aria-hidden="true" tabindex="-1" href="[UnasDesign - Loop{alt_images} - Normal{url}]" data-size="[UnasDesign - Normal{backvar_alt_pic_maxwidth}]x[UnasDesign - Normal{backvar_alt_pic_maxheight}]"></a>
+                                            [UnasDesign - Loop{alt_images} - IfEnd{!big_disp}]
+
+                                            [UnasDesign - Loop{alt_images} - IfStart{big_disp}]
+                                            <a aria-hidden="true" tabindex="-1" href="[UnasDesign - Loop{alt_images} - Normal{big_url}]" data-size="[UnasDesign - Loop{alt_images} - Normal{big_width}]x[UnasDesign - Loop{alt_images} - Normal{big_height}]"></a>
+                                            [UnasDesign - Loop{alt_images} - IfEnd{big_disp}]
+                                            [UnasDesign - Loop{alt_images} - IfEnd{disp}]
+                                        [UnasDesign - LoopEnd{alt_images}]
+                                    [UnasDesign - IfEnd{alt_images_disp}]
+                                </div>
+                            [UnasDesign - IfEnd{pic_exists}]
+                        </div>
+                    </div>
+                </div>
+                <div class='artdet__data-outer col-lg-6 pt-4 pt-lg-0 pl-lg-5'>
+
+                    [UnasDesign - IfStart{product_param_spec_disp}]
+                        <div id="artdet__param-spec" class="artdet__spec-params font-s font-sm-m">
+                            [UnasDesign - LoopStart{product_param_spec}]
+                            <div class="artdet__spec-param py-2 product_param_type_[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_type}]" id="page_artdet_product_param_spec_[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_id}]" >
+                                <div class="row gutters-10 align-items-center">
+                                    <div class="col-6 text-right">
+                                        <label class="artdet__spec-param-title d-inline-block position-relative align-baseline pr-0" for="[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_id}]">
+                                            [UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_title_orig}]
+                                            [UnasDesign - Loop{product_param_spec} - IfStart{product_param_spec_desc_if}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_desc}]</span></span>
+                                            [UnasDesign - Loop{product_param_spec} - IfEnd{product_param_spec_desc_if}]
+                                        </label>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <div class="artdet__spec-param-value">[UnasDesign - Loop{product_param_spec} - Normal{product_param_spec_value}]</div>
+                                    </div>
+                                </div>
+                            </div>
+                            [UnasDesign - LoopEnd{product_param_spec}]
+                        </div>
+                        [UnasDesign - IfStart{product_param_disp|data_1_disp|data_2_disp|data_3_disp|sku_disp|link_disp|weight_disp|point_disp|min_quant_disp|unit_step_disp}]
+                        <div class="artdet__to-data-section-btn-outer text-center btn--grad-sep-wrap mb-3 mt-3">
+                            <button type="button" class='artdet__to-data-section-btn js-scroll-down btn--grad-sep btn--small' data-scroll='data'>[UnasDesign - Text{more_data}]</button>
+                        </div>
+                        [UnasDesign - IfEnd{product_param_disp|data_1_disp|data_2_disp|data_3_disp|sku_disp|link_disp|weight_disp|point_disp|min_quant_disp|unit_step_disp}]
+                    [UnasDesign - IfEnd{product_param_spec_disp}]
+
+                    [UnasDesign - IfStart{product_type_disp}]
+                    <div id="artdet__type" class="product-type mb-4[UnasDesign - IfStart{product_type_style_select}] product-type--style-select[UnasDesign - IfEnd{product_type_style_select}][UnasDesign - IfStart{!product_type_style_select}] product-type--style-button[UnasDesign - IfEnd{!product_type_style_select}][UnasDesign - IfStart{product_type_price}] has-price[UnasDesign - IfEnd{product_type_price}]">
+                        [UnasDesign - LoopStart{product_type}]
+                            [UnasDesign - IfStart{product_type_style_select}]
+                                <div class="product-type__item [UnasDesign - Loop{product_type} - IfStart{product_type_param_desc_if}]has-description[UnasDesign - Loop{product_type} - IfEnd{product_type_param_desc_if}]" id="page_artdet_product_type_[UnasDesign - Loop{product_type} - Normal{product_type_id}]">
+                                    <div class="product-type__title d-inline-flex align-items-center position-relative">
+                                        [UnasDesign - Loop{product_type} - Normal{title}]
+                                        [UnasDesign - Loop{product_type} - IfStart{product_type_param_desc_if}]
+                                            <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{product_type} - Normal{desc}]</span></span>
+                                        [UnasDesign - Loop{product_type} - IfEnd{product_type_param_desc_if}]
+                                    </div>
+                                    <div class="product-type__values">[UnasDesign - Loop{product_type} - Normal{product_type_value}]</div>
+                                </div>
+                            [UnasDesign - IfEnd{product_type_style_select}]
+                            [UnasDesign - IfStart{!product_type_style_select}]
+                                <div class="product-type__item [UnasDesign - Loop{product_type} - IfStart{product_type_param_desc_if}]has-description[UnasDesign - Loop{product_type} - IfEnd{product_type_param_desc_if}]" id="page_artdet_product_type_[UnasDesign - Loop{product_type} - Normal{product_type_id}]">
+                                    <div class="product-type__title d-inline-flex align-items-center position-relative">
+                                        [UnasDesign - Loop{product_type} - Normal{title}]
+                                        [UnasDesign - Loop{product_type} - IfStart{product_type_param_desc_if}]
+                                        <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{product_type} - Normal{desc}]</span></span>
+                                        [UnasDesign - Loop{product_type} - IfEnd{product_type_param_desc_if}]
+                                    </div>
+                                    <div class="product-type__values d-flex flex-wrap">
+                                        [UnasDesign - Loop{product_type} - LoopStart{item}]
+                                        <div class="product-type__value-outer-wrap d-flex align-items-center" [UnasDesign - Loop{product_type} - Loop{item} - IfStart{exists&!selected}]onclick='product_type_mod("[UnasDesign - Loop{product_type} - Normal{product_type_id}]","[UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}]");'[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{exists&!selected}] data-sku='[UnasDesign - Loop{product_type} - Loop{item} - Normal{sku}]'>
+                                            <div class='product-type__value-wrap [UnasDesign - Loop{product_type} - Loop{item} - IfStart{!exists}]product-type-disabled[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{!exists}] font-s font-sm-m m-2 product-type__value--[UnasDesign - Loop{product_type} - Normal{product_type_type}][UnasDesign - Loop{product_type} - Loop{item} - IfStart{selected}] is-active[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{selected}][UnasDesign - Loop{product_type} - Loop{item} - IfStart{parent}] is-base[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{parent}]' [UnasDesign - Loop{product_type} - IfStart{product_type_color|product_type_color_text}]style="background-color:#[UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}];" data-hexa="[UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}]"[UnasDesign - Loop{product_type} - IfEnd{product_type_color|product_type_color_text}]>
+                                                [UnasDesign - Loop{product_type} - Loop{item} - IfStart{exists}]
+                                                <a onclick="return false;" class='product-type__value-link' href='[UnasDesign - Loop{product_type} - Loop{item} - Normal{url}]'
+                                                    [UnasDesign - Loop{product_type} - IfStart{product_type_color_text}]
+                                                    aria-label="[UnasDesign - Loop{product_type} - Loop{item} - Normal{title}]"
+                                                    [UnasDesign - Loop{product_type} - IfEnd{product_type_color_text}]
+                                                    [UnasDesign - Loop{product_type} - IfStart{product_type_color}]
+                                                    aria-label="hexa code [UnasDesign - Loop{product_type} - Loop{item} - Normal{value_orig}]"
+                                                    [UnasDesign - Loop{product_type} - IfEnd{product_type_color}]
+                                                    [UnasDesign - Loop{product_type} - IfStart{!product_type_pic&!product_type_piclink&!product_type_piclinktext&!product_type_icon}]
+                                                    aria-label="[UnasDesign - Loop{product_type} - Loop{item} - Normal{value}]"
+                                                    [UnasDesign - Loop{product_type} - IfEnd{!product_type_pic&!product_type_piclink&!product_type_piclinktext&!product_type_icon}]
+                                                >
+                                                [UnasDesign - Loop{product_type} - Loop{item} - IfEnd{exists}][UnasDesign - Loop{product_type} - Loop{item} - IfStart{!exists}]<div class='product-type__value-link product-type-disabled'>[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{!exists}]
+                                                    <span class='product-type__value'>[UnasDesign - Loop{product_type} - Loop{item} - Normal{value}]</span>
+                                                    [UnasDesign - IfStart{product_type_price}]<span class='product-type__price font-xs round-bracket-around ml-3'>[UnasDesign - Loop{product_type} - Loop{item} - Normal{price}]</span>[UnasDesign - IfEnd{product_type_price}]
+                                                [UnasDesign - Loop{product_type} - Loop{item} - IfStart{exists}]</a>[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{exists}][UnasDesign - Loop{product_type} - Loop{item} - IfStart{!exists}]</div>[UnasDesign - Loop{product_type} - Loop{item} - IfEnd{!exists}]
+                                            </div>
+                                            [UnasDesign - Loop{product_type} - IfStart{product_type_color_text}]
+                                                <span class='mr-4'>[UnasDesign - Loop{product_type} - Loop{item} - Normal{title}]</span>
+                                            [UnasDesign - Loop{product_type} - IfEnd{product_type_color_text}]
+                                        </div>
+                                        [UnasDesign - Loop{product_type} - LoopEnd{item}]
+                                        <input class='product_type_select' type='hidden' id='param_type_[UnasDesign - Loop{product_type} - Normal{product_type_id}]' data-param_id='[UnasDesign - Loop{product_type} - Normal{product_type_id}]' value='[UnasDesign - Loop{product_type} - Normal{product_type_value_act}]'>
+                                    </div>
+                                </div>
+                            [UnasDesign - IfEnd{!product_type_style_select}]
+                        [UnasDesign - LoopEnd{product_type}]
+                    </div>
+                    [UnasDesign - IfEnd{product_type_disp}]
+
+                    [UnasDesign - IfStart{is_subscribable}]
+                        <div id="artdet__subscription-period" class="subscription-period js-subscription-block font-s font-sm-m mb-4">
+                            <div class="subscription-periods">
+                                <div class="subscription-periods__title">
+                                    [UnasDesign - Text{name:select_subscription_period;page:shop_artdet;}]:
+                                </div>
+                                <div class="d-flex flex-wrap align-items-center">
+                                    [UnasDesign - IfStart{one_time_purchasable}]
+                                        <label class="subscription-period__item is-active" for="subscription_0">
+                                            <span class="subscription-period__item-text">[UnasDesign - Text{name:one_time_purchase;page:shop_artdet;}]</span>
+                                        </label>
+                                        <input class="d-none" name="subscription_period" checked="checked" id="subscription_0" value="0" type="radio" />
+                                    [UnasDesign - IfEnd{one_time_purchasable}]
+                                    [UnasDesign - LoopStart{subscription_periods}]
+                                        <label class="subscription-period__item[UnasDesign - Loop{subscription_periods} - IfStart{checked}] is-active[UnasDesign - Loop{subscription_periods} - IfEnd{checked}]" for="subscription_[UnasDesign - Loop{subscription_periods} - Normal{length}]">
+                                            <span class="subscription-period__item-text">[UnasDesign - Loop{subscription_periods} - Normal{length}]&nbsp;[UnasDesign - Text{name:date_day;page:common;}]</span>
+                                        </label>
+                                        <input class="d-none" name="subscription_period" id="subscription_[UnasDesign - Loop{subscription_periods} - Normal{length}]" value="[UnasDesign - Loop{subscription_periods} - Normal{length}]" type="radio"[UnasDesign - Loop{subscription_periods} - IfStart{checked}] checked="checked"[UnasDesign - Loop{subscription_periods} - IfEnd{checked}] />
+                                    [UnasDesign - LoopEnd{subscription_periods}]
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).on('click','.subscription-period__item',function(){
+                                let block = $(this).closest('.js-subscription-block');
+                                $('.subscription-period__item', block).removeClass('is-active');
+                                $(this).addClass('is-active');
+                            });
+                        </script>
+                    [UnasDesign - IfEnd{is_subscribable}]
+
+                    [UnasDesign - IfStart{other_disp}]
+                    <div id="artdet__other" class='product-variants mb-4 font-s font-sm-m'>
+                        <div class='product-variants-inner'>
+                            [UnasDesign - IfStart{other_1_disp}]
+                                <div class='product-variant product-variant--1 d-flex'>
+                                    <div class="col-6 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                        <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_1_label}]</div>
+                                    </div>
+                                    <div class="col-6 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                        <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_1_select}]</div>
+                                    </div>
+                                </div>
+                            [UnasDesign - IfEnd{other_1_disp}]
+                            [UnasDesign - IfStart{other_2_disp}]
+                                <div class='product-variant product-variant--2 d-flex'>
+                                    <div class="col-6 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                        <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_2_label}]</div>
+                                    </div>
+                                    <div class="col-6 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                        <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_2_select}]</div>
+                                    </div>
+                                </div>
+                            [UnasDesign - IfEnd{other_2_disp}]
+                            [UnasDesign - IfStart{other_3_disp}]
+                                <div class='product-variant product-variant--3 d-flex'>
+                                    <div class="col-6 bg-7 align-self-stretch text-right border-right d-flex align-items-center justify-content-end">
+                                        <div class='product-variant__label py-3 line-height-12'>[UnasDesign - Normal{other_3_label}]</div>
+                                    </div>
+                                    <div class="col-6 bg-6 align-self-stretch text-left px-0 d-flex align-items-center">
+                                        <div class='product-variant__select-outer w-100'>[UnasDesign - Normal{other_3_select}]</div>
+                                    </div>
+                                </div>
+                            [UnasDesign - IfEnd{other_3_disp}]
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{other_disp}]
+
+                    [UnasDesign - Normal{other_temp}]
+
+                    <!-- Plus service BEGIN -->
+                    [UnasDesign - IfStart{service_plus_disp}]
+                    <div id="artdet__service-plus" class="plus-service mb-4 p-4">
+                        <div class="plus-service__inner usn">
+                            [UnasDesign - IfStart{service_plus_none_disp}]
+                            <div class="plus-service__item plus-service__item--none service_plus_radio">
+                                <input class="plus-service__radio-input" id="service_plus_none_radio" name="service_plus" value='' type="radio" checked="checked">
+                                <label class="plus-service__label d-flex justify-content-between align-items-center px-0" for="service_plus_none_radio">
+                                    <span class="flex-grow-1 plus-service__name pr-3">[UnasDesign - Text{service_plus_none}]</span>
+                                    <span class="plus-service__price text-right">-</span>
+                                </label>
+                            </div>
+                            [UnasDesign - IfEnd{service_plus_none_disp}]
+
+                            [UnasDesign - LoopStart{service_plus_loop}]
+                            <div class="plus-service__item service_plus_radio mt-2">
+                                <input class="product-service-plus__radio-input" name="service_plus" id="[UnasDesign - Loop{service_plus_loop} - Normal{id}]" value="[UnasDesign - Loop{service_plus_loop} - Normal{id}]" type="radio"[UnasDesign - Loop{service_plus_loop} - IfStart{checked}] checked="checked"[UnasDesign - Loop{service_plus_loop} - IfEnd{checked}]>
+                                <label class="plus-service__label d-flex justify-content-between align-items-center px-0" for="[UnasDesign - Loop{service_plus_loop} - Normal{id}]">
+                                    <span class="flex-grow-1 plus-service__name pr-3">[UnasDesign - Loop{service_plus_loop} - Normal{name}]</span>
+                                    <span class="plus-service__price text-right">[UnasDesign - Loop{service_plus_loop} - Normal{price}]</span>
+                                </label>
+                            </div>
+                            [UnasDesign - LoopEnd{service_plus_loop}]
+                        </div>
+                    </div>
+                    [UnasDesign - IfEnd{service_plus_disp}]
+                    <!-- Plus service END -->
+
+                    [UnasDesign - IfStart{price_disp}]
+                        <div id="artdet__price" class="artdet__price with-rrp text-center mb-4">
+                            [UnasDesign - IfStart{price_net_disp}]
+                                <div class="artdet__price-base position-relative [UnasDesign - IfStart{price_akcio_disp}]artdet__price-base-has-discount[UnasDesign - IfEnd{price_akcio_disp}] [UnasDesign - IfStart{price_akcio_no_disp}]artdet__price-base-discount-prices-disabled[UnasDesign - IfEnd{price_akcio_no_disp}]">
+                                    [UnasDesign - IfStart{price_normal_text_disp}]
+                                        [UnasDesign - Normal{price_normal_text}]
+                                    [UnasDesign - IfEnd{price_normal_text_disp}]
+                                    [UnasDesign - Normal{price_net}][UnasDesign - IfStart{price_normal_info_text_disp}]&nbsp;<span class="page_artdet_param_desc param_desc_popup param_desc_popup_ver4" data-tippy="[UnasDesign - Normal{price_normal_info_text}]"><span><p>[UnasDesign - Normal{price_normal_info_text}]</p></span></span>[UnasDesign - IfEnd{price_normal_info_text_disp}]
+                                </div>
+                            [UnasDesign - IfEnd{price_net_disp}]
+
+                            [UnasDesign - IfStart{price_akcio_disp}]
+                                <div class="artdet__price-discount">
+                                    [UnasDesign - IfStart{price_discounted_text_disp}]
+                                        [UnasDesign - Normal{price_discounted_text}]
+                                    [UnasDesign - IfEnd{price_discounted_text_disp}]
+                                    [UnasDesign - Normal{price_akcio}]
+                                </div>
+                            [UnasDesign - IfEnd{price_akcio_disp}]
+
+                            [UnasDesign - IfStart{price_akcio_text_disp}]
+                                <div class="artdet__price-discount-period mb-1">
+                                    <span class="artdet__price-discount-period-start">[UnasDesign - Normal{price_akcio_text_start}]</span>&nbsp;&nbsp;
+                                    <span class="artdet__price-discount-period-end">[UnasDesign - Normal{price_akcio_text_end}]</span>
+                                </div>
+                            [UnasDesign - IfEnd{price_akcio_text_disp}]
+
+                            [UnasDesign - IfStart{price_unit_disp}]
+                                <div class="artdet__price-unit mb-1">[UnasDesign - Text{art_price_unit}]: [UnasDesign - Normal{price_unit}]</div>
+                            [UnasDesign - IfEnd{price_unit_disp}]
+
+                            [UnasDesign - IfStart{point_highlighted_disp}]
+                                <div class="artdet__virtual-point-highlighted mb-1">[UnasDesign - Text{art_virt_pont}]: [UnasDesign - Normal{point}]</div>
+                            [UnasDesign - IfEnd{point_highlighted_disp}]
+
+                            [UnasDesign - IfStart{sale_countdown_disp}]
+                                <div class="artdet__countdown mt-4 [UnasDesign - IfStart{!sale_countdown_animate}]countdown--simple[UnasDesign - IfEnd{!sale_countdown_animate}]">
+
+                                    <div class="cd__label mt-2">[UnasDesign - Text{sale_conuntdown_label}]:</div>
+
+                                    [UnasDesign - IfStart{sale_countdown_animate}]<div id="cd_color_front"></div><div id="cd_color_back"></div>[UnasDesign - IfEnd{sale_countdown_animate}]
+                                    <div id="cd_custom" class="d-flex justify-content-center"></div>
+                                    <script type="text/javascript">
+                                        var countDownDate = new Date('[UnasDesign - Normal{sale_countdown_date_end}]').getTime();
+                                        var countStartDate = new Date('[UnasDesign - Normal{sale_countdown_date_start}]');
+                                        var daysdiff = Math.floor((countDownDate - countStartDate) / (1000 * 60 * 60 * 24));
+                                        var cd_color_front=$("#cd_color_front").css("background-color");
+                                        var cd_color_back=$("#cd_color_back").css("background-color");
+
+                                        var x = setInterval(function() {
+
+                                            var now = new Date().getTime();
+                                            var distance = countDownDate - now;
+
+                                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                            hours = (hours < 10? "0": "") + hours;
+                                            minutes = (minutes < 10? "0": "") + minutes;
+                                            seconds = (seconds < 10? "0": "") + seconds;
+
+                                            document.getElementById("cd_custom").innerHTML = "<div class='cd_day'><div class='cd_wrap'>" + days + "<span class='cd_txt'>[UnasDesign - Text{name:date_day;page:common}]</span></div></div><div class='cd_hour'><div class='cd_wrap'>" + hours + "<span class='cd_txt'>[UnasDesign - Text{name:date_hour;page:common}]</span></div></div><div class='cd_min'><div class='cd_wrap'>" + minutes + "<span class='cd_txt'>[UnasDesign - Text{name:date_min;page:common}]</span></div></div><div class='cd_sec'><div class='cd_wrap'>" + seconds + "<span class='cd_txt'>[UnasDesign - Text{name:date_sec;page:common}]</span></div></div>";
+
+                                            [UnasDesign - IfStart{sale_countdown_animate}]
+
+                                            var dayB = $('.cd_day');
+                                            var hourB = $('.cd_hour');
+                                            var minB = $('.cd_min');
+                                            var secB = $('.cd_sec');
+
+                                            if (seconds > 59) { seconds = 0; }
+                                            var degSec = 360*(seconds/60);
+                                            if (degSec <= 180) {
+                                                secB.css('background-image','linear-gradient(' + (90+degSec) + 'deg, transparent 50%, '+cd_color_back+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+                                            else {
+                                                secB.css('background-image','linear-gradient(' + (degSec-90) + 'deg, transparent 50%, '+cd_color_front+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+
+                                            if (minutes > 59) { minutes = 0; }
+                                            var degMin = 360*(minutes/60);
+                                            if (degMin <= 180) {
+                                                minB.css('background-image','linear-gradient(' + (90+degMin) + 'deg, transparent 50%, '+cd_color_back+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+                                            else {
+                                                minB.css('background-image','linear-gradient(' + (degMin-90) + 'deg, transparent 50%, '+cd_color_front+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+
+                                            if (hours > 23) { hours = 0; }
+                                            var degHr = 360*(hours/24);
+                                            if (degHr <= 180) {
+                                                hourB.css('background-image','linear-gradient(' + (90+degHr) + 'deg, transparent 50%, '+cd_color_back+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+                                            else {
+                                                hourB.css('background-image','linear-gradient(' + (degHr-90) + 'deg, transparent 50%, '+cd_color_front+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+
+                                            var degDay = 360*(days/daysdiff);
+                                            if (degDay == 0) {
+                                                dayB.css('background-image','linear-gradient(' + (0) + 'deg, transparent 50%, '+cd_color_back+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+                                            if (degDay <= 180) {
+                                                dayB.css('background-image','linear-gradient(' + (90+degDay) + 'deg, transparent 50%, '+cd_color_back+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+                                            else {
+                                                dayB.css('background-image','linear-gradient(' + (degDay-90) + 'deg, transparent 50%, '+cd_color_front+' 50%),linear-gradient(90deg, '+cd_color_back+' 50%, transparent 50%)');
+                                            }
+
+                                            var startdeg = 0;
+                                            dayB.css('transform','rotate(' + startdeg + 'deg)');
+                                            hourB.css('transform','rotate(' + startdeg + 'deg)');
+                                            minB.css('transform','rotate(' + startdeg + 'deg)');
+                                            secB.css('transform','rotate(' + startdeg + 'deg)');
+                                            $(".cd_wrap").css('transform','rotate(' + (-startdeg) + 'deg)');
+
+                                            [UnasDesign - IfEnd{sale_countdown_animate}]
+
+                                        }, 1000);
+                                    </script>
+                                </div>
+                            [UnasDesign - IfEnd{sale_countdown_disp}]
+
+                            [UnasDesign - IfStart{price_disp_no}]
+                            <div class="artdet__price-login-btn-wrap">
+                                <button class="artdet__price-login-btn btn btn--link price-need-login btn--no-text-transform line-height-12" type="button" onclick="overlay_login()">[UnasDesign - Text{name:needlogin_price;page:common}]</button>
+                            </div>
+                            [UnasDesign - IfEnd{price_disp_no}]
+                        </div>
+                    [UnasDesign - IfEnd{price_disp}]
+
+                    [UnasDesign - IfStart{product_subscribe_enabled|cart_disp}]
+                        <div id="artdet__subscribe" class="artdet__subscribe-cart-outer border-top text-center mb-3 fs-0">
+                            <div class="artdet__subscribe-cart-inner gradual-item border border-top-0">
+                                [UnasDesign - IfStart{cart_disp}]
+                                    [UnasDesign - IfStart{cart_yes_disp}]
+                                        <div class="artdet__cart mb-3 mx-3">
+                                            <div class="artdet__cart-inner d-flex align-items-center justify-content-center bg--secondary">
+                                                <div class="page_qty_input_outer py-3">
+                                                    <div class="artdet__cart-btn-input-wrap d-flex justify-content-center">
+                                                        <button type='button' class='qtyminus qtyminus_common qty_disable icon--minus btn--square-sm btn--primary' aria-label="[UnasDesign - Text{name:minus;page:design}]"></button>
+                                                        <div class="artdet__cart-input-wrap page_qty_input_wrap d-flex align-items-center justify-content-center">
+                                                            <input name="db" id="[UnasDesign - Normal{cart_input_id}]" type="number" step="[UnasDesign - Normal{cart_input_data_step}]" value="[UnasDesign - Normal{cart_input_data_min}]" class="artdet__cart-input page_qty_input" data-min="[UnasDesign - Normal{cart_input_data_min}]" data-max="[UnasDesign - Normal{cart_input_data_max}]" data-step="[UnasDesign - Normal{cart_input_data_step}]" aria-label="[UnasDesign - Text{name:cart_menny;page:cart}]">
+
+                                                            [UnasDesign - IfStart{cart_unit_disp}]
+                                                            <div class='artdet__cart-unit text-center usn'>[UnasDesign - Normal{cart_unit}]</div>
+                                                            [UnasDesign - IfEnd{cart_unit_disp}]
+                                                        </div>
+                                                        <button type='button' class='qtyplus qtyplus_common icon--plus btn--square-sm btn--primary' aria-label="[UnasDesign - Text{name:plus;page:design}]"></button>
+                                                    </div>
+                                                </div>
+                                                <div class='artdet__cart-btn-wrap usn'>[UnasDesign - Normal{cart_text}]</div>
+                                            </div>
+                                        </div>
+                                    [UnasDesign - IfEnd{cart_yes_disp}]
+                                    [UnasDesign - IfStart{cart_no_disp}]
+                                        <div class="artdet__cart-no-stock text-color--out-of-stock icon--b-out-of-stock p-3">[UnasDesign - Text{name:no_stock;page:common}]</div>
+                                    [UnasDesign - IfEnd{cart_no_disp}]
+                                [UnasDesign - IfEnd{cart_disp}]
+
+                                [UnasDesign - IfStart{product_subscribe_enabled}]
+                                    [UnasDesign - IfStart{!price_disp_no}]
+                                        <div class="artdet__subscribe mx-3">
+                                            <button onclick='[UnasDesign - Normal{art_subscribe_button_click}]' class='artdet__subscribe-btn btn--text btn--block icon--b-bell btn--small [UnasDesign - Normal{art_subscribe_button_class}]' id='[UnasDesign - Normal{art_subscribe_button_id}]'>
+                                                [UnasDesign - Normal{art_subscribe_text_only}]
+                                            </button>
+                                        </div>
+                                    [UnasDesign - IfEnd{!price_disp_no}]
+                                [UnasDesign - IfEnd{product_subscribe_enabled}]
+
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{product_subscribe_enabled|cart_disp}]
+
+                    [UnasDesign - IfStart{inquire_disp}]
+                        <div id="artdet__inquire" class='artdet__inquire-btn-wrap text-center my-4 text-center'>
+                            <button type="button" class="artdet__inquire-btn btn btn--primary icon--b-info" onclick="popup_question_dialog('[UnasDesign - Normal{sku_id}]'); return false;">[UnasDesign - Text{inquire}]</button>
+                        </div>
+                    [UnasDesign - IfEnd{inquire_disp}]
+
+                    [UnasDesign - IfStart{short_desc_disp}]
+                        <div id="artdet__short-descrition" class="artdet__short-descripton [UnasDesign - IfStart{!long_desc_disp}]mb-3[UnasDesign - IfEnd{!long_desc_disp}]">
+                            <div class="artdet__short-descripton-content js-short-descripton__content font-s font-sm-m">[UnasDesign - Normal{short_desc}]</div>
+                        </div>
+
+                        [UnasDesign - IfStart{long_desc_disp}]
+                        <div class="artdet__to-long-descripton-btn-wrap text-center mb-4 btn--grad-sep-wrap mt-3">
+                            <button type="button" class='artdet__to-long-descripton-btn js-scroll-down btn--grad-sep btn--small' data-scroll='long-description'>[UnasDesign - Text{more_description}]</button>
+                        </div>
+                        [UnasDesign - IfEnd{long_desc_disp}]
+                    [UnasDesign - IfEnd{short_desc_disp}]
+
+                    [UnasDesign - IfStart{artdet_func_disp}]
+                        <div id="artdet__functions" class="artdet__function d-flex justify-content-center mx-auto mb-3">
+                            [UnasDesign - IfStart{artdet_func_favourites_disp}]
+                                <div class='artdet__function-outer artdet-func-favourites page_artdet_func_favourites_outer_[UnasDesign - Normal{sku_id}][UnasDesign - IfStart{artdet_func_favourites_checked}] added[UnasDesign - IfEnd{artdet_func_favourites_checked}]'>
+                                    <a class='artdet__function-btn function-btn tooltip page_artdet_func_favourites_[UnasDesign - Normal{sku_id}]'
+                                       href='[UnasDesign - Normal{artdet_func_favourites_href}]' id="page_artdet_func_favourites" aria-label="[UnasDesign - Normal{artdet_func_favourites_text_raw}]">
+                                        <div class="artdet__function-icon function-icon icon--favo"></div>
+                                        <div class="artdet__function-text tooltip-text page_artdet_func_favourites_text_[UnasDesign - Normal{sku_id}]">[UnasDesign - Normal{artdet_func_favourites_text_raw}]</div>
+                                    </a>
+                                </div>
+                            [UnasDesign - IfEnd{artdet_func_favourites_disp}]
+
+                            [UnasDesign - IfStart{artdet_func_recommend_disp}]
+                                <div class='artdet__function-outer artdet-func-recommend'>
+                                    <a class='artdet__function-btn function-btn tooltip' href='[UnasDesign - Normal{artdet_func_recommend_href}]' id="page_artdet_func_recommend" aria-label="[UnasDesign - Normal{artdet_func_recommend_text}]">
+                                        <div class="artdet__function-icon function-icon icon--mail"></div>
+                                        <div class="artdet__function-text tooltip-text">[UnasDesign - Normal{artdet_func_recommend_text}]</div>
+                                     </a>
+                                </div>
+                            [UnasDesign - IfEnd{artdet_func_recommend_disp}]
+
+                            [UnasDesign - IfStart{artdet_func_print_disp}]
+                                <div class='artdet__function-outer artdet-func-print d-none d-lg-block'>
+                                    <a class='artdet__function-btn function-btn tooltip' href='[UnasDesign - Normal{artdet_func_print_href}]' id="page_artdet_func_print" aria-label="[UnasDesign - Normal{artdet_func_print_text}]">
+                                        <div class="artdet__function-icon function-icon icon--print"></div>
+                                        <div class="artdet__function-text tooltip-text">[UnasDesign - Normal{artdet_func_print_text}]</div>
+                                    </a>
+                                </div>
+                            [UnasDesign - IfEnd{artdet_func_print_disp}]
+
+                            [UnasDesign - IfStart{artdet_func_compare_disp}]
+                                <div class='artdet__function-outer artdet-func-compare'>
+                                    <a class='artdet__function-btn function-btn tooltip page_artdet_func_compare_[UnasDesign - Normal{sku_id}][UnasDesign - IfStart{artdet_func_compare_checked}] page_artdet_func_compare_checked[UnasDesign - IfEnd{artdet_func_compare_checked}]'
+                                       href='[UnasDesign - Normal{artdet_func_compare_href}]' id="page_artdet_func_compare"
+                                       [UnasDesign - IfStart{compare_checked}]
+                                       aria-label="[UnasDesign - Text{name:compare_delete;page:design}]"
+                                       [UnasDesign - IfEnd{compare_checked}]
+                                       [UnasDesign - IfStart{!compare_checked}]
+                                       aria-label="[UnasDesign - Text{name:compare;page:design}]"
+                                       [UnasDesign - IfEnd{!compare_checked}]
+                                    >
+                                        <div class="artdet__function-icon function-icon icon--compare"></div>
+                                        <div class="artdet__function-text function-text tooltip-text page_artdet_func_compare_text_[UnasDesign - Normal{sku_id}]"
+                                             data-text-add="[UnasDesign - Text{name:compare;page:design}]" data-text-delete="[UnasDesign - Text{name:compare_delete;page:design}]"
+                                        >
+                                            [UnasDesign - IfStart{compare_checked}][UnasDesign - Text{name:compare_delete;page:design}][UnasDesign - IfEnd{compare_checked}]
+                                            [UnasDesign - IfStart{!compare_checked}][UnasDesign - Text{name:compare;page:design}][UnasDesign - IfEnd{!compare_checked}]
+                                        </div>
+                                     </a>
+                                </div>
+                            [UnasDesign - IfEnd{artdet_func_compare_disp}]
+
+                            [UnasDesign - IfStart{artdet_func_question_disp}]
+                                <div class='artdet__function-outer artdet-func-question'>
+                                    <a class="artdet__function-btn function-btn tooltip" aria-label="[UnasDesign - Normal{artdet_func_question_text}]"
+                                       href='[UnasDesign - Normal{artdet_func_question_href}]' id="page_artdet_func_question">
+                                        <div class="artdet__function-icon function-icon icon--question"></div>
+                                        <div class="artdet__function-text tooltip-text">[UnasDesign - Normal{artdet_func_question_text}]</div>
+                                     </a>
+                                </div>
+                            [UnasDesign - IfEnd{artdet_func_question_disp}]
+                        </div>
+                    [UnasDesign - IfEnd{artdet_func_disp}]
+                
+                    [UnasDesign - IfStart{warehouses_disp}]
+                        <div class="artdet__warehouses">
+                            [UnasDesign - LoopStart{warehouses}]
+                                <div class="artdet__warehouse warehouse-[UnasDesign - Loop{warehouses} - Normal{id}] pb-2 mb-2">
+                                    <div class="artdet__warehouse--inner row no-gutters">
+                                        <div class="artdet__warehouse-left col">
+                                            <div class="artdet__warehouse-name pb-2">[UnasDesign - Loop{warehouses} - Normal{name}]</div>
+                                        </div>
+                                        <div class="artdet__warehouse-right col-auto d-flex align-items-center">
+                                            <div class="artdet__warehouse-quantity[UnasDesign - Loop{warehouses} - IfStart{variant_infos_disp}] has-variant-info[UnasDesign - Loop{warehouses} - IfEnd{variant_infos_disp}]">
+                                                [UnasDesign - Loop{warehouses} - IfStart{stock_text_disp}]
+                                                [UnasDesign - Loop{warehouses} - IfStart{out_of_stock}]
+                                                [UnasDesign - Text{name:out_of_stock;page:common}]
+                                                [UnasDesign - Loop{warehouses} - IfEnd{out_of_stock}]
+
+                                                [UnasDesign - Loop{warehouses} - IfStart{!out_of_stock}]
+                                                [UnasDesign - Text{name:in_stock;page:common}]
+                                                [UnasDesign - Loop{warehouses} - IfEnd{!out_of_stock}]
+                                                [UnasDesign - Loop{warehouses} - IfEnd{stock_text_disp}]
+
+                                                [UnasDesign - Loop{warehouses} - IfStart{!stock_text_disp}]
+                                                [UnasDesign - Loop{warehouses} - IfStart{out_of_stock}]
+                                                0 [UnasDesign - Normal{unit}]
+                                                [UnasDesign - Loop{warehouses} - IfEnd{out_of_stock}]
+
+                                                [UnasDesign - Loop{warehouses} - IfStart{!out_of_stock}]
+                                                [UnasDesign - Loop{warehouses} - Normal{quantity}] [UnasDesign - Normal{unit}]
+                                                [UnasDesign - Loop{warehouses} - IfEnd{!out_of_stock}]
+                                                [UnasDesign - Loop{warehouses} - IfEnd{!stock_text_disp}]
+                                            </div>
+
+                                            [UnasDesign - Loop{warehouses} - IfStart{variant_infos_disp}]
+                                            <span class="artdet__warehouse-variant-info icon--info" data-tippy="
+                                            [UnasDesign - Loop{warehouses} - LoopStart{variant_infos}]
+                                                <div class='warehouse__variant-info mb-2 pb-2 d-flex flex-nowrap justify-content-between' style='min-width: 150px;'>
+                                                    <div class='warehouse__variant-info-name'>[UnasDesign - Loop{warehouses} - Loop{variant_infos} - Normal{name}]</div>
+                                                    <div class='warehouse__variant-info-quantity'>
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{stock_text_disp}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{out_of_stock}]
+                                                            [UnasDesign - Text{name:out_of_stock;page:common}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{out_of_stock}]
+
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{!out_of_stock}]
+                                                            [UnasDesign - Text{name:in_stock;page:common}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{!out_of_stock}]
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{stock_text_disp}]
+
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{!stock_text_disp}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{out_of_stock}]
+                                                            0 [UnasDesign - Normal{unit}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{out_of_stock}]
+
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfStart{!out_of_stock}]
+                                                            [UnasDesign - Loop{warehouses} - Loop{variant_infos} - Normal{quantity}] [UnasDesign - Normal{unit}]
+                                                        [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{!out_of_stock}]
+                                                    [UnasDesign - Loop{warehouses} - Loop{variant_infos} - IfEnd{!stock_text_disp}]
+                                                    </div>
+                                                </div>
+                                            [UnasDesign - Loop{warehouses} - LoopEnd{variant_infos}]
+                                        "></span>
+                                            [UnasDesign - Loop{warehouses} - IfEnd{variant_infos_disp}]
+                                        </div>
+                                    </div>
+
+                                    [UnasDesign - Loop{warehouses} - IfStart{info_disp}]
+                                    <div class="artdet__warehouse-info-wrapper row no-gutters">
+                                        <div class="artdet__warehouse-info">[UnasDesign - Loop{warehouses} - Normal{info}]</div>
+                                    </div>
+                                    [UnasDesign - Loop{warehouses} - IfEnd{info_disp}]
+                                </div>
+                            [UnasDesign - LoopEnd{warehouses}]
+                        </div>
+                    [UnasDesign - IfEnd{warehouses_disp}]
+                </div>
+            </div>
+        </div>
+
+        [UnasDesign - IfStart{artpack_tab_disp}]
+        <div id="artdet__bundle-product" class="bundle-product mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap slick-center">
+            <div class="bundle-product__title title--theme-1">[UnasDesign - Text{tab_artpack}] <span class="bundle-product__page-info mb-3 text-muted round-bracket-around d-none"><span class="itemsum"></span></span></div>
+            <div class="bundle-product__items-wrapper">
+                <div class="additional-product__loader-wrapper text-center">
+                    <div class="additional-product__loader"></div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $(".bundle-product__items-wrapper").load('[UnasDesign - Normal{bundle_product_url}]', function () {
+                        var $status3 = $('.bundle-product__page-info .itemsum');
+                        var $slickElement3 = $(".bundle-product__items");
+
+                        $slickElement3.on('init reInit', function(event, slick){
+                            $status3.text(slick.slideCount);
+                            $('.bundle-product__page-info').removeClass("d-none");
+                        });
+
+                        $slickElement3.not('.slick-initialized').slick({
+                            autoplay: false,
+                            dots: false,
+                            arrows: true,
+                            infinite: false,
+                            speed: 1000,
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                            useTransform: true,
+                            adaptiveHeight: false,
+                            touchThreshold: 80,
+                            mobileFirst: true,
+                            lazyLoad: 'ondemand',
+                            waitForAnimate: 'false',
+                            responsive: [
+                                {
+                                    breakpoint: 575,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 3
+                                    }
+                                },
+                                {
+                                    breakpoint: 767,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 3
+                                    }
+                                },
+                                {
+                                    breakpoint: 1019,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 4
+                                    }
+                                },
+                                {
+                                    breakpoint: 1259,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 3
+                                    }
+                                },
+                                {
+                                    breakpoint: 1365,
+                                    settings: {
+                                        draggable: false,
+                                        slidesToShow: 4,
+                                        slidesToScroll: 4
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+            </script>
+        </div>
+        [UnasDesign - IfEnd{artpack_tab_disp}]
+
+        [UnasDesign - IfStart{artpack_disp}]
+        <div id="artdet__bundle-product" class='bundle-product'>
+            [UnasDesign - Normal{artpack_pack}]
+        </div>
+        [UnasDesign - IfEnd{artpack_disp}]
+
+        [UnasDesign - IfStart{gift_disp}]
+        <div id="artdet__gift-product" class='gift-product'>
+            [UnasDesign - Normal{gift}]
+        </div>
+        [UnasDesign - IfEnd{gift_disp}]
+
+        [UnasDesign - IfStart{package_offers_disp}]
+        <section id="artdet__package-offers" class="artdet__package-offers mb-5 d-none">
+            <div class="artdet__package-offers-title title--theme-1 h6">[UnasDesign - Text{package_offers}]</div>
+            <div class="package-offers__wrapper">
+                <div class="package-offers__loader-wrapper text-center">
+                    <div class="package-offers__loader"></div>
+                </div>
+            </div>
+
+            <script>
+                function openVariantsOverlay(productNode) {
+                    let productCard = $(productNode);
+
+                    productCard.addClass("is-active-variant-layer");
+                    productCard.removeClass("has-unselected-variant");
+                }
+
+                function closeVariantsOverlay(closeBtn) {
+                    let productCard = $(closeBtn).closest(".js-package-offer-item");
+
+                    productCard.removeClass("is-active-variant-layer");
+                    productCard.addClass("has-unselected-variant");
+                }
+
+                $(document).ready(function () {
+                    let packageOffersWrapper = $(".package-offers__wrapper");
+                    let packageOffersURL = "[UnasDesign - Normal{package_offers_url}]";
+
+                    packageOffersWrapper.load(packageOffersURL, function (response) {
+                        if (response !== "" && response !== "no") {
+                            $("#artdet__package-offers").removeClass('d-none');
+                        }
+                    });
+                });
+            </script>
+        </section>
+        [UnasDesign - IfEnd{package_offers_disp}]
+
+        [UnasDesign - IfStart{long_desc_disp}]
+        <section id="artdet__long-description" class="long-description mb-5">
+            <div class="long-description__title title--theme-1 h6">[UnasDesign - Text{tab_detail}]</div>
+            <div class="long-description__content font-s font-sm-m">[UnasDesign - Normal{long_desc}]</div>
+        </section>
+        [UnasDesign - IfEnd{long_desc_disp}]
+
+        [UnasDesign - IfStart{product_param_disp|data_1_disp|data_2_disp|data_3_disp|sku_disp|link_disp|weight_disp|point_disp|min_quant_disp|unit_step_disp}]
+            <div id="artdet__datas" class="data mb-5">
+                <div class="data__title title--theme-1">[UnasDesign - Text{tab_data}]</div>
+                <div class="data__items font-xs font-sm-m row gutters-20">
+                    [UnasDesign - IfStart{product_param_disp}]
+                        [UnasDesign - LoopStart{product_param}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-param">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right" id="page_artdet_product_param_title_[UnasDesign - Loop{product_param} - Normal{product_param_id}]">
+                                    [UnasDesign - Loop{product_param} - Normal{product_param_title_orig}]
+                                    [UnasDesign - Loop{product_param} - IfStart{product_param_desc_if}]
+                                        <span class='page_artdet_param_desc param_desc_popup param_desc_popup_ver4'><span>[UnasDesign - Loop{product_param} - Normal{product_param_desc}]</span></span>
+                                    [UnasDesign - Loop{product_param} - IfEnd{product_param_desc_if}]
+                                </div>
+                                <div class="data__item-value col-6 pl-3" id="page_artdet_product_param_value_[UnasDesign - Loop{product_param} - Normal{product_param_id}]">[UnasDesign - Loop{product_param} - Normal{product_param_value}]</div>
+                            </div>
+                        </div>
+                        [UnasDesign - LoopEnd{product_param}]
+                    [UnasDesign - IfEnd{product_param_disp}]
+
+                    [UnasDesign - IfStart{data_1_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-plus1">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Normal{data_1_title}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{data_1}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{data_1_disp}]
+
+                    [UnasDesign - IfStart{data_2_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-plus2">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Normal{data_2_title}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{data_2}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{data_2_disp}]
+
+                    [UnasDesign - IfStart{data_3_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-plus3">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Normal{data_3_title}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{data_3}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{data_3_disp}]
+
+                    [UnasDesign - IfStart{sku_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-sku">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Text{art_cikk}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{sku}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{sku_disp}]
+
+                    [UnasDesign - IfStart{link_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-plus-data-url">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Text{art_link}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{link}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{link_disp}]
+
+                    [UnasDesign - IfStart{weight_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-weight">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Text{art_weight}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{weight}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{weight_disp}]
+
+                    [UnasDesign - IfStart{point_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-virtual-point">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Text{art_virt_pont}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{point}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{point_disp}]
+
+                    [UnasDesign - IfStart{min_quant_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-min-quantity">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Text{art_minorder}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{min_quant}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{min_quant_disp}]
+
+                    [UnasDesign - IfStart{unit_step_disp}]
+                        <div class="data__item col-md-6 col-lg-4 col-xl-6 col-xxl-4 data__item-unit-step">
+                            <div class="data__item-wrap row no-gutters h-100 align-items-center">
+                                <div class="data__item-title col-6 pr-3 text-right">[UnasDesign - Text{unit_step}]</div>
+                                <div class="data__item-value col-6 pl-3">[UnasDesign - Normal{unit_step}]</div>
+                            </div>
+                        </div>
+                    [UnasDesign - IfEnd{unit_step_disp}]
+                </div>
+            </div>
+        [UnasDesign - IfEnd{product_param_disp|data_1_disp|data_2_disp|data_3_disp|sku_disp|link_disp|weight_disp|point_disp|min_quant_disp|unit_step_disp}]
+
+        [UnasDesign - IfStart{discount_disp}]
+        <div id="artdet__discount" class='discount mb-5'>
+            <div class="discount__title title--theme-1">[UnasDesign - Text{tab_discount}]</div>
+            <div class="discount__content">
+                <div class="table">
+                    <div class="th">
+                        <div class="tr">
+                            <div class="td discount__text-ordered-qty">[UnasDesign - Text{post_full}]</div>
+                            <div class="td discount__text-discount-amount">[UnasDesign - Text{kedv_perc}]</div>
+                            <div class="td discount__text-product-price">[UnasDesign - Text{art_price}]</div>
+                        </div>
+                    </div>
+                    <div class="tbody">
+                    [UnasDesign - LoopStart{discount_qty}]
+                        <div class="tr">
+                        <div class="td" data-label="[UnasDesign - Text{post_full}]">
+                            <div class="td-inner">
+                                <div class="discount__from-wrap">
+                                    <span class="discount__from">[UnasDesign - Loop{discount_qty} - Normal{from}]<span class="discount__interval-sign">+</span></span>
+                                    <span class="discount__unit text-muted font-s">&nbsp;[UnasDesign - Normal{unit}]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="td" data-label="[UnasDesign - Text{kedv_perc}]">
+                            <div class="td-inner">
+                                [UnasDesign - Loop{discount_qty} - IfStart{no}]
+                                    <span class="discount__text-no-discount">[UnasDesign - Text{kedv_no}]</span>
+                                [UnasDesign - Loop{discount_qty} - IfEnd{no}]
+
+                                [UnasDesign - Loop{discount_qty} - IfStart{!no}]
+                                    [UnasDesign - Loop{discount_qty} - IfStart{percent}]
+                                    <span class="discount__amount percent-based">-[UnasDesign - Loop{discount_qty} - Normal{discount}]</span>&nbsp;%
+                                    [UnasDesign - Loop{discount_qty} - IfEnd{percent}]
+
+                                    [UnasDesign - Loop{discount_qty} - IfStart{!percent}]
+                                    <span class="discount__amount amount-based">-[UnasDesign - Loop{discount_qty} - Normal{discount}]</span>
+                                    [UnasDesign - Loop{discount_qty} - IfEnd{!percent}]
+                                [UnasDesign - Loop{discount_qty} - IfEnd{!no}]
+                            </div>
+                        </div>
+                        <div class="td" data-label="[UnasDesign - Text{art_price}]"><div class="td-inner"><span class="discount__product-price">[UnasDesign - Loop{discount_qty} - Normal{price}]</span></div></div>
+                     </div>
+                    [UnasDesign - LoopEnd{discount_qty}]
+                    </div>
+                </div>
+            </div>
+        </div>
+        [UnasDesign - IfEnd{discount_disp}]
+
+         <!--ADDITIONAL PRODUCTS-->
+        [UnasDesign - IfStart{attach_disp}]
+        <div id="artdet__additional-product" class="additional-product mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-gap slick-center">
+            <div class="additional-product__title title--theme-1">[UnasDesign - Text{tab_attach}] <span class="additional-product__page-info mb-3 text-muted round-bracket-around d-none"><span class="itemsum"></span></span></div>
+            <div class="additional-product__items_wrapper">
+                <div class="additional-product__loader-wrapper text-center">
+                    <div class="additional-product__loader"></div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $(".additional-product__items_wrapper").load('[UnasDesign - Normal{additional_products_url}]', function (response) {
+                if (response==="no") {
+                    $("#artdet__additional-product").hide();
+                    return;
+                }
+
+                var $status1 = $('.additional-product__page-info .itemsum');
+                var $slickElement1 = $(".additional-product__items");
+
+                $slickElement1.on('init reInit', function(event, slick){
+                    $status1.text(slick.slideCount);
+                    $('.additional-product__page-info').removeClass("d-none");
+                });
+
+                $slickElement1.not('.slick-initialized').slick({
+                    autoplay: false,
+                    dots: false,
+                    arrows: true,
+                    infinite: false,
+                    speed: 1000,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    useTransform: true,
+                    adaptiveHeight: false,
+                    touchThreshold: 80,
+                    mobileFirst: true,
+                    lazyLoad: 'ondemand',
+                    waitForAnimate: 'false',
+                    responsive: [
+                        {
+                            breakpoint: 575,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        },
+                        {
+                            breakpoint: 1019,
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4
+                            }
+                        },
+                        {
+                            breakpoint: 1259,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        },
+                        {
+                            breakpoint: 1365,
+                            settings: {
+                                draggable: false,
+                                slidesToShow: 4,
+                                slidesToScroll: 4
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+        </script>
+        [UnasDesign - IfEnd{attach_disp}]
+
+        [UnasDesign - IfStart{attach2_disp}]
+        <div id="artdet__similar-product" class="similar-product mb-5 slick-arrow--middle slick-arrow--white slick-arrow--small slick-center slick-gap">
+            <div class="similar-product__title title--theme-1">[UnasDesign - Text{tab_attach2}] <span class="similar-product__page-info mb-3 text-muted round-bracket-around d-none"><span class="itemsum"></span></span></div>
+            <div class="similar-product__items_wrapper">
+                <div class="similar-product__loader-wrapper text-center">
+                    <div class="similar-product__loader"></div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".similar-product__items_wrapper").load('[UnasDesign - Normal{similar_products_url}]', function (response) {
+                    if (response==="no") {
+                        $("#artdet__similar-product").hide();
+                        return;
+                    }
+
+                    var $status2 = $('.similar-product__page-info .itemsum');
+                    var $slickElement2 = $(".similar-product__items");
+
+                    $slickElement2.on('init reInit', function(event, slick){
+                        $status2.text(slick.slideCount);
+                        $('.similar-product__page-info').removeClass("d-none");
+                    });
+
+                    $slickElement2.not('.slick-initialized').slick({
+                        autoplay: false,
+                        dots: false,
+                        arrows: true,
+                        infinite: false,
+                        speed: 1000,
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        useTransform: true,
+                        adaptiveHeight: false,
+                        touchThreshold: 80,
+                        mobileFirst: true,
+                        lazyLoad: 'ondemand',
+                        waitForAnimate: 'false',
+                        responsive: [
+                            {
+                                breakpoint: 575,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 3
+                                }
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 3
+                                }
+                            },
+                            {
+                                breakpoint: 1019,
+                                settings: {
+                                    slidesToShow: 4,
+                                    slidesToScroll: 4
+                                }
+                            },
+                            {
+                                breakpoint: 1259,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 3
+                                }
+                            },
+                            {
+                                breakpoint: 1365,
+                                settings: {
+                                    draggable: false,
+                                    slidesToShow: 4,
+                                    slidesToScroll: 4,
+                                    centerMode: false
+                                }
+                            }
+
+                        ]
+                    });
+                });
+            });
+        </script>
+        [UnasDesign - IfEnd{attach2_disp}]
+
+        [UnasDesign - IfStart{attach_cross_disp}]
+            <div id="artdet__additional-product--cross" class='additionol-product--cross'>
+                [UnasDesign - Normal{attach_cross}]
+            </div>
+        [UnasDesign - IfEnd{attach_cross_disp}]
+
+        [UnasDesign - IfStart{forum_disp}]
+        <div id="artdet__art-forum" class="art-forum with-verified-opinions my-5">
+            <div class="art-forum__title title--theme-1">[UnasDesign - Text{tab_forum}]</div>
+            <div class="art-forum__content py-3">
+
+                [UnasDesign - IfStart{forum_yes_disp}]
+                <div class='artforum__review border-bottom pb-5'>
+                    <div class="row">
+                        <div class="col-sm-5 col-md-3">
+                            <div class="review-summary">
+                                <div class="review-summary__average-text mb-3 h4">
+                                    [UnasDesign - Text{forum_avr}]:
+                                </div>
+                                <div class="review-summary__stars rating-stars">
+                                    <div class="rating-stars__back">
+                                        <div class="rating-stars__front" style="width: [UnasDesign - Normal{forum_score_percent}]%;"></div>
+                                    </div>
+                                </div>
+                                <div class="review-summary__score-wrap">
+                                    <span class="review-summary__score-num pr-2">[UnasDesign - Normal{forum_score_num}]</span>
+                                    <span class="review-summary__reviews-count">([UnasDesign - Normal{forum_count}] [UnasDesign - Text{name:forum_review;}])</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-7 col-md-5">
+                            <div class="artforum__summary-bars mt-4 mt-sm-0">
+                                <div class="artforum__summary-bar mb-2">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                            <div class="star-5-text">5</div>
+                                            <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress-bar-full">
+                                                <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_5}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_5}])</div>
+                                    </div>
+                                </div>
+                                <div class="artforum__summary-bar mb-2">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                            <div class="star-5-text">4</div>
+                                            <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress-bar-full">
+                                                <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_4}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_4}])</div>
+                                    </div>
+                                </div>
+                                <div class="artforum__summary-bar mb-2">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                            <div class="star-5-text">3</div>
+                                            <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress-bar-full">
+                                                <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_3}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_3}])</div>
+                                    </div>
+                                </div>
+                                <div class="artforum__summary-bar mb-2">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                            <div class="star-5-text">2</div>
+                                            <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress-bar-full">
+                                                <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_2}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_2}])</div>
+                                    </div>
+                                </div>
+                                <div class="artforum__summary-bar">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-fix-1 text-right d-flex justify-content-end align-items-center pr-3 d-flex justify-content-end align-items-center pr-3">
+                                            <div class="star-5-text">1</div>
+                                            <div class="icon icon--star icon--solid icon--ml color--primary"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress-bar-full">
+                                                <div class="progress-bar" style="width: calc( 100% * [UnasDesign - Normal{forum_count_1}] / [UnasDesign - Normal{forum_count}]);"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-fix-1 text-left pl-3">([UnasDesign - Normal{forum_count_1}])</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="artforum__write-your-own-opinion mt-4 mt-md-0 text-center text-md-left">
+                                <div class="h4">[UnasDesign - Text{forum_not_yet}]</div>
+                                <div class='product-review__write-review-btn-outer mt-3'>
+                                    <a class="product-review__write-review-btn btn btn--primary" href="[UnasDesign - Normal{forum_more_link}]">[UnasDesign - Text{forum_next}]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                [UnasDesign - IfEnd{forum_yes_disp}]
+
+                [UnasDesign - IfStart{forum_no_disp}]
+                <div class="artforum__write-your-own-opinion">
+                    <div class="row justify-content-around align-items-center">
+                        <div class="my-3 mx-2 h4">[UnasDesign - Text{forum_no}]</div>
+                        <div class='product-review__write-review-btn-outer mx-2'>
+                            <a class="product-review__write-review-btn btn btn--primary font-md" href="[UnasDesign - Normal{forum_more_link}]">[UnasDesign - Text{forum_next}]</a>
+                        </div>
+                    </div>
+                </div>
+                [UnasDesign - IfEnd{forum_no_disp}]
+
+                [UnasDesign - IfStart{forum_yes_disp}]
+
+                <div class="product-reviews">
+                    [UnasDesign - LoopStart{forum}]
+                    <div class='product-review border-bottom py-5'>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="product-review__head d-flex flex-wrap">
+                                    <div class="col-auto pl-0 pr-3">
+                                        <div class="product-review__avatar">
+                                            [UnasDesign - Loop{forum} - IfStart{!forum_name_disp}]
+                                                <div class="product-review__avatar-default-icon icon--comment"></div>
+                                            [UnasDesign - Loop{forum} - IfEnd{!forum_name_disp}]
+
+                                            [UnasDesign - Loop{forum} - IfStart{forum_name_disp}]
+                                                <div class="product-review__avatar-first-letter">[UnasDesign - Loop{forum} - Normal{forum_name}]</div>
+                                            [UnasDesign - Loop{forum} - IfEnd{forum_name_disp}]
+                                        </div>
+                                    </div>
+                                    <div class="col px-0">
+                                        [UnasDesign - Loop{forum} - IfStart{forum_name_disp}]
+                                            <div class="product-review__author line-clamp--3-12 font-weight-700">[UnasDesign - Loop{forum} - Normal{forum_name}]</div>
+                                        [UnasDesign - Loop{forum} - IfEnd{forum_name_disp}]
+                                        <div class="product-review__email font-s text-muted">[UnasDesign - Loop{forum} - Normal{forum_email}]</div>
+                                        <div class="product-review__created-at d-flex font-s text-muted">
+                                            <div class="product-review__created-date">[UnasDesign - Loop{forum} - Normal{forum_date}]</div>
+                                            <div class="product-review__created-time">&nbsp;-&nbsp;[UnasDesign - Loop{forum} - Normal{forum_time}]</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="product-review__body">
+                                    <div class="d-flex mt-2 align-items-center">
+                                        <div class="product-review__stars rating-stars">
+                                            <div class="rating-stars__back">
+                                                <div class="rating-stars__front" style="width:calc( 100% * [UnasDesign - Loop{forum} - Normal{forum_score}] / 5);"></div>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{forum} - IfStart{is_verified_customer}]
+                                            <div class="verified-customer-wrap ml-3">
+                                                <div class="verified-customer__badge">[UnasDesign - Text{name:verified_customer;page:artforum}]</div>
+                                            </div>
+                                        [UnasDesign - Loop{forum} - IfEnd{is_verified_customer}]
+                                    </div>
+                                    <div class='product-review__wrap'>
+                                        <div class='product-review__message my-3'>[UnasDesign - Loop{forum} - Normal{forum_message}]</div>
+                                        [UnasDesign - IfStart{write_pros_cons_disp}]
+                                        [UnasDesign - Loop{forum} - IfStart{pro_disp|con_disp}]
+                                        <div class="product-review__adv-disadv row">
+                                            [UnasDesign - Loop{forum} - IfStart{pro_disp}]
+                                            <div class="col-sm-6">
+                                                <div class="product-review__advantage mb-3">[UnasDesign - Loop{forum} - Normal{forum_message_pros}]</div>
+                                            </div>
+                                            [UnasDesign - Loop{forum} - IfEnd{pro_disp}]
+
+                                            [UnasDesign - Loop{forum} - IfStart{con_disp}]
+                                            <div class="col-sm-6">
+                                                <div class="product-review__disadvantage mb-2">[UnasDesign - Loop{forum} - Normal{forum_message_cons}]</div>
+                                            </div>
+                                            [UnasDesign - Loop{forum} - IfEnd{con_disp}]
+                                        </div>
+                                        [UnasDesign - Loop{forum} - IfEnd{pro_disp|con_disp}]
+                                        [UnasDesign - IfEnd{write_pros_cons_disp}]
+
+                                        [UnasDesign - IfStart{write_pros_cons_disp}]
+
+                                        [UnasDesign - IfEnd{write_pros_cons_disp}]
+
+                                        [UnasDesign - Loop{forum} - IfStart{images_disp}]
+                                        <div class='product-review__images row no-gutters mt-2 pl-2'>
+                                            <div class='product-review__images-title mb-2 col-12'>
+                                                <strong>[UnasDesign - Text{name:art_image;page:artdet}]:</strong>
+                                            </div>
+
+                                            <div class='product-review__images-wrap col-12'>
+                                                <div class="product-review__images-inner row">
+                                                    [UnasDesign - Loop{forum} - LoopStart{images}]
+                                                    <div class="product-review__image js-init-ps-reviews mb-2 col-md-4 col-sm-6" data-loop-index="[UnasDesign - Loop{forum} - Loop{images} - Normal{pswp_loop_index}]">
+                                                        <img src="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_url}]" alt="[UnasDesign - Normal{name}]" title="[UnasDesign - Normal{name}]"
+                                                             width="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_width}]" height="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_height}]"
+                                                       >
+                                                    </div>
+                                                    [UnasDesign - Loop{forum} - LoopEnd{images}]
+                                                </div>
+                                            </div>
+                                        </div>
+                                        [UnasDesign - Loop{forum} - IfEnd{images_disp}]
+                                        [UnasDesign - Loop{forum} - IfStart{admin_answer_disp}]
+                                        <div class="product-review__admin-answer-wrap">
+                                            <div class="product-review__admin-answer-title">
+                                                <strong>[UnasDesign - Loop{forum} - Normal{respondent}]:</strong>
+                                            </div>
+
+                                            <div class="product-review__admin-answer">[UnasDesign - Loop{forum} - Normal{admin_answer}]</div>
+                                        </div>
+                                        [UnasDesign - Loop{forum} - IfEnd{admin_answer_disp}]
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    [UnasDesign - LoopEnd{forum}]
+                </div>
+
+                <div class='product-review__write-review-btn-outer mt-5 text-center pb-4'>
+                    <a class="product-review__write-review-btn btn btn--alt" href="[UnasDesign - Normal{forum_more_link}]">[UnasDesign - Text{forum_next}]</a>
+                </div>
+                [UnasDesign - IfEnd{forum_yes_disp}]
+
+                [UnasDesign - IfStart{forum_facebook_disp}]
+                    <div class='art-forum__facebook'>[UnasDesign - Normal{forum_facebook}]</div>
+                [UnasDesign - IfEnd{forum_facebook_disp}]
+            </div>
+        </div>
+        [UnasDesign - IfEnd{forum_disp}]
+
+
+        [UnasDesign - IfStart{custom_section_1_disp|custom_section_2_disp|custom_section_3_disp}]
+        <div id="artdet__add-datas" class="art-add-datas">
+            [UnasDesign - LoopStart{add_data}]
+                [UnasDesign - Loop{add_data} - IfStart{add_data_content_disp}]
+                <div class="art-add-data__item-[UnasDesign - Loop{add_data} - Normal{add_data_num}] mb-4">
+                    <div class="art-add-data__title title--theme-1">[UnasDesign - Loop{add_data} - Normal{add_data_title}]</div>
+                    <div class="art-add-data__content py-3">
+                        [UnasDesign - Loop{add_data} - Normal{add_data_content}]
+                    </div>
+                </div>
+                [UnasDesign - Loop{add_data} - IfEnd{add_data_content_disp}]
+            [UnasDesign - LoopEnd{add_data}]
+        </div>
+        [UnasDesign - IfEnd{custom_section_1_disp|custom_section_2_disp|custom_section_3_disp}]
+
+        <div id="artdet__credits" class='artdet-credits'>
+            [UnasDesign - IfStart{price_disp}]
+                [UnasDesign - IfStart{artdet_credit_disp}]
+                <div class="cart-credit__title" id="page_artdet_credit_head">[UnasDesign - Normal{artdet_credit_head}]</div>
+                <div class="cart-credit__content" id="page_artdet_credit">
+                    <div class="text_small">[UnasDesign - Text{credit_cetelem}]</div>
+                    [UnasDesign - Normal{artdet_credit}]
+                </div>
+                [UnasDesign - IfEnd{artdet_credit_disp}]
+
+                [UnasDesign - IfStart{artdet_cofidis_credit_disp}]
+                <div class="cart-credit__title" id="page_artdet_cofidis_credit_head">[UnasDesign - Normal{artdet_cofidis_credit_head}]</div>
+                <div class="cart-credit__content" id="page_artdet_cofidis_credit">
+                    [UnasDesign - Normal{artdet_cofidis_credit}]
+                </div>
+                [UnasDesign - IfEnd{artdet_cofidis_credit_disp}]
+
+                [UnasDesign - IfStart{artdet_otp_aruhitel_credit_disp}]
+                <div class="cart-credit__title" id="page_artdet_otp_aruhitel_credit_head">[UnasDesign - Normal{artdet_otp_aruhitel_credit_head}]</div>
+                <div class="cart-credit__content" id="page_artdet_otp_aruhitel_credit">
+                    [UnasDesign - Normal{artdet_otp_aruhitel_credit}]
+                </div>
+                [UnasDesign - IfEnd{artdet_otp_aruhitel_credit_disp}]
+
+                <script type="text/javascript">
+                    var open_cetelem=false;
+                    $("#page_artdet_credit_head").click(function() {
+                        if(!open_cetelem) {
+                            $("#page_artdet_credit").slideDown( "100", function() {});
+                            open_cetelem = true;
+                        } else {
+                            $("#page_artdet_credit").slideUp( "100", function() {});
+                            open_cetelem = false;
+                        }
+                    });
+
+                    var open_cofidis=false;
+                    $("#page_artdet_cofidis_credit_head").click(function() {
+                        if(!open_cofidis) {
+                            $("#page_artdet_cofidis_credit").slideDown( "100", function() {});
+                            open_cofidis = true;
+                        } else {
+                            $("#page_artdet_cofidis_credit").slideUp( "100", function() {});
+                            open_cofidis = false;
+                        }
+                    });
+
+                    var open_otp_aruhitel=false;
+                    $("#page_artdet_otp_aruhitel_credit_head").click(function() {
+                        if(!open_otp_aruhitel) {
+                            $("#page_artdet_otp_aruhitel_credit").slideDown( "100", function() {});
+                            open_otp_aruhitel = true;
+                        } else {
+                            $("#page_artdet_otparuhitel_credit").slideUp( "100", function() {});
+                            open_otp_aruhitel = false;
+                        }
+                    });
+                </script>
+            [UnasDesign - IfEnd{price_disp}]
+        </div>
+        [UnasDesign - Normal{artdet_form_end}]
+
+        <div id="artdet__retargeting" class='artdet__retargeting'>
+            [UnasDesign - IfStart{retargeting_div_product_disp}]
+            [UnasDesign - IfStart{stock_available}]
+            [UnasDesign - Normal{retargeting_div_product}]
+            [UnasDesign - IfEnd{stock_available}]
+
+            [UnasDesign - IfStart{!stock_disabled}]
+            [UnasDesign - IfStart{!stock_available}]
+            [UnasDesign - Normal{retargeting_div_out_of_stock}]
+            [UnasDesign - IfEnd{!stock_available}]
+            [UnasDesign - IfEnd{!stock_disabled}]
+            [UnasDesign - IfEnd{retargeting_div_product_disp}]
+        </div>
+
+        <div id="artdet__plaza">
+            [UnasDesign - IfStart{plaza_disp}]
+                <div class="page_artdet_plaza_content"></div>
+            [UnasDesign - IfEnd{plaza_disp}]
+        </div>
+
+        [UnasDesign - IfEnd{art_yes}]
+
+        [UnasDesign - IfStart{art_no}]
+            <div class='page_artdet_name_outer'>
+                <div class='page_artdet_name'>[UnasDesign - Text{no_art}]</div>
+            </div>
+            <div class='line-separator'></div>
+            [UnasDesign - IfStart{ref_disp}]
+                [UnasDesign - Normal{ref}]
+            [UnasDesign - IfEnd{ref_disp}]
+        [UnasDesign - IfEnd{art_no}]
+    </div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close"></button>
+                    <button class="pswp__button pswp__button--fs"></button>
+                    <button class="pswp__button pswp__button--zoom"></button>
+                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left"></button>
+                <button class="pswp__button pswp__button--arrow--right"></button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    [UnasDesign - IfStart{upload_review_images}]
+    <div class="photoSwipeDatasReviews invisible">
+        [UnasDesign - LoopStart{forum}]
+        [UnasDesign - Loop{forum} - IfStart{images_disp}]
+        [UnasDesign - Loop{forum} - LoopStart{images}]
+        <a href="[UnasDesign - Loop{forum} - Loop{images} - Normal{img_url}]"></a>
+        [UnasDesign - Loop{forum} - LoopEnd{images}]
+        [UnasDesign - Loop{forum} - IfEnd{images_disp}]
+        [UnasDesign - LoopEnd{forum}]
+    </div>
+
+    <script>
+        var $clickElementToInitPsReviews = '.js-init-ps-reviews';
+
+        var initPhotoSwipeReviewsFromDOM = function () {
+            var $pswp = $('.pswp')[0];
+            var $psDatas = $('.photoSwipeDatasReviews');
+
+            $psDatas.each(function () {
+                var $pics = $(this),
+                    getItems = function () {
+                        var items = [];
+                        $pics.find('a').each(function () {
+                            var $this = $(this),
+                                $href = $this.attr('href'),
+                                $width = 0,
+                                $height = 0,
+                                item = {
+                                    src: $href,
+                                    w: $width,
+                                    h: $height
+                                };
+                            items.push(item);
+                        });
+                        return items;
+                    };
+
+                var items = getItems();
+
+                $($clickElementToInitPsReviews).on('click', function (event) {
+                    var $this = $(this);
+                    event.preventDefault();
+
+                    var $index = parseInt($this.attr('data-loop-index'));
+                    var options = {
+                        index: $index,
+                        history: false,
+                        bgOpacity: 0.5,
+                        shareEl: false,
+                        showHideOpacity: true,
+                        getThumbBoundsFn: function (index) {
+                            /** azon képeről nagyítson a photoswipe, melyek láthatók **/
+                            var thumbnails = $($clickElementToInitPsReviews).map(function () {
+                                var $this = $(this);
+                                if ($this.is(":visible")) {
+                                    return this;
+                                }
+                            }).get();
+
+                            var thumbnail = thumbnails[index];
+                            var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+                            var zoomedImgHeight = items[index].h;
+                            var zoomedImgWidth = items[index].w;
+                            var zoomedImgRatio = zoomedImgHeight / zoomedImgWidth;
+                            var rect = thumbnail.getBoundingClientRect();
+                            var zoomableImgHeight = rect.height;
+                            var zoomableImgWidth = rect.width;
+                            var zoomableImgRatio = (zoomableImgHeight / zoomableImgWidth);
+                            var offsetY = 0;
+                            var offsetX = 0;
+                            var returnWidth = zoomableImgWidth;
+
+                            if (zoomedImgRatio < 1) { /* a nagyított kép fekvő */
+                                if (zoomedImgWidth < zoomableImgWidth) { /*A nagyított kép keskenyebb */
+                                    offsetX = (zoomableImgWidth - zoomedImgWidth) / 2;
+                                    offsetY = (Math.abs(zoomableImgHeight - zoomedImgHeight)) / 2;
+                                    returnWidth = zoomedImgWidth;
+                                } else { /*A nagyított kép szélesebb */
+                                    offsetY = (zoomableImgHeight - (zoomableImgWidth * zoomedImgRatio)) / 2;
+                                }
+
+                            } else if (zoomedImgRatio > 1) { /* a nagyított kép álló */
+                                if (zoomedImgHeight < zoomableImgHeight) { /*A nagyított kép alacsonyabb */
+                                    offsetX = (zoomableImgWidth - zoomedImgWidth) / 2;
+                                    offsetY = (zoomableImgHeight - zoomedImgHeight) / 2;
+                                    returnWidth = zoomedImgWidth;
+                                } else { /*A nagyított kép magasabb */
+                                    offsetX = (zoomableImgWidth - (zoomableImgHeight / zoomedImgRatio)) / 2;
+                                    if (zoomedImgRatio > zoomableImgRatio) returnWidth = zoomableImgHeight / zoomedImgRatio;
+                                }
+                            } else { /*A nagyított kép négyzetes */
+                                if (zoomedImgWidth < zoomableImgWidth) { /*A nagyított kép keskenyebb */
+                                    offsetX = (zoomableImgWidth - zoomedImgWidth) / 2;
+                                    offsetY = (Math.abs(zoomableImgHeight - zoomedImgHeight)) / 2;
+                                    returnWidth = zoomedImgWidth;
+                                } else { /*A nagyított kép szélesebb */
+                                    offsetY = (zoomableImgHeight - zoomableImgWidth) / 2;
+                                }
+                            }
+
+                            return {x: rect.left + offsetX, y: rect.top + pageYScroll + offsetY, w: returnWidth};
+                        },
+                        getDoubleTapZoom: function (isMouseClick, item) {
+                            if (isMouseClick) {
+                                return 1;
+                            } else {
+                                return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+                            }
+                        }
+                    };
+
+                    var photoSwipeReviews = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+
+                    //Méret nélküli képekhez képek lekérdezése
+                    photoSwipeReviews.listen('gettingData', function (index, item) {
+                        if (item.w < 1 || item.h < 1) {
+                            var img = new Image();
+                            img.onload = function () { // Kép betöltése után lekéri a méreteket
+                                item.w = this.width; // Kép szélességének beállítása
+                                item.h = this.height; // Kép magasságának beállítása
+                                photoSwipeReviews.invalidateCurrItems(); // Elemek újra inicializálása
+                                photoSwipeReviews.updateSize(true); // Elemek újra inicializálása
+                            }
+                            img.src = item.src; // Képek betöltése
+                        }
+                    });
+
+                    photoSwipeReviews.init();
+                });
+            });
+        };
+
+        $(document).ready(function () {
+            initPhotoSwipeReviewsFromDOM();
+        });
+    </script>
+    [UnasDesign - IfEnd{upload_review_images}]
+</div><!--page_artdet_content-->
+<script>
+    $(document).ready(function(){
+        if (typeof initTippy == 'function'){
+                initTippy();
+            }
+    });
+</script>

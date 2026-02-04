@@ -1,0 +1,82 @@
+[UnasDesign - DesignVar{name:img_size;value:1}]
+[UnasDesign - DesignVar{name:slide_max;value:10}]
+[UnasDesign - DesignVar{name:enable;value:img,img_link}]
+
+[UnasDesign - IfStart{element_disp}]
+    [UnasDesign - IfStart{style_disp}]
+    <style>
+        [UnasDesign - LoopStart{slide}]
+            [UnasDesign - Loop{slide} - IfStart{num1_disp}]
+                [UnasDesign - Loop{slide} - IfStart{img_default_disp}]
+                    .[UnasDesign - Normal{name}]-img {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        top: 0;
+                        margin: 0 auto;
+                    }
+                    .[UnasDesign - Normal{name}]-img-wrapper {
+                        padding-top: calc([UnasDesign - Loop{slide} - Normal{img_default_height}] / [UnasDesign - Loop{slide} - Normal{img_default_width}] * 100%);
+                        position: relative;
+                    }
+                    .[UnasDesign - Normal{name}] {
+                        width: [UnasDesign - Loop{slide} - Normal{img_default_width}]px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    [UnasDesign - Loop{slide} - IfStart{img_large_disp}]
+                        @media (max-width: 1023.8px) {
+                            .[UnasDesign - Normal{name}]-img-wrapper {
+                                padding-top: calc([UnasDesign - Loop{slide} - Normal{img_large_height}] / [UnasDesign - Loop{slide} - Normal{img_large_width}] * 100%);
+                            }
+                            .[UnasDesign - Normal{name}] {
+                                width: [UnasDesign - Loop{slide} - Normal{img_large_width}]px;
+                            }
+                        }
+                    [UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+                    [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]
+                        @media (max-width: 767.8px){
+                            .[UnasDesign - Normal{name}]-img-wrapper {
+                                padding-top: calc([UnasDesign - Loop{slide} - Normal{img_medium_height}] / [UnasDesign - Loop{slide} - Normal{img_medium_width}] * 100%);
+                            }
+                            .[UnasDesign - Normal{name}] {
+                                width: [UnasDesign - Loop{slide} - Normal{img_medium_width}]px;
+                            }
+                        }
+                    [UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+                    [UnasDesign - Loop{slide} - IfStart{img_small_disp}]
+                        @media (max-width: 479.8px){
+                            .[UnasDesign - Normal{name}]-img-wrapper {
+                                padding-top: calc([UnasDesign - Loop{slide} - Normal{img_small_height}] / [UnasDesign - Loop{slide} - Normal{img_small_width}] * 100%);
+                            }
+                            .[UnasDesign - Normal{name}] {
+                                width: [UnasDesign - Loop{slide} - Normal{img_small_width}]px;
+                            }
+                        }
+                    [UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+                [UnasDesign - Loop{slide} - IfEnd{img_default_disp}]
+            [UnasDesign - Loop{slide} - IfEnd{num1_disp}]
+        [UnasDesign - LoopEnd{slide}]
+    </style>
+    [UnasDesign - IfEnd{style_disp}]
+
+    [UnasDesign - IfStart{!style_disp}]
+    <div class="js-element [UnasDesign - Normal{name}]" data-element-name="[UnasDesign - Normal{name}]">
+        [UnasDesign - LoopStart{slide}]
+            [UnasDesign - Loop{slide} - IfStart{img_default_disp}]
+                [UnasDesign - Loop{slide} - IfStart{img_link_disp}]<a href="[UnasDesign - Loop{slide} - Normal{img_link}]"[UnasDesign - Loop{slide} - IfStart{img_link_blank}] target="_blank"[UnasDesign - Loop{slide} - IfEnd{img_link_blank}]>[UnasDesign - Loop{slide} - IfEnd{img_link_disp}]
+                <div class="[UnasDesign - Normal{name}]-img-wrapper">
+                    <picture>
+                        [UnasDesign - Loop{slide} - IfStart{img_small_disp}]<source media="(max-width: 479.8px)" srcset="[UnasDesign - Loop{slide} - Normal{img_small}][UnasDesign - Loop{slide} - IfStart{img_small_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_small_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_small_retina_disp}]">[UnasDesign - Loop{slide} - IfEnd{img_small_disp}]
+                        [UnasDesign - Loop{slide} - IfStart{img_medium_disp}]<source media="(max-width: 767.8px)" srcset="[UnasDesign - Loop{slide} - Normal{img_medium}][UnasDesign - Loop{slide} - IfStart{img_medium_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_medium_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_medium_retina_disp}]">[UnasDesign - Loop{slide} - IfEnd{img_medium_disp}]
+                        [UnasDesign - Loop{slide} - IfStart{img_large_disp}]<source media="(max-width: 1019.8px)" srcset="[UnasDesign - Loop{slide} - Normal{img_large}][UnasDesign - Loop{slide} - IfStart{img_large_retina_disp}], [UnasDesign - Loop{slide} - Normal{img_large_retina}] 2x[UnasDesign - Loop{slide} - IfEnd{img_large_retina_disp}]">[UnasDesign - Loop{slide} - IfEnd{img_large_disp}]
+                        <img class="[UnasDesign - Normal{name}]-img" width="[UnasDesign - Loop{slide} - Normal{img_default_width}]" height="[UnasDesign - Loop{slide} - Normal{img_default_height}]" data-height="100" src="[UnasDesign - Loop{slide} - Normal{img_default}]" alt="[UnasDesign - Loop{slide} - IfStart{alt_disp}][UnasDesign - Loop{slide} - Normal{alt}][UnasDesign - Loop{slide} - IfEnd{alt_disp}][UnasDesign - Loop{slide} - IfStart{!alt_disp}][UnasDesign - Normal{service_name}][UnasDesign - Loop{slide} - IfEnd{!alt_disp}]"[UnasDesign - Loop{slide} - IfStart{img_default_retina_disp}] srcset="[UnasDesign - Loop{slide} - Normal{img_default_retina}] 2x"[UnasDesign - Loop{slide} - IfEnd{img_default_retina_disp}]>
+                    </picture>
+                </div>
+                [UnasDesign - Loop{slide} - IfStart{img_link_disp}]</a>[UnasDesign - Loop{slide} - IfEnd{img_link_disp}]
+            [UnasDesign - Loop{slide} - IfEnd{img_default_disp}]
+        [UnasDesign - LoopEnd{slide}]
+    </div>
+    [UnasDesign - IfEnd{!style_disp}]
+[UnasDesign - IfEnd{element_disp}]

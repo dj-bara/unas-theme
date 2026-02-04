@@ -1,0 +1,22 @@
+[UnasDesign - DesignVar{name:slide_max;value:10}]
+[UnasDesign - DesignVar{name:enable;value:maintitle,img,img_link,html;}]
+
+[UnasDesign - IfStart{element_disp}]
+<div class="js-element [UnasDesign - Normal{name}]" data-element-name="[UnasDesign - Normal{name}]">
+
+    [UnasDesign - IfStart{maintitle_disp}]
+    <header class="footer__header underline underline--short underline--thin">
+        <div class="h6">[UnasDesign - Normal{maintitle}]</div>
+    </header>
+    [UnasDesign - IfEnd{maintitle_disp}]
+
+    <nav>
+        <ul class="footer__list list--horizontal">
+        [UnasDesign - LoopStart{slide}]
+            <li>[UnasDesign - Loop{slide} - Normal{html}]</li>
+        [UnasDesign - LoopEnd{slide}]
+        </ul>
+    </nav>
+</div>
+[UnasDesign - IfEnd{element_disp}]
+

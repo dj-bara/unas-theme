@@ -1,0 +1,34 @@
+[UnasDesign - IfStart{!ajax}]<div id='box_compare_content'>[UnasDesign - IfEnd{!ajax}]
+
+	[UnasDesign - IfStart{compare_disp}]
+    [UnasDesign - IfStart{box_disp}]
+    
+    [UnasDesign - LoopStart{item}]
+    <div class='box_compare_element'>
+
+        <div class='box_compare_delete'><a href='javascript:[UnasDesign - Loop{item} - Normal{action_delete}]'></a></div>
+
+        [UnasDesign - Loop{item} - IfStart{pic_disp}]
+        <div class='box_compare_pic'>
+            [UnasDesign - Loop{item} - IfStart{pic_exists}][UnasDesign - Loop{item} - Normal{pic}][UnasDesign - Loop{item} - IfEnd{pic_exists}]
+        </div>
+        [UnasDesign - Loop{item} - IfEnd{pic_disp}]
+
+        <div class='box_compare_name'>
+		    <a href="[UnasDesign - Loop{item} - Normal{url}]">[UnasDesign - Loop{item} - Normal{name}]</a>
+		</div>
+
+        <div class='clear_fix'></div>
+
+    </div>
+    [UnasDesign - LoopEnd{item}]
+
+    <div class='box_compare_button'>[UnasDesign - Normal{button}]</div>
+    <div class='box_compare_header_menu'><a href="javascript:[UnasDesign - Normal{button_js}]">[UnasDesign - Text{name:compare;page:box_shop}]</a></div>
+    <div class='box_compare_button_num'><a href="javascript:[UnasDesign - Normal{button_js}]">[UnasDesign - Normal{item_num}]</a></div>    
+    
+    [UnasDesign - IfEnd{box_disp}]
+    [UnasDesign - Normal{script}]
+    [UnasDesign - IfEnd{compare_disp}]
+
+[UnasDesign - IfStart{!ajax}]</div>[UnasDesign - IfEnd{!ajax}]

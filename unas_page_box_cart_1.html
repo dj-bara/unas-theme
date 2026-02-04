@@ -1,0 +1,157 @@
+[UnasDesign - DesignVar{name:text_page;value:shop_cart}]
+
+[UnasDesign - IfStart{!div_no}]
+    <div[UnasDesign - IfStart{!id_no}] id='box_cart_content'[UnasDesign - IfEnd{!id_no}] class='cart-box [UnasDesign - IfStart{type_full}] js-dropdown-container[UnasDesign - IfEnd{type_full}]'>
+[UnasDesign - IfEnd{!div_no}]
+
+[UnasDesign - IfStart{type_full}]
+
+    <button class="cart-box__btn header-btn js-dropdown--btn dropdown--btn [UnasDesign - IfStart{!cart_empty}]has-product[UnasDesign - IfEnd{!cart_empty}]" aria-label="[UnasDesign - Text{name:cart_button;page:design;}]">
+        <span class="cart-box__btn-icon icon--cart">
+            [UnasDesign - IfStart{!cart_empty}]
+            <span class='cart-box__item-num'>[UnasDesign - Normal{cart_item_num}]</span>
+            [UnasDesign - IfEnd{!cart_empty}]
+        </span>
+    </button>
+    <div class='dropdown--content dropdown--content-r js-dropdown--content cart-box__dropdown js-cart-box__dropdown bg-white drop-shadow [UnasDesign - IfStart{!cart_empty}]p-4[UnasDesign - IfEnd{!cart_empty}]'>
+        <div class="cart-box__btn-close icon--close btn btn--square btn--link d-xl-none dropdown--btn-close js-dropdown--btn-close"></div>
+
+        [UnasDesign - IfStart{!cart_empty}]
+            [UnasDesign - IfStart{cart_disp}]
+
+            <div class="cart-box__dropdown-inner d-flex flex-column d-xl-block h-100 pb-5">
+                <div class="cart-box__items js-cart-box__dropdown__items">
+
+                    [UnasDesign - LoopStart{cart}]
+                    <div class="cart-box__item py-4 [UnasDesign - Loop{cart} - IfStart{is_package_offer_item}]cart-package-offer-item[UnasDesign - Loop{cart} - IfEnd{is_package_offer_item}] [UnasDesign - Loop{cart} - IfStart{!is_package_offer&!is_package_offer_item}]border-top[UnasDesign - Loop{cart} - IfEnd{!is_package_offer&!is_package_offer_item}][UnasDesign - Loop{cart} - IfStart{is_package_offer}]border-bottom[UnasDesign - Loop{cart} - IfEnd{is_package_offer}]">
+                        <div class="row no-gutters">
+
+                            [UnasDesign - Loop{cart} - IfStart{pic_allow|is_package_offer}]
+                            <div class="col-auto">
+                                [UnasDesign - Loop{cart} - IfStart{is_package_offer}]
+                                <div class="cart-box__package-offer-wrap d-flex justify-content-center align-items-center h-100">
+                                    <div class="icon--box-full font-xxxl"></div>
+                                </div>
+                                [UnasDesign - Loop{cart} - IfEnd{is_package_offer}]
+
+                                [UnasDesign - Loop{cart} - IfStart{pic_disp&!is_package_offer}]
+                                <div class="cart-box__pic-wrap">
+                                    <a href="[UnasDesign - Loop{cart} - Normal{url}]" title="[UnasDesign - Loop{cart} - Normal{name}]">
+                                        <img class="cart-box__pic" src='[UnasDesign - Loop{cart} - Normal{pic_src}]'
+                                             width="[UnasDesign - Normal{box_vars_img_width}]" height="[UnasDesign - Normal{box_vars_img_height}]"
+                                             [UnasDesign - Loop{cart} - IfStart{img_retina_exists}]
+                                             srcset="[UnasDesign - Loop{cart} - Normal{img_retina_url}] [UnasDesign - Loop{cart} - Normal{img_retina_size}]"
+                                             [UnasDesign - Loop{cart} - IfEnd{img_retina_exists}]
+                                             alt="[UnasDesign - Loop{cart} - Normal{pic_alt}]" title="[UnasDesign - Loop{cart} - Normal{pic_alt}]"
+                                        >
+                                    </a>
+                                </div>
+                                [UnasDesign - Loop{cart} - IfEnd{pic_disp&!is_package_offer}]
+                            </div>
+                            [UnasDesign - Loop{cart} - IfEnd{pic_allow|is_package_offer}]
+
+                            <div class='col pl-3 row no-gutters flex-column'>
+                                <div class='cart-box__name font-weight-700 font-s text-left line-clamp--3-12 mb-2'>
+                                    [UnasDesign - Loop{cart} - IfStart{!is_package_offer}]<a href='[UnasDesign - Loop{cart} - Normal{url}]'>[UnasDesign - Loop{cart} - IfEnd{!is_package_offer}]
+                                    [UnasDesign - Loop{cart} - Normal{name}]
+                                    [UnasDesign - Loop{cart} - IfStart{!is_package_offer}]</a>[UnasDesign - Loop{cart} - IfEnd{!is_package_offer}]
+                                </div>
+                                <div class='cart-box__variants line-height-12 text-muted font-s text-left'>
+                                    [UnasDesign - Loop{cart} - IfStart{variant1_disp}][UnasDesign - Loop{cart} - Normal{variant1}][UnasDesign - Loop{cart} - IfEnd{variant1_disp}]
+                                    [UnasDesign - Loop{cart} - IfStart{variant2_disp}],[UnasDesign - Loop{cart} - Normal{variant2}][UnasDesign - Loop{cart} - IfEnd{variant2_disp}]
+                                    [UnasDesign - Loop{cart} - IfStart{variant3_disp}],[UnasDesign - Loop{cart} - Normal{variant3}][UnasDesign - Loop{cart} - IfEnd{variant3_disp}]
+                                </div>
+                            </div>
+                            <div class="col-12 col-cart-box-fix px-0">
+                                <div class='cart-box__price row no-gutters align-items-center flex-row-reverse d-xl-block text-right line-height-12'>
+
+                                    [UnasDesign - Loop{cart} - IfStart{price_full_disp}]
+                                    <div class="cart-box__item-price--full font-s font-weight-700">[UnasDesign - Loop{cart} - Normal{price_full}]</div>
+                                    [UnasDesign - Loop{cart} - IfEnd{price_full_disp}]
+
+                                    <div class='cart-box__volume col d-flex d-xl-block font-xs my-2'>
+                                        <div class='cart-box__volume-qty'>[UnasDesign - Text{name:cart_menny;page:shop_cart}]:</div>
+                                        <span class='cart-box__volume-qty pl-2 font-weight-700'>[UnasDesign - Loop{cart} - Normal{qty}]</span>
+                                        <span class='cart-box__volume-unit pl-1'>[UnasDesign - Loop{cart} - Normal{unit}]</span>
+                                    </div>
+                                    [UnasDesign - Loop{cart} - IfStart{delete_disp&!is_package_offer_item}]
+                                    <div class="col-auto cart-box__del-bnt-wrap">
+                                        <a class="cart-box__del-btn btn btn--text btn--square btn--small icon--trash" href='[UnasDesign - Loop{cart} - Normal{delete_url}]' title="[UnasDesign - Text{name:dodel;page:common}]"></a>
+                                    </div>
+                                    [UnasDesign - Loop{cart} - IfEnd{delete_disp&!is_package_offer_item}]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    [UnasDesign - LoopEnd{cart}]
+                </div>
+                <div class='cart-box__sum font-weight-700 p-3'>
+                    <div class="row">
+                        [UnasDesign - IfStart{sum_text_disp}]
+                        <div class="col">
+                            <div class='cart-box__sum-text'>[UnasDesign - Normal{sum_text}]:</div>
+                        </div>
+                        [UnasDesign - IfEnd{sum_text_disp}]
+
+                        [UnasDesign - IfStart{sum_price_disp}]
+                        <div class="col">
+                            <div class='cart-box__sum-price'>[UnasDesign - Normal{sum_price_old}]</div>
+                        </div>
+                        [UnasDesign - IfEnd{sum_price_disp}]
+                    </div>
+                </div>
+                [UnasDesign - IfStart{order_button_disp&!disable_checkout_button}]
+                <div class="cart-box__to-checkout-wrap">
+                    <button class="cart-box__to-checkout btn--primary btn--block icon--a-right" onclick="location.href='[UnasDesign - Normal{order_url}]'" type='button'>[UnasDesign - Text{name:cart_order;page:box_shop}]</button>
+                </div>
+                [UnasDesign - IfEnd{order_button_disp&!disable_checkout_button}]
+
+                <div class="cart-box__to-cart-wrap">
+                    <button class="cart-box__to-cart[UnasDesign - IfStart{!disable_checkout_button}] btn--alt btn--link[UnasDesign - IfEnd{!disable_checkout_button}][UnasDesign - IfStart{disable_checkout_button}] btn--primary[UnasDesign - IfEnd{disable_checkout_button}] mt-3 btn--block" onclick="location.href='[UnasDesign - Normal{cart_url}]'" type='button'>[UnasDesign - Text{name:cart_button;page:box_shop}]</button>
+                </div>
+            </div>
+
+            [UnasDesign - IfEnd{cart_disp}]
+        [UnasDesign - IfEnd{!cart_empty}]
+
+        [UnasDesign - IfStart{cart_empty}]
+            <div class="cart-box__empty py-4 text-center">
+                [UnasDesign - IfStart{empty_text}]
+                    <span class='cart-box__empty-text'>[UnasDesign - Text{name:cart_empty;page:box_shop}].</span>
+                [UnasDesign - IfEnd{empty_text}]
+
+                [UnasDesign - IfStart{!empty_text}]
+                    <span class='cart-box__empty-num'>[UnasDesign - Normal{cart_item_num_text}].</span>
+                [UnasDesign - IfEnd{!empty_text}]
+
+                <a class="cart-box__jump-to-products-btn btn--link color--primary" href="[unas_shop_url]/sct/0/">[UnasDesign - Text{name:nocart_2;page:shop_cart}]</a>
+
+                [UnasDesign - IfStart{cart_restore_disp}]
+                    <button class="cart-box__restore-btn btn--small btn--primary mt-4" type="button" onclick="location.href='[UnasDesign - Normal{cart_restore_url}]';">[UnasDesign - Text{name:store_back_button;page:shop_cart}]</button>
+                [UnasDesign - IfEnd{cart_restore_disp}]
+            </div>
+        [UnasDesign - IfEnd{cart_empty}]
+    </div>
+[UnasDesign - IfEnd{type_full}]
+
+[UnasDesign - IfStart{type_brief}]
+    <div class="cart-box__type-brief-container w-100 text-center [UnasDesign - IfStart{click_yes}]js-cart-box-clickable cursor-pointer[UnasDesign - IfEnd{click_yes}]">
+
+        <div class='cart-box__cart-icon icon--cart [UnasDesign - IfStart{!cart_empty}]has-product[UnasDesign - IfEnd{!cart_empty}]'>
+            [UnasDesign - IfStart{!cart_empty}]
+                <div class='cart-box__item-num'>[UnasDesign - Normal{cart_item_num}]</div>
+            [UnasDesign - IfEnd{!cart_empty}]
+        </div>
+
+    </div>
+[UnasDesign - IfEnd{type_brief}]
+
+[UnasDesign - IfStart{!div_no}]</div>[UnasDesign - IfEnd{!div_no}]
+
+[UnasDesign - IfStart{click_yes}]
+    <script type='text/javascript'>
+        $('[UnasDesign - Normal{click_selector}]').click(function() {
+            document.location.href='[UnasDesign - Normal{cart_url}]';
+        });
+    </script>
+[UnasDesign - IfEnd{click_yes}]

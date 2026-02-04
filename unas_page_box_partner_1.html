@@ -1,0 +1,23 @@
+[UnasDesign - IfStart{horizontal_disp}]
+    [UnasDesign - Normal{horizontal}]
+[UnasDesign - IfEnd{horizontal_disp}]
+
+[UnasDesign - IfStart{!horizontal_disp}]
+<div class="partner__box d-inline-flex flex-wrap align-items-center justify-content-center my-3">
+    [UnasDesign - LoopStart{item}]
+    <div class="partner__item m-2">
+        [UnasDesign - Loop{item} - IfStart{custom}]
+            [UnasDesign - Loop{item} - Normal{content}]
+        [UnasDesign - Loop{item} - IfEnd{custom}]
+
+        [UnasDesign - Loop{item} - IfStart{!custom}]
+        <a href="[UnasDesign - Loop{item} - Normal{url}]" target="_blank" title="[UnasDesign - Loop{item} - Normal{alt}]" [UnasDesign - Loop{item} - Normal{nofollow}]>
+            <img class="partner__img lazyload" alt="[UnasDesign - Loop{item} - Normal{alt}]" width="[UnasDesign - Loop{item} - Normal{img_width}]" height="[UnasDesign - Loop{item} - Normal{img_height}]"
+                 src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{item} - Normal{img_url}]" data-srcset="[UnasDesign - Loop{item} - Normal{img_retina_url}] 2x"
+                 style="width:[UnasDesign - Loop{item} - Normal{img_width}]px;max-height:[UnasDesign - Loop{item} - Normal{img_height}]px;">
+        </a>
+        [UnasDesign - Loop{item} - IfEnd{!custom}]
+    </div>
+    [UnasDesign - LoopEnd{item}]
+</div>
+[UnasDesign - IfEnd{!horizontal_disp}]

@@ -1,0 +1,15 @@
+<div id="box_cert_content" class="box_content">
+    [UnasDesign - LoopStart{item}]
+    <div class="box_cert_item">
+        [UnasDesign - Loop{item} - IfStart{ssl_disp}]
+        <img class="box-cert-ssl lazyload" width="[UnasDesign - Loop{item} - Normal{ssl_img_width}]" height="[UnasDesign - Loop{item} - Normal{ssl_img_height}]"
+             src="[unas_shop_url]/main_pic/space.gif" data-src="[UnasDesign - Loop{item} - Normal{ssl_img_url}]" data-srcset="[UnasDesign - Loop{item} - Normal{ssl_img_retina_url}] 2x"
+             style="width:[UnasDesign - Loop{item} - Normal{ssl_img_width}]px;max-height:[UnasDesign - Loop{item} - Normal{ssl_img_height}]px;" alt="SSL Certificate" title="SSL Certificate">
+        [UnasDesign - Loop{item} - IfEnd{ssl_disp}]
+
+        [UnasDesign - Loop{item} - IfStart{!ssl_disp}]
+            [UnasDesign - Loop{item} - Normal{value}]
+        [UnasDesign - Loop{item} - IfEnd{!ssl_disp}]
+    </div>
+    [UnasDesign - LoopEnd{item}]
+</div>

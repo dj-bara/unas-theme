@@ -1,0 +1,73 @@
+<div class="cookie-alert cookie-alert-popup p-0 cookie_alert_4 overlay_common[UnasDesign - IfStart{close}] cookie-alert-closed[UnasDesign - IfEnd{close}]" id="overlay_cookie_alert" style="display:none">
+    <div class="cookie-alert__inner bg-8 p-4">
+        <div class="container">
+            <div class="container text-left">
+                <div>
+                    <div class="cookie-alert__title font-weight-bold">[UnasDesign - Text{name:cookie_alert_title;page:box}]</div>
+                    <div class="cookie-alert__text font-s">[UnasDesign - Text{name:cookie_alert_text;page:box}]</div>
+                </div>
+                <div class="p-4">
+                    <div class="cookie-alert__checkboxes" style="display: none">
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input class="custom-control-input" type="checkbox" id="cookie_alert_checkbox_working" checked="checked" disabled="disabled" />
+                            <label for="cookie_alert_checkbox_working" class="custom-control-label font-weight-bold">[UnasDesign - Text{name:cookie_alert_checkbox_working;page:box}]</label>
+                            <div class="font-s">[UnasDesign - Text{name:cookie_alert_checkbox_working_details;page:box}]</div>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input class="custom-control-input" type="checkbox" id="cookie_alert_checkbox_marketing"[UnasDesign - IfStart{checkbox_marketing_checked}] checked="checked"[UnasDesign - IfEnd{checkbox_marketing_checked}] value="1" />
+                            <label for="cookie_alert_checkbox_marketing" class="custom-control-label font-weight-bold">[UnasDesign - Text{name:cookie_alert_checkbox_marketing;page:box}]</label>
+                            <div class="font-s">[UnasDesign - Text{name:cookie_alert_checkbox_marketing_details;page:box}]</div>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input class="custom-control-input" type="checkbox" id="cookie_alert_checkbox_statistics"[UnasDesign - IfStart{checkbox_statistics_checked}] checked="checked"[UnasDesign - IfEnd{checkbox_statistics_checked}] value="1" />
+                            <label for="cookie_alert_checkbox_statistics" class="custom-control-label font-weight-bold">[UnasDesign - Text{name:cookie_alert_checkbox_statistics;page:box}]</label>
+                            <div class="font-s">[UnasDesign - Text{name:cookie_alert_checkbox_statistics_details;page:box}]</div>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="cookie_alert_checkbox_personalization"[UnasDesign - IfStart{checkbox_personalization_checked}] checked="checked"[UnasDesign - IfEnd{checkbox_personalization_checked}] value="1" />
+                            <label for="cookie_alert_checkbox_personalization" class="custom-control-label font-weight-bold">[UnasDesign - Text{name:cookie_alert_checkbox_personalization;page:box}]</label>
+                            <div class="font-s">[UnasDesign - Text{name:cookie_alert_checkbox_personalization_details;page:box}]</div>
+                        </div>
+                        [UnasDesign - IfStart{consent_date_disp|consent_id_disp}]
+                        <div class="cookie-alert__consent-data mt-3">
+                            [UnasDesign - IfStart{consent_date_disp}]<div>[UnasDesign - Text{name:cookie_consent_date;page:box}]: <b>[UnasDesign - Normal{consent_date}]</b></div>[UnasDesign - IfEnd{consent_date_disp}]
+                            [UnasDesign - IfStart{consent_id_disp}]<div>[UnasDesign - Text{name:cookie_consent_id;page:box}]: <b>[UnasDesign - Normal{consent_id}]</b></div>[UnasDesign - IfEnd{consent_id_disp}]
+                        </div>
+                        [UnasDesign - IfEnd{consent_date_disp|consent_id_disp}]
+                    </div>
+                </div>
+                <div class="cookie-alert__btn-set-wrap text-center">
+                    <button class="cookie-alert__btn-close btn btn--secondary m-2" type="button" onclick="$('.cookie-alert__checkboxes').slideToggle();">[UnasDesign - Text{name:cookie_alert_button_settings;page:box}]</button>
+                    <button class="cookie-alert__btn-grant btn btn--primary m-2" type="button" onclick="$('#overlay_cookie_alert').overlay().close();cookie_alert_action(1,(($('#cookie_alert_checkbox_marketing').prop('checked')==true)?1:0),(($('#cookie_alert_checkbox_statistics').prop('checked')==true)?1:0),(($('#cookie_alert_checkbox_personalization').prop('checked')==true)?1:0));">[UnasDesign - Text{name:cookie_alert_button_set;page:box}]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="cookie-alert__btn-open btn btn--link" id="cookie_alert_close" onclick='cookie_alert_action(0,-1)'>[UnasDesign - Text{name:cookie_alert_title;page:box}]</button>
+<script>
+    $(document).ready(function(){
+        overlay_init("cookie_alert",{})
+
+        [UnasDesign - IfStart{!close}]
+        setTimeout(function () {
+            cookie_alert_overlay();
+        }, 500);
+        [UnasDesign - IfEnd{!close}]
+    });
+
+    [UnasDesign - IfStart{config_default_open}]
+    $('.cookie-alert__btn-close').css('display','none');
+    $('.cookie-alert__checkboxes').css("display","block");
+    [UnasDesign - IfEnd{config_default_open}]
+
+    $(document).on('click', '.cookie-alert__btn-open', function(){
+        $('.cookie-alert__btn-close').css('display','none');
+        $('.cookie-alert__checkboxes').css("display","block");
+
+        cookie_alert_overlay();
+    });
+    $(document).on('closeConsent',function(){
+        $('#overlay_cookie_alert').addClass('cookie-alert-closed');
+    });
+</script>

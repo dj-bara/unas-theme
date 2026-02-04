@@ -1,0 +1,10 @@
+[UnasDesign - IfStart{list_disp}]
+[UnasDesign - LoopStart{list_item}]
+<li class="catmenu_lvl2__li catmenu_li js-cat-menu-[UnasDesign - Loop{list_item} - Normal{id}]">
+    <a href="[UnasDesign - Loop{list_item} - Normal{link}]"[UnasDesign - Loop{list_item} - IfStart{target_disp}] target="[UnasDesign - Loop{list_item} - Normal{target}]"[UnasDesign - Loop{list_item} - IfEnd{target_disp}]>[UnasDesign - Loop{list_item} - Normal{name}]</a>
+    [UnasDesign - Loop{list_item} - IfStart{children_disp}]
+        [UnasDesign - Loop{list_item} - Normal{children}]
+    [UnasDesign - Loop{list_item} - IfEnd{children_disp}]
+</li>
+[UnasDesign - LoopEnd{list_item}]
+[UnasDesign - IfEnd{list_disp}]
