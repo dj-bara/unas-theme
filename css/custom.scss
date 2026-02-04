@@ -2251,3 +2251,239 @@ body.design_subver3 {
 .page_design_fault.only-warning input, .page_design_fault.only-warning textarea, .page_design_fault.only-warning select{
     border-color: #ffc107 !important;
 }
+/*** luxury minimal beauty theme ***/
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F7F5F3;
+    color: #1C1C1C;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.02em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.lux-heading {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: none;
+}
+
+.lux-container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+}
+
+.lux-hero {
+    padding: 96px 0 72px;
+    background-color: #F7F5F3;
+}
+
+.lux-hero__content {
+    max-width: 520px;
+}
+
+.lux-hero__eyebrow {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: #1C1C1C;
+    margin-bottom: 16px;
+}
+
+.lux-hero__title {
+    font-size: clamp(2.4rem, 3vw, 3.6rem);
+    margin-bottom: 16px;
+}
+
+.lux-hero__copy {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #1C1C1C;
+    margin-bottom: 28px;
+}
+
+.lux-hero__media img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(28, 28, 28, 0.12);
+}
+
+.lux-grid {
+    display: grid;
+    gap: 28px;
+}
+
+.lux-grid--2 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.lux-grid--3 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.lux-card {
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid #ECE8E4;
+    padding: 28px;
+    box-shadow: 0 12px 30px rgba(28, 28, 28, 0.08);
+}
+
+.lux-card__title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.lux-card__text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #1C1C1C;
+}
+
+.btn-lux {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: 999px;
+    border: 1px solid #C8A977;
+    background-color: transparent;
+    color: #1C1C1C;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    transition: all 0.4s ease;
+}
+
+.btn-lux:hover,
+.btn-lux:focus {
+    background-color: #C8A977;
+    color: #1C1C1C;
+    box-shadow: 0 10px 25px rgba(200, 169, 119, 0.35);
+}
+
+.lux-product-card {
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #ECE8E4;
+    box-shadow: 0 14px 32px rgba(28, 28, 28, 0.08);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.lux-product-card:hover {
+    transform: translateY(-4px);
+    border-color: #C8A977;
+    box-shadow: 0 18px 40px rgba(28, 28, 28, 0.12);
+}
+
+.lux-product-card__image img {
+    width: 100%;
+    display: block;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.lux-product-card:hover .lux-product-card__image img {
+    transform: scale(1.04);
+    opacity: 0.96;
+}
+
+.lux-product-card__body {
+    padding: 20px 22px 26px;
+    display: grid;
+    gap: 10px;
+}
+
+.lux-product-card__name {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.lux-product-card__price {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.lux-product-card .btn-lux {
+    margin-top: 8px;
+    width: 100%;
+}
+
+.lux-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid #C8A977;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+}
+
+.lux-story {
+    padding: 64px 0;
+}
+
+.lux-story__grid {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+}
+
+.lux-social__item img {
+    width: 100%;
+    border-radius: 16px;
+    filter: grayscale(1);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.lux-social__item:hover img {
+    filter: grayscale(0);
+    transform: scale(1.02);
+}
+
+.lux-product-details {
+    padding: 48px 0;
+}
+
+.lux-product-details__grid {
+    display: grid;
+    gap: 24px;
+}
+
+.lux-product-details__title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.lux-product-details__list {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.8;
+}
+
+@media (min-width: 900px) {
+    .lux-hero .lux-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 48px;
+        align-items: center;
+    }
+
+    .lux-story__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lux-hero {
+        padding: 72px 0 56px;
+    }
+
+    .btn-lux {
+        width: 100%;
+    }
+}
